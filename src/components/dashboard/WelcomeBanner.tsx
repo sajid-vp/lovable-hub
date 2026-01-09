@@ -29,7 +29,7 @@ export function WelcomeBanner() {
   });
 
   return (
-    <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-[hsl(var(--turquoise))]/20 animate-fade-in h-56 md:h-64">
+    <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl shadow-[hsl(var(--turquoise))]/20 animate-fade-in h-44 sm:h-56 md:h-64">
       {/* Background image with overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
@@ -43,26 +43,26 @@ export function WelcomeBanner() {
       <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--teal))]/60 via-transparent to-transparent" />
       
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
+      <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-32 sm:w-64 h-32 sm:h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
       
-      <div className="relative z-10 h-full p-6 md:p-8 flex flex-col justify-center">
+      <div className="relative z-10 h-full p-4 sm:p-6 md:p-8 flex flex-col justify-center">
         {/* Text content */}
         <div className="text-white">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm border border-white/20 shadow-lg">
-              <TimeIcon className="h-6 w-6" />
+          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <div className="p-2 sm:p-3 bg-white/20 rounded-lg sm:rounded-xl backdrop-blur-sm border border-white/20 shadow-lg">
+              <TimeIcon className="h-4 w-4 sm:h-6 sm:w-6" />
             </div>
-            <div className="flex-1 h-[2px] bg-gradient-to-r from-white/40 via-white/20 to-transparent rounded-full max-w-xs" />
+            <div className="flex-1 h-[2px] bg-gradient-to-r from-white/40 via-white/20 to-transparent rounded-full max-w-[150px] sm:max-w-xs" />
           </div>
           
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 drop-shadow-md">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-1 sm:mb-2 drop-shadow-md">
             {getGreeting()}, {user?.name?.split(" ")[0]}!
           </h1>
-          <p className="text-base opacity-90 font-medium mb-2">
+          <p className="text-sm sm:text-base opacity-90 font-medium mb-1 sm:mb-2">
             {today}
           </p>
-          <p className="text-sm opacity-80 max-w-lg">
+          <p className="text-xs sm:text-sm opacity-80 max-w-lg hidden sm:block">
             Welcome back to Sharjah Education Academy. Here's what's happening in your organization today.
           </p>
         </div>

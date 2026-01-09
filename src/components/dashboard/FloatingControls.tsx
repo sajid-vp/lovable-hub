@@ -36,14 +36,14 @@ export function FloatingControls() {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
+    <div className="fixed top-3 sm:top-4 right-3 sm:right-4 z-50 flex items-center gap-1.5 sm:gap-2">
       {/* Search */}
       <div className="relative">
         <form onSubmit={handleSearch} className="flex items-center">
           <div
             className={cn(
               "flex items-center overflow-hidden transition-all duration-300 glass-card rounded-full",
-              searchOpen ? "w-64 pl-4 pr-1" : "w-10"
+              searchOpen ? "w-48 sm:w-64 pl-3 sm:pl-4 pr-1" : "w-9 sm:w-10"
             )}
           >
             {searchOpen && (
@@ -63,7 +63,7 @@ export function FloatingControls() {
               type={searchOpen ? "submit" : "button"}
               variant="ghost"
               size="icon"
-              className="h-10 w-10 rounded-full shrink-0"
+              className="h-9 w-9 sm:h-10 sm:w-10 rounded-full shrink-0"
               onClick={() => !searchOpen && setSearchOpen(true)}
             >
               <Search className="h-4 w-4" />
@@ -76,7 +76,7 @@ export function FloatingControls() {
       <Button
         variant="ghost"
         size="icon"
-        className="h-10 w-10 rounded-full glass-card relative"
+        className="h-9 w-9 sm:h-10 sm:w-10 rounded-full glass-card relative"
       >
         <Bell className="h-4 w-4" />
         <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-destructive" />
@@ -87,11 +87,11 @@ export function FloatingControls() {
         <DropdownMenuTrigger asChild>
           <Button
             variant="ghost"
-            className="h-10 w-10 rounded-full p-0 glass-card"
+            className="h-9 w-9 sm:h-10 sm:w-10 rounded-full p-0 glass-card"
           >
-            <Avatar className="h-9 w-9">
+            <Avatar className="h-8 w-8 sm:h-9 sm:w-9">
               <AvatarImage src={user?.avatar} alt={user?.name} />
-              <AvatarFallback className="gradient-primary text-primary-foreground text-sm">
+              <AvatarFallback className="gradient-primary text-primary-foreground text-xs sm:text-sm">
                 {user?.name?.charAt(0) || "U"}
               </AvatarFallback>
             </Avatar>

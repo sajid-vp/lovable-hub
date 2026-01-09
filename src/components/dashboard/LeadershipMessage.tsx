@@ -17,15 +17,15 @@ export function LeadershipMessage() {
         {/* Top gradient accent */}
         <div className="absolute top-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent rounded-full" />
 
-        <div className="flex items-start gap-4">
+        <div className="flex items-start gap-3 sm:gap-4">
           <img
             src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
             alt="Chancellor"
-            className="w-14 h-14 rounded-xl object-cover shadow-md border border-border/30"
+            className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl object-cover shadow-md border border-border/30"
           />
           <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-sm">Prof. Dr. Mohammed Al Qasimi</h3>
-            <p className="text-xs text-muted-foreground">Chancellor, Sharjah Education Academy</p>
+            <h3 className="font-bold text-xs sm:text-sm">Prof. Dr. Mohammed Al Qasimi</h3>
+            <p className="text-xs text-muted-foreground truncate">Chancellor, Sharjah Education Academy</p>
           </div>
         </div>
         

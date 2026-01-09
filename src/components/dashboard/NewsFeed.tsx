@@ -43,12 +43,12 @@ export function NewsFeed() {
       </div>
 
       {/* Category Filter Tabs */}
-      <div className="flex items-center gap-2 mb-4 flex-wrap">
+      <div className="flex items-center gap-1.5 sm:gap-2 mb-4 flex-wrap">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+            className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
               activeCategory === category
                 ? "bg-[hsl(var(--light-blue))] text-white shadow-md"
                 : "bg-card border border-border/50 text-muted-foreground hover:border-[hsl(var(--turquoise))]/50 hover:text-foreground"
@@ -66,11 +66,11 @@ export function NewsFeed() {
 
         {/* Carousel */}
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4">
             {(filteredNews.length > 0 ? filteredNews : mockNews).map((news) => (
               <div 
                 key={news.id} 
-                className="flex-[0_0_280px] min-w-0"
+                className="flex-[0_0_240px] sm:flex-[0_0_280px] min-w-0"
               >
                 {/* News Card */}
                 <div className="relative rounded-2xl bg-background/80 border border-border/50 shadow-md overflow-hidden group hover:shadow-lg hover:border-[hsl(var(--turquoise))]/40 transition-all duration-300 h-full flex flex-col">
