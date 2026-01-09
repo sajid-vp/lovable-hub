@@ -49,6 +49,14 @@ export interface Event {
   location: string;
 }
 
+export interface Birthday {
+  id: string;
+  name: string;
+  department: string;
+  birthday: string;
+  avatar?: string;
+}
+
 // Mock current user
 export const mockUser: User = {
   id: "1",
@@ -239,6 +247,37 @@ export const mockEvents: Event[] = [
     date: "2025-01-15",
     time: "2:00 PM",
     location: "Room 301",
+  },
+];
+
+// Mock team birthdays
+export const mockBirthdays: Birthday[] = [
+  {
+    id: "1",
+    name: "Sarah Al Maktoum",
+    department: "Early Childhood",
+    birthday: "2025-01-10",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+  },
+  {
+    id: "2",
+    name: "Ahmed Hassan",
+    department: "Research",
+    birthday: "2025-01-12",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+  },
+  {
+    id: "3",
+    name: "Fatima Al Qasimi",
+    department: "Programs",
+    birthday: "2025-01-15",
+  },
+  {
+    id: "4",
+    name: "Mohammed Rashid",
+    department: "Administration",
+    birthday: "2025-01-18",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
   },
 ];
 
