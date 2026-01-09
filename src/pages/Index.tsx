@@ -7,6 +7,7 @@ import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
 import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
 import { LeadershipMessage } from "@/components/dashboard/LeadershipMessage";
+import { Announcements } from "@/components/dashboard/Announcements";
 import { NewsFeed } from "@/components/dashboard/NewsFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
@@ -50,8 +51,9 @@ export default function Index() {
             {/* Subtle connecting glow behind the entire row */}
             <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-[hsl(var(--indigo))]/3 via-transparent to-[hsl(var(--turquoise))]/3 blur-xl" />
             
-            <div className="md:col-span-2">
+            <div className="md:col-span-2 space-y-5">
               <LeadershipMessage />
+              <Announcements />
             </div>
             <div className="md:col-span-3 space-y-5">
               <QuickLinks />
