@@ -44,11 +44,11 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
               <TileWrapper
                 key={item.id}
                 {...(tileProps as any)}
-                className="group relative flex items-center gap-3 rounded-xl px-3.5 py-3 bg-gradient-to-br from-background/80 to-background/40 backdrop-blur-sm border border-border/30 hover:border-primary/40 shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 animate-scale-in overflow-hidden"
+                className="group relative flex items-center gap-3 rounded-xl px-3.5 py-3 bg-card border border-border/50 hover:border-primary/40 shadow-sm hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 animate-scale-in overflow-hidden"
                 style={{ animationDelay: `${index * 30}ms` }}
               >
                 {/* Hover shine effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%]" style={{ transition: 'transform 0.8s ease-in-out, opacity 0.3s' }} />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-primary/5 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%]" style={{ transition: 'transform 0.8s ease-in-out, opacity 0.3s' }} />
 
                 {/* Badge counter */}
                 {badgeCounts[item.id] && (
