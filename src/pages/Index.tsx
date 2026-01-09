@@ -16,17 +16,13 @@ export default function Index() {
   const { isAuthenticated } = useAuthContext();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Public landing page for visitors
+  // Public landing page for visitors - simple login experience
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex flex-col">
-        <Header />
+      <div className="min-h-screen flex flex-col bg-background">
         <main className="flex-1">
           <PublicHero />
-          <PublicFeatures />
-          <PublicNews />
         </main>
-        <PublicFooter />
       </div>
     );
   }

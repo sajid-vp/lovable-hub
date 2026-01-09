@@ -1,59 +1,142 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, Play } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { LogIn, Building2, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useAuthContext } from "@/contexts/AuthContext";
 
 export function PublicHero() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuthContext();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    
+    // Simulate login
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    login(email, password);
+    setIsLoading(false);
+    navigate("/");
+  };
+
   return (
-    <section className="relative overflow-hidden py-20 md:py-32">
-      {/* Background gradient */}
-      <div className="absolute inset-0 gradient-hero opacity-10" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.15),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,hsl(var(--secondary)/0.15),transparent_50%)]" />
-
-      <div className="container relative z-10 px-4">
-        <div className="mx-auto max-w-3xl text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border bg-card/50 backdrop-blur px-4 py-1.5 mb-8 animate-fade-in">
-            <span className="h-2 w-2 rounded-full bg-success animate-pulse" />
-            <span className="text-sm font-medium">Your digital workplace hub</span>
+    <section className="relative min-h-[calc(100vh-4rem)] flex items-center">
+      {/* Background with gradient */}
+      <div className="absolute inset-0 gradient-hero opacity-90" />
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
+      
+      <div className="container relative z-10 px-4 py-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left side - Welcome text */}
+          <div className="text-primary-foreground">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-3 rounded-xl bg-white/10 backdrop-blur">
+                <Building2 className="h-8 w-8" />
+              </div>
+              <span className="text-xl font-semibold">Intranet Portal</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Welcome to Your
+              <br />
+              <span className="opacity-90">Digital Workplace</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl opacity-90 max-w-md">
+              Access company resources, connect with colleagues, and stay updated with the latest announcements.
+            </p>
           </div>
 
-          {/* Headline */}
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 animate-fade-in" style={{ animationDelay: "100ms" }}>
-            Everything you need,{" "}
-            <span className="text-gradient">one place</span>
-          </h1>
+          {/* Right side - Login card */}
+          <div className="flex justify-center lg:justify-end">
+            <Card className="w-full max-w-md shadow-2xl border-0">
+              <CardHeader className="space-y-1 pb-4">
+                <CardTitle className="text-2xl font-bold">Sign In</CardTitle>
+                <CardDescription>
+                  Enter your credentials to access the portal
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="your.name@company.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className="h-11"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="password">Password</Label>
+                    <div className="relative">
+                      <Input
+                        id="password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        className="h-11 pr-10"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      </button>
+                    </div>
+                  </div>
 
-          {/* Subheadline */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in" style={{ animationDelay: "200ms" }}>
-            Connect with colleagues, access resources, and stay informed with our 
-            comprehensive intranet portal designed for modern teams.
-          </p>
+                  <div className="flex items-center justify-between text-sm">
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" className="rounded border-input" />
+                      <span className="text-muted-foreground">Remember me</span>
+                    </label>
+                    <a href="#" className="text-primary hover:underline">
+                      Forgot password?
+                    </a>
+                  </div>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "300ms" }}>
-            <Button size="lg" className="gradient-primary text-primary-foreground min-w-[160px]" asChild>
-              <Link to="/login">
-                Get Started <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" className="min-w-[160px]">
-              <Play className="mr-2 h-4 w-4" />
-              Watch Demo
-            </Button>
-          </div>
-        </div>
+                  <Button 
+                    type="submit" 
+                    className="w-full h-11 gradient-primary text-primary-foreground"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <span className="flex items-center gap-2">
+                        <span className="h-4 w-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                        Signing in...
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-2">
+                        <LogIn className="h-4 w-4" />
+                        Sign In
+                      </span>
+                    )}
+                  </Button>
+                </form>
 
-        {/* Hero image/preview */}
-        <div className="mt-16 mx-auto max-w-5xl animate-fade-in" style={{ animationDelay: "400ms" }}>
-          <div className="relative rounded-xl border bg-card shadow-2xl overflow-hidden">
-            <div className="absolute inset-0 gradient-primary opacity-5" />
-            <img
-              src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=1200&h=600&fit=crop"
-              alt="Dashboard preview"
-              className="w-full h-auto"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
+                <div className="mt-6 pt-6 border-t text-center text-sm text-muted-foreground">
+                  Need help? Contact{" "}
+                  <a href="mailto:it-support@company.com" className="text-primary hover:underline">
+                    IT Support
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
