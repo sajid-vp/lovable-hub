@@ -99,14 +99,14 @@ export function WelcomeBanner() {
         </div>
 
         {/* Right: Controls */}
-        <div className="flex items-start gap-1.5 sm:gap-2 pt-1">
+        <div className="flex items-start gap-2 sm:gap-2.5 pt-1">
           {/* Search */}
           <div className="relative">
             <form onSubmit={handleSearch} className="flex items-center">
               <div
                 className={cn(
                   "flex items-center overflow-hidden transition-all duration-300 bg-white/20 backdrop-blur-sm border border-white/20 rounded-full",
-                  searchOpen ? "w-36 sm:w-52 pl-3 sm:pl-4 pr-1" : "w-9 sm:w-10"
+                  searchOpen ? "w-36 sm:w-52 pl-3 sm:pl-4 pr-1" : "w-10 sm:w-11"
                 )}
               >
                 {searchOpen && (
@@ -115,7 +115,7 @@ export function WelcomeBanner() {
                     placeholder="Search..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="border-0 bg-transparent h-8 focus-visible:ring-0 focus-visible:ring-offset-0 px-0 text-white placeholder:text-white/60 text-sm"
+                    className="border-0 bg-transparent h-9 focus-visible:ring-0 focus-visible:ring-offset-0 px-0 text-white placeholder:text-white/60 text-sm"
                     autoFocus
                     onBlur={() => {
                       if (!searchQuery) setSearchOpen(false);
@@ -126,10 +126,10 @@ export function WelcomeBanner() {
                   type={searchOpen ? "submit" : "button"}
                   variant="ghost"
                   size="icon"
-                  className="h-9 w-9 sm:h-10 sm:w-10 rounded-full shrink-0 text-white hover:bg-white/20 hover:text-white"
+                  className="h-10 w-10 sm:h-11 sm:w-11 rounded-full shrink-0 text-white hover:bg-white/20 hover:text-white"
                   onClick={() => !searchOpen && setSearchOpen(true)}
                 >
-                  <Search className="h-4 w-4" />
+                  <Search className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
               </div>
             </form>
@@ -139,10 +139,10 @@ export function WelcomeBanner() {
           <Button
             variant="ghost"
             size="icon"
-            className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-white hover:bg-white/30 hover:text-white relative"
+            className="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-white hover:bg-white/30 hover:text-white relative"
           >
-            <Bell className="h-4 w-4" />
-            <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-destructive" />
+            <Bell className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-destructive" />
           </Button>
 
           {/* User Menu */}
@@ -150,9 +150,9 @@ export function WelcomeBanner() {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="h-9 w-9 sm:h-10 sm:w-10 rounded-full p-0 bg-white/20 backdrop-blur-sm border border-white/20 hover:bg-white/30"
+                className="h-10 w-10 sm:h-11 sm:w-11 rounded-full p-0 bg-white/20 backdrop-blur-sm border border-white/20 hover:bg-white/30"
               >
-                <Avatar className="h-7 w-7 sm:h-8 sm:w-8">
+                <Avatar className="h-8 w-8 sm:h-9 sm:w-9">
                   <AvatarImage src={user?.avatar} alt={user?.name} />
                   <AvatarFallback className="bg-white/30 text-white text-xs sm:text-sm">
                     {user?.name?.charAt(0) || "U"}
