@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export function LeadershipMessage() {
   return (
     <section className="animate-fade-in h-full">
-      <h2 className="text-xs font-semibold mb-3 flex items-center gap-2 text-muted-foreground/70 uppercase tracking-widest">
+      <h2 className="text-xs font-semibold mb-3 flex items-center gap-2 text-foreground/80 uppercase tracking-widest">
         Message from Leadership
       </h2>
       <div className="bg-card/80 backdrop-blur-sm border border-border/40 rounded-xl p-5 h-[calc(100%-2rem)]">

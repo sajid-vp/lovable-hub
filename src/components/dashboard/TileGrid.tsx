@@ -19,7 +19,7 @@ function isExternalLink(item: TileItem): item is ExternalLinkType {
 export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGridProps) {
   return (
     <section className="animate-fade-in">
-      <h2 className="text-xs font-semibold mb-3 flex items-center gap-2 text-muted-foreground/70 uppercase tracking-widest">
+      <h2 className="text-xs font-semibold mb-3 flex items-center gap-2 text-foreground/80 uppercase tracking-widest">
         {title}
       </h2>
       <div className={cn(
