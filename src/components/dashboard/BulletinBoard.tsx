@@ -150,12 +150,12 @@ export function BulletinBoard() {
                   }}
                 />
 
-                {/* Pin Icon - more realistic push pin */}
-                <div className={`absolute -top-2 left-1/2 -translate-x-1/2 ${getPinColor(announcement.type)} drop-shadow-md`}>
-                  <div className="relative">
-                    <Pin className="h-6 w-6 fill-current" style={{ transform: 'rotate(45deg)' }} />
-                    <div className="absolute top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-current opacity-80" />
-                  </div>
+                {/* Pin Icon - positioned at top center */}
+                <div 
+                  className={`absolute ${getPinColor(announcement.type)} drop-shadow-md`}
+                  style={{ top: '-8px', left: '50%', marginLeft: '-12px' }}
+                >
+                  <Pin className="h-6 w-6 fill-current" style={{ transform: 'rotate(45deg)' }} />
                 </div>
 
                 {/* Type Chip */}
