@@ -50,28 +50,50 @@ const getPinColor = (type: string) => {
 
 export function BulletinBoard() {
   return (
-    <div className="relative rounded-xl border-4 border-amber-900/40 overflow-hidden shadow-lg">
-      {/* Corkboard texture background */}
+    <div className="relative p-2 rounded-lg" style={{
+      background: 'linear-gradient(145deg, #5c3d2e 0%, #4a3225 20%, #3d2a1f 50%, #4a3225 80%, #5c3d2e 100%)',
+      boxShadow: '0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -2px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
+    }}>
+      {/* Wood grain texture overlay */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 rounded-lg opacity-20 pointer-events-none"
         style={{
-          background: 'linear-gradient(135deg, #c9a66b 0%, #b8956a 25%, #d4a96a 50%, #c49a5f 75%, #b88f55 100%)',
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'grain\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.04\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23grain)\'/%3E%3C/svg%3E")',
         }}
       />
-      {/* Cork texture noise overlay */}
+      {/* Inner wood highlight */}
       <div 
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 rounded-lg pointer-events-none"
         style={{
-          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'cork\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23cork)\'/%3E%3C/svg%3E")',
+          boxShadow: 'inset 1px 1px 2px rgba(255,255,255,0.08), inset -1px -1px 2px rgba(0,0,0,0.3)',
         }}
       />
-      {/* Subtle vignette */}
-      <div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          boxShadow: 'inset 0 0 60px rgba(0,0,0,0.15)',
-        }}
-      />
+
+      {/* Inner corkboard */}
+      <div className="relative rounded-md overflow-hidden shadow-inner" style={{
+        boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.3), inset 0 0 2px rgba(0,0,0,0.2)',
+      }}>
+        {/* Corkboard texture background */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(135deg, #c9a66b 0%, #b8956a 25%, #d4a96a 50%, #c49a5f 75%, #b88f55 100%)',
+          }}
+        />
+        {/* Cork texture noise overlay */}
+        <div 
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'cork\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23cork)\'/%3E%3C/svg%3E")',
+          }}
+        />
+        {/* Subtle vignette */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            boxShadow: 'inset 0 0 60px rgba(0,0,0,0.15)',
+          }}
+        />
 
       {/* Header */}
       <div className="relative px-4 py-3 border-b border-amber-900/20">
@@ -159,6 +181,7 @@ export function BulletinBoard() {
             );
           })}
         </div>
+      </div>
       </div>
     </div>
   );
