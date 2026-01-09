@@ -1,7 +1,6 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Sun, Moon, CloudSun, Search, Bell, LogOut, User, Settings, ChevronLeft, ChevronRight } from "lucide-react";
-import useEmblaCarousel from "embla-carousel-react";
+import { Sun, Moon, CloudSun, Search, Bell, LogOut, User, Settings } from "lucide-react";
 import { useAuthContext } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,64 +16,12 @@ import {
 import { cn } from "@/lib/utils";
 import seaBuilding from "@/assets/sea-building.jpg";
 
-const announcements = [
-  {
-    id: 1,
-    title: "Registration Open for Spring Programs",
-    description: "Enroll now for our upcoming professional development courses starting February 2025.",
-    priority: "high",
-  },
-  {
-    id: 2,
-    title: "Campus Closure Notice - January 15",
-    description: "SEA campus will be closed for scheduled maintenance and upgrades.",
-    priority: "medium",
-  },
-  {
-    id: 3,
-    title: "New Partnership Announcement",
-    description: "SEA welcomes new institutional partners for the 2025 academic year.",
-    priority: "normal",
-  },
-];
-
 export function WelcomeBanner() {
   const { user, logout } = useAuthContext();
   const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    
-    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
-    emblaApi.on("select", onSelect);
-    
-    // Auto-play
-    const autoplay = setInterval(() => emblaApi.scrollNext(), 5000);
-    
-    return () => {
-      emblaApi.off("select", onSelect);
-      clearInterval(autoplay);
-    };
-  }, [emblaApi]);
-
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case "high":
-        return "bg-white";
-      case "medium":
-        return "bg-white/70";
-      default:
-        return "bg-white/50";
-    }
-  };
   const getGreeting = () => {
     const hour = new Date().getHours();
     if (hour < 12) return "Good morning";
@@ -244,70 +191,6 @@ export function WelcomeBanner() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        </div>
-      </div>
-
-      {/* Bottom Announcements Ticker */}
-      <div className="relative z-10 bg-black/20 backdrop-blur-sm border-t border-white/10">
-        <div className="flex items-center gap-3 px-4 py-2">
-          {/* Nav arrows */}
-          <button
-            onClick={scrollPrev}
-            className="p-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white/80 hover:text-white"
-          >
-            <ChevronLeft className="h-3.5 w-3.5" />
-          </button>
-          
-          {/* Carousel */}
-          <div className="flex-1 overflow-hidden" ref={emblaRef}>
-            <div className="flex">
-              {announcements.map((announcement) => (
-                <div key={announcement.id} className="flex-[0_0_100%] min-w-0">
-                  <div className="flex items-center gap-2 text-white">
-                    <div className={`w-1.5 h-1.5 rounded-full ${getPriorityColor(announcement.priority)} shrink-0`} />
-                    <span className="text-xs sm:text-sm font-medium truncate">
-                      {announcement.title}
-                    </span>
-                    <span className="text-[10px] text-white/60 hidden sm:inline">—</span>
-                    <span className="text-[10px] sm:text-xs text-white/60 truncate hidden sm:block">
-                      {announcement.description}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Nav arrows + dots */}
-          <div className="flex items-center gap-2">
-            <div className="flex gap-1">
-              {announcements.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => emblaApi?.scrollTo(index)}
-                  className={`w-1 h-1 rounded-full transition-all ${
-                    index === selectedIndex
-                      ? "bg-white w-3"
-                      : "bg-white/40 hover:bg-white/60"
-                  }`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={scrollNext}
-              className="p-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white/80 hover:text-white"
-            >
-              <ChevronRight className="h-3.5 w-3.5" />
-            </button>
-          </div>
-
-          {/* View All link */}
-          <Link
-            to="/announcements"
-            className="text-[10px] sm:text-xs font-medium text-white/70 hover:text-white transition-colors shrink-0"
-          >
-            View all
-          </Link>
         </div>
       </div>
     </div>

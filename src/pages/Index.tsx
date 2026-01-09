@@ -3,6 +3,7 @@ import { PublicHeader } from "@/components/landing/PublicHeader";
 import { PublicLanding } from "@/components/landing/PublicLanding";
 import { PublicFooter } from "@/components/landing/PublicFooter";
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
+import { Announcements } from "@/components/dashboard/Announcements";
 import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
 import { LeadershipMessage } from "@/components/dashboard/LeadershipMessage";
@@ -43,6 +44,8 @@ export default function Index() {
           {/* Welcome Section */}
           <WelcomeBanner />
           
+          {/* Announcements */}
+          <Announcements />
           {/* Leadership Message + Quick Links side by side */}
           <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
             {/* Subtle connecting glow behind the entire row */}
