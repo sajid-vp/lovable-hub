@@ -82,19 +82,40 @@ export function BulletinBoard() {
             return (
               <div
                 key={announcement.id}
-                className="group relative flex-shrink-0 w-64 bg-card border border-border/50 rounded-lg p-4 hover:shadow-lg hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 hover:rotate-0"
+                className="group relative flex-shrink-0 w-64 rounded-sm p-4 transition-all duration-300 hover:-translate-y-2 hover:rotate-0"
                 style={{
                   transform: `rotate(${rotation})`,
                   animationDelay: `${index * 100}ms`,
+                  background: 'linear-gradient(135deg, #fffef5 0%, #fefcf3 50%, #fdf9e8 100%)',
+                  boxShadow: '0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.06), 0 4px 4px rgba(0,0,0,0.04), 0 8px 8px rgba(0,0,0,0.02), 2px 4px 12px rgba(0,0,0,0.08)',
                 }}
               >
-                {/* Pin Icon */}
-                <div className={`absolute -top-1 left-4 ${getPinColor(announcement.type)}`}>
-                  <Pin className="h-5 w-5 fill-current" style={{ transform: 'rotate(-45deg)' }} />
+                {/* Paper texture overlay */}
+                <div 
+                  className="absolute inset-0 rounded-sm opacity-30 pointer-events-none"
+                  style={{
+                    backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")',
+                  }}
+                />
+                
+                {/* Folded corner effect */}
+                <div 
+                  className="absolute top-0 right-0 w-6 h-6 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.03) 50%, rgba(0,0,0,0.06) 100%)',
+                  }}
+                />
+
+                {/* Pin Icon - more realistic push pin */}
+                <div className={`absolute -top-2 left-1/2 -translate-x-1/2 ${getPinColor(announcement.type)} drop-shadow-md`}>
+                  <div className="relative">
+                    <Pin className="h-6 w-6 fill-current" style={{ transform: 'rotate(45deg)' }} />
+                    <div className="absolute top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-current opacity-80" />
+                  </div>
                 </div>
 
                 {/* Type Chip */}
-                <div className="mt-2 mb-3">
+                <div className="mt-4 mb-3 relative">
                   <span
                     className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${getTypeStyles(announcement.type)}`}
                   >
@@ -103,12 +124,12 @@ export function BulletinBoard() {
                 </div>
 
                 {/* Content */}
-                <p className="text-sm text-foreground/80 line-clamp-3 leading-relaxed">
+                <p className="text-sm text-stone-700 line-clamp-3 leading-relaxed relative font-medium">
                   {announcement.content}
                 </p>
 
                 {/* Date */}
-                <div className="mt-3 pt-3 border-t border-border/30 flex items-center justify-end gap-1 text-xs text-muted-foreground">
+                <div className="mt-3 pt-3 border-t border-stone-200/60 flex items-center justify-end gap-1 text-xs text-stone-500 relative">
                   <Calendar className="h-3 w-3" />
                   <span>{announcement.date}</span>
                 </div>
