@@ -52,31 +52,28 @@ export function Announcements() {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "high":
-        return "bg-[hsl(var(--teal))]";
+        return "bg-destructive";
       case "medium":
-        return "bg-[hsl(var(--turquoise))]";
+        return "bg-[hsl(var(--teal))]";
       default:
-        return "bg-primary";
+        return "bg-[hsl(var(--turquoise))]";
     }
   };
 
   return (
     <section className="animate-fade-in -mt-2">
       {/* Glass Container */}
-      <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
+      <div className="relative p-3 rounded-xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
 
         {/* Carousel */}
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
             {announcements.map((announcement) => (
               <div key={announcement.id} className="flex-[0_0_100%] min-w-0 px-1">
-                <div className="flex items-center gap-3 min-h-[44px]">
+                <div className="flex items-center gap-2.5 min-h-[36px]">
                   <div className={`w-2 h-2 rounded-full ${getPriorityColor(announcement.priority)} shrink-0`} />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold line-clamp-1">{announcement.title}</p>
-                    <p className="text-xs text-muted-foreground line-clamp-1">
-                      {announcement.description}
-                    </p>
+                    <p className="text-sm font-medium line-clamp-1">{announcement.title}</p>
                   </div>
                   <span className="text-[10px] text-muted-foreground/70 bg-muted/50 px-2 py-0.5 rounded-full shrink-0">
                     {announcement.date}
@@ -88,7 +85,7 @@ export function Announcements() {
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-between mt-4">
+        <div className="flex items-center justify-between mt-2.5">
           <div className="flex items-center gap-2">
             {/* Navigation arrows */}
             <button
