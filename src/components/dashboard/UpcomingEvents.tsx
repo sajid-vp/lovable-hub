@@ -39,19 +39,19 @@ export function UpcomingEvents() {
                   {new Date(event.date).getDate()}
                 </span>
               </div>
-              <div className="flex-1 min-w-0">
-                <h4 className="font-semibold text-sm truncate group-hover:text-[hsl(var(--teal))] transition-colors">{event.title}</h4>
-                <div className="flex items-center gap-3 mt-1.5 text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1">
-                    <Clock className="h-3 w-3 text-[hsl(var(--teal))]" />
-                    {event.time}
-                  </span>
-                  <span className="flex items-center gap-1 truncate">
-                    <MapPin className="h-3 w-3 text-[hsl(var(--turquoise))]" />
-                    {event.location}
-                  </span>
-                </div>
-              </div>
+               <div className="flex-1 min-w-0">
+43:                 <h4 className="font-semibold text-xs sm:text-sm truncate group-hover:text-[hsl(var(--teal))] transition-colors">{event.title}</h4>
+44:                 <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1.5 text-xs text-muted-foreground">
+45:                   <span className="flex items-center gap-1">
+46:                     <Clock className="h-3 w-3 text-[hsl(var(--teal))]" />
+47:                     {event.time}
+48:                   </span>
+49:                   <span className="flex items-center gap-1 truncate">
+50:                     <MapPin className="h-3 w-3 text-[hsl(var(--turquoise))]" />
+51:                     <span className="truncate max-w-[100px] sm:max-w-none">{event.location}</span>
+52:                   </span>
+53:                 </div>
+54:               </div>
             </div>
           ))}
         </div>

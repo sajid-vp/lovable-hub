@@ -41,35 +41,35 @@ export default function Index() {
         <div className="absolute bottom-1/3 left-1/3 w-40 h-40 bg-gradient-to-br from-[hsl(var(--gold))]/5 to-transparent rounded-full blur-3xl" />
       </div>
       
-      <main className="container max-w-6xl py-6 px-4 pt-20 relative z-10">
-        <div className="space-y-5">
+      <main className="container max-w-6xl py-4 sm:py-6 px-3 sm:px-4 pt-16 sm:pt-20 relative z-10">
+        <div className="space-y-4 sm:space-y-5">
           {/* Welcome Section */}
           <WelcomeBanner />
           
           {/* Leadership Message + Quick Links & Apps side by side */}
-          <div className="relative grid md:grid-cols-5 gap-6">
+          <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
             {/* Subtle connecting glow behind the entire row */}
             <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-[hsl(var(--indigo))]/3 via-transparent to-[hsl(var(--turquoise))]/3 blur-xl" />
             
-            <div className="md:col-span-2 space-y-5">
+            <div className="lg:col-span-2 space-y-4 sm:space-y-5">
               <LeadershipMessage />
               <Announcements />
             </div>
-            <div className="md:col-span-3 space-y-5">
+            <div className="lg:col-span-3 space-y-4 sm:space-y-5">
               <QuickLinks />
               <Apps />
             </div>
           </div>
           
           {/* Content Grid: News/Announcements + Events/Birthdays */}
-          <div className="grid lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Main content - News Feed */}
             <div className="lg:col-span-2">
               <NewsFeed />
             </div>
             
             {/* Right sidebar widgets */}
-            <div className="space-y-5">
+            <div className="space-y-4 sm:space-y-5">
               <UpcomingEvents />
               <TeamBirthdays />
             </div>

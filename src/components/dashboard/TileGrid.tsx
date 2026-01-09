@@ -32,11 +32,7 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
         {/* Decorative gradient accent */}
         <div className="absolute top-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent rounded-full" />
         
-        <div className={cn(
-          "grid gap-3",
-          columns === 3 && "grid-cols-3",
-          columns === 2 && "grid-cols-2"
-        )}>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {items.map((item, index) => {
             const isExternal = isExternalLink(item);
             const TileWrapper = isExternal ? "a" : Link;
