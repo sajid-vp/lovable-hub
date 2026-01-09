@@ -3,10 +3,10 @@ import { PublicHeader } from "@/components/landing/PublicHeader";
 import { PublicLanding } from "@/components/landing/PublicLanding";
 import { PublicFooter } from "@/components/landing/PublicFooter";
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
-import { AnnouncementBar } from "@/components/dashboard/AnnouncementBar";
 import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
 import { LeadershipMessage } from "@/components/dashboard/LeadershipMessage";
+
 import { NewsFeed } from "@/components/dashboard/NewsFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
@@ -30,9 +30,6 @@ export default function Index() {
   // Authenticated dashboard - no navbar, full-width layout
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-[hsl(var(--turquoise))]/5">
-      {/* Floating Announcement Bar */}
-      <AnnouncementBar />
-      
       {/* Decorative background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-[hsl(var(--turquoise))]/8 to-[hsl(var(--teal))]/5 rounded-full blur-3xl" />
@@ -41,7 +38,7 @@ export default function Index() {
         <div className="absolute bottom-1/3 left-1/3 w-40 h-40 bg-gradient-to-br from-[hsl(var(--gold))]/5 to-transparent rounded-full blur-3xl" />
       </div>
       
-      <main className="container max-w-6xl pt-14 pb-4 sm:pt-16 sm:pb-6 px-3 sm:px-4 relative z-10">
+      <main className="container max-w-6xl py-4 sm:py-6 px-3 sm:px-4 relative z-10">
         <div className="space-y-4 sm:space-y-5">
           {/* Welcome Section */}
           <WelcomeBanner />
