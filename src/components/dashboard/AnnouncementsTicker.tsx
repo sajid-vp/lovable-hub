@@ -54,22 +54,25 @@ export function AnnouncementsTicker() {
           <div className="flex">
             {announcements.map((announcement) => (
               <div key={announcement.id} className="flex-[0_0_100%] min-w-0">
-                <div className="flex flex-col gap-1.5 text-white">
-                  <span className="text-xs sm:text-sm font-medium line-clamp-2 leading-relaxed">
-                    {announcement.content}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-white/80">
-                    <Calendar className="h-2.5 w-2.5" />
-                    {announcement.date}
-                  </span>
-                </div>
+                <span className="text-xs sm:text-sm font-medium line-clamp-2 leading-relaxed text-white">
+                  {announcement.content}
+                </span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Navigation row: arrows, dots, view all */}
+        {/* Navigation row: date, arrows, dots, view all */}
         <div className="flex items-center gap-2">
+          {/* Date */}
+          <span className="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-white/80 shrink-0">
+            <Calendar className="h-2.5 w-2.5" />
+            {announcements[selectedIndex]?.date}
+          </span>
+
+          {/* Separator */}
+          <div className="w-px h-3 bg-white/30" />
+
           {/* Prev arrow */}
           <button
             onClick={scrollPrev}
