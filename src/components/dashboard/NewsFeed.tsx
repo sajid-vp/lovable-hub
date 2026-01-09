@@ -129,17 +129,17 @@ export function NewsFeed() {
         >
           <ChevronRight className="h-5 w-5 text-white" />
         </button>
-      </div>
 
-      {/* View All Link */}
-      <div className="flex justify-end mt-3">
-        <Link 
-          to="/news" 
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 group"
-        >
-          View all
-          <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Link>
+        {/* View All Link */}
+        <div className="flex justify-end mt-4">
+          <Link 
+            to="/news" 
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 group"
+          >
+            View all
+            <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </section>
   );

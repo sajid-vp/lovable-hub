@@ -80,13 +80,15 @@ export function TeamBirthdays() {
         </div>
 
         {/* View All Link */}
-        <Link 
-          to="/birthdays"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 mt-4 group"
-        >
-          View all
-          <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Link>
+        <div className="flex justify-end mt-4">
+          <Link 
+            to="/birthdays"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 group"
+          >
+            View all
+            <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </section>
   );
