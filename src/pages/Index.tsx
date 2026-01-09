@@ -7,7 +7,7 @@ import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
 import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
 import { LeadershipMessage } from "@/components/dashboard/LeadershipMessage";
-import { CombinedFeed } from "@/components/dashboard/CombinedFeed";
+import { NewsFeed } from "@/components/dashboard/NewsFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
 
@@ -61,9 +61,9 @@ export default function Index() {
           
           {/* Content Grid: News/Announcements + Events/Birthdays */}
           <div className="grid lg:grid-cols-3 gap-6">
-            {/* Main content - News & Announcements */}
+            {/* Main content - News Feed */}
             <div className="lg:col-span-2">
-              <CombinedFeed />
+              <NewsFeed />
             </div>
             
             {/* Right sidebar widgets */}
