@@ -43,18 +43,22 @@ export default function Index() {
           {/* Welcome Section */}
           <WelcomeBanner />
           
-          {/* Leadership Message + Quick Links & Apps side by side */}
+          {/* Apps - Full Width */}
+          <Apps />
+          
+          {/* Announcements - Full Width */}
+          <Announcements />
+          
+          {/* Leadership Message + Quick Links side by side */}
           <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
             {/* Subtle connecting glow behind the entire row */}
             <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-[hsl(var(--indigo))]/3 via-transparent to-[hsl(var(--turquoise))]/3 blur-xl" />
             
-            <div className="lg:col-span-2 space-y-4 sm:space-y-5">
+            <div className="lg:col-span-2">
               <LeadershipMessage />
-              <Announcements />
             </div>
-            <div className="lg:col-span-3 space-y-4 sm:space-y-5">
+            <div className="lg:col-span-3">
               <QuickLinks />
-              <Apps />
             </div>
           </div>
           
