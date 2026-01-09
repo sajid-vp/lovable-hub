@@ -55,6 +55,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Brand accent colors
+        yellow: "hsl(var(--yellow))",
+        "light-blue": "hsl(var(--light-blue))",
+        turquoise: "hsl(var(--turquoise))",
+        green: "hsl(var(--green))",
+        lavender: "hsl(var(--lavender))",
+        orange: "hsl(var(--orange))",
+        cyan: "hsl(var(--cyan))",
+        pink: "hsl(var(--pink))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
