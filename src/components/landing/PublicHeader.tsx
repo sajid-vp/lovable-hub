@@ -1,11 +1,22 @@
-import { Link } from "react-router-dom";
-import { LogIn, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useAuthContext } from "@/contexts/AuthContext";
 import logo from "@/assets/logo.png";
 
 export function PublicHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuthContext();
+
+  const handleMicrosoftLogin = async () => {
+    setIsLoading(true);
+    // Simulate Microsoft SSO - in production this would trigger Azure AD OAuth
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    login("employee@sea.ac.ae", "password");
+    setIsLoading(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
@@ -36,13 +47,25 @@ export function PublicHeader() {
             </a>
           </nav>
 
-          {/* Sign In Button */}
+          {/* Staff Login Button */}
           <div className="hidden md:flex items-center gap-4">
-            <Button asChild>
-              <Link to="/login">
-                <LogIn className="h-4 w-4 mr-2" />
-                Staff Portal
-              </Link>
+            <Button onClick={handleMicrosoftLogin} disabled={isLoading}>
+              {isLoading ? (
+                <span className="flex items-center gap-2">
+                  <span className="h-4 w-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                  Signing in...
+                </span>
+              ) : (
+                <span className="flex items-center gap-2">
+                  <svg className="h-4 w-4" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="9" height="9" fill="#F25022"/>
+                    <rect x="11" y="1" width="9" height="9" fill="#7FBA00"/>
+                    <rect x="1" y="11" width="9" height="9" fill="#00A4EF"/>
+                    <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
+                  </svg>
+                  Staff Login
+                </span>
+              )}
             </Button>
           </div>
 
@@ -87,11 +110,23 @@ export function PublicHeader() {
               >
                 Contact
               </a>
-              <Button asChild className="w-full mt-2">
-                <Link to="/login">
-                  <LogIn className="h-4 w-4 mr-2" />
-                  Staff Portal
-                </Link>
+              <Button onClick={handleMicrosoftLogin} disabled={isLoading} className="w-full mt-2">
+                {isLoading ? (
+                  <span className="flex items-center gap-2">
+                    <span className="h-4 w-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                    Signing in...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <svg className="h-4 w-4" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="1" y="1" width="9" height="9" fill="#F25022"/>
+                      <rect x="11" y="1" width="9" height="9" fill="#7FBA00"/>
+                      <rect x="1" y="11" width="9" height="9" fill="#00A4EF"/>
+                      <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
+                    </svg>
+                    Staff Login
+                  </span>
+                )}
               </Button>
             </nav>
           </div>
