@@ -38,13 +38,16 @@ export function LeadershipMessage() {
           </p>
         </div>
         
-        <Link 
-          to="/leadership-message"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 mt-4 group"
-        >
-          Read more
-          <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </Link>
+        {/* Read More Link */}
+        <div className="flex justify-end mt-4">
+          <Link 
+            to="/leadership-message"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 group"
+          >
+            Read more
+            <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </section>
   );
