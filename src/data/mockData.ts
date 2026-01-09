@@ -132,7 +132,7 @@ export const mockNews: NewsItem[] = [
   },
 ];
 
-// Mock quick links
+// Mock quick links with vibrant SEA brand colors
 export const mockQuickLinks: QuickLink[] = [
   {
     id: "1",
@@ -140,7 +140,7 @@ export const mockQuickLinks: QuickLink[] = [
     description: "Access your inbox",
     icon: Mail,
     href: "/email",
-    color: "bg-primary",
+    color: "bg-gradient-to-br from-[hsl(var(--turquoise))] to-[hsl(var(--teal))]",
   },
   {
     id: "2",
@@ -148,7 +148,7 @@ export const mockQuickLinks: QuickLink[] = [
     description: "View your schedule",
     icon: Calendar,
     href: "/calendar",
-    color: "bg-secondary",
+    color: "bg-gradient-to-br from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
   },
   {
     id: "3",
@@ -156,7 +156,7 @@ export const mockQuickLinks: QuickLink[] = [
     description: "File management",
     icon: FileText,
     href: "/documents",
-    color: "bg-success",
+    color: "bg-gradient-to-br from-[hsl(var(--green))] to-[hsl(var(--turquoise))]",
   },
   {
     id: "4",
@@ -164,7 +164,7 @@ export const mockQuickLinks: QuickLink[] = [
     description: "Find colleagues",
     icon: Users,
     href: "/directory",
-    color: "bg-warning",
+    color: "bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--yellow))]",
   },
   {
     id: "5",
@@ -172,7 +172,7 @@ export const mockQuickLinks: QuickLink[] = [
     description: "Analytics & data",
     icon: BarChart3,
     href: "/reports",
-    color: "bg-accent",
+    color: "bg-gradient-to-br from-[hsl(var(--lavender))] to-[hsl(var(--indigo))]",
   },
   {
     id: "6",
@@ -180,7 +180,7 @@ export const mockQuickLinks: QuickLink[] = [
     description: "Track work",
     icon: FolderOpen,
     href: "/projects",
-    color: "bg-primary",
+    color: "bg-gradient-to-br from-[hsl(var(--light-blue))] to-[hsl(var(--primary))]",
   },
   {
     id: "7",
@@ -188,7 +188,7 @@ export const mockQuickLinks: QuickLink[] = [
     description: "Team chat",
     icon: MessageSquare,
     href: "/messages",
-    color: "bg-secondary",
+    color: "bg-gradient-to-br from-[hsl(var(--pink))] to-[hsl(var(--coral))]",
   },
   {
     id: "8",
@@ -196,7 +196,7 @@ export const mockQuickLinks: QuickLink[] = [
     description: "Get support",
     icon: HelpCircle,
     href: "/help",
-    color: "bg-success",
+    color: "bg-gradient-to-br from-[hsl(var(--cyan))] to-[hsl(var(--light-blue))]",
   },
 ];
 

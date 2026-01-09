@@ -27,10 +27,17 @@ export default function Index() {
 
   // Authenticated dashboard - no navbar, full-width layout
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-[hsl(var(--turquoise))]/5">
       <FloatingControls />
       
-      <main className="container max-w-6xl py-8 px-4 pt-20">
+      {/* Decorative background elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[hsl(var(--turquoise))]/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 -left-20 w-60 h-60 bg-[hsl(var(--lavender))]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-1/4 w-40 h-40 bg-[hsl(var(--coral))]/5 rounded-full blur-3xl" />
+      </div>
+      
+      <main className="container max-w-6xl py-8 px-4 pt-20 relative z-10">
         <div className="space-y-8">
           {/* Welcome Section */}
           <WelcomeBanner />
