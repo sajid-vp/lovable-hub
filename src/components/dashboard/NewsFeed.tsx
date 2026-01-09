@@ -43,7 +43,7 @@ export function NewsFeed() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <Badge className="bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--yellow))] text-white border-0 shadow-lg shadow-[hsl(var(--gold))]/30 font-bold">
+                      <Badge className="bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white border-0 shadow-lg shadow-[hsl(var(--teal))]/30 font-bold">
                         <Pin className="h-3 w-3 mr-1" />
                         Featured
                       </Badge>

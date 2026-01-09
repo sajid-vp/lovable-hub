@@ -24,10 +24,10 @@ export function TeamBirthdays() {
   };
 
   const avatarColors = [
-    "from-[hsl(var(--pink))] to-[hsl(var(--coral))]",
-    "from-[hsl(var(--lavender))] to-[hsl(var(--indigo))]",
-    "from-[hsl(var(--turquoise))] to-[hsl(var(--teal))]",
-    "from-[hsl(var(--gold))] to-[hsl(var(--orange))]",
+    "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]",
+    "from-primary to-[hsl(var(--light-blue))]",
+    "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
+    "from-[hsl(var(--light-blue))] to-primary",
   ];
 
   return (
@@ -37,25 +37,25 @@ export function TeamBirthdays() {
         <h2 className="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
           Team Birthdays
         </h2>
-        <div className="flex-1 h-[2px] bg-gradient-to-r from-[hsl(var(--pink))]/50 via-[hsl(var(--coral))]/20 to-transparent rounded-full" />
+        <div className="flex-1 h-[2px] bg-gradient-to-r from-[hsl(var(--teal))]/50 via-[hsl(var(--turquoise))]/20 to-transparent rounded-full" />
       </div>
 
       {/* Glass Container */}
       <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
         {/* Top gradient accent */}
-        <div className="absolute top-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-[hsl(var(--pink))]/50 to-transparent rounded-full" />
+        <div className="absolute top-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-[hsl(var(--teal))]/50 to-transparent rounded-full" />
 
         <div className="space-y-3">
           {mockBirthdays.slice(0, 4).map((person, index) => (
             <div 
               key={person.id} 
               className={`flex items-center gap-3 p-2.5 rounded-xl transition-all duration-300 hover:bg-background/80 cursor-pointer group animate-slide-in ${
-                isToday(person.birthday) ? "bg-gradient-to-r from-[hsl(var(--gold))]/15 to-[hsl(var(--yellow))]/10 border border-[hsl(var(--gold))]/30" : "bg-background/50 border border-transparent hover:border-[hsl(var(--pink))]/20"
+                isToday(person.birthday) ? "bg-gradient-to-r from-[hsl(var(--teal))]/15 to-[hsl(var(--turquoise))]/10 border border-[hsl(var(--teal))]/30" : "bg-background/50 border border-transparent hover:border-[hsl(var(--turquoise))]/20"
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <Avatar className={`h-10 w-10 ring-2 ring-offset-2 ring-offset-card transition-transform group-hover:scale-110 ${
-                isToday(person.birthday) ? "ring-[hsl(var(--gold))]" : "ring-transparent group-hover:ring-[hsl(var(--pink))]/40"
+                isToday(person.birthday) ? "ring-[hsl(var(--teal))]" : "ring-transparent group-hover:ring-[hsl(var(--turquoise))]/40"
               }`}>
                 <AvatarImage src={person.avatar} alt={person.name} />
                 <AvatarFallback className={`text-xs bg-gradient-to-br ${avatarColors[index % avatarColors.length]} text-white font-bold`}>
@@ -63,12 +63,12 @@ export function TeamBirthdays() {
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold truncate group-hover:text-[hsl(var(--pink))] transition-colors">{person.name}</p>
+                <p className="text-sm font-semibold truncate group-hover:text-[hsl(var(--teal))] transition-colors">{person.name}</p>
                 <p className="text-xs text-muted-foreground">{person.department}</p>
               </div>
               <span className={`text-xs whitespace-nowrap font-bold px-2 py-1 rounded-full ${
                 isToday(person.birthday) 
-                  ? "bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--yellow))] text-white animate-pulse shadow-lg shadow-[hsl(var(--gold))]/30" 
+                  ? "bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white animate-pulse shadow-lg shadow-[hsl(var(--teal))]/30" 
                   : "text-muted-foreground bg-muted/50"
               }`}>
                 {formatDate(person.birthday)}

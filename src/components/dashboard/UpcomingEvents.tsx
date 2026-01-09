@@ -3,9 +3,9 @@ import { mockEvents } from "@/data/mockData";
 
 export function UpcomingEvents() {
   const colors = [
-    "from-[hsl(var(--turquoise))] to-[hsl(var(--teal))]",
-    "from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
-    "from-[hsl(var(--lavender))] to-[hsl(var(--indigo))]",
+    "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]",
+    "from-primary to-[hsl(var(--light-blue))]",
+    "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
   ];
 
   return (
@@ -42,11 +42,11 @@ export function UpcomingEvents() {
                 <h4 className="font-semibold text-sm truncate group-hover:text-[hsl(var(--teal))] transition-colors">{event.title}</h4>
                 <div className="flex items-center gap-3 mt-1.5 text-xs text-muted-foreground">
                   <span className="flex items-center gap-1">
-                    <Clock className="h-3 w-3 text-[hsl(var(--coral))]" />
+                    <Clock className="h-3 w-3 text-[hsl(var(--teal))]" />
                     {event.time}
                   </span>
                   <span className="flex items-center gap-1 truncate">
-                    <MapPin className="h-3 w-3 text-[hsl(var(--lavender))]" />
+                    <MapPin className="h-3 w-3 text-[hsl(var(--turquoise))]" />
                     {event.location}
                   </span>
                 </div>
