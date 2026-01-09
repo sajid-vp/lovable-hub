@@ -1,6 +1,7 @@
-import { Calendar, MapPin, Clock, ArrowRight, Bell, ChevronRight, Users, BookOpen, Award } from "lucide-react";
+import { Calendar, MapPin, Clock, ArrowRight, Bell, ChevronRight, Users, BookOpen, Award, GraduationCap, Building2, Briefcase, UserCheck, Mail } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { mockNews } from "@/data/mockData";
 
 const upcomingEvents = [
@@ -43,12 +44,50 @@ const announcements = [
     message: "SEA campus will be closed for scheduled maintenance.",
     isNew: false,
   },
+  {
+    id: "3",
+    title: "New Partnership Announcement",
+    message: "SEA welcomes new partners for the 2025 academic year.",
+    isNew: true,
+  },
 ];
 
 const stats = [
   { icon: Users, value: "2,500+", label: "Educators Trained" },
   { icon: BookOpen, value: "45+", label: "Programs Offered" },
   { icon: Award, value: "15+", label: "Years of Excellence" },
+  { icon: Building2, value: "50+", label: "Partner Organizations" },
+];
+
+const quickAccess = [
+  { 
+    icon: GraduationCap, 
+    title: "Students & Applicants", 
+    description: "Explore programs, apply online, and track your application status",
+    link: "#programs",
+    color: "bg-accent-turquoise/10 text-accent-turquoise"
+  },
+  { 
+    icon: Briefcase, 
+    title: "Vendors & Partners", 
+    description: "Collaboration opportunities, procurement, and partnership inquiries",
+    link: "#partners",
+    color: "bg-accent-orange/10 text-accent-orange"
+  },
+  { 
+    icon: UserCheck, 
+    title: "Staff Login", 
+    description: "Access the internal portal for employees and faculty members",
+    link: "#staff",
+    color: "bg-primary/10 text-primary"
+  },
+  { 
+    icon: Mail, 
+    title: "General Inquiries", 
+    description: "Contact us for information, support, or general questions",
+    link: "#contact",
+    color: "bg-accent-lavender/10 text-accent-lavender"
+  },
 ];
 
 export function PublicLanding() {
@@ -58,23 +97,26 @@ export function PublicLanding() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 gradient-hero opacity-10"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-accent-turquoise/5">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-turquoise/20 rounded-full blur-3xl"></div>
+        </div>
         <div className="container px-4 py-16 md:py-24 relative">
-          <div className="max-w-3xl">
-            <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20 border-0">
-              Welcome to SEA Portal
+          <div className="max-w-4xl mx-auto text-center">
+            <Badge className="mb-6 bg-primary/10 text-primary hover:bg-primary/20 border-0 px-4 py-1.5">
+              Sharjah Education Academy Portal
             </Badge>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Empowering Educators,{" "}
-              <span className="text-gradient">Transforming Education</span>
+              Your Gateway to{" "}
+              <span className="text-gradient">Educational Excellence</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-              Your gateway to professional development resources, the latest news, 
-              and upcoming events at Sharjah Education Academy.
+            <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
+              Welcome to the Sharjah Education Academy — connecting students, educators, 
+              partners, and visitors with resources, programs, and opportunities.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="rounded-full px-8">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button size="lg" className="rounded-full px-8 shadow-lg shadow-primary/25">
                 Explore Programs <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button size="lg" variant="outline" className="rounded-full px-8">
@@ -85,10 +127,30 @@ export function PublicLanding() {
         </div>
       </section>
 
+      {/* Quick Access Cards */}
+      <section className="container px-4 -mt-8 relative z-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {quickAccess.map((item) => (
+            <Card 
+              key={item.title} 
+              className="group cursor-pointer hover:shadow-lg hover:border-primary/20 transition-all duration-300 hover:-translate-y-1"
+            >
+              <CardContent className="p-5">
+                <div className={`h-12 w-12 rounded-xl ${item.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <item.icon className="h-6 w-6" />
+                </div>
+                <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
       {/* Stats Bar */}
-      <section className="border-y bg-muted/30">
+      <section className="border-y bg-muted/30 mt-16">
         <div className="container px-4">
-          <div className="grid grid-cols-3 divide-x">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x">
             {stats.map((stat) => (
               <div key={stat.label} className="py-8 text-center">
                 <stat.icon className="h-6 w-6 mx-auto mb-2 text-primary" />
@@ -106,9 +168,9 @@ export function PublicLanding() {
           {/* News Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="font-display text-2xl md:text-3xl font-bold">Latest News</h2>
+              <h2 className="font-display text-2xl md:text-3xl font-bold">Latest News & Updates</h2>
               <Button variant="ghost" className="text-muted-foreground hover:text-primary">
-                View all news <ChevronRight className="ml-1 h-4 w-4" />
+                View all <ChevronRight className="ml-1 h-4 w-4" />
               </Button>
             </div>
 
@@ -183,7 +245,7 @@ export function PublicLanding() {
                   >
                     <div className="flex items-start gap-2">
                       {item.isNew && (
-                        <span className="shrink-0 h-2 w-2 mt-1.5 rounded-full bg-primary"></span>
+                        <span className="shrink-0 h-2 w-2 mt-1.5 rounded-full bg-primary animate-pulse"></span>
                       )}
                       <div>
                         <h4 className="font-medium text-sm group-hover:text-primary transition-colors">
@@ -242,12 +304,12 @@ export function PublicLanding() {
 
             {/* CTA Card */}
             <div className="rounded-2xl gradient-accent p-6 text-white">
-              <h3 className="font-display text-lg font-semibold mb-2">Have Questions?</h3>
+              <h3 className="font-display text-lg font-semibold mb-2">Need Assistance?</h3>
               <p className="text-sm opacity-90 mb-4">
-                Our team is here to help with program inquiries and registration.
+                Whether you're a student, partner, or visitor — we're here to help.
               </p>
               <Button variant="secondary" className="w-full rounded-xl bg-white text-primary hover:bg-white/90">
-                Contact Us
+                Get in Touch
               </Button>
             </div>
           </aside>
