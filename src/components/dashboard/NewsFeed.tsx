@@ -70,7 +70,7 @@ export function NewsFeed() {
             {(filteredNews.length > 0 ? filteredNews : mockNews).map((news) => (
               <div 
                 key={news.id} 
-                className="flex-[0_0_240px] sm:flex-[0_0_280px] min-w-0"
+                className="flex-[0_0_200px] sm:flex-[0_0_220px] min-w-0"
               >
                 {/* News Card */}
                 <div className="relative rounded-2xl bg-background/80 border border-border/50 shadow-md overflow-hidden group hover:shadow-lg hover:border-[hsl(var(--turquoise))]/40 transition-all duration-300 h-full flex flex-col">
