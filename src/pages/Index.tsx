@@ -45,16 +45,14 @@ export default function Index() {
           {/* Welcome Section */}
           <WelcomeBanner />
           
-          {/* Apps row */}
-          <Apps />
-          
-          {/* Leadership Message + Quick Links side by side */}
+          {/* Leadership Message + Quick Links & Apps side by side */}
           <div className="grid md:grid-cols-5 gap-6">
             <div className="md:col-span-2">
               <LeadershipMessage />
             </div>
-            <div className="md:col-span-3">
+            <div className="md:col-span-3 space-y-4">
               <QuickLinks />
+              <Apps />
             </div>
           </div>
           
