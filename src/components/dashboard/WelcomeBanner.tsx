@@ -249,11 +249,11 @@ export function WelcomeBanner() {
 
       {/* Bottom Announcements Ticker */}
       <div className="relative z-10 bg-black/20 backdrop-blur-sm border-t border-white/10">
-        <div className="flex items-center gap-2 px-3 sm:px-4 py-2">
+        <div className="flex items-start gap-2 px-3 sm:px-4 py-2.5">
           {/* Prev arrow */}
           <button
             onClick={scrollPrev}
-            className="p-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white/80 hover:text-white shrink-0"
+            className="p-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white/80 hover:text-white shrink-0 mt-1"
           >
             <ChevronLeft className="h-3.5 w-3.5" />
           </button>
@@ -263,12 +263,12 @@ export function WelcomeBanner() {
             <div className="flex">
               {announcements.map((announcement) => (
                 <div key={announcement.id} className="flex-[0_0_100%] min-w-0">
-                  <div className="flex items-center gap-2 text-white">
-                    <div className={`w-1.5 h-1.5 rounded-full ${getPriorityColor(announcement.priority)} shrink-0`} />
-                    <span className="text-xs sm:text-sm font-medium truncate flex-1">
+                  <div className="flex items-start gap-2 text-white">
+                    <div className={`w-1.5 h-1.5 rounded-full ${getPriorityColor(announcement.priority)} shrink-0 mt-1.5`} />
+                    <span className="text-xs sm:text-sm font-medium flex-1 line-clamp-2 leading-snug">
                       {announcement.content}
                     </span>
-                    <span className="text-[9px] sm:text-[10px] font-semibold bg-white/15 px-1.5 py-0.5 rounded text-white/90 shrink-0">
+                    <span className="text-[9px] sm:text-[10px] font-semibold bg-white/15 px-1.5 py-0.5 rounded text-white/90 shrink-0 mt-0.5">
                       {announcement.date}
                     </span>
                   </div>
