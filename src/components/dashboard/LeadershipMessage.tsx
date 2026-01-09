@@ -12,13 +12,13 @@ export function LeadershipMessage() {
         <h2 className="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
           Message from Leadership
         </h2>
-        <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
+        <div className="flex-1 h-[2px] bg-gradient-to-r from-[hsl(var(--indigo))]/50 via-[hsl(var(--lavender))]/30 to-transparent rounded-full" />
       </div>
 
       {/* Glass Card with Gradient Accent */}
       <div className="relative bg-card/60 backdrop-blur-md border border-border/50 rounded-2xl overflow-hidden h-[calc(100%-2.5rem)] shadow-lg shadow-black/5">
         {/* Top gradient accent bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(var(--indigo))] via-[hsl(var(--lavender))] to-[hsl(var(--turquoise))]" />
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[hsl(var(--indigo))] via-[hsl(var(--lavender))] to-[hsl(var(--turquoise))]" />
         
         {/* Decorative pattern */}
         <div className="absolute top-0 right-0 w-32 h-32 opacity-[0.03]">
