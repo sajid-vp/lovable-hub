@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuthContext } from "@/contexts/AuthContext";
-import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 interface HeaderProps {
   onMenuToggle?: () => void;
@@ -51,13 +51,12 @@ export function Header({ onMenuToggle }: HeaderProps) {
         )}
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <div className="gradient-primary h-8 w-8 rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">P</span>
-          </div>
-          <span className="hidden font-bold text-xl md:inline-block">
-            Portal
-          </span>
+        <Link to="/" className="flex items-center">
+          <img 
+            src={logo} 
+            alt="Sharjah Education Academy" 
+            className="h-10 w-auto"
+          />
         </Link>
 
         {/* Search bar - only for authenticated users */}
