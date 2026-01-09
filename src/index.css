@@ -154,8 +154,61 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    letter-spacing: -0.011em;
+  }
+
+  /* Improved heading typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+    text-wrap: balance;
+  }
+
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1];
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl font-semibold leading-[1.15];
+    letter-spacing: -0.015em;
+  }
+
+  h3 {
+    @apply text-lg sm:text-xl font-semibold leading-[1.2];
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    @apply text-base font-semibold leading-[1.25];
+  }
+
+  /* Body text improvements */
+  p {
+    @apply leading-relaxed;
+    text-wrap: pretty;
+  }
+
+  /* Small text clarity */
+  .text-xs {
+    letter-spacing: 0.01em;
+  }
+
+  .text-sm {
+    letter-spacing: 0.005em;
+  }
+
+  /* Improved muted text contrast */
+  .text-muted-foreground {
+    @apply opacity-90;
   }
 }
 

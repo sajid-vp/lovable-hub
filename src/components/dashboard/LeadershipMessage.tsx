@@ -28,14 +28,14 @@ export function LeadershipMessage() {
               className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl object-cover shadow-md border border-border/30"
             />
             <div className="flex-1 min-w-0">
-              <h3 className="font-bold text-xs sm:text-sm">Prof. Dr. Mohammed Al Qasimi</h3>
-              <p className="text-xs text-muted-foreground truncate">Chancellor, Sharjah Education Academy</p>
+              <h3 className="font-semibold text-sm tracking-tight">Prof. Dr. Mohammed Al Qasimi</h3>
+              <p className="text-xs text-muted-foreground truncate font-medium">Chancellor, Sharjah Education Academy</p>
             </div>
           </div>
           
           <div className="mt-4">
-            <h4 className="font-semibold text-sm mb-2">Welcome to the New Academic Year</h4>
-            <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+            <h4 className="font-semibold text-sm mb-2 tracking-tight">Welcome to the New Academic Year</h4>
+            <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed font-medium">
               As we embark on another exciting academic year, I am delighted to welcome our dedicated educators, 
               staff, and partners to the Sharjah Education Academy community. Together, we continue to shape 
               the future of education in the region...
