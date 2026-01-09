@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Clock, ArrowRight, Bell, Sparkles, ExternalLink } from "lucide-react";
+import { Calendar, MapPin, Clock, ArrowRight, Bell, ChevronRight, Users, BookOpen, Award } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { mockNews } from "@/data/mockData";
@@ -8,7 +8,7 @@ const upcomingEvents = [
     id: "1",
     title: "Annual Educators Conference 2025",
     date: "2025-02-15",
-    time: "9:00 AM",
+    time: "9:00 AM - 5:00 PM",
     location: "SEA Main Campus",
     type: "Conference",
   },
@@ -16,7 +16,7 @@ const upcomingEvents = [
     id: "2",
     title: "Digital Learning Workshop",
     date: "2025-01-25",
-    time: "10:00 AM",
+    time: "10:00 AM - 2:00 PM",
     location: "Online",
     type: "Workshop",
   },
@@ -24,7 +24,7 @@ const upcomingEvents = [
     id: "3",
     title: "Leadership Excellence Series",
     date: "2025-02-01",
-    time: "2:00 PM",
+    time: "2:00 PM - 4:00 PM",
     location: "SEA Training Center",
     type: "Training",
   },
@@ -34,15 +34,21 @@ const announcements = [
   {
     id: "1",
     title: "Registration Open for Spring Programs",
-    message: "Enroll now for our upcoming professional development courses.",
+    message: "Enroll now for our upcoming professional development courses starting February 2025.",
     isNew: true,
   },
   {
     id: "2",
-    title: "Campus Closure Notice - Jan 15",
-    message: "SEA campus closed for scheduled maintenance.",
+    title: "Campus Closure Notice - January 15",
+    message: "SEA campus will be closed for scheduled maintenance.",
     isNew: false,
   },
+];
+
+const stats = [
+  { icon: Users, value: "2,500+", label: "Educators Trained" },
+  { icon: BookOpen, value: "45+", label: "Programs Offered" },
+  { icon: Award, value: "15+", label: "Years of Excellence" },
 ];
 
 export function PublicLanding() {
@@ -50,189 +56,203 @@ export function PublicLanding() {
   const recentNews = mockNews.slice(1, 4);
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Minimal Header Banner */}
-      <div className="border-b bg-card">
-        <div className="container px-4 py-6">
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-            Good {getGreeting()}, <span className="text-gradient">Welcome back</span>
-          </h1>
-          <p className="text-muted-foreground mt-1">
-            {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
-          </p>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 gradient-hero opacity-10"></div>
+        <div className="container px-4 py-16 md:py-24 relative">
+          <div className="max-w-3xl">
+            <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20 border-0">
+              Welcome to SEA Portal
+            </Badge>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+              Empowering Educators,{" "}
+              <span className="text-gradient">Transforming Education</span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+              Your gateway to professional development resources, the latest news, 
+              and upcoming events at Sharjah Education Academy.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Button size="lg" className="rounded-full px-8">
+                Explore Programs <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="rounded-full px-8">
+                Contact Us
+              </Button>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="container px-4 py-8">
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
-          
-          {/* Featured News - Large Card */}
-          <div 
-            className="md:col-span-2 lg:row-span-2 group relative overflow-hidden rounded-3xl cursor-pointer animate-fade-in"
-          >
-            <img
-              src={featuredNews?.imageUrl}
-              alt={featuredNews?.title}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <Badge className="bg-white/20 backdrop-blur-md text-white border-0 hover:bg-white/30">
-                  {featuredNews?.category}
-                </Badge>
-                <Badge className="bg-primary text-primary-foreground border-0">
-                  <Sparkles className="h-3 w-3 mr-1" /> Featured
-                </Badge>
+      {/* Stats Bar */}
+      <section className="border-y bg-muted/30">
+        <div className="container px-4">
+          <div className="grid grid-cols-3 divide-x">
+            {stats.map((stat) => (
+              <div key={stat.label} className="py-8 text-center">
+                <stat.icon className="h-6 w-6 mx-auto mb-2 text-primary" />
+                <div className="font-display text-2xl md:text-3xl font-bold">{stat.value}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
               </div>
-              <h2 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-white/90 transition-colors">
-                {featuredNews?.title}
-              </h2>
-              <p className="text-white/70 text-sm line-clamp-2 mb-3">{featuredNews?.excerpt}</p>
-              <div className="flex items-center gap-2 text-white/60 text-sm">
-                <span>{featuredNews?.author}</span>
-                <span>•</span>
-                <span>{new Date(featuredNews?.date || '').toLocaleDateString()}</span>
-              </div>
-            </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* Announcements Card */}
-          <div 
-            className="lg:col-span-2 rounded-3xl p-6 glass-card animate-fade-in"
-            style={{ animationDelay: "100ms" }}
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <div className="h-10 w-10 rounded-2xl gradient-primary flex items-center justify-center">
-                  <Bell className="h-5 w-5 text-white" />
-                </div>
-                <h3 className="font-semibold text-lg">Announcements</h3>
-              </div>
-              <Button variant="ghost" size="sm" className="text-muted-foreground">
-                View all <ArrowRight className="h-4 w-4 ml-1" />
+      {/* Main Content */}
+      <section className="container px-4 py-16">
+        <div className="grid lg:grid-cols-3 gap-12">
+          {/* News Section */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="font-display text-2xl md:text-3xl font-bold">Latest News</h2>
+              <Button variant="ghost" className="text-muted-foreground hover:text-primary">
+                View all news <ChevronRight className="ml-1 h-4 w-4" />
               </Button>
             </div>
-            <div className="space-y-3">
-              {announcements.map((item) => (
-                <div 
-                  key={item.id}
-                  className="flex items-start gap-3 p-3 rounded-2xl bg-muted/50 hover:bg-muted transition-colors cursor-pointer group"
-                >
-                  {item.isNew && (
-                    <span className="shrink-0 h-2 w-2 mt-2 rounded-full bg-primary animate-pulse"></span>
-                  )}
-                  {!item.isNew && <span className="shrink-0 h-2 w-2 mt-2"></span>}
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-medium text-sm group-hover:text-primary transition-colors">{item.title}</h4>
-                    <p className="text-xs text-muted-foreground mt-0.5 truncate">{item.message}</p>
-                  </div>
-                  <ArrowRight className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-                </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Events Card */}
-          <div 
-            className="lg:col-span-2 rounded-3xl p-6 glass-card animate-fade-in"
-            style={{ animationDelay: "150ms" }}
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <div className="h-10 w-10 rounded-2xl gradient-secondary flex items-center justify-center">
-                  <Calendar className="h-5 w-5 text-white" />
-                </div>
-                <h3 className="font-semibold text-lg">Upcoming Events</h3>
-              </div>
-              <Button variant="ghost" size="sm" className="text-muted-foreground">
-                View all <ArrowRight className="h-4 w-4 ml-1" />
-              </Button>
-            </div>
-            <div className="flex gap-3 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide">
-              {upcomingEvents.map((event) => (
-                <div 
-                  key={event.id}
-                  className="shrink-0 w-48 p-4 rounded-2xl bg-muted/50 hover:bg-muted transition-all cursor-pointer group hover:scale-[1.02]"
-                >
-                  <div className="text-3xl font-bold text-primary mb-1">
-                    {new Date(event.date).getDate()}
-                  </div>
-                  <div className="text-xs text-muted-foreground mb-2">
-                    {new Date(event.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-                  </div>
-                  <h4 className="font-medium text-sm line-clamp-2 mb-2 group-hover:text-primary transition-colors">
-                    {event.title}
-                  </h4>
-                  <Badge variant="outline" className="text-xs">
-                    {event.type}
+            {/* Featured Article */}
+            {featuredNews && (
+              <article className="group mb-8 cursor-pointer">
+                <div className="relative aspect-[16/9] overflow-hidden rounded-2xl mb-4">
+                  <img
+                    src={featuredNews.imageUrl}
+                    alt={featuredNews.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
+                    Featured
                   </Badge>
                 </div>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Badge variant="secondary">{featuredNews.category}</Badge>
+                    <span>•</span>
+                    <span>{new Date(featuredNews.date).toLocaleDateString('en-US', { 
+                      month: 'long', day: 'numeric', year: 'numeric' 
+                    })}</span>
+                  </div>
+                  <h3 className="font-display text-xl md:text-2xl font-semibold group-hover:text-primary transition-colors">
+                    {featuredNews.title}
+                  </h3>
+                  <p className="text-muted-foreground line-clamp-2">{featuredNews.excerpt}</p>
+                </div>
+              </article>
+            )}
+
+            {/* Article Grid */}
+            <div className="grid md:grid-cols-3 gap-6">
+              {recentNews.map((news) => (
+                <article key={news.id} className="group cursor-pointer">
+                  <div className="aspect-[4/3] overflow-hidden rounded-xl mb-3">
+                    <img
+                      src={news.imageUrl}
+                      alt={news.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <Badge variant="outline" className="mb-2 text-xs">{news.category}</Badge>
+                  <h4 className="font-semibold line-clamp-2 group-hover:text-primary transition-colors">
+                    {news.title}
+                  </h4>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {new Date(news.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                  </p>
+                </article>
               ))}
             </div>
           </div>
 
-          {/* Recent News Cards */}
-          {recentNews.map((news, index) => (
-            <div 
-              key={news.id}
-              className="rounded-3xl overflow-hidden glass-card group cursor-pointer animate-fade-in hover:scale-[1.02] transition-transform"
-              style={{ animationDelay: `${(index + 2) * 100}ms` }}
-            >
-              <div className="h-24 overflow-hidden">
-                <img
-                  src={news.imageUrl}
-                  alt={news.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+          {/* Sidebar */}
+          <aside className="space-y-8">
+            {/* Announcements */}
+            <div className="rounded-2xl border bg-card p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-10 w-10 rounded-xl gradient-primary flex items-center justify-center">
+                  <Bell className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="font-display text-lg font-semibold">Announcements</h3>
               </div>
-              <div className="p-4">
-                <Badge variant="secondary" className="mb-2 text-xs">
-                  {news.category}
-                </Badge>
-                <h4 className="font-semibold text-sm line-clamp-2 group-hover:text-primary transition-colors">
-                  {news.title}
-                </h4>
-                <p className="text-xs text-muted-foreground mt-1">
-                  {new Date(news.date).toLocaleDateString()}
-                </p>
+              <div className="space-y-4">
+                {announcements.map((item) => (
+                  <div 
+                    key={item.id}
+                    className="p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors cursor-pointer group"
+                  >
+                    <div className="flex items-start gap-2">
+                      {item.isNew && (
+                        <span className="shrink-0 h-2 w-2 mt-1.5 rounded-full bg-primary"></span>
+                      )}
+                      <div>
+                        <h4 className="font-medium text-sm group-hover:text-primary transition-colors">
+                          {item.title}
+                        </h4>
+                        <p className="text-xs text-muted-foreground mt-1">{item.message}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
 
-          {/* Quick Links Card */}
-          <div 
-            className="rounded-3xl p-6 gradient-accent text-white animate-fade-in"
-            style={{ animationDelay: "500ms" }}
-          >
-            <h3 className="font-semibold text-lg mb-4">Quick Access</h3>
-            <div className="space-y-2">
-              {[
-                { label: "Programs", href: "#" },
-                { label: "Resources", href: "#" },
-                { label: "Contact Us", href: "#" },
-              ].map((link) => (
-                <a 
-                  key={link.label}
-                  href={link.href}
-                  className="flex items-center justify-between p-3 rounded-xl bg-white/10 hover:bg-white/20 transition-colors"
-                >
-                  <span className="text-sm font-medium">{link.label}</span>
-                  <ExternalLink className="h-4 w-4 opacity-60" />
-                </a>
-              ))}
+            {/* Events */}
+            <div className="rounded-2xl border bg-card p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-10 w-10 rounded-xl gradient-secondary flex items-center justify-center">
+                  <Calendar className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="font-display text-lg font-semibold">Upcoming Events</h3>
+              </div>
+              <div className="space-y-4">
+                {upcomingEvents.map((event) => (
+                  <div 
+                    key={event.id}
+                    className="flex gap-4 p-3 rounded-xl hover:bg-muted/50 transition-colors cursor-pointer group"
+                  >
+                    <div className="shrink-0 text-center">
+                      <div className="font-display text-2xl font-bold text-primary">
+                        {new Date(event.date).getDate()}
+                      </div>
+                      <div className="text-xs text-muted-foreground uppercase">
+                        {new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}
+                      </div>
+                    </div>
+                    <div className="min-w-0">
+                      <h4 className="font-medium text-sm line-clamp-1 group-hover:text-primary transition-colors">
+                        {event.title}
+                      </h4>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
+                        <Clock className="h-3 w-3" />
+                        <span>{event.time}</span>
+                      </div>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <MapPin className="h-3 w-3" />
+                        <span className="truncate">{event.location}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <Button variant="outline" className="w-full mt-4 rounded-xl">
+                View all events
+              </Button>
             </div>
-          </div>
+
+            {/* CTA Card */}
+            <div className="rounded-2xl gradient-accent p-6 text-white">
+              <h3 className="font-display text-lg font-semibold mb-2">Have Questions?</h3>
+              <p className="text-sm opacity-90 mb-4">
+                Our team is here to help with program inquiries and registration.
+              </p>
+              <Button variant="secondary" className="w-full rounded-xl bg-white text-primary hover:bg-white/90">
+                Contact Us
+              </Button>
+            </div>
+          </aside>
         </div>
-      </div>
+      </section>
     </div>
   );
-}
-
-function getGreeting() {
-  const hour = new Date().getHours();
-  if (hour < 12) return "Morning";
-  if (hour < 17) return "Afternoon";
-  return "Evening";
 }
