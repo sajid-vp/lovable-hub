@@ -5,7 +5,10 @@ import { mockNews } from "@/data/mockData";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
 
+const categories = ["All", "Academics", "Nurseries", "Operations"];
+
 export function NewsFeed() {
+  const [activeCategory, setActiveCategory] = useState("All");
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     align: "start",
@@ -23,6 +26,21 @@ export function NewsFeed() {
     return () => { emblaApi.off("select", onSelect); };
   }, [emblaApi]);
 
+  // Filter news based on category (for now, show all since mock data doesn't have exact category match)
+  const filteredNews = activeCategory === "All" 
+    ? mockNews 
+    : mockNews.filter(news => 
+        news.category.toLowerCase().includes(activeCategory.toLowerCase()) ||
+        activeCategory === "Academics" && ["Programs", "Education", "Summit"].includes(news.category) ||
+        activeCategory === "Nurseries" && news.title.toLowerCase().includes("nursery") ||
+        activeCategory === "Operations" && ["Partnerships", "Events", "Initiatives"].includes(news.category)
+      );
+
+  // Reset carousel when category changes
+  useEffect(() => {
+    emblaApi?.scrollTo(0);
+  }, [activeCategory, emblaApi]);
+
   return (
     <section className="animate-fade-in" style={{ animationDelay: "150ms" }}>
       {/* Section Header */}
@@ -36,6 +54,23 @@ export function NewsFeed() {
             View all <ChevronRight className="h-3.5 w-3.5 ml-1 transition-transform group-hover:translate-x-1" />
           </Link>
         </Button>
+      </div>
+
+      {/* Category Filter Tabs */}
+      <div className="flex items-center gap-2 mb-4 flex-wrap">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setActiveCategory(category)}
+            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+              activeCategory === category
+                ? "bg-[hsl(var(--light-blue))] text-white shadow-md"
+                : "bg-card border border-border/50 text-muted-foreground hover:border-[hsl(var(--turquoise))]/50 hover:text-foreground"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
       </div>
 
       {/* Film Strip Container */}
@@ -63,7 +98,7 @@ export function NewsFeed() {
             {/* Carousel */}
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex gap-4">
-                {mockNews.map((news) => (
+                {(filteredNews.length > 0 ? filteredNews : mockNews).map((news) => (
                   <div 
                     key={news.id} 
                     className="flex-[0_0_280px] min-w-0"
