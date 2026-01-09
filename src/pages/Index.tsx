@@ -43,12 +43,6 @@ export default function Index() {
           {/* Welcome Section */}
           <WelcomeBanner />
           
-          {/* Apps - Full Width */}
-          <Apps />
-          
-          {/* Announcements - Full Width */}
-          <Announcements />
-          
           {/* Leadership Message + Quick Links side by side */}
           <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
             {/* Subtle connecting glow behind the entire row */}
@@ -61,6 +55,12 @@ export default function Index() {
               <QuickLinks />
             </div>
           </div>
+          
+          {/* Apps - Full Width */}
+          <Apps />
+          
+          {/* Announcements - Full Width */}
+          <Announcements />
           
           {/* Content Grid: News/Announcements + Events/Birthdays */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
