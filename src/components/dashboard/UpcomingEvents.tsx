@@ -1,4 +1,5 @@
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { Clock, MapPin, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { mockEvents } from "@/data/mockData";
 
 export function UpcomingEvents() {
@@ -54,6 +55,15 @@ export function UpcomingEvents() {
             </div>
           ))}
         </div>
+
+        {/* View All Link */}
+        <Link 
+          to="/events"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 mt-4 group"
+        >
+          View all
+          <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </Link>
       </div>
     </section>
   );
