@@ -12,6 +12,7 @@ import { NewsFeed } from "@/components/dashboard/NewsFeed";
 import { SocialFeed } from "@/components/dashboard/SocialFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
+import { EmployeeSpotlight } from "@/components/dashboard/EmployeeSpotlight";
 
 export default function Index() {
   const { isAuthenticated } = useAuthContext();
@@ -83,6 +84,9 @@ export default function Index() {
           
           {/* Social Feed - Full Width */}
           <SocialFeed />
+          
+          {/* Employee Spotlight - Full Width */}
+          <EmployeeSpotlight />
         </div>
       </main>
     </div>

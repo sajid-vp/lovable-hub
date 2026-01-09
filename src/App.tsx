@@ -13,6 +13,8 @@ import Events from "./pages/Events";
 import Birthdays from "./pages/Birthdays";
 import Announcements from "./pages/Announcements";
 import SocialFeedPage from "./pages/SocialFeed";
+import Directory from "./pages/Directory";
+import DepartmentPage from "./pages/DepartmentPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +36,8 @@ const App = () => (
             <Route path="/birthdays" element={<Birthdays />} />
             <Route path="/announcements" element={<Announcements />} />
             <Route path="/social" element={<SocialFeedPage />} />
+            <Route path="/directory" element={<Directory />} />
+            <Route path="/departments/:slug" element={<DepartmentPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
