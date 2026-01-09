@@ -1,38 +1,79 @@
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 export function PublicFooter() {
   return (
     <footer className="border-t bg-card py-12">
       <div className="container px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="gradient-primary h-8 w-8 rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">P</span>
-            </div>
-            <span className="font-bold text-xl">Portal</span>
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
+          {/* Logo & Description */}
+          <div className="md:col-span-2">
+            <img 
+              src={logo} 
+              alt="Sharjah Education Academy" 
+              className="h-12 w-auto mb-4"
+            />
+            <p className="text-muted-foreground max-w-md">
+              Sharjah Education Academy is committed to developing educational leaders 
+              and advancing teaching excellence across the emirate.
+            </p>
           </div>
 
-          {/* Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
-            <Link to="/about" className="hover:text-foreground transition-colors">
-              About
-            </Link>
-            <Link to="/help" className="hover:text-foreground transition-colors">
-              Help Center
-            </Link>
-            <Link to="/privacy" className="hover:text-foreground transition-colors">
-              Privacy
-            </Link>
-            <Link to="/terms" className="hover:text-foreground transition-colors">
-              Terms
-            </Link>
-          </nav>
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
+              <a href="#about" className="hover:text-foreground transition-colors">
+                About Us
+              </a>
+              <a href="#programs" className="hover:text-foreground transition-colors">
+                Programs
+              </a>
+              <a href="#news" className="hover:text-foreground transition-colors">
+                News
+              </a>
+              <a href="#contact" className="hover:text-foreground transition-colors">
+                Contact
+              </a>
+            </nav>
+          </div>
 
-          {/* Copyright */}
+          {/* Resources */}
+          <div>
+            <h4 className="font-semibold mb-4">Resources</h4>
+            <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
+              <Link to="/login" className="hover:text-foreground transition-colors">
+                Staff Portal
+              </Link>
+              <a href="#" className="hover:text-foreground transition-colors">
+                Help Center
+              </a>
+              <a href="#" className="hover:text-foreground transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-foreground transition-colors">
+                Terms of Use
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Portal. All rights reserved.
+            © {new Date().getFullYear()} Sharjah Education Academy. All rights reserved.
           </p>
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <a href="#" className="hover:text-foreground transition-colors">
+              Privacy
+            </a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Terms
+            </a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Cookies
+            </a>
+          </div>
         </div>
       </div>
     </footer>
