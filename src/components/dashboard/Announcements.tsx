@@ -80,14 +80,17 @@ export function Announcements() {
           <div className="flex">
             {announcements.map((announcement) => (
               <div key={announcement.id} className="flex-[0_0_100%] min-w-0 px-1">
-                <div className="flex items-start gap-3 min-h-[44px]">
-                  <div className={`w-2 h-2 rounded-full ${getPriorityColor(announcement.priority)} shrink-0 mt-1.5`} />
+                <div className="flex items-center gap-3 min-h-[44px]">
+                  <div className={`w-2 h-2 rounded-full ${getPriorityColor(announcement.priority)} shrink-0`} />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold mb-0.5 line-clamp-1">{announcement.title}</p>
+                    <p className="text-sm font-semibold line-clamp-1">{announcement.title}</p>
                     <p className="text-xs text-muted-foreground line-clamp-1">
                       {announcement.description}
                     </p>
                   </div>
+                  <span className="text-[10px] text-muted-foreground/70 bg-muted/50 px-2 py-0.5 rounded-full shrink-0">
+                    {announcement.date}
+                  </span>
                 </div>
               </div>
             ))}
