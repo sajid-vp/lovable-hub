@@ -27,13 +27,13 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
         <h2 className="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
           {title}
         </h2>
-        <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
+        <div className="flex-1 h-[2px] bg-gradient-to-r from-primary/50 via-primary/20 to-transparent rounded-full" />
       </div>
 
       {/* Glass Container */}
       <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
         {/* Decorative gradient accent */}
-        <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        <div className="absolute top-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent rounded-full" />
         
         <div className={cn(
           "grid gap-3",
