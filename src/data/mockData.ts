@@ -1,6 +1,7 @@
 import { 
   Mail, Calendar, FileText, Users, Settings, HelpCircle, 
-  BarChart3, FolderOpen, MessageSquare, Award, Briefcase, Clock
+  BarChart3, FolderOpen, MessageSquare, Award, Briefcase, Clock,
+  Database, GraduationCap, BookOpen, Library, Shield, PenTool, Key, ExternalLink as ExternalLinkIcon
 } from "lucide-react";
 
 export interface User {
@@ -24,13 +25,23 @@ export interface NewsItem {
   isPinned?: boolean;
 }
 
-export interface QuickLink {
+export interface App {
   id: string;
   title: string;
   description: string;
   icon: typeof Mail;
   href: string;
   color: string;
+}
+
+export interface ExternalLink {
+  id: string;
+  title: string;
+  description: string;
+  icon: typeof Mail;
+  href: string;
+  color: string;
+  external: boolean;
 }
 
 export interface Announcement {
@@ -132,71 +143,108 @@ export const mockNews: NewsItem[] = [
   },
 ];
 
-// Mock quick links with vibrant SEA brand colors
-export const mockQuickLinks: QuickLink[] = [
+// Mock Apps - Custom SEA applications
+export const mockApps: App[] = [
   {
     id: "1",
-    title: "Email",
-    description: "Access your inbox",
-    icon: Mail,
-    href: "/email",
-    color: "bg-gradient-to-br from-[hsl(var(--turquoise))] to-[hsl(var(--teal))]",
+    title: "Help Desk",
+    description: "Get support",
+    icon: HelpCircle,
+    href: "/help",
+    color: "bg-gradient-to-br from-[hsl(var(--cyan))] to-[hsl(var(--light-blue))]",
   },
   {
     id: "2",
-    title: "Calendar",
-    description: "View your schedule",
-    icon: Calendar,
-    href: "/calendar",
-    color: "bg-gradient-to-br from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
-  },
-  {
-    id: "3",
-    title: "Documents",
-    description: "File management",
-    icon: FileText,
-    href: "/documents",
-    color: "bg-gradient-to-br from-[hsl(var(--green))] to-[hsl(var(--turquoise))]",
-  },
-  {
-    id: "4",
     title: "Directory",
     description: "Find colleagues",
     icon: Users,
     href: "/directory",
     color: "bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--yellow))]",
   },
+];
+
+// Mock External Links - External system shortcuts
+export const mockExternalLinks: ExternalLink[] = [
+  {
+    id: "1",
+    title: "ERP",
+    description: "Enterprise system",
+    icon: Database,
+    href: "https://erp.sea.ae",
+    color: "bg-gradient-to-br from-[hsl(var(--turquoise))] to-[hsl(var(--teal))]",
+    external: true,
+  },
+  {
+    id: "2",
+    title: "LMS",
+    description: "Learning portal",
+    icon: GraduationCap,
+    href: "https://lms.sea.ae",
+    color: "bg-gradient-to-br from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
+    external: true,
+  },
+  {
+    id: "3",
+    title: "LinkedIn Learning",
+    description: "Online courses",
+    icon: BookOpen,
+    href: "https://linkedin.com/learning",
+    color: "bg-gradient-to-br from-[hsl(var(--light-blue))] to-[hsl(var(--primary))]",
+    external: true,
+  },
+  {
+    id: "4",
+    title: "SIS",
+    description: "Student info",
+    icon: Users,
+    href: "https://sis.sea.ae",
+    color: "bg-gradient-to-br from-[hsl(var(--green))] to-[hsl(var(--turquoise))]",
+    external: true,
+  },
   {
     id: "5",
-    title: "Reports",
-    description: "Analytics & data",
-    icon: BarChart3,
-    href: "/reports",
+    title: "E-Library",
+    description: "Digital resources",
+    icon: Library,
+    href: "https://library.sea.ae",
     color: "bg-gradient-to-br from-[hsl(var(--lavender))] to-[hsl(var(--indigo))]",
+    external: true,
   },
   {
     id: "6",
-    title: "Projects",
-    description: "Track work",
-    icon: FolderOpen,
-    href: "/projects",
-    color: "bg-gradient-to-br from-[hsl(var(--light-blue))] to-[hsl(var(--primary))]",
+    title: "SEA Policies",
+    description: "Policy documents",
+    icon: FileText,
+    href: "/policies",
+    color: "bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--yellow))]",
+    external: false,
   },
   {
     id: "7",
-    title: "Messages",
-    description: "Team chat",
-    icon: MessageSquare,
-    href: "/messages",
+    title: "Ethics Hotline",
+    description: "Report concerns",
+    icon: Shield,
+    href: "https://ethics.sea.ae",
     color: "bg-gradient-to-br from-[hsl(var(--pink))] to-[hsl(var(--coral))]",
+    external: true,
   },
   {
     id: "8",
-    title: "Help Desk",
-    description: "Get support",
-    icon: HelpCircle,
-    href: "/help",
+    title: "Adobe Sign",
+    description: "E-signatures",
+    icon: PenTool,
+    href: "https://adobesign.com",
+    color: "bg-gradient-to-br from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
+    external: true,
+  },
+  {
+    id: "9",
+    title: "Password Reset",
+    description: "Reset credentials",
+    icon: Key,
+    href: "https://password.sea.ae",
     color: "bg-gradient-to-br from-[hsl(var(--cyan))] to-[hsl(var(--light-blue))]",
+    external: true,
   },
 ];
 
