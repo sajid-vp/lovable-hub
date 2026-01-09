@@ -56,7 +56,7 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
 
                 {/* Badge counter */}
                 {badgeCounts[item.id] && (
-                  <span className="absolute -top-1 -right-1 h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--coral))] to-[hsl(var(--orange))] text-white text-[10px] font-bold flex items-center justify-center shadow-md shadow-[hsl(var(--coral))]/30 z-10">
+                  <span className="absolute -top-1 -right-1 h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white text-[10px] font-bold flex items-center justify-center shadow-md shadow-[hsl(var(--teal))]/30 z-10">
                     {badgeCounts[item.id]}
                   </span>
                 )}
