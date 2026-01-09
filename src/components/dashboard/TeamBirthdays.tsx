@@ -1,4 +1,3 @@
-import { Cake, PartyPopper } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { mockBirthdays } from "@/data/mockData";
 
@@ -33,15 +32,11 @@ export function TeamBirthdays() {
 
   return (
     <section className="animate-fade-in" style={{ animationDelay: "300ms" }}>
-      {/* Enhanced Section Header */}
+      {/* Section Header */}
       <div className="flex items-center gap-2 mb-4">
-        <div className="h-6 w-6 rounded-lg bg-gradient-to-br from-[hsl(var(--pink))]/20 to-[hsl(var(--coral))]/10 flex items-center justify-center">
-          <Cake className="h-3 w-3 text-[hsl(var(--pink))]" />
-        </div>
         <h2 className="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
           Team Birthdays
         </h2>
-        <PartyPopper className="h-3 w-3 text-[hsl(var(--gold))] animate-float" />
         <div className="flex-1 h-[2px] bg-gradient-to-r from-[hsl(var(--pink))]/50 via-[hsl(var(--coral))]/20 to-transparent rounded-full" />
       </div>
 

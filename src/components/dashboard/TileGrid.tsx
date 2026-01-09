@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ExternalLink, Sparkles } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { App, ExternalLink as ExternalLinkType } from "@/data/mockData";
 
@@ -19,11 +19,8 @@ function isExternalLink(item: TileItem): item is ExternalLinkType {
 export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGridProps) {
   return (
     <section className="animate-fade-in">
-      {/* Enhanced Section Header */}
+      {/* Section Header */}
       <div className="flex items-center gap-2 mb-4">
-        <div className="h-6 w-6 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
-          <Sparkles className="h-3 w-3 text-primary" />
-        </div>
         <h2 className="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
           {title}
         </h2>
