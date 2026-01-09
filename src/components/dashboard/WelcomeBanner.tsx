@@ -82,19 +82,19 @@ export function WelcomeBanner() {
         {/* Left: Text content */}
         <div className="text-white flex flex-col justify-center">
           <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-            <div className="p-2 sm:p-3 bg-white/20 rounded-lg sm:rounded-xl backdrop-blur-sm border border-white/20 shadow-lg">
+            <div className="p-2 sm:p-3 bg-white/20 rounded-lg sm:rounded-xl backdrop-blur-sm shadow-lg">
               <TimeIcon className="h-4 w-4 sm:h-6 sm:w-6" />
             </div>
-            <div className="flex-1 h-[2px] bg-gradient-to-r from-white/40 via-white/20 to-transparent rounded-full max-w-[150px] sm:max-w-xs" />
+            <div className="flex-1 h-[2px] bg-white/40 rounded-full max-w-[150px] sm:max-w-xs" />
           </div>
           
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-1 sm:mb-2 drop-shadow-md leading-tight">
             {getGreeting()}, {user?.name?.split(" ")[0]}!
           </h1>
-          <p className="text-sm sm:text-base opacity-90 font-semibold mb-1 sm:mb-2 tracking-wide">
+          <p className="text-sm sm:text-base opacity-95 font-semibold mb-1 sm:mb-2">
             {today}
           </p>
-          <p className="text-xs sm:text-sm opacity-85 max-w-lg hidden sm:block font-medium leading-relaxed">
+          <p className="text-sm opacity-95 max-w-lg hidden sm:block font-medium leading-relaxed">
             Welcome back to Sharjah Education Academy. Here's what's happening in your organization today.
           </p>
         </div>
