@@ -60,6 +60,43 @@ export interface Event {
   location: string;
 }
 
+export interface SocialPost {
+  id: string;
+  author: {
+    id: string;
+    name: string;
+    department: string;
+    avatar?: string;
+  };
+  content: string;
+  imageUrl?: string;
+  type: "post" | "kudos";
+  kudosRecipient?: {
+    id: string;
+    name: string;
+    department: string;
+    avatar?: string;
+  };
+  reactions: {
+    likes: number;
+    hearts: number;
+    celebrates: number;
+  };
+  comments: Comment[];
+  createdAt: string;
+}
+
+export interface Comment {
+  id: string;
+  author: {
+    id: string;
+    name: string;
+    avatar?: string;
+  };
+  content: string;
+  createdAt: string;
+}
+
 export interface Birthday {
   id: string;
   name: string;
@@ -350,5 +387,126 @@ export const publicFeatures = [
     icon: Award,
     title: "Recognition & Culture",
     description: "Celebrate achievements and stay connected with company culture.",
+  },
+];
+
+// Mock social posts for the Social Feed
+export const mockSocialPosts: SocialPost[] = [
+  {
+    id: "1",
+    author: {
+      id: "u1",
+      name: "Sarah Al Maktoum",
+      department: "Early Childhood",
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    },
+    content: "Just wrapped up an amazing workshop on early childhood development with our nursery partners. The energy and enthusiasm from all the educators was truly inspiring! Looking forward to implementing these new strategies. 🌟",
+    type: "post",
+    reactions: { likes: 24, hearts: 12, celebrates: 8 },
+    comments: [
+      {
+        id: "c1",
+        author: { id: "u2", name: "Ahmed Hassan", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" },
+        content: "It was a fantastic session! Thank you for organizing.",
+        createdAt: "2025-01-09T11:30:00Z",
+      },
+    ],
+    createdAt: "2025-01-09T09:15:00Z",
+  },
+  {
+    id: "2",
+    author: {
+      id: "u3",
+      name: "Mohammed Rashid",
+      department: "IT",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+    },
+    content: "Outstanding work on the new LMS integration! Your dedication and problem-solving skills made this project a huge success.",
+    type: "kudos",
+    kudosRecipient: {
+      id: "u4",
+      name: "Ahmed Hassan",
+      department: "Research",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    },
+    reactions: { likes: 45, hearts: 28, celebrates: 32 },
+    comments: [
+      {
+        id: "c2",
+        author: { id: "u5", name: "Fatima Al Qasimi" },
+        content: "Well deserved! Ahmed's work has been exceptional.",
+        createdAt: "2025-01-08T15:00:00Z",
+      },
+      {
+        id: "c3",
+        author: { id: "u4", name: "Ahmed Hassan", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" },
+        content: "Thank you so much! It was a true team effort.",
+        createdAt: "2025-01-08T15:30:00Z",
+      },
+    ],
+    createdAt: "2025-01-08T14:00:00Z",
+  },
+  {
+    id: "3",
+    author: {
+      id: "u5",
+      name: "Fatima Al Qasimi",
+      department: "Programs",
+    },
+    content: "What an incredible graduation ceremony! So proud of all our graduates and the journey they've completed. Here's to new beginnings! 🎓",
+    imageUrl: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=800&h=400&fit=crop",
+    type: "post",
+    reactions: { likes: 67, hearts: 45, celebrates: 52 },
+    comments: [
+      {
+        id: "c4",
+        author: { id: "u1", name: "Sarah Al Maktoum", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" },
+        content: "Such a beautiful ceremony! Congratulations to all!",
+        createdAt: "2025-01-07T18:00:00Z",
+      },
+    ],
+    createdAt: "2025-01-07T16:30:00Z",
+  },
+  {
+    id: "4",
+    author: {
+      id: "u6",
+      name: "Layla Ahmed",
+      department: "Communications",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    },
+    content: "Excited to share that SEA has officially joined the World Education Research Association! This opens up incredible opportunities for collaboration and research partnerships globally. 🌍",
+    imageUrl: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=400&fit=crop",
+    type: "post",
+    reactions: { likes: 89, hearts: 34, celebrates: 56 },
+    comments: [],
+    createdAt: "2025-01-06T10:00:00Z",
+  },
+  {
+    id: "5",
+    author: {
+      id: "u7",
+      name: "Omar Al Farsi",
+      department: "Administration",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+    },
+    content: "A huge shoutout for going above and beyond during the summit preparations. Your attention to detail and tireless work ethic made all the difference!",
+    type: "kudos",
+    kudosRecipient: {
+      id: "u6",
+      name: "Layla Ahmed",
+      department: "Communications",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    },
+    reactions: { likes: 38, hearts: 22, celebrates: 29 },
+    comments: [
+      {
+        id: "c5",
+        author: { id: "u6", name: "Layla Ahmed", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" },
+        content: "Thank you Omar! It means a lot coming from you.",
+        createdAt: "2025-01-05T12:00:00Z",
+      },
+    ],
+    createdAt: "2025-01-05T11:00:00Z",
   },
 ];

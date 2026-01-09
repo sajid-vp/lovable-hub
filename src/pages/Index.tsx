@@ -9,6 +9,7 @@ import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
 import { LeadershipMessage } from "@/components/dashboard/LeadershipMessage";
 import { NewsFeed } from "@/components/dashboard/NewsFeed";
+import { SocialFeed } from "@/components/dashboard/SocialFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
 
@@ -79,6 +80,9 @@ export default function Index() {
               <TeamBirthdays />
             </div>
           </div>
+          
+          {/* Social Feed - Full Width */}
+          <SocialFeed />
         </div>
       </main>
     </div>
