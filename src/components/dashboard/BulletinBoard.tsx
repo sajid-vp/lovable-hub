@@ -1,22 +1,36 @@
+import { useState } from "react";
 import { Pin, Calendar, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
-const announcements = [
+interface Announcement {
+  id: number;
+  content: string;
+  date: string;
+  type: string;
+}
+
+const announcements: Announcement[] = [
   {
     id: 1,
-    content: "Registration Open for Spring Programs — Enroll now for our upcoming professional development courses starting February 2025.",
+    content: "Registration Open for Spring Programs — Enroll now for our upcoming professional development courses starting February 2025. Early bird registration ends January 20th. Available programs include Advanced Teaching Methods, Educational Leadership, and Digital Learning Integration. Visit the registrar's office or apply online through the SEA portal.",
     date: "Jan 8",
     type: "Important",
   },
   {
     id: 2,
-    content: "Campus Closure Notice — SEA campus will be closed January 15 for scheduled maintenance and upgrades.",
+    content: "Campus Closure Notice — SEA campus will be closed January 15 for scheduled maintenance and upgrades. All staff should ensure they have completed any pending tasks before the closure date. Remote work arrangements will be in place for essential personnel. Normal operations will resume January 16th at 8:00 AM.",
     date: "Jan 6",
     type: "Notice",
   },
   {
     id: 3,
-    content: "New Partnership Announcement — SEA welcomes new institutional partners for the 2025 academic year.",
+    content: "New Partnership Announcement — SEA welcomes new institutional partners for the 2025 academic year. We are excited to announce collaborations with leading educational institutions across the region. These partnerships will enhance our research capabilities and provide new opportunities for faculty and student exchange programs.",
     date: "Jan 3",
     type: "Update",
   },
@@ -49,6 +63,7 @@ const getPinColor = (type: string) => {
 };
 
 export function BulletinBoard() {
+  const [selectedAnnouncement, setSelectedAnnouncement] = useState<Announcement | null>(null);
   return (
     <div className="relative p-2 rounded-lg" style={{
       background: 'linear-gradient(145deg, hsl(200, 35%, 25%) 0%, hsl(195, 40%, 20%) 20%, hsl(190, 45%, 18%) 50%, hsl(195, 40%, 20%) 80%, hsl(200, 35%, 25%) 100%)',
@@ -124,9 +139,10 @@ export function BulletinBoard() {
             const rotation = rotations[index % rotations.length];
             
             return (
-              <div
+              <button
                 key={announcement.id}
-                className="group relative flex-shrink-0 w-64 rounded-sm p-4 transition-all duration-300 hover:-translate-y-2 hover:rotate-0"
+                onClick={() => setSelectedAnnouncement(announcement)}
+                className="group relative flex-shrink-0 w-64 rounded-sm p-4 transition-all duration-300 hover:-translate-y-2 hover:rotate-0 text-left cursor-pointer"
                 style={{
                   transform: `rotate(${rotation})`,
                   animationDelay: `${index * 100}ms`,
@@ -177,12 +193,39 @@ export function BulletinBoard() {
                   <Calendar className="h-3 w-3" />
                   <span>{announcement.date}</span>
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>
       </div>
       </div>
+
+      {/* Announcement Detail Dialog */}
+      <Dialog open={!!selectedAnnouncement} onOpenChange={() => setSelectedAnnouncement(null)}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="flex items-center gap-2 mb-2">
+              <span
+                className={`text-xs font-semibold px-2.5 py-1 rounded-full ${getTypeStyles(selectedAnnouncement?.type || '')}`}
+              >
+                {selectedAnnouncement?.type}
+              </span>
+              <span className="text-xs text-muted-foreground flex items-center gap-1">
+                <Calendar className="h-3 w-3" />
+                {selectedAnnouncement?.date}
+              </span>
+            </div>
+            <DialogTitle className="text-lg font-semibold text-foreground">
+              Announcement Details
+            </DialogTitle>
+          </DialogHeader>
+          <div className="mt-4">
+            <p className="text-sm text-foreground/80 leading-relaxed">
+              {selectedAnnouncement?.content}
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
