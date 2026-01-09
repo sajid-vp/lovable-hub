@@ -3,10 +3,10 @@ import { PublicHeader } from "@/components/landing/PublicHeader";
 import { PublicLanding } from "@/components/landing/PublicLanding";
 import { PublicFooter } from "@/components/landing/PublicFooter";
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
+import { AnnouncementsTicker } from "@/components/dashboard/AnnouncementsTicker";
 import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
 import { LeadershipMessage } from "@/components/dashboard/LeadershipMessage";
-
 import { NewsFeed } from "@/components/dashboard/NewsFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
@@ -42,6 +42,9 @@ export default function Index() {
         <div className="space-y-4 sm:space-y-5">
           {/* Welcome Section */}
           <WelcomeBanner />
+          
+          {/* Announcements Ticker */}
+          <AnnouncementsTicker />
           
           {/* Leadership Message + Quick Links side by side */}
           <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
