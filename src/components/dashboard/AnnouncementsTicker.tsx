@@ -62,7 +62,7 @@ export function AnnouncementsTicker() {
           </div>
         </div>
 
-        {/* Navigation row: date, arrows, dots, view all */}
+        {/* Navigation row: date on left, navigation + view all on right */}
         <div className="flex items-center gap-2">
           {/* Date */}
           <span className="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-white/80 shrink-0">
@@ -70,8 +70,8 @@ export function AnnouncementsTicker() {
             {announcements[selectedIndex]?.date}
           </span>
 
-          {/* Separator */}
-          <div className="w-px h-3 bg-white/30" />
+          {/* Spacer */}
+          <div className="flex-1" />
 
           {/* Prev arrow */}
           <button
@@ -104,8 +104,8 @@ export function AnnouncementsTicker() {
             <ChevronRight className="h-3.5 w-3.5" />
           </button>
 
-          {/* Spacer */}
-          <div className="flex-1" />
+          {/* Separator */}
+          <div className="w-px h-3 bg-white/30" />
 
           {/* View All link */}
           <Link
