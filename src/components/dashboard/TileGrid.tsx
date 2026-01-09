@@ -54,7 +54,7 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
                   </span>
                 )}
 
-                <div className="h-10 w-10 rounded-full flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-[hsl(var(--light-blue))] group-hover:bg-white/20">
+                <div className="p-2.5 rounded-xl flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-[hsl(var(--light-blue))] group-hover:bg-white/20 group-hover:backdrop-blur-sm group-hover:border group-hover:border-white/20">
                   <item.icon className="h-5 w-5 text-white transition-all duration-300" strokeWidth={1.5} />
                 </div>
                 <span className="font-semibold text-sm transition-colors truncate relative z-10 group-hover:text-white">
