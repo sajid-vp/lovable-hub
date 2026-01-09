@@ -247,10 +247,9 @@ export function WelcomeBanner() {
         </div>
       </div>
 
-      {/* Bottom Announcements Ticker - seamlessly blended */}
-      <div className="relative z-10">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/15 to-transparent" />
-        <div className="relative flex items-center gap-3 px-4 sm:px-6 md:px-8 py-2.5">
+      {/* Bottom Announcements Ticker */}
+      <div className="relative z-10 bg-black/20 backdrop-blur-sm border-t border-white/10">
+        <div className="flex items-center gap-3 px-4 py-2">
           {/* Nav arrows */}
           <button
             onClick={scrollPrev}
