@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { App, ExternalLink as ExternalLinkType } from "@/data/mockData";
 
@@ -19,55 +19,71 @@ function isExternalLink(item: TileItem): item is ExternalLinkType {
 export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGridProps) {
   return (
     <section className="animate-fade-in">
-      <h2 className="text-xs font-semibold mb-3 flex items-center gap-2 text-foreground/80 uppercase tracking-widest">
-        {title}
-      </h2>
-      <div className={cn(
-        "grid gap-2",
-        columns === 3 && "grid-cols-3",
-        columns === 2 && "grid-cols-2"
-      )}>
-        {items.map((item, index) => {
-          const isExternal = isExternalLink(item);
-          const TileWrapper = isExternal ? "a" : Link;
-          const tileProps = isExternal
-            ? { href: item.href, target: "_blank", rel: "noopener noreferrer" }
-            : { to: item.href };
+      {/* Enhanced Section Header */}
+      <div className="flex items-center gap-2 mb-4">
+        <div className="h-6 w-6 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+          <Sparkles className="h-3 w-3 text-primary" />
+        </div>
+        <h2 className="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          {title}
+        </h2>
+        <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
+      </div>
 
-          return (
-            <TileWrapper
-              key={item.id}
-              {...(tileProps as any)}
-              className="group relative flex items-center gap-2.5 rounded-xl px-3 py-2.5 bg-card/80 backdrop-blur-sm border border-border/40 hover:border-primary/30 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 animate-scale-in"
-              style={{ animationDelay: `${index * 30}ms` }}
-            >
-              {/* Subtle gradient on hover */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      {/* Glass Container */}
+      <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
+        {/* Decorative gradient accent */}
+        <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        
+        <div className={cn(
+          "grid gap-3",
+          columns === 3 && "grid-cols-3",
+          columns === 2 && "grid-cols-2"
+        )}>
+          {items.map((item, index) => {
+            const isExternal = isExternalLink(item);
+            const TileWrapper = isExternal ? "a" : Link;
+            const tileProps = isExternal
+              ? { href: item.href, target: "_blank", rel: "noopener noreferrer" }
+              : { to: item.href };
 
-              {/* Badge counter */}
-              {badgeCounts[item.id] && (
-                <span className="absolute -top-1 -right-1 h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--coral))] to-[hsl(var(--orange))] text-white text-[10px] font-bold flex items-center justify-center shadow-sm">
-                  {badgeCounts[item.id]}
-                </span>
-              )}
-
-              <div
-                className={cn(
-                  "h-8 w-8 rounded-lg flex-shrink-0 flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-sm",
-                  item.color
-                )}
+            return (
+              <TileWrapper
+                key={item.id}
+                {...(tileProps as any)}
+                className="group relative flex items-center gap-3 rounded-xl px-3.5 py-3 bg-gradient-to-br from-background/80 to-background/40 backdrop-blur-sm border border-border/30 hover:border-primary/40 shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1 animate-scale-in overflow-hidden"
+                style={{ animationDelay: `${index * 30}ms` }}
               >
-                <item.icon className="h-4 w-4 text-white" />
-              </div>
-              <span className="font-medium text-sm group-hover:text-primary transition-colors truncate relative z-10">
-                {item.title}
-              </span>
-              {isExternal && (
-                <ExternalLink className="h-3 w-3 flex-shrink-0 text-muted-foreground/40 group-hover:text-primary/60 transition-colors ml-auto" />
-              )}
-            </TileWrapper>
-          );
-        })}
+                {/* Hover shine effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%]" style={{ transition: 'transform 0.8s ease-in-out, opacity 0.3s' }} />
+
+                {/* Badge counter */}
+                {badgeCounts[item.id] && (
+                  <span className="absolute -top-1 -right-1 h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--coral))] to-[hsl(var(--orange))] text-white text-[10px] font-bold flex items-center justify-center shadow-md shadow-[hsl(var(--coral))]/30 z-10">
+                    {badgeCounts[item.id]}
+                  </span>
+                )}
+
+                <div
+                  className={cn(
+                    "h-9 w-9 rounded-xl flex-shrink-0 flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-md relative overflow-hidden",
+                    item.color
+                  )}
+                >
+                  {/* Icon gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
+                  <item.icon className="h-4 w-4 text-white relative z-10" />
+                </div>
+                <span className="font-semibold text-sm group-hover:text-primary transition-colors truncate relative z-10">
+                  {item.title}
+                </span>
+                {isExternal && (
+                  <ExternalLink className="h-3.5 w-3.5 flex-shrink-0 text-muted-foreground/50 group-hover:text-primary/70 transition-colors ml-auto" />
+                )}
+              </TileWrapper>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
