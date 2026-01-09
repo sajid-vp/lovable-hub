@@ -171,20 +171,28 @@ All colors MUST be HSL.
     background-clip: text;
   }
 
-  /* Brand accent color utilities */
-  .bg-turquoise\/20 { background-color: hsl(var(--turquoise) / 0.2); }
-  .text-turquoise { color: hsl(var(--turquoise)); }
-  .border-turquoise\/30 { border-color: hsl(var(--turquoise) / 0.3); }
-  
-  .bg-lavender\/20 { background-color: hsl(var(--lavender) / 0.2); }
-  .text-lavender { color: hsl(var(--lavender)); }
-  .border-lavender\/30 { border-color: hsl(var(--lavender) / 0.3); }
-  
-  .bg-orange\/20 { background-color: hsl(var(--orange) / 0.2); }
-  .text-orange { color: hsl(var(--orange)); }
-  .border-orange\/30 { border-color: hsl(var(--orange) / 0.3); }
-  
-  .bg-green\/20 { background-color: hsl(var(--green) / 0.2); }
-  .text-green { color: hsl(var(--green)); }
-  .border-green\/30 { border-color: hsl(var(--green) / 0.3); }
+  /* Glassmorphism card */
+  .glass-card {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: 
+      0 4px 6px -1px hsl(var(--foreground) / 0.05),
+      0 2px 4px -2px hsl(var(--foreground) / 0.05);
+  }
+
+  .glass-card:hover {
+    box-shadow: 
+      0 10px 15px -3px hsl(var(--foreground) / 0.08),
+      0 4px 6px -4px hsl(var(--foreground) / 0.05);
+  }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
