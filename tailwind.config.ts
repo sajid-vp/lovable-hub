@@ -59,7 +59,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Brand accent colors
+        // Brand accent colors - SEA palette
         yellow: "hsl(var(--yellow))",
         "light-blue": "hsl(var(--light-blue))",
         turquoise: "hsl(var(--turquoise))",
@@ -68,6 +68,10 @@ export default {
         orange: "hsl(var(--orange))",
         cyan: "hsl(var(--cyan))",
         pink: "hsl(var(--pink))",
+        teal: "hsl(var(--teal))",
+        indigo: "hsl(var(--indigo))",
+        coral: "hsl(var(--coral))",
+        gold: "hsl(var(--gold))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
