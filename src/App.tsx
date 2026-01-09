@@ -8,6 +8,10 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Search from "./pages/Search";
 import NewsDetail from "./pages/NewsDetail";
+import News from "./pages/News";
+import Events from "./pages/Events";
+import Birthdays from "./pages/Birthdays";
+import Announcements from "./pages/Announcements";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,7 +27,11 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/news" element={<News />} />
             <Route path="/news/:id" element={<NewsDetail />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/birthdays" element={<Birthdays />} />
+            <Route path="/announcements" element={<Announcements />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
