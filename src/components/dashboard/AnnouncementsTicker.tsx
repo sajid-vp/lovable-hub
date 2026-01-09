@@ -8,18 +8,34 @@ const announcements = [
     id: 1,
     content: "Registration Open for Spring Programs — Enroll now for our upcoming professional development courses starting February 2025.",
     date: "Jan 8",
+    type: "Important",
   },
   {
     id: 2,
     content: "Campus Closure Notice — SEA campus will be closed January 15 for scheduled maintenance and upgrades.",
     date: "Jan 6",
+    type: "Notice",
   },
   {
     id: 3,
     content: "New Partnership Announcement — SEA welcomes new institutional partners for the 2025 academic year.",
     date: "Jan 3",
+    type: "Update",
   },
 ];
+
+const getTypeStyles = (type: string) => {
+  switch (type) {
+    case "Important":
+      return "bg-white/25 text-white";
+    case "Notice":
+      return "bg-white/20 text-white/95";
+    case "Update":
+      return "bg-white/15 text-white/90";
+    default:
+      return "bg-white/15 text-white/90";
+  }
+};
 
 export function AnnouncementsTicker() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
@@ -62,8 +78,13 @@ export function AnnouncementsTicker() {
           </div>
         </div>
 
-        {/* Navigation row: date on left, navigation + view all on right */}
+        {/* Navigation row: type chip, date on left, navigation + view all on right */}
         <div className="flex items-center gap-2">
+          {/* Type chip */}
+          <span className={`text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 ${getTypeStyles(announcements[selectedIndex]?.type)}`}>
+            {announcements[selectedIndex]?.type}
+          </span>
+
           {/* Date */}
           <span className="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-white/80 shrink-0">
             <Calendar className="h-2.5 w-2.5" />
