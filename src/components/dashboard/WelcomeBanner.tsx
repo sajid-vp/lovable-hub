@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import seaBuilding from "@/assets/sea-building.jpg";
-import { FlippingStickyNote } from "./FlippingStickyNote";
 
 export function WelcomeBanner() {
   const { user, logout } = useAuthContext();
@@ -81,12 +80,12 @@ export function WelcomeBanner() {
       {/* Main content area */}
       <div className="relative z-10 h-44 sm:h-56 md:h-64 p-4 sm:p-6 md:p-8 flex justify-between">
         {/* Left: Text content */}
-        <div className="text-white flex flex-col justify-center flex-1">
+        <div className="text-white flex flex-col justify-center">
           <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
             <div className="p-2 sm:p-3 bg-white/20 rounded-lg sm:rounded-xl backdrop-blur-sm shadow-lg">
               <TimeIcon className="h-4 w-4 sm:h-6 sm:w-6" />
             </div>
-            <div className="flex-1 h-[2px] bg-white/40 rounded-full max-w-[100px] sm:max-w-[150px]" />
+            <div className="flex-1 h-[2px] bg-white/40 rounded-full max-w-[150px] sm:max-w-xs" />
           </div>
           
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-1 sm:mb-2 drop-shadow-md leading-tight">
@@ -95,14 +94,9 @@ export function WelcomeBanner() {
           <p className="text-sm sm:text-base opacity-95 font-semibold mb-1 sm:mb-2">
             {today}
           </p>
-          <p className="text-sm opacity-95 max-w-md hidden md:block font-medium leading-relaxed">
-            Welcome back to Sharjah Education Academy.
+          <p className="text-sm opacity-95 max-w-lg hidden sm:block font-medium leading-relaxed">
+            Welcome back to Sharjah Education Academy. Here's what's happening in your organization today.
           </p>
-        </div>
-
-        {/* Center: Flipping Sticky Note */}
-        <div className="hidden sm:flex items-center justify-center px-4">
-          <FlippingStickyNote />
         </div>
 
         {/* Right: Controls */}
