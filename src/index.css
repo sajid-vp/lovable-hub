@@ -170,4 +170,21 @@ All colors MUST be HSL.
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* Brand accent color utilities */
+  .bg-turquoise\/20 { background-color: hsl(var(--turquoise) / 0.2); }
+  .text-turquoise { color: hsl(var(--turquoise)); }
+  .border-turquoise\/30 { border-color: hsl(var(--turquoise) / 0.3); }
+  
+  .bg-lavender\/20 { background-color: hsl(var(--lavender) / 0.2); }
+  .text-lavender { color: hsl(var(--lavender)); }
+  .border-lavender\/30 { border-color: hsl(var(--lavender) / 0.3); }
+  
+  .bg-orange\/20 { background-color: hsl(var(--orange) / 0.2); }
+  .text-orange { color: hsl(var(--orange)); }
+  .border-orange\/30 { border-color: hsl(var(--orange) / 0.3); }
+  
+  .bg-green\/20 { background-color: hsl(var(--green) / 0.2); }
+  .text-green { color: hsl(var(--green)); }
+  .border-green\/30 { border-color: hsl(var(--green) / 0.3); }
 }
