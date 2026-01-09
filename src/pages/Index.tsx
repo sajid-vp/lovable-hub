@@ -6,6 +6,7 @@ import { FloatingControls } from "@/components/dashboard/FloatingControls";
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
 import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
+import { LeadershipMessage } from "@/components/dashboard/LeadershipMessage";
 import { CombinedFeed } from "@/components/dashboard/CombinedFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
@@ -44,12 +45,15 @@ export default function Index() {
           {/* Welcome Section */}
           <WelcomeBanner />
           
-          {/* Apps & Quick Links in a combined row */}
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="flex-1">
-              <Apps />
+          {/* Apps row */}
+          <Apps />
+          
+          {/* Leadership Message + Quick Links side by side */}
+          <div className="grid md:grid-cols-5 gap-6">
+            <div className="md:col-span-2">
+              <LeadershipMessage />
             </div>
-            <div className="flex-1">
+            <div className="md:col-span-3">
               <QuickLinks />
             </div>
           </div>
