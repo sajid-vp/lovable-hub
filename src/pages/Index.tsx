@@ -41,7 +41,7 @@ export default function Index() {
       </div>
       
       <main className="container max-w-6xl py-6 px-4 pt-20 relative z-10">
-        <div className="space-y-6">
+        <div className="space-y-5">
           {/* Welcome Section */}
           <WelcomeBanner />
           
