@@ -39,7 +39,7 @@ export function TeamBirthdays() {
         <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
           Team Birthdays
         </h2>
-        <div className="flex-1 h-[2px] bg-[hsl(var(--teal))]/50 rounded-full" />
+        <div className="flex-1 h-[1.5px] bg-[hsl(var(--teal))]/30 rounded-full" />
       </div>
 
       {/* Glass Container */}
