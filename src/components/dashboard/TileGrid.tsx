@@ -18,11 +18,11 @@ function isExternalLink(item: TileItem): item is ExternalLinkType {
 export function TileGrid({ title, items, badgeCounts = {} }: TileGridProps) {
   return (
     <section className="animate-fade-in" style={{ animationDelay: "100ms" }}>
-      <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-        <span className="h-2.5 w-2.5 rounded-full bg-gradient-to-r from-[hsl(var(--turquoise))] to-[hsl(var(--teal))] animate-pulse" />
+      <h2 className="text-sm font-semibold mb-3 flex items-center gap-2 text-muted-foreground uppercase tracking-wide">
+        <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[hsl(var(--turquoise))] to-[hsl(var(--teal))]" />
         {title}
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
         {items.map((item, index) => {
           const isExternal = isExternalLink(item);
           const TileWrapper = isExternal ? "a" : Link;
@@ -34,53 +34,37 @@ export function TileGrid({ title, items, badgeCounts = {} }: TileGridProps) {
             <TileWrapper
               key={item.id}
               {...(tileProps as any)}
-              className="group relative overflow-hidden rounded-2xl p-5 bg-card border border-border/50 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-scale-in"
-              style={{ animationDelay: `${index * 75}ms` }}
+              className="group relative overflow-hidden rounded-xl p-3 bg-card border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-scale-in"
+              style={{ animationDelay: `${index * 50}ms` }}
             >
               {/* Gradient background on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              {/* Decorative corner accent */}
-              <div className="absolute -top-10 -right-10 w-20 h-20 rounded-full bg-gradient-to-br from-[hsl(var(--turquoise))]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Badge counter with glow */}
+              {/* Badge counter */}
               {badgeCounts[item.id] && (
-                <span className="absolute top-3 right-3 h-6 min-w-6 px-2 rounded-full bg-gradient-to-r from-[hsl(var(--coral))] to-[hsl(var(--orange))] text-white text-xs font-bold flex items-center justify-center shadow-lg shadow-[hsl(var(--coral))]/30 animate-pulse">
+                <span className="absolute top-2 right-2 h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--coral))] to-[hsl(var(--orange))] text-white text-[10px] font-bold flex items-center justify-center">
                   {badgeCounts[item.id]}
                 </span>
               )}
 
               {/* External link indicator */}
-              {isExternal && (
-                <span className="absolute top-3 right-3 text-muted-foreground">
-                  <ExternalLink className="h-4 w-4" />
+              {isExternal && !badgeCounts[item.id] && (
+                <span className="absolute top-2 right-2 text-muted-foreground/50">
+                  <ExternalLink className="h-3 w-3" />
                 </span>
               )}
 
               <div
                 className={cn(
-                  "h-16 w-16 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-lg",
+                  "h-10 w-10 rounded-lg flex items-center justify-center mb-2 transition-all duration-300 group-hover:scale-105 shadow-md",
                   item.color
                 )}
-                style={{
-                  boxShadow: "0 8px 20px -4px rgba(0,0,0,0.15)",
-                }}
               >
-                <item.icon className="h-8 w-8 text-white transition-transform duration-300 group-hover:scale-110" />
+                <item.icon className="h-5 w-5 text-white" />
               </div>
-              <h3 className="font-bold text-base group-hover:text-primary transition-colors">
+              <h3 className="font-medium text-sm group-hover:text-primary transition-colors truncate">
                 {item.title}
               </h3>
-              <p className="text-xs text-muted-foreground mt-1 group-hover:text-foreground/70 transition-colors">
-                {item.description}
-              </p>
-
-              {/* Arrow indicator with color */}
-              <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
-                <span className="text-[hsl(var(--turquoise))] text-xl font-bold">
-                  {isExternal ? "↗" : "→"}
-                </span>
-              </div>
             </TileWrapper>
           );
         })}
