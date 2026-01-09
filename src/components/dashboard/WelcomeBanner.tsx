@@ -1,6 +1,6 @@
 import { Sun, Moon, CloudSun } from "lucide-react";
 import { useAuthContext } from "@/contexts/AuthContext";
-import educationHero from "@/assets/education-hero.jpg";
+import seaBuilding from "@/assets/sea-building.jpg";
 
 export function WelcomeBanner() {
   const { user } = useAuthContext();
@@ -34,13 +34,13 @@ export function WelcomeBanner() {
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url(${educationHero})`,
+          backgroundImage: `url(${seaBuilding})`,
         }}
       />
       
-      {/* Gradient overlay blending with brand colors */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--teal))]/95 via-[hsl(var(--turquoise))]/85 to-[hsl(var(--light-blue))]/70" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--teal))]/60 via-transparent to-transparent" />
+      {/* Gradient overlay - brand blue to teal */}
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(40deg, rgba(114, 160, 213, 0.85) 0%, rgba(104, 204, 202, 0.75) 100%)' }} />
+      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(114,160,213,0.6)] via-transparent to-transparent" />
       
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
