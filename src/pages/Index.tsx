@@ -2,9 +2,13 @@ import { useState } from "react";
 import { useAuthContext } from "@/contexts/AuthContext";
 import { Header } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
+import { PublicHeader } from "@/components/landing/PublicHeader";
 import { PublicHero } from "@/components/landing/PublicHero";
-import { PublicFeatures } from "@/components/landing/PublicFeatures";
+import { PublicAbout } from "@/components/landing/PublicAbout";
+import { PublicPrograms } from "@/components/landing/PublicPrograms";
+import { PublicEvents } from "@/components/landing/PublicEvents";
 import { PublicNews } from "@/components/landing/PublicNews";
+import { PublicContact } from "@/components/landing/PublicContact";
 import { PublicFooter } from "@/components/landing/PublicFooter";
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
@@ -16,13 +20,20 @@ export default function Index() {
   const { isAuthenticated } = useAuthContext();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Public landing page for visitors - simple login experience
+  // Public landing page for visitors
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex flex-col bg-background">
+        <PublicHeader />
         <main className="flex-1">
           <PublicHero />
+          <PublicAbout />
+          <PublicPrograms />
+          <PublicEvents />
+          <PublicNews />
+          <PublicContact />
         </main>
+        <PublicFooter />
       </div>
     );
   }

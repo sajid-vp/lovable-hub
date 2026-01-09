@@ -8,17 +8,18 @@ export function PublicNews() {
   const displayedNews = mockNews.slice(0, 3);
 
   return (
-    <section className="py-20">
+    <section id="news" className="py-20 bg-muted/30">
       <div className="container px-4">
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-12">
           <div>
-            <h2 className="text-3xl font-bold mb-2">Latest Updates</h2>
-            <p className="text-muted-foreground">Stay informed with company news and announcements</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">Latest News</h2>
+            <p className="text-muted-foreground text-lg">
+              Stay updated with the latest from Sharjah Education Academy
+            </p>
           </div>
-          <Button variant="outline" asChild className="hidden md:flex">
-            <Link to="/login">
-              Sign in to read more <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+          <Button variant="outline" className="mt-4 md:mt-0">
+            View All News
+            <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
 
@@ -54,14 +55,6 @@ export function PublicNews() {
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="mt-8 text-center md:hidden">
-          <Button asChild>
-            <Link to="/login">
-              Sign in to read more <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
         </div>
       </div>
     </section>
