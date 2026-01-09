@@ -50,21 +50,27 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    /* Brand accent colors */
-    --yellow: 49 94% 78%;
+    /* Brand accent colors - SEA palette */
+    --yellow: 49 94% 68%;
     --light-blue: 209 61% 66%;
-    --turquoise: 186 48% 63%;
-    --green: 170 39% 63%;
-    --lavender: 263 51% 78%;
-    --orange: 28 95% 75%;
-    --cyan: 183 66% 84%;
-    --pink: 339 68% 88%;
+    --turquoise: 186 48% 55%;
+    --green: 170 39% 55%;
+    --lavender: 263 51% 70%;
+    --orange: 28 90% 62%;
+    --cyan: 183 66% 75%;
+    --pink: 339 68% 80%;
+    --teal: 175 50% 45%;
+    --indigo: 235 45% 55%;
+    --coral: 16 85% 65%;
+    --gold: 42 90% 55%;
 
     /* Gradient tokens - Brand gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(170 39% 63%), hsl(186 48% 63%));
+    --gradient-primary: linear-gradient(135deg, hsl(170 39% 55%), hsl(186 48% 55%));
     --gradient-secondary: linear-gradient(135deg, hsl(209 61% 66%), hsl(208 38% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(170 39% 63%) 0%, hsl(186 48% 63%) 50%, hsl(209 61% 66%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(208 38% 50%), hsl(186 48% 63%));
+    --gradient-hero: linear-gradient(135deg, hsl(208 38% 50%) 0%, hsl(186 48% 55%) 50%, hsl(170 39% 55%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(208 38% 50%), hsl(186 48% 55%));
+    --gradient-warm: linear-gradient(135deg, hsl(28 90% 62%), hsl(42 90% 55%));
+    --gradient-cool: linear-gradient(135deg, hsl(235 45% 55%), hsl(263 51% 70%));
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 208 38% 25%;
@@ -112,19 +118,25 @@ All colors MUST be HSL.
     --ring: 209 61% 66%;
 
     /* Brand accent colors - dark mode */
-    --yellow: 49 80% 65%;
+    --yellow: 49 80% 55%;
     --light-blue: 209 61% 55%;
-    --turquoise: 186 48% 50%;
-    --green: 170 39% 50%;
-    --lavender: 263 51% 65%;
-    --orange: 28 80% 60%;
-    --cyan: 183 50% 60%;
-    --pink: 339 55% 70%;
+    --turquoise: 186 48% 45%;
+    --green: 170 39% 45%;
+    --lavender: 263 51% 60%;
+    --orange: 28 80% 55%;
+    --cyan: 183 50% 55%;
+    --pink: 339 55% 65%;
+    --teal: 175 50% 40%;
+    --indigo: 235 45% 50%;
+    --coral: 16 85% 55%;
+    --gold: 42 90% 50%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(170 39% 50%), hsl(186 48% 50%));
+    --gradient-primary: linear-gradient(135deg, hsl(170 39% 45%), hsl(186 48% 45%));
     --gradient-secondary: linear-gradient(135deg, hsl(209 61% 55%), hsl(208 38% 45%));
-    --gradient-hero: linear-gradient(135deg, hsl(170 39% 50%) 0%, hsl(186 48% 50%) 50%, hsl(209 61% 55%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(208 38% 45%), hsl(186 48% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(208 38% 45%) 0%, hsl(186 48% 45%) 50%, hsl(170 39% 45%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(208 38% 45%), hsl(186 48% 45%));
+    --gradient-warm: linear-gradient(135deg, hsl(28 80% 55%), hsl(42 80% 50%));
+    --gradient-cool: linear-gradient(135deg, hsl(235 45% 50%), hsl(263 51% 60%));
 
     --sidebar-background: 208 30% 12%;
     --sidebar-foreground: 0 0% 95%;
