@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Pin, ChevronRight, Newspaper } from "lucide-react";
+import { Pin, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,11 +11,8 @@ export function NewsFeed() {
 
   return (
     <section className="animate-fade-in" style={{ animationDelay: "150ms" }}>
-      {/* Enhanced Section Header */}
+      {/* Section Header */}
       <div className="flex items-center gap-2 mb-4">
-        <div className="h-6 w-6 rounded-lg bg-gradient-to-br from-[hsl(var(--turquoise))]/20 to-[hsl(var(--teal))]/10 flex items-center justify-center">
-          <Newspaper className="h-3 w-3 text-[hsl(var(--teal))]" />
-        </div>
         <h2 className="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
           Latest News
         </h2>

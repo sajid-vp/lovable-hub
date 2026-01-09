@@ -1,4 +1,4 @@
-import { Calendar, Clock, MapPin, Sparkles } from "lucide-react";
+import { Calendar, Clock, MapPin } from "lucide-react";
 import { mockEvents } from "@/data/mockData";
 
 export function UpcomingEvents() {
@@ -10,15 +10,11 @@ export function UpcomingEvents() {
 
   return (
     <section className="animate-fade-in" style={{ animationDelay: "200ms" }}>
-      {/* Enhanced Section Header */}
+      {/* Section Header */}
       <div className="flex items-center gap-2 mb-4">
-        <div className="h-6 w-6 rounded-lg bg-gradient-to-br from-[hsl(var(--turquoise))]/20 to-[hsl(var(--teal))]/10 flex items-center justify-center">
-          <Calendar className="h-3 w-3 text-[hsl(var(--teal))]" />
-        </div>
         <h2 className="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
           Upcoming Events
         </h2>
-        <Sparkles className="h-3 w-3 text-[hsl(var(--gold))] animate-pulse" />
         <div className="flex-1 h-[2px] bg-gradient-to-r from-[hsl(var(--turquoise))]/50 via-[hsl(var(--teal))]/20 to-transparent rounded-full" />
       </div>
 
