@@ -151,7 +151,7 @@ export const mockApps: App[] = [
     description: "Get support",
     icon: HelpCircle,
     href: "/help",
-    color: "bg-gradient-to-br from-[hsl(var(--cyan))] to-[hsl(var(--light-blue))]",
+    color: "bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]",
   },
   {
     id: "2",
@@ -159,7 +159,7 @@ export const mockApps: App[] = [
     description: "Find colleagues",
     icon: Users,
     href: "/directory",
-    color: "bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--yellow))]",
+    color: "bg-gradient-to-br from-primary to-[hsl(var(--light-blue))]",
   },
 ];
 
@@ -171,7 +171,7 @@ export const mockExternalLinks: ExternalLink[] = [
     description: "Enterprise system",
     icon: Database,
     href: "https://erp.sea.ae",
-    color: "bg-gradient-to-br from-[hsl(var(--turquoise))] to-[hsl(var(--teal))]",
+    color: "bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]",
     external: true,
   },
   {
@@ -180,7 +180,7 @@ export const mockExternalLinks: ExternalLink[] = [
     description: "Learning portal",
     icon: GraduationCap,
     href: "https://lms.sea.ae",
-    color: "bg-gradient-to-br from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
+    color: "bg-gradient-to-br from-primary to-[hsl(var(--light-blue))]",
     external: true,
   },
   {
@@ -189,7 +189,7 @@ export const mockExternalLinks: ExternalLink[] = [
     description: "Online courses",
     icon: BookOpen,
     href: "https://linkedin.com/learning",
-    color: "bg-gradient-to-br from-[hsl(var(--light-blue))] to-[hsl(var(--primary))]",
+    color: "bg-gradient-to-br from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
     external: true,
   },
   {
@@ -198,7 +198,7 @@ export const mockExternalLinks: ExternalLink[] = [
     description: "Student info",
     icon: Users,
     href: "https://sis.sea.ae",
-    color: "bg-gradient-to-br from-[hsl(var(--green))] to-[hsl(var(--turquoise))]",
+    color: "bg-gradient-to-br from-[hsl(var(--green))] to-[hsl(var(--teal))]",
     external: true,
   },
   {
@@ -207,7 +207,7 @@ export const mockExternalLinks: ExternalLink[] = [
     description: "Digital resources",
     icon: Library,
     href: "https://library.sea.ae",
-    color: "bg-gradient-to-br from-[hsl(var(--lavender))] to-[hsl(var(--indigo))]",
+    color: "bg-gradient-to-br from-[hsl(var(--light-blue))] to-primary",
     external: true,
   },
   {
@@ -216,7 +216,7 @@ export const mockExternalLinks: ExternalLink[] = [
     description: "Policy documents",
     icon: FileText,
     href: "/policies",
-    color: "bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--yellow))]",
+    color: "bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--green))]",
     external: false,
   },
   {
@@ -225,7 +225,7 @@ export const mockExternalLinks: ExternalLink[] = [
     description: "Report concerns",
     icon: Shield,
     href: "https://ethics.sea.ae",
-    color: "bg-gradient-to-br from-[hsl(var(--pink))] to-[hsl(var(--coral))]",
+    color: "bg-gradient-to-br from-primary to-[hsl(var(--turquoise))]",
     external: true,
   },
   {
@@ -234,7 +234,7 @@ export const mockExternalLinks: ExternalLink[] = [
     description: "E-signatures",
     icon: PenTool,
     href: "https://adobesign.com",
-    color: "bg-gradient-to-br from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
+    color: "bg-gradient-to-br from-[hsl(var(--turquoise))] to-[hsl(var(--teal))]",
     external: true,
   },
   {
@@ -243,7 +243,7 @@ export const mockExternalLinks: ExternalLink[] = [
     description: "Reset credentials",
     icon: Key,
     href: "https://password.sea.ae",
-    color: "bg-gradient-to-br from-[hsl(var(--cyan))] to-[hsl(var(--light-blue))]",
+    color: "bg-gradient-to-br from-[hsl(var(--light-blue))] to-[hsl(var(--turquoise))]",
     external: true,
   },
 ];
