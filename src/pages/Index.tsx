@@ -10,7 +10,6 @@ import { LeadershipMessage } from "@/components/dashboard/LeadershipMessage";
 import { CombinedFeed } from "@/components/dashboard/CombinedFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
-import { Separator } from "@/components/ui/separator";
 
 export default function Index() {
   const { isAuthenticated } = useAuthContext();
@@ -46,8 +45,6 @@ export default function Index() {
           {/* Welcome Section */}
           <WelcomeBanner />
           
-          <Separator className="bg-border/30" />
-          
           {/* Leadership Message + Quick Links & Apps side by side */}
           <div className="grid md:grid-cols-5 gap-6">
             <div className="md:col-span-2">
@@ -58,8 +55,6 @@ export default function Index() {
               <Apps />
             </div>
           </div>
-          
-          <Separator className="bg-border/30" />
           
           {/* Content Grid: News/Announcements + Events/Birthdays */}
           <div className="grid lg:grid-cols-3 gap-6">
