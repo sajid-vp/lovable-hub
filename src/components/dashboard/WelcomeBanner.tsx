@@ -1,5 +1,6 @@
-import { Sparkles, Sun, Moon, CloudSun } from "lucide-react";
+import { Sun, Moon, CloudSun } from "lucide-react";
 import { useAuthContext } from "@/contexts/AuthContext";
+import productivityImage from "@/assets/productivity-banner.png";
 
 export function WelcomeBanner() {
   const { user } = useAuthContext();
@@ -28,42 +29,42 @@ export function WelcomeBanner() {
   });
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[hsl(var(--teal))] via-[hsl(var(--turquoise))] to-[hsl(var(--light-blue))] p-6 md:p-8 text-white animate-fade-in shadow-2xl shadow-[hsl(var(--turquoise))]/20">
-      {/* Animated decorative elements */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 bg-[hsl(var(--gold))]/15 rounded-full translate-y-1/2 -translate-x-1/3" />
-      <div className="absolute top-1/2 right-1/4 w-24 h-24 bg-[hsl(var(--coral))]/10 rounded-full" />
+    <div className="relative overflow-hidden rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg animate-fade-in">
+      {/* Top gradient accent */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[hsl(var(--teal))] via-[hsl(var(--turquoise))] to-[hsl(var(--light-blue))]" />
       
-      {/* Subtle geometric pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-      }} />
-      
-      <div className="relative z-10 flex items-center justify-between">
-        <div>
-          <div className="flex items-center gap-3 mb-3">
-            <div className="p-2.5 bg-white/20 rounded-xl backdrop-blur-sm">
-              <TimeIcon className="h-6 w-6" />
+      <div className="p-6 md:p-8 flex items-center justify-between gap-6">
+        <div className="flex-1">
+          {/* Header with gradient line */}
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2.5 bg-gradient-to-br from-[hsl(var(--teal))]/20 to-[hsl(var(--turquoise))]/10 rounded-xl border border-[hsl(var(--teal))]/20">
+              <TimeIcon className="h-5 w-5 text-[hsl(var(--teal))]" />
             </div>
-            <div>
-              <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-                {getGreeting()}, {user?.name?.split(" ")[0]}!
-              </h1>
-              <p className="text-sm opacity-90 font-medium mt-0.5">
-                {today}
-              </p>
-            </div>
+            <div className="flex-1 h-[2px] bg-gradient-to-r from-[hsl(var(--teal))]/50 via-[hsl(var(--turquoise))]/20 to-transparent rounded-full" />
           </div>
-          <p className="text-sm opacity-80 max-w-md">
+          
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-1">
+            {getGreeting()}, {user?.name?.split(" ")[0]}!
+          </h1>
+          <p className="text-sm text-muted-foreground font-medium mb-3">
+            {today}
+          </p>
+          <p className="text-sm text-muted-foreground/80 max-w-md">
             Here's what's happening in your organization today.
           </p>
         </div>
         
-        {/* Optional: Quick stats or CTA could go here */}
-        <div className="hidden md:flex items-center gap-3">
-          <div className="p-2 bg-white/10 rounded-xl backdrop-blur-sm">
-            <Sparkles className="h-5 w-5" />
+        {/* Productivity image */}
+        <div className="hidden md:block relative">
+          <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-2xl overflow-hidden border border-border/30 shadow-lg">
+            <img 
+              src={productivityImage} 
+              alt="Productivity and connectivity" 
+              className="w-full h-full object-cover"
+            />
           </div>
+          {/* Subtle glow effect */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[hsl(var(--teal))]/10 to-transparent pointer-events-none" />
         </div>
       </div>
     </div>
