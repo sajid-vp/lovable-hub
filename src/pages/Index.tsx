@@ -4,6 +4,7 @@ import { PublicLanding } from "@/components/landing/PublicLanding";
 import { PublicFooter } from "@/components/landing/PublicFooter";
 import { FloatingControls } from "@/components/dashboard/FloatingControls";
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
+import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
 import { CombinedFeed } from "@/components/dashboard/CombinedFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
@@ -42,7 +43,10 @@ export default function Index() {
           {/* Welcome Section */}
           <WelcomeBanner />
           
-          {/* Quick Access Grid */}
+          {/* Apps - Custom SEA Applications */}
+          <Apps />
+          
+          {/* Quick Links - External System Shortcuts */}
           <QuickLinks />
           
           {/* Content Grid: News/Announcements + Events/Birthdays */}
