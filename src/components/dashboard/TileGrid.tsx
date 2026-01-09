@@ -44,12 +44,9 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
               <TileWrapper
                 key={item.id}
                 {...(tileProps as any)}
-                className="group relative flex items-center gap-3 rounded-xl px-3.5 py-3 bg-card border border-border/50 hover:border-primary/40 shadow-sm hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 animate-scale-in overflow-hidden"
+                className="group relative flex items-center gap-3 rounded-full px-4 py-3 bg-card border border-border/50 hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))] shadow-sm hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20 transition-all duration-300 animate-scale-in overflow-hidden"
                 style={{ animationDelay: `${index * 30}ms` }}
               >
-                {/* Hover shine effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-primary/5 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%]" style={{ transition: 'transform 0.8s ease-in-out, opacity 0.3s' }} />
-
                 {/* Badge counter */}
                 {badgeCounts[item.id] && (
                   <span className="absolute -top-1 -right-1 h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white text-[10px] font-bold flex items-center justify-center shadow-md shadow-[hsl(var(--teal))]/30 z-10">
@@ -57,14 +54,14 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
                   </span>
                 )}
 
-                <div className="h-10 w-10 rounded-full flex-shrink-0 flex items-center justify-center transition-all duration-300 group-hover:scale-110 bg-[hsl(var(--light-blue))]">
-                  <item.icon className="h-5 w-5 text-white transition-all duration-300 group-hover:fill-white" strokeWidth={1.5} />
+                <div className="h-10 w-10 rounded-full flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-[hsl(var(--light-blue))] group-hover:bg-white/20">
+                  <item.icon className="h-5 w-5 text-white transition-all duration-300" strokeWidth={1.5} />
                 </div>
-                <span className="font-semibold text-sm group-hover:text-primary transition-colors truncate relative z-10">
+                <span className="font-semibold text-sm transition-colors truncate relative z-10 group-hover:text-white">
                   {item.title}
                 </span>
                 {isExternal && (
-                  <ExternalLink className="h-3.5 w-3.5 flex-shrink-0 text-muted-foreground/50 group-hover:text-primary/70 transition-colors ml-auto" />
+                  <ExternalLink className="h-3.5 w-3.5 flex-shrink-0 text-muted-foreground/50 group-hover:text-white/70 transition-colors ml-auto" />
                 )}
               </TileWrapper>
             );
