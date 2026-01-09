@@ -57,15 +57,8 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
                   </span>
                 )}
 
-                <div
-                  className={cn(
-                    "h-9 w-9 rounded-xl flex-shrink-0 flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-md relative overflow-hidden",
-                    item.color
-                  )}
-                >
-                  {/* Icon gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-                  <item.icon className="h-4 w-4 text-white relative z-10" />
+                <div className="h-10 w-10 rounded-full flex-shrink-0 flex items-center justify-center transition-all duration-300 group-hover:scale-110 bg-[hsl(var(--light-blue))]">
+                  <item.icon className="h-5 w-5 text-white" strokeWidth={1.5} />
                 </div>
                 <span className="font-semibold text-sm group-hover:text-primary transition-colors truncate relative z-10">
                   {item.title}
