@@ -62,11 +62,11 @@ export function AnnouncementsTicker() {
           <div className="flex">
             {announcements.map((announcement) => (
               <div key={announcement.id} className="flex-[0_0_100%] min-w-0">
-                <div className="flex items-start gap-3 text-white">
-                  <span className="text-xs sm:text-sm font-medium flex-1 line-clamp-2 leading-relaxed">
+                <div className="flex flex-col gap-1 text-white">
+                  <span className="text-xs sm:text-sm font-medium line-clamp-2 leading-relaxed">
                     {announcement.content}
                   </span>
-                  <span className="text-[9px] sm:text-[10px] font-semibold bg-white/20 px-2 py-0.5 rounded text-white shrink-0 mt-0.5">
+                  <span className="text-[9px] sm:text-[10px] font-semibold text-white/70">
                     {announcement.date}
                   </span>
                 </div>
