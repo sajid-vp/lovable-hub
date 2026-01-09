@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pin, Calendar, ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Dialog,
@@ -49,183 +49,85 @@ const getTypeStyles = (type: string) => {
   }
 };
 
-const getPinColor = (type: string) => {
-  switch (type) {
-    case "Important":
-      return "text-rose-500";
-    case "Notice":
-      return "text-amber-500";
-    case "Update":
-      return "text-sky-500";
-    default:
-      return "text-muted-foreground";
-  }
-};
-
 export function BulletinBoard() {
   const [selectedAnnouncement, setSelectedAnnouncement] = useState<Announcement | null>(null);
+
   return (
-    <div className="relative p-2 rounded-lg" style={{
-      background: 'linear-gradient(145deg, hsl(200, 35%, 25%) 0%, hsl(195, 40%, 20%) 20%, hsl(190, 45%, 18%) 50%, hsl(195, 40%, 20%) 80%, hsl(200, 35%, 25%) 100%)',
-      boxShadow: '0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -2px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
-    }}>
-      {/* Frame texture overlay */}
-      <div 
-        className="absolute inset-0 rounded-lg opacity-20 pointer-events-none"
-        style={{
-          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'grain\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.04\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23grain)\'/%3E%3C/svg%3E")',
-        }}
-      />
-      {/* Inner frame highlight */}
-      <div 
-        className="absolute inset-0 rounded-lg pointer-events-none"
-        style={{
-          boxShadow: 'inset 1px 1px 2px rgba(255,255,255,0.08), inset -1px -1px 2px rgba(0,0,0,0.3)',
-        }}
-      />
-
-      {/* Inner board */}
-      <div className="relative rounded-md overflow-hidden shadow-inner" style={{
-        boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.2), inset 0 0 2px rgba(0,0,0,0.15)',
-      }}>
-        {/* Board background - theme gradient */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(135deg, hsl(200, 50%, 75%) 0%, hsl(180, 45%, 70%) 50%, hsl(175, 50%, 65%) 100%)',
-          }}
-        />
-        {/* Texture noise overlay */}
-        <div 
-          className="absolute inset-0 opacity-25"
-          style={{
-            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'cork\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23cork)\'/%3E%3C/svg%3E")',
-          }}
-        />
-        {/* Subtle vignette */}
-        <div 
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            boxShadow: 'inset 0 0 60px rgba(0,0,0,0.1)',
-          }}
-        />
-
-      {/* Header */}
-      <div className="relative px-4 py-3 border-b border-primary/20">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Pin className="h-4 w-4 text-primary-foreground/80" />
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/90">
-              Bulletin Board
-            </h3>
-          </div>
-          <Link
-            to="/announcements"
-            className="text-sm text-primary-foreground/90 hover:text-primary-foreground transition-colors flex items-center gap-1 font-medium"
-          >
-            View all
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-        <div className="mt-2 h-0.5 bg-gradient-to-r from-primary-foreground/40 via-primary-foreground/20 to-transparent rounded-full" />
+    <section className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
+      {/* Section Header */}
+      <div className="flex items-center gap-2 mb-3">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
+          Bulletin Board
+        </h2>
+        <div className="flex-1 h-[1.5px] bg-gradient-to-r from-primary/40 to-transparent rounded-full" />
+        <Link 
+          to="/announcements" 
+          className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1 transition-colors"
+        >
+          View all
+          <ChevronRight className="h-4 w-4" />
+        </Link>
       </div>
 
-      {/* Cards Container */}
-      <div className="relative p-4 pt-6">
-        <div className="flex gap-6 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-primary/30 scrollbar-track-transparent">
-          {announcements.map((announcement, index) => {
-            // Subtle rotation variations for pinned note effect
-            const rotations = ['-1deg', '0.5deg', '-0.8deg', '1deg', '-0.5deg'];
-            const rotation = rotations[index % rotations.length];
-            
-            return (
-              <button
-                key={announcement.id}
-                onClick={() => setSelectedAnnouncement(announcement)}
-                className="group relative flex-shrink-0 w-64 rounded-sm p-4 transition-all duration-300 hover:-translate-y-2 hover:rotate-0 text-left cursor-pointer"
-                style={{
-                  transform: `rotate(${rotation})`,
-                  animationDelay: `${index * 100}ms`,
-                  background: 'linear-gradient(135deg, #fffef5 0%, #fefcf3 50%, #fdf9e8 100%)',
-                  boxShadow: '0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.06), 0 4px 4px rgba(0,0,0,0.04), 0 8px 8px rgba(0,0,0,0.02), 2px 4px 12px rgba(0,0,0,0.08)',
-                }}
-              >
-                {/* Paper texture overlay */}
-                <div 
-                  className="absolute inset-0 rounded-sm opacity-30 pointer-events-none"
-                  style={{
-                    backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")',
-                  }}
-                />
-                
-                {/* Folded corner effect */}
-                <div 
-                  className="absolute top-0 right-0 w-6 h-6 pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.03) 50%, rgba(0,0,0,0.06) 100%)',
-                  }}
-                />
+      {/* Glass Container */}
+      <div className="relative bg-card/60 backdrop-blur-md border border-border/50 shadow-lg rounded-2xl p-4 overflow-hidden">
+        {/* Decorative gradient accent */}
+        <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-[hsl(var(--blue))] via-[hsl(var(--turquoise))] to-[hsl(var(--light-blue))]" />
+        
+        {/* Announcement Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {announcements.map((announcement) => (
+            <button
+              key={announcement.id}
+              onClick={() => setSelectedAnnouncement(announcement)}
+              className="group relative bg-background/80 border border-border/50 rounded-xl p-4 text-left transition-all duration-300 hover:border-[hsl(var(--turquoise))]/40 hover:shadow-lg hover:shadow-[hsl(var(--turquoise))]/5 hover:-translate-y-0.5"
+            >
+              {/* Type Badge */}
+              <span className={`inline-block px-2 py-0.5 text-xs font-medium rounded-full mb-2 ${getTypeStyles(announcement.type)}`}>
+                {announcement.type}
+              </span>
+              
+              {/* Content */}
+              <p className="text-sm text-foreground/90 line-clamp-3 leading-relaxed mb-3">
+                {announcement.content}
+              </p>
+              
+              {/* Date */}
+              <span className="text-xs text-muted-foreground">
+                {announcement.date}
+              </span>
 
-                {/* Pin Icon - positioned at top center */}
-                <div 
-                  className={`absolute ${getPinColor(announcement.type)} drop-shadow-md`}
-                  style={{ top: '-8px', left: '50%', marginLeft: '-12px' }}
-                >
-                  <Pin className="h-6 w-6 fill-current" style={{ transform: 'rotate(45deg)' }} />
-                </div>
-
-                {/* Type Chip */}
-                <div className="mt-4 mb-3 relative">
-                  <span
-                    className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${getTypeStyles(announcement.type)}`}
-                  >
-                    {announcement.type}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <p className="text-sm text-stone-700 line-clamp-3 leading-relaxed relative font-medium">
-                  {announcement.content}
-                </p>
-
-                {/* Date */}
-                <div className="mt-3 pt-3 border-t border-stone-200/60 flex items-center justify-end gap-1 text-xs text-stone-500 relative">
-                  <Calendar className="h-3 w-3" />
-                  <span>{announcement.date}</span>
-                </div>
-              </button>
-            );
-          })}
+              {/* Hover indicator */}
+              <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                <ChevronRight className="h-4 w-4 text-[hsl(var(--turquoise))]" />
+              </div>
+            </button>
+          ))}
         </div>
-      </div>
       </div>
 
       {/* Announcement Detail Dialog */}
       <Dialog open={!!selectedAnnouncement} onOpenChange={() => setSelectedAnnouncement(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <div className="flex items-center gap-2 mb-2">
-              <span
-                className={`text-xs font-semibold px-2.5 py-1 rounded-full ${getTypeStyles(selectedAnnouncement?.type || '')}`}
-              >
-                {selectedAnnouncement?.type}
-              </span>
-              <span className="text-xs text-muted-foreground flex items-center gap-1">
-                <Calendar className="h-3 w-3" />
+            <DialogTitle className="flex items-center gap-2">
+              {selectedAnnouncement && (
+                <span className={`inline-block px-2 py-0.5 text-xs font-medium rounded-full ${getTypeStyles(selectedAnnouncement.type)}`}>
+                  {selectedAnnouncement.type}
+                </span>
+              )}
+              <span className="text-muted-foreground text-sm font-normal">
                 {selectedAnnouncement?.date}
               </span>
-            </div>
-            <DialogTitle className="text-lg font-semibold text-foreground">
-              Announcement Details
             </DialogTitle>
           </DialogHeader>
-          <div className="mt-4">
-            <p className="text-sm text-foreground/80 leading-relaxed">
+          <div className="mt-2">
+            <p className="text-foreground leading-relaxed">
               {selectedAnnouncement?.content}
             </p>
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+    </section>
   );
 }
