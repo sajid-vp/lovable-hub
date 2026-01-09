@@ -130,10 +130,10 @@ export function Announcements() {
 
           <Link
             to="/announcements"
-            className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-primary/80 group"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 group"
           >
             View all
-            <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+            <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </div>
