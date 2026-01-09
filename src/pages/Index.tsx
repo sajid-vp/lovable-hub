@@ -1,19 +1,16 @@
-import { useState } from "react";
 import { useAuthContext } from "@/contexts/AuthContext";
-import { Header } from "@/components/Header";
-import { Sidebar } from "@/components/Sidebar";
 import { PublicHeader } from "@/components/landing/PublicHeader";
 import { PublicLanding } from "@/components/landing/PublicLanding";
 import { PublicFooter } from "@/components/landing/PublicFooter";
+import { FloatingControls } from "@/components/dashboard/FloatingControls";
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
-import { NewsFeed } from "@/components/dashboard/NewsFeed";
-import { Announcements } from "@/components/dashboard/Announcements";
+import { CombinedFeed } from "@/components/dashboard/CombinedFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
+import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
 
 export default function Index() {
   const { isAuthenticated } = useAuthContext();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Public landing page for visitors
   if (!isAuthenticated) {
@@ -28,32 +25,34 @@ export default function Index() {
     );
   }
 
-  // Authenticated dashboard for employees
+  // Authenticated dashboard - no navbar, full-width layout
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
-      <div className="flex flex-1">
-        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <main className="flex-1 md:ml-64 p-4 md:p-6 lg:p-8">
-          <div className="max-w-7xl mx-auto space-y-8">
-            <WelcomeBanner />
-            <QuickLinks />
+    <div className="min-h-screen bg-background">
+      <FloatingControls />
+      
+      <main className="container max-w-6xl py-8 px-4 pt-20">
+        <div className="space-y-8">
+          {/* Welcome Section */}
+          <WelcomeBanner />
+          
+          {/* Quick Access Grid */}
+          <QuickLinks />
+          
+          {/* Content Grid: News/Announcements + Events/Birthdays */}
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Main content - News & Announcements */}
+            <div className="lg:col-span-2">
+              <CombinedFeed />
+            </div>
             
-            <div className="grid lg:grid-cols-3 gap-8">
-              {/* Main content - News */}
-              <div className="lg:col-span-2">
-                <NewsFeed />
-              </div>
-              
-              {/* Sidebar widgets */}
-              <div className="space-y-6">
-                <Announcements />
-                <UpcomingEvents />
-              </div>
+            {/* Right sidebar widgets */}
+            <div className="space-y-6">
+              <UpcomingEvents />
+              <TeamBirthdays />
             </div>
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   );
 }

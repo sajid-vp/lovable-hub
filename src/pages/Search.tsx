@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { Search as SearchIcon, FileText, Newspaper, Users, Filter } from "lucide-react";
+import { useSearchParams, Link } from "react-router-dom";
+import { Search as SearchIcon, FileText, Newspaper, Users } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PageLayout } from "@/components/layouts/PageLayout";
 import { mockNews } from "@/data/mockData";
 
 interface SearchResult {
@@ -67,10 +67,9 @@ export default function Search() {
   };
 
   return (
-    <div className="container max-w-4xl py-8 px-4">
-      {/* Search header */}
+    <PageLayout title="Search Portal">
+      {/* Search input */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold mb-4">Search Portal</h1>
         <form onSubmit={handleSearch} className="relative">
           <SearchIcon className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -105,28 +104,30 @@ export default function Search() {
                 filteredResults.map((result) => {
                   const Icon = getTypeIcon(result.type);
                   return (
-                    <Card key={result.id} className="hover:shadow-md transition-shadow">
-                      <CardContent className="p-4">
-                        <div className="flex items-start gap-4">
-                          <div className="h-10 w-10 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
-                            <Icon className="h-5 w-5 text-muted-foreground" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
-                              <h3 className="font-medium hover:text-primary transition-colors">
-                                {result.title}
-                              </h3>
-                              <Badge variant="outline" className="text-xs capitalize">
-                                {result.type}
-                              </Badge>
+                    <Link key={result.id} to={result.url}>
+                      <Card className="hover:shadow-md transition-shadow">
+                        <CardContent className="p-4">
+                          <div className="flex items-start gap-4">
+                            <div className="h-10 w-10 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
+                              <Icon className="h-5 w-5 text-muted-foreground" />
                             </div>
-                            <p className="text-sm text-muted-foreground line-clamp-2">
-                              {result.description}
-                            </p>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <h3 className="font-medium hover:text-primary transition-colors">
+                                  {result.title}
+                                </h3>
+                                <Badge variant="outline" className="text-xs capitalize">
+                                  {result.type}
+                                </Badge>
+                              </div>
+                              <p className="text-sm text-muted-foreground line-clamp-2">
+                                {result.description}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      </CardContent>
-                    </Card>
+                        </CardContent>
+                      </Card>
+                    </Link>
                   );
                 })
               ) : (
@@ -152,6 +153,6 @@ export default function Search() {
           </p>
         </div>
       )}
-    </div>
+    </PageLayout>
   );
 }
