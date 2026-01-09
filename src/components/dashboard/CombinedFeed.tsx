@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Pin, ChevronRight, AlertCircle, CheckCircle, Info } from "lucide-react";
+import { Pin, ChevronRight, AlertCircle, CheckCircle, Info, Newspaper } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,10 +28,26 @@ export function CombinedFeed() {
 
   return (
     <section className="animate-fade-in" style={{ animationDelay: "150ms" }}>
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <div className="flex items-center justify-between mb-4">
-          <TabsList className="bg-muted/70 p-1 rounded-xl">
-            <TabsTrigger 
+      {/* Enhanced Section Header */}
+      <div className="flex items-center gap-2 mb-4">
+        <div className="h-6 w-6 rounded-lg bg-gradient-to-br from-[hsl(var(--turquoise))]/20 to-[hsl(var(--teal))]/10 flex items-center justify-center">
+          <Newspaper className="h-3 w-3 text-[hsl(var(--teal))]" />
+        </div>
+        <h2 className="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          News & Announcements
+        </h2>
+        <div className="flex-1 h-[2px] bg-gradient-to-r from-[hsl(var(--turquoise))]/50 via-[hsl(var(--teal))]/20 to-transparent rounded-full" />
+      </div>
+
+      {/* Glass Container */}
+      <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
+        {/* Top gradient accent */}
+        <div className="absolute top-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-[hsl(var(--turquoise))]/50 to-transparent rounded-full" />
+
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <div className="flex items-center justify-between mb-4">
+            <TabsList className="bg-muted/70 p-1 rounded-xl">
+              <TabsTrigger
               value="news" 
               className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-[hsl(var(--turquoise))] data-[state=active]:to-[hsl(var(--teal))] data-[state=active]:text-white data-[state=active]:shadow-lg transition-all rounded-lg px-4"
             >
@@ -158,6 +174,7 @@ export function CombinedFeed() {
           })}
         </TabsContent>
       </Tabs>
+      </div>
     </section>
   );
 }
