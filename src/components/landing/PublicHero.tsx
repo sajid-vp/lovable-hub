@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogIn, Building2, Eye, EyeOff } from "lucide-react";
+import { LogIn, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuthContext } from "@/contexts/AuthContext";
+import logo from "@/assets/logo.png";
 
 export function PublicHero() {
   const [email, setEmail] = useState("");
@@ -36,11 +37,12 @@ export function PublicHero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Welcome text */}
           <div className="text-primary-foreground">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 rounded-xl bg-white/10 backdrop-blur">
-                <Building2 className="h-8 w-8" />
-              </div>
-              <span className="text-xl font-semibold">Intranet Portal</span>
+            <div className="mb-8">
+              <img 
+                src={logo} 
+                alt="Sharjah Education Academy" 
+                className="h-16 md:h-20 w-auto brightness-0 invert"
+              />
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
