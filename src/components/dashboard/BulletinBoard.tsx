@@ -50,30 +50,52 @@ const getPinColor = (type: string) => {
 
 export function BulletinBoard() {
   return (
-    <div className="bg-card/60 backdrop-blur-md rounded-xl border border-border/50 overflow-hidden">
+    <div className="relative rounded-xl border-4 border-amber-900/40 overflow-hidden shadow-lg">
+      {/* Corkboard texture background */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(135deg, #c9a66b 0%, #b8956a 25%, #d4a96a 50%, #c49a5f 75%, #b88f55 100%)',
+        }}
+      />
+      {/* Cork texture noise overlay */}
+      <div 
+        className="absolute inset-0 opacity-40"
+        style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'cork\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23cork)\'/%3E%3C/svg%3E")',
+        }}
+      />
+      {/* Subtle vignette */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          boxShadow: 'inset 0 0 60px rgba(0,0,0,0.15)',
+        }}
+      />
+
       {/* Header */}
-      <div className="px-4 py-3 border-b border-border/30">
+      <div className="relative px-4 py-3 border-b border-amber-900/20">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Pin className="h-4 w-4 text-primary" />
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-foreground/80">
+            <Pin className="h-4 w-4 text-amber-900" />
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-amber-950">
               Bulletin Board
             </h3>
           </div>
           <Link
             to="/announcements"
-            className="text-sm text-primary hover:text-primary/80 transition-colors flex items-center gap-1"
+            className="text-sm text-amber-900 hover:text-amber-800 transition-colors flex items-center gap-1 font-medium"
           >
             View all
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-2 h-0.5 bg-gradient-to-r from-primary/60 via-primary/30 to-transparent rounded-full" />
+        <div className="mt-2 h-0.5 bg-gradient-to-r from-amber-900/40 via-amber-800/20 to-transparent rounded-full" />
       </div>
 
       {/* Cards Container */}
-      <div className="p-4">
-        <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
+      <div className="relative p-4 pt-6">
+        <div className="flex gap-6 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-amber-900/30 scrollbar-track-transparent">
           {announcements.map((announcement, index) => {
             // Subtle rotation variations for pinned note effect
             const rotations = ['-1deg', '0.5deg', '-0.8deg', '1deg', '-0.5deg'];
