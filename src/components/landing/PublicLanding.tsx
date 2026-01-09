@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Clock, Bell, ChevronRight, ArrowRight, Users, BookOpen, Award, Building2 } from "lucide-react";
+import { Calendar, MapPin, Clock, Bell, ChevronRight, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { mockNews } from "@/data/mockData";
@@ -36,291 +36,264 @@ const announcements = [
     title: "Registration Open for Spring Programs",
     message: "Enroll now for our upcoming professional development courses starting February 2025.",
     isNew: true,
+    date: "Jan 8, 2025",
   },
   {
     id: "2",
     title: "Campus Closure Notice - January 15",
     message: "SEA campus will be closed for scheduled maintenance.",
     isNew: false,
+    date: "Jan 5, 2025",
   },
   {
     id: "3",
     title: "New Partnership Announcement",
     message: "SEA welcomes new institutional partners for the 2025 academic year.",
     isNew: true,
+    date: "Jan 3, 2025",
   },
 ];
 
-const stats = [
-  { value: "2,500+", label: "Educators Trained", icon: Users },
-  { value: "45+", label: "Programs Offered", icon: BookOpen },
-  { value: "15+", label: "Years of Excellence", icon: Award },
-  { value: "50+", label: "Partner Organizations", icon: Building2 },
+const nurseryNews = [
+  {
+    id: "1",
+    title: "New Nursery Curriculum Framework Launched",
+    excerpt: "Sharjah Nurseries introduces an enhanced early childhood curriculum focusing on play-based learning.",
+    date: "2025-01-06",
+    image: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=400&fit=crop",
+  },
+  {
+    id: "2",
+    title: "Teacher Training Program for Early Childhood Educators",
+    excerpt: "Professional development workshops for nursery staff across Sharjah.",
+    date: "2025-01-02",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop",
+  },
 ];
 
 export function PublicLanding() {
   const featuredNews = mockNews[0];
-  const recentNews = mockNews.slice(1, 4);
+  const seaNews = mockNews.slice(1, 4);
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section - Full Width with Image */}
-      <section className="relative min-h-[70vh] flex items-center">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1920&h=1080&fit=crop"
-            alt="Education"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-transparent"></div>
-        </div>
-        
-        <div className="container px-4 relative z-10">
-          <div className="max-w-2xl text-white">
-            <Badge className="mb-6 bg-white/20 text-white border-0 backdrop-blur-sm">
-              Sharjah Education Academy
-            </Badge>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
-              Empowering Educators, Transforming Education
-            </h1>
-            <p className="text-lg md:text-xl opacity-90 mb-8 leading-relaxed">
-              Your gateway to professional development, educational resources, and the latest updates from Sharjah Education Academy.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="rounded-full px-8 bg-white text-primary hover:bg-white/90">
-                Explore Programs <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8 border-white text-white hover:bg-white/10">
-                Learn More
+      {/* Announcement Banner */}
+      {announcements[0]?.isNew && (
+        <div className="bg-orange/10 border-b border-orange/20">
+          <div className="container px-4 py-3">
+            <div className="flex items-center justify-center gap-3 text-sm">
+              <Bell className="h-4 w-4 text-orange" />
+              <span className="font-medium">{announcements[0].title}:</span>
+              <span className="text-muted-foreground hidden sm:inline">{announcements[0].message}</span>
+              <Button variant="link" size="sm" className="text-orange p-0 h-auto">
+                Learn more <ChevronRight className="h-3 w-3 ml-1" />
               </Button>
             </div>
           </div>
         </div>
-      </section>
+      )}
 
-      {/* Stats Section */}
-      <section className="bg-primary text-white">
-        <div className="container px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4">
-            {stats.map((stat, index) => (
-              <div 
-                key={stat.label} 
-                className={`py-10 text-center ${index !== stats.length - 1 ? 'border-r border-white/20' : ''}`}
-              >
-                <stat.icon className="h-8 w-8 mx-auto mb-3 opacity-80" />
-                <div className="font-display text-3xl md:text-4xl font-bold mb-1">{stat.value}</div>
-                <div className="text-sm opacity-80">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Latest News Section */}
-      <section className="py-16 md:py-20">
-        <div className="container px-4">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-2">Latest News</h2>
-              <p className="text-muted-foreground">Stay updated with the latest from SEA</p>
-            </div>
-            <Button variant="outline" className="hidden md:flex rounded-full">
-              View All News <ChevronRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Featured Article */}
+      {/* Hero - News Focused */}
+      <section className="border-b">
+        <div className="container px-4 py-8 md:py-12">
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Featured Story */}
             {featuredNews && (
-              <article className="group cursor-pointer">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl mb-5">
+              <article className="lg:col-span-2 group cursor-pointer">
+                <div className="relative aspect-[16/9] overflow-hidden rounded-xl mb-4">
                   <img
                     src={featuredNews.imageUrl}
                     alt={featuredNews.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-5 left-5 right-5">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
                     <Badge className="bg-turquoise text-white border-0 mb-3">
                       {featuredNews.category}
                     </Badge>
-                    <h3 className="font-display text-xl md:text-2xl font-bold text-white leading-tight">
+                    <h1 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-2">
                       {featuredNews.title}
-                    </h3>
+                    </h1>
+                    <p className="text-white/80 hidden md:block line-clamp-2">{featuredNews.excerpt}</p>
+                    <div className="flex items-center gap-3 mt-3 text-sm text-white/70">
+                      <span>{featuredNews.author}</span>
+                      <span>•</span>
+                      <span>{new Date(featuredNews.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                    </div>
                   </div>
-                </div>
-                <p className="text-muted-foreground line-clamp-2 mb-3">{featuredNews.excerpt}</p>
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <span>{featuredNews.author}</span>
-                  <span>•</span>
-                  <span>{new Date(featuredNews.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                 </div>
               </article>
             )}
 
-            {/* Recent Articles */}
-            <div className="space-y-6">
-              {recentNews.map((news) => (
-                <article key={news.id} className="group cursor-pointer flex gap-5">
-                  <div className="w-32 h-24 shrink-0 overflow-hidden rounded-xl">
-                    <img
-                      src={news.imageUrl}
-                      alt={news.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <Badge variant="outline" className="mb-2 text-xs">
-                      {news.category}
-                    </Badge>
-                    <h4 className="font-semibold line-clamp-2 group-hover:text-primary transition-colors mb-1">
-                      {news.title}
-                    </h4>
-                    <span className="text-xs text-muted-foreground">
-                      {new Date(news.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                    </span>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <Button variant="outline" className="w-full mt-8 md:hidden rounded-full">
-            View All News <ChevronRight className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
-      </section>
-
-      {/* Events Section */}
-      <section className="py-16 md:py-20 bg-muted/30">
-        <div className="container px-4">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-2">Upcoming Events</h2>
-              <p className="text-muted-foreground">Join us at our upcoming programs and workshops</p>
-            </div>
-            <Button variant="outline" className="hidden md:flex rounded-full">
-              View Calendar <Calendar className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {upcomingEvents.map((event) => (
-              <article 
-                key={event.id}
-                className="group cursor-pointer bg-card rounded-2xl overflow-hidden border hover:shadow-lg transition-shadow"
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={event.image}
-                    alt={event.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="h-12 w-12 rounded-xl bg-primary/10 flex flex-col items-center justify-center">
-                      <span className="font-display text-lg font-bold text-primary leading-none">
-                        {new Date(event.date).getDate()}
-                      </span>
-                      <span className="text-xs text-primary uppercase">
-                        {new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}
-                      </span>
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                        <Clock className="h-3 w-3" />
-                        <span>{event.time}</span>
-                      </div>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                        <MapPin className="h-3 w-3" />
-                        <span>{event.location}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <h3 className="font-semibold group-hover:text-primary transition-colors">
-                    {event.title}
-                  </h3>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Announcements Section */}
-      <section className="py-16 md:py-20">
-        <div className="container px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                Important Announcements
-              </h2>
-              <div className="space-y-4">
+            {/* Announcements Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="flex items-center gap-2 mb-4">
+                <Bell className="h-5 w-5 text-primary" />
+                <h2 className="font-display text-lg font-semibold">Announcements</h2>
+              </div>
+              <div className="space-y-3">
                 {announcements.map((item) => (
                   <div 
                     key={item.id}
-                    className="p-5 rounded-xl border bg-card hover:bg-muted/50 transition-colors cursor-pointer group"
+                    className="p-4 rounded-lg border bg-card hover:bg-muted/50 transition-colors cursor-pointer group"
                   >
-                    <div className="flex items-start gap-3">
-                      <div className="h-10 w-10 rounded-full bg-orange/10 flex items-center justify-center shrink-0">
-                        <Bell className="h-5 w-5 text-orange" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-semibold group-hover:text-primary transition-colors">
-                            {item.title}
-                          </h4>
-                          {item.isNew && (
-                            <Badge className="bg-orange/10 text-orange border-0 text-xs">New</Badge>
-                          )}
-                        </div>
-                        <p className="text-sm text-muted-foreground">{item.message}</p>
+                    <div className="flex items-start gap-2">
+                      {item.isNew && (
+                        <span className="shrink-0 h-2 w-2 mt-2 rounded-full bg-orange animate-pulse"></span>
+                      )}
+                      <div>
+                        <h4 className="font-medium text-sm group-hover:text-primary transition-colors mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-xs text-muted-foreground line-clamp-2">{item.message}</p>
+                        <span className="text-xs text-muted-foreground/70 mt-2 block">{item.date}</span>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&h=600&fit=crop"
-                alt="Campus"
-                className="rounded-2xl shadow-2xl"
-              />
-              <div className="absolute -bottom-6 -left-6 bg-primary text-white p-6 rounded-2xl shadow-xl">
-                <div className="font-display text-4xl font-bold">15+</div>
-                <div className="text-sm opacity-90">Years of Excellence</div>
-              </div>
+              <Button variant="outline" size="sm" className="w-full mt-4">
+                View all announcements
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative py-20 md:py-28">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1920&h=600&fit=crop"
-            alt="Students"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-primary/85"></div>
+      {/* SEA News + Nurseries News */}
+      <section className="py-10 md:py-14">
+        <div className="container px-4">
+          <div className="grid lg:grid-cols-3 gap-10">
+            {/* SEA News */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="font-display text-xl md:text-2xl font-bold">SEA News</h2>
+                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+                  View all <ChevronRight className="h-4 w-4 ml-1" />
+                </Button>
+              </div>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+                {seaNews.map((news) => (
+                  <article key={news.id} className="group cursor-pointer">
+                    <div className="aspect-[4/3] overflow-hidden rounded-lg mb-3">
+                      <img
+                        src={news.imageUrl}
+                        alt={news.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <Badge variant="outline" className="mb-2 text-xs">{news.category}</Badge>
+                    <h3 className="font-medium text-sm line-clamp-2 group-hover:text-primary transition-colors mb-1">
+                      {news.title}
+                    </h3>
+                    <span className="text-xs text-muted-foreground">
+                      {new Date(news.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                    </span>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            {/* Sharjah Nurseries News */}
+            <div className="lg:col-span-1">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-8 rounded-full bg-green/10 flex items-center justify-center">
+                    <span className="text-green font-bold text-xs">SN</span>
+                  </div>
+                  <h2 className="font-display text-lg font-semibold">Sharjah Nurseries</h2>
+                </div>
+                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary p-0">
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+              <div className="space-y-4">
+                {nurseryNews.map((news) => (
+                  <article key={news.id} className="group cursor-pointer flex gap-4">
+                    <div className="w-20 h-20 shrink-0 overflow-hidden rounded-lg">
+                      <img
+                        src={news.image}
+                        alt={news.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-medium text-sm line-clamp-2 group-hover:text-primary transition-colors mb-1">
+                        {news.title}
+                      </h4>
+                      <span className="text-xs text-muted-foreground">
+                        {new Date(news.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                      </span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <a href="https://sn.ac.ae" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm" className="w-full mt-4">
+                  Visit Sharjah Nurseries <ArrowRight className="h-3 w-3 ml-2" />
+                </Button>
+              </a>
+            </div>
+          </div>
         </div>
-        <div className="container px-4 relative z-10 text-center text-white">
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Ready to Start Your Journey?
-          </h2>
-          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-            Explore our programs and take the next step in your educational career with Sharjah Education Academy.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" className="rounded-full px-8 bg-white text-primary hover:bg-white/90">
-              Explore Programs
+      </section>
+
+      {/* Upcoming Events */}
+      <section className="py-10 md:py-14 bg-muted/30 border-y">
+        <div className="container px-4">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Calendar className="h-5 w-5 text-primary" />
+              </div>
+              <div>
+                <h2 className="font-display text-xl md:text-2xl font-bold">Upcoming Events</h2>
+                <p className="text-sm text-muted-foreground">Workshops, conferences, and programs</p>
+              </div>
+            </div>
+            <Button variant="outline" className="hidden md:flex">
+              View Calendar
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8 border-white text-white hover:bg-white/10">
-              Contact Us
-            </Button>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {upcomingEvents.map((event) => (
+              <article 
+                key={event.id}
+                className="group cursor-pointer bg-card rounded-xl overflow-hidden border hover:shadow-md transition-all"
+              >
+                <div className="aspect-video overflow-hidden relative">
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 bg-white rounded-lg px-3 py-2 text-center shadow-sm">
+                    <span className="font-display text-xl font-bold text-primary block leading-none">
+                      {new Date(event.date).getDate()}
+                    </span>
+                    <span className="text-xs text-muted-foreground uppercase">
+                      {new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-semibold group-hover:text-primary transition-colors mb-2">
+                    {event.title}
+                  </h3>
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <span className="flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      {event.time.split(' - ')[0]}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="h-3 w-3" />
+                      {event.location}
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
