@@ -1,5 +1,6 @@
 import { Sun, Moon, CloudSun } from "lucide-react";
 import { useAuthContext } from "@/contexts/AuthContext";
+import educationHero from "@/assets/education-hero.jpg";
 
 export function WelcomeBanner() {
   const { user } = useAuthContext();
@@ -33,7 +34,7 @@ export function WelcomeBanner() {
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&h=600&fit=crop')`,
+          backgroundImage: `url(${educationHero})`,
         }}
       />
       
