@@ -4,6 +4,7 @@ import { PublicLanding } from "@/components/landing/PublicLanding";
 import { PublicFooter } from "@/components/landing/PublicFooter";
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
 import { AnnouncementsTicker } from "@/components/dashboard/AnnouncementsTicker";
+import { BulletinBoard } from "@/components/dashboard/BulletinBoard";
 import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
 import { LeadershipMessage } from "@/components/dashboard/LeadershipMessage";
@@ -61,6 +62,9 @@ export default function Index() {
           
           {/* Apps - Full Width */}
           <Apps />
+          
+          {/* Bulletin Board */}
+          <BulletinBoard />
           
           {/* Content Grid: News/Announcements + Events/Birthdays */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
