@@ -1,14 +1,62 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { useAuthContext } from "@/contexts/AuthContext";
+import { Header } from "@/components/Header";
+import { Sidebar } from "@/components/Sidebar";
+import { PublicHero } from "@/components/landing/PublicHero";
+import { PublicFeatures } from "@/components/landing/PublicFeatures";
+import { PublicNews } from "@/components/landing/PublicNews";
+import { PublicFooter } from "@/components/landing/PublicFooter";
+import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
+import { QuickLinks } from "@/components/dashboard/QuickLinks";
+import { NewsFeed } from "@/components/dashboard/NewsFeed";
+import { Announcements } from "@/components/dashboard/Announcements";
+import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 
-const Index = () => {
+export default function Index() {
+  const { isAuthenticated } = useAuthContext();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Public landing page for visitors
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1">
+          <PublicHero />
+          <PublicFeatures />
+          <PublicNews />
+        </main>
+        <PublicFooter />
+      </div>
+    );
+  }
+
+  // Authenticated dashboard for employees
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen flex flex-col">
+      <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
+      <div className="flex flex-1">
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <main className="flex-1 md:ml-64 p-4 md:p-6 lg:p-8">
+          <div className="max-w-7xl mx-auto space-y-8">
+            <WelcomeBanner />
+            <QuickLinks />
+            
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Main content - News */}
+              <div className="lg:col-span-2">
+                <NewsFeed />
+              </div>
+              
+              {/* Sidebar widgets */}
+              <div className="space-y-6">
+                <Announcements />
+                <UpcomingEvents />
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
   );
-};
-
-export default Index;
+}
