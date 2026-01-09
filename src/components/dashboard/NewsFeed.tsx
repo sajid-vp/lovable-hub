@@ -36,10 +36,10 @@ export function NewsFeed() {
     <section className="animate-fade-in" style={{ animationDelay: "150ms" }}>
       {/* Section Header */}
       <div className="flex items-center gap-2 mb-4">
-        <h2 className="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
           Latest News
         </h2>
-        <div className="flex-1 h-[2px] bg-gradient-to-r from-[hsl(var(--turquoise))]/50 via-[hsl(var(--teal))]/20 to-transparent rounded-full" />
+        <div className="flex-1 h-[2px] bg-[hsl(var(--turquoise))]/50 rounded-full" />
       </div>
 
       {/* Category Filter Tabs */}
@@ -61,8 +61,6 @@ export function NewsFeed() {
 
       {/* Glass Container */}
       <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
-        {/* Top gradient accent */}
-        <div className="absolute top-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-[hsl(var(--turquoise))]/50 to-transparent rounded-full" />
 
         {/* Carousel */}
         <div className="overflow-hidden" ref={emblaRef}>

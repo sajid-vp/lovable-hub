@@ -21,16 +21,14 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
     <section className="animate-fade-in">
       {/* Section Header */}
       <div className="flex items-center gap-2 mb-4">
-        <h2 className="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
           {title}
         </h2>
-        <div className="flex-1 h-[2px] bg-gradient-to-r from-primary/50 via-primary/20 to-transparent rounded-full" />
+        <div className="flex-1 h-[2px] bg-primary/40 rounded-full" />
       </div>
 
       {/* Glass Container */}
       <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
-        {/* Decorative gradient accent */}
-        <div className="absolute top-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent rounded-full" />
         
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {items.map((item, index) => {
