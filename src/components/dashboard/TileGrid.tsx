@@ -9,6 +9,7 @@ interface TileGridProps {
   title: string;
   items: TileItem[];
   badgeCounts?: Record<string, number>;
+  columns?: number;
 }
 
 function isExternalLink(item: TileItem): item is ExternalLinkType {
@@ -17,12 +18,11 @@ function isExternalLink(item: TileItem): item is ExternalLinkType {
 
 export function TileGrid({ title, items, badgeCounts = {} }: TileGridProps) {
   return (
-    <section className="animate-fade-in" style={{ animationDelay: "100ms" }}>
-      <h2 className="text-sm font-semibold mb-3 flex items-center gap-2 text-muted-foreground uppercase tracking-wide">
-        <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[hsl(var(--turquoise))] to-[hsl(var(--teal))]" />
+    <section className="animate-fade-in">
+      <h2 className="text-xs font-semibold mb-3 flex items-center gap-2 text-muted-foreground/70 uppercase tracking-widest">
         {title}
       </h2>
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
+      <div className="flex flex-wrap gap-2">
         {items.map((item, index) => {
           const isExternal = isExternalLink(item);
           const TileWrapper = isExternal ? "a" : Link;
@@ -34,37 +34,33 @@ export function TileGrid({ title, items, badgeCounts = {} }: TileGridProps) {
             <TileWrapper
               key={item.id}
               {...(tileProps as any)}
-              className="group relative overflow-hidden rounded-xl p-3 bg-card border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-scale-in"
-              style={{ animationDelay: `${index * 50}ms` }}
+              className="group relative flex items-center gap-3 rounded-xl px-4 py-3 bg-card/80 backdrop-blur-sm border border-border/40 hover:border-primary/30 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 animate-scale-in"
+              style={{ animationDelay: `${index * 30}ms` }}
             >
-              {/* Gradient background on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Subtle gradient on hover */}
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               {/* Badge counter */}
               {badgeCounts[item.id] && (
-                <span className="absolute top-2 right-2 h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--coral))] to-[hsl(var(--orange))] text-white text-[10px] font-bold flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--coral))] to-[hsl(var(--orange))] text-white text-[10px] font-bold flex items-center justify-center shadow-sm">
                   {badgeCounts[item.id]}
-                </span>
-              )}
-
-              {/* External link indicator */}
-              {isExternal && !badgeCounts[item.id] && (
-                <span className="absolute top-2 right-2 text-muted-foreground/50">
-                  <ExternalLink className="h-3 w-3" />
                 </span>
               )}
 
               <div
                 className={cn(
-                  "h-10 w-10 rounded-lg flex items-center justify-center mb-2 transition-all duration-300 group-hover:scale-105 shadow-md",
+                  "h-9 w-9 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-sm",
                   item.color
                 )}
               >
-                <item.icon className="h-5 w-5 text-white" />
+                <item.icon className="h-4.5 w-4.5 text-white" />
               </div>
-              <h3 className="font-medium text-sm group-hover:text-primary transition-colors truncate">
+              <span className="font-medium text-sm group-hover:text-primary transition-colors whitespace-nowrap relative z-10">
                 {item.title}
-              </h3>
+              </span>
+              {isExternal && (
+                <ExternalLink className="h-3 w-3 text-muted-foreground/40 group-hover:text-primary/60 transition-colors" />
+              )}
             </TileWrapper>
           );
         })}
