@@ -51,17 +51,17 @@ const getPinColor = (type: string) => {
 export function BulletinBoard() {
   return (
     <div className="relative p-2 rounded-lg" style={{
-      background: 'linear-gradient(145deg, #5c3d2e 0%, #4a3225 20%, #3d2a1f 50%, #4a3225 80%, #5c3d2e 100%)',
+      background: 'linear-gradient(145deg, hsl(200, 35%, 25%) 0%, hsl(195, 40%, 20%) 20%, hsl(190, 45%, 18%) 50%, hsl(195, 40%, 20%) 80%, hsl(200, 35%, 25%) 100%)',
       boxShadow: '0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -2px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)',
     }}>
-      {/* Wood grain texture overlay */}
+      {/* Frame texture overlay */}
       <div 
         className="absolute inset-0 rounded-lg opacity-20 pointer-events-none"
         style={{
           backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'grain\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.04\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23grain)\'/%3E%3C/svg%3E")',
         }}
       />
-      {/* Inner wood highlight */}
+      {/* Inner frame highlight */}
       <div 
         className="absolute inset-0 rounded-lg pointer-events-none"
         style={{
@@ -69,20 +69,20 @@ export function BulletinBoard() {
         }}
       />
 
-      {/* Inner corkboard */}
+      {/* Inner board */}
       <div className="relative rounded-md overflow-hidden shadow-inner" style={{
-        boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.3), inset 0 0 2px rgba(0,0,0,0.2)',
+        boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.2), inset 0 0 2px rgba(0,0,0,0.15)',
       }}>
-        {/* Corkboard texture background */}
+        {/* Board background - theme gradient */}
         <div 
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(135deg, #c9a66b 0%, #b8956a 25%, #d4a96a 50%, #c49a5f 75%, #b88f55 100%)',
+            background: 'linear-gradient(135deg, hsl(200, 50%, 75%) 0%, hsl(180, 45%, 70%) 50%, hsl(175, 50%, 65%) 100%)',
           }}
         />
-        {/* Cork texture noise overlay */}
+        {/* Texture noise overlay */}
         <div 
-          className="absolute inset-0 opacity-40"
+          className="absolute inset-0 opacity-25"
           style={{
             backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'cork\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23cork)\'/%3E%3C/svg%3E")',
           }}
@@ -91,33 +91,33 @@ export function BulletinBoard() {
         <div 
           className="absolute inset-0 pointer-events-none"
           style={{
-            boxShadow: 'inset 0 0 60px rgba(0,0,0,0.15)',
+            boxShadow: 'inset 0 0 60px rgba(0,0,0,0.1)',
           }}
         />
 
       {/* Header */}
-      <div className="relative px-4 py-3 border-b border-amber-900/20">
+      <div className="relative px-4 py-3 border-b border-primary/20">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Pin className="h-4 w-4 text-amber-900" />
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-amber-950">
+            <Pin className="h-4 w-4 text-primary-foreground/80" />
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/90">
               Bulletin Board
             </h3>
           </div>
           <Link
             to="/announcements"
-            className="text-sm text-amber-900 hover:text-amber-800 transition-colors flex items-center gap-1 font-medium"
+            className="text-sm text-primary-foreground/90 hover:text-primary-foreground transition-colors flex items-center gap-1 font-medium"
           >
             View all
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-2 h-0.5 bg-gradient-to-r from-amber-900/40 via-amber-800/20 to-transparent rounded-full" />
+        <div className="mt-2 h-0.5 bg-gradient-to-r from-primary-foreground/40 via-primary-foreground/20 to-transparent rounded-full" />
       </div>
 
       {/* Cards Container */}
       <div className="relative p-4 pt-6">
-        <div className="flex gap-6 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-amber-900/30 scrollbar-track-transparent">
+        <div className="flex gap-6 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-primary/30 scrollbar-track-transparent">
           {announcements.map((announcement, index) => {
             // Subtle rotation variations for pinned note effect
             const rotations = ['-1deg', '0.5deg', '-0.8deg', '1deg', '-0.5deg'];
