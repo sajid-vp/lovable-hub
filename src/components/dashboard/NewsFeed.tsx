@@ -88,17 +88,17 @@ export function NewsFeed() {
                   
                   {/* Content */}
                   <div className="p-4 flex-1 flex flex-col">
-                    <p className="text-sm font-medium text-[hsl(var(--teal))] mb-2">
+                    <p className="text-xs font-semibold text-[hsl(var(--teal))] mb-2 tracking-wide">
                       {new Date(news.date).toLocaleDateString("en-US", { 
                         day: "numeric", 
                         month: "long", 
                         year: "numeric" 
                       })}
                     </p>
-                    <h3 className="font-bold text-sm line-clamp-2 mb-2 group-hover:text-[hsl(var(--teal))] transition-colors">
+                    <h3 className="font-semibold text-sm line-clamp-2 mb-2 group-hover:text-[hsl(var(--teal))] transition-colors tracking-tight leading-snug">
                       {news.title}
                     </h3>
-                    <p className="text-xs text-muted-foreground line-clamp-3 mb-4 flex-1">
+                    <p className="text-xs text-muted-foreground line-clamp-3 mb-4 flex-1 leading-relaxed font-medium">
                       {news.excerpt}
                     </p>
                     <Link 

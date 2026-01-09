@@ -141,13 +141,13 @@ export function WelcomeBanner() {
             <div className="flex-1 h-[2px] bg-gradient-to-r from-white/40 via-white/20 to-transparent rounded-full max-w-[150px] sm:max-w-xs" />
           </div>
           
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-1 sm:mb-2 drop-shadow-md">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-1 sm:mb-2 drop-shadow-md leading-tight">
             {getGreeting()}, {user?.name?.split(" ")[0]}!
           </h1>
-          <p className="text-sm sm:text-base opacity-90 font-medium mb-1 sm:mb-2">
+          <p className="text-sm sm:text-base opacity-90 font-semibold mb-1 sm:mb-2 tracking-wide">
             {today}
           </p>
-          <p className="text-xs sm:text-sm opacity-80 max-w-lg hidden sm:block">
+          <p className="text-xs sm:text-sm opacity-85 max-w-lg hidden sm:block font-medium leading-relaxed">
             Welcome back to Sharjah Education Academy. Here's what's happening in your organization today.
           </p>
         </div>
