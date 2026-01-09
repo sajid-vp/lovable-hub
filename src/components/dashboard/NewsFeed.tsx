@@ -39,7 +39,7 @@ export function NewsFeed() {
         <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
           Latest News
         </h2>
-        <div className="flex-1 h-[1.5px] bg-[hsl(var(--turquoise))]/30 rounded-full" />
+        <div className="flex-1 h-[1.5px] bg-primary/25 rounded-full" />
       </div>
 
       {/* Category Filter Tabs */}
