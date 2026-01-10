@@ -65,28 +65,29 @@ export default function Index() {
           {/* Apps - Full Width */}
           <Apps />
           
-          {/* Bulletin Board */}
-          <BulletinBoard />
-          
-          {/* Content Grid: News/Announcements + Events/Birthdays */}
+          {/* Content Grid 1: News + Events/Birthdays */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-            {/* Main content - News Feed */}
             <div className="lg:col-span-2">
               <NewsFeed />
             </div>
-            
-            {/* Right sidebar widgets */}
             <div className="space-y-4 sm:space-y-5">
               <UpcomingEvents />
               <TeamBirthdays />
             </div>
           </div>
           
+          {/* Content Grid 2: Bulletin Board + Employee Spotlight */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="lg:col-span-2">
+              <BulletinBoard />
+            </div>
+            <div>
+              <EmployeeSpotlight variant="compact" />
+            </div>
+          </div>
+          
           {/* Social Feed - Full Width */}
           <SocialFeed />
-          
-          {/* Employee Spotlight - Full Width */}
-          <EmployeeSpotlight />
         </div>
       </main>
     </div>
