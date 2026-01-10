@@ -39,13 +39,13 @@ const announcements: Announcement[] = [
 const getTypeStyles = (type: string) => {
   switch (type) {
     case "Important":
-      return "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300";
+      return "border border-rose-500 text-rose-600 dark:text-rose-400 bg-transparent";
     case "Notice":
-      return "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300";
+      return "border border-amber-500 text-amber-600 dark:text-amber-400 bg-transparent";
     case "Update":
-      return "bg-sky-100 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300";
+      return "border border-sky-500 text-sky-600 dark:text-sky-400 bg-transparent";
     default:
-      return "bg-muted text-muted-foreground";
+      return "border border-muted-foreground text-muted-foreground bg-transparent";
   }
 };
 
