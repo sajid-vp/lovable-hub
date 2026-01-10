@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuthContext } from "@/contexts/AuthContext";
 import { cn } from "@/lib/utils";
+import { SearchDropdown } from "@/components/search/SearchDropdown";
 
 interface PageLayoutProps {
   title: string;
@@ -26,6 +27,7 @@ export function PageLayout({ title, children, backTo = "/" }: PageLayoutProps) {
   const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,12 +35,19 @@ export function PageLayout({ title, children, backTo = "/" }: PageLayoutProps) {
       navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery("");
       setSearchOpen(false);
+      setShowDropdown(false);
     }
   };
 
   const handleLogout = () => {
     logout();
     navigate("/");
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    setShowDropdown(value.length >= 2);
   };
 
   return (
@@ -59,11 +68,13 @@ export function PageLayout({ title, children, backTo = "/" }: PageLayoutProps) {
                   type="search"
                   placeholder="Search..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={handleSearchChange}
                   className="border-0 bg-transparent h-8 focus-visible:ring-0 focus-visible:ring-offset-0 px-0"
                   autoFocus
                   onBlur={() => {
-                    if (!searchQuery) setSearchOpen(false);
+                    setTimeout(() => {
+                      if (!searchQuery) setSearchOpen(false);
+                    }, 200);
                   }}
                 />
               )}
@@ -78,6 +89,18 @@ export function PageLayout({ title, children, backTo = "/" }: PageLayoutProps) {
               </Button>
             </div>
           </form>
+          
+          {/* Search Dropdown */}
+          <SearchDropdown
+            query={searchQuery}
+            isOpen={showDropdown && searchOpen}
+            onClose={() => setShowDropdown(false)}
+            onNavigate={() => {
+              setSearchQuery("");
+              setSearchOpen(false);
+            }}
+            className="right-0"
+          />
         </div>
 
         {/* Notifications */}

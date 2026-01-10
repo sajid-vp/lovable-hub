@@ -15,12 +15,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import seaBuilding from "@/assets/sea-building.jpg";
+import { SearchDropdown } from "@/components/search/SearchDropdown";
 
 export function WelcomeBanner() {
   const { user, logout } = useAuthContext();
   const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const getGreeting = () => {
     const hour = new Date().getHours();
@@ -51,12 +53,19 @@ export function WelcomeBanner() {
       navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery("");
       setSearchOpen(false);
+      setShowDropdown(false);
     }
   };
 
   const handleLogout = () => {
     logout();
     navigate("/");
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    setShowDropdown(value.length >= 2);
   };
 
   return (
@@ -115,11 +124,13 @@ export function WelcomeBanner() {
                     type="search"
                     placeholder="Search..."
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={handleSearchChange}
                     className="border-0 bg-transparent h-9 focus-visible:ring-0 focus-visible:ring-offset-0 px-0 text-white placeholder:text-white/60 text-sm"
                     autoFocus
                     onBlur={() => {
-                      if (!searchQuery) setSearchOpen(false);
+                      setTimeout(() => {
+                        if (!searchQuery) setSearchOpen(false);
+                      }, 200);
                     }}
                   />
                 )}
@@ -134,6 +145,19 @@ export function WelcomeBanner() {
                 </Button>
               </div>
             </form>
+            
+            {/* Search Dropdown */}
+            <SearchDropdown
+              query={searchQuery}
+              isOpen={showDropdown && searchOpen}
+              onClose={() => setShowDropdown(false)}
+              onNavigate={() => {
+                setSearchQuery("");
+                setSearchOpen(false);
+              }}
+              variant="banner"
+              className="right-0 sm:left-0 sm:right-auto"
+            />
           </div>
 
           {/* Notifications */}
