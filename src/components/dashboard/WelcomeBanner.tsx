@@ -78,9 +78,9 @@ export function WelcomeBanner() {
         }}
       />
       
-      {/* Gradient overlay - brand blue to teal */}
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(40deg, rgba(114, 160, 213, 0.85) 0%, rgba(104, 204, 202, 0.75) 100%)' }} />
-      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(114,160,213,0.6)] via-transparent to-transparent" />
+      {/* Gradient overlay - matching announcements ticker */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--light-blue))]/90 to-[hsl(var(--turquoise))]/85" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--light-blue))]/50 via-transparent to-transparent" />
       
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
