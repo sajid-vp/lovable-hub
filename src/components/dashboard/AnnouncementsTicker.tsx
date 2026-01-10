@@ -27,13 +27,13 @@ const announcements = [
 const getTypeStyles = (type: string) => {
   switch (type) {
     case "Important":
-      return "bg-white/25 text-white";
+      return "border border-white/70 text-white bg-transparent";
     case "Notice":
-      return "bg-white/20 text-white/95";
+      return "border border-white/60 text-white/95 bg-transparent";
     case "Update":
-      return "bg-white/15 text-white/90";
+      return "border border-white/50 text-white/90 bg-transparent";
     default:
-      return "bg-white/15 text-white/90";
+      return "border border-white/50 text-white/90 bg-transparent";
   }
 };
 
