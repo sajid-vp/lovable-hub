@@ -16,7 +16,11 @@ function isExternalLink(item: TileItem): item is ExternalLinkType {
   return "external" in item && item.external === true;
 }
 
-export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGridProps) {
+export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGridProps) {
+  const gridColsClass = columns === 3 
+    ? "grid-cols-2 md:grid-cols-3" 
+    : "grid-cols-2 md:grid-cols-4";
+
   return (
     <section className="animate-fade-in">
       {/* Section Header */}
@@ -30,7 +34,7 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
       {/* Glass Container */}
       <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className={`grid ${gridColsClass} gap-3`}>
           {items.map((item, index) => {
             const isExternal = isExternalLink(item);
             const TileWrapper = isExternal ? "a" : Link;
