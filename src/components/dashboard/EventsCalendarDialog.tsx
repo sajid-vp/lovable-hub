@@ -1,16 +1,14 @@
 import { useState } from "react";
-import { format, isSameDay, isSameMonth } from "date-fns";
-import { ChevronLeft, ChevronRight, Clock, MapPin, Calendar as CalendarIcon } from "lucide-react";
+import { format, isSameDay, isSameMonth, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isToday, isSameDay as isDaySame } from "date-fns";
+import { ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
 } from "@/components/ui/dialog";
-import { Calendar } from "@/components/ui/calendar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { mockEvents, type Event } from "@/data/mockData";
+import { Button } from "@/components/ui/button";
 
 interface EventsCalendarDialogProps {
   open: boolean;
@@ -18,104 +16,136 @@ interface EventsCalendarDialogProps {
 }
 
 export function EventsCalendarDialog({ open, onOpenChange }: EventsCalendarDialogProps) {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
 
-  // Get events for the selected date
-  const eventsForSelectedDate = selectedDate
+  // Get events for the selected date or current month
+  const eventsToShow = selectedDate
     ? mockEvents.filter((event) => isSameDay(new Date(event.date), selectedDate))
-    : [];
+    : mockEvents.filter((event) => isSameMonth(new Date(event.date), currentMonth));
 
   // Get all event dates for highlighting on the calendar
   const eventDates = mockEvents.map((event) => new Date(event.date));
 
-  // Get all events in the current month for the list view
-  const eventsInMonth = mockEvents.filter((event) =>
-    isSameMonth(new Date(event.date), currentMonth)
-  );
+  // Generate calendar days starting from Monday
+  const monthStart = startOfMonth(currentMonth);
+  const monthEnd = endOfMonth(currentMonth);
+  const calendarStart = startOfWeek(monthStart, { weekStartsOn: 1 });
+  const calendarEnd = endOfWeek(monthEnd, { weekStartsOn: 1 });
+  const calendarDays = eachDayOfInterval({ start: calendarStart, end: calendarEnd });
 
-  const colors = [
-    "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]",
-    "from-primary to-[hsl(var(--light-blue))]",
-    "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
-  ];
+  const weekDays = ["M", "T", "W", "T", "F", "S", "S"];
+
+  const handlePrevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
+  const handleNextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
+
+  const handleDateClick = (date: Date) => {
+    if (selectedDate && isDaySame(selectedDate, date)) {
+      setSelectedDate(undefined);
+    } else {
+      setSelectedDate(date);
+    }
+  };
+
+  const hasEventOnDate = (date: Date) => {
+    return eventDates.some((eventDate) => isDaySame(eventDate, date));
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[800px] max-h-[90vh] p-0 gap-0 overflow-hidden">
-        <DialogHeader className="px-6 pt-6 pb-4 border-b border-border/50">
-          <DialogTitle className="flex items-center gap-2 text-lg font-bold">
-            <CalendarIcon className="h-5 w-5 text-primary" />
+      <DialogContent className="sm:max-w-[900px] max-h-[90vh] p-0 gap-0 overflow-hidden">
+        <div className="p-6 pb-4">
+          <h2 className="text-lg font-bold uppercase tracking-wide text-foreground/80">
             Events Calendar
-          </DialogTitle>
-        </DialogHeader>
+          </h2>
+        </div>
 
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row px-6 pb-6 gap-8">
           {/* Calendar Section */}
-          <div className="p-4 md:p-6 border-b md:border-b-0 md:border-r border-border/50">
-            <Calendar
-              mode="single"
-              selected={selectedDate}
-              onSelect={setSelectedDate}
-              month={currentMonth}
-              onMonthChange={setCurrentMonth}
-              className="rounded-xl pointer-events-auto"
-              modifiers={{
-                hasEvent: eventDates,
-              }}
-              modifiersClassNames={{
-                hasEvent: "relative after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:h-1 after:w-1 after:rounded-full after:bg-[hsl(var(--teal))]",
-              }}
-              classNames={{
-                day_selected: "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-                day_today: "bg-accent text-accent-foreground font-bold",
-              }}
-            />
+          <div className="flex-1">
+            {/* Month Navigation */}
+            <div className="flex items-center justify-between mb-6 bg-muted/50 rounded-lg px-2 py-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handlePrevMonth}
+                className="h-10 w-10 rounded-full bg-[hsl(var(--light-blue))] hover:bg-[hsl(var(--light-blue))]/80 text-white"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </Button>
+              <span className="text-lg font-semibold text-foreground">
+                {format(currentMonth, "MMMM yyyy")}
+              </span>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleNextMonth}
+                className="h-10 w-10 rounded-full bg-[hsl(var(--light-blue))] hover:bg-[hsl(var(--light-blue))]/80 text-white"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </Button>
+            </div>
+
+            {/* Week Days Header */}
+            <div className="grid grid-cols-7 gap-1 mb-2">
+              {weekDays.map((day, index) => (
+                <div
+                  key={index}
+                  className="text-center text-sm font-semibold text-foreground/70 py-2"
+                >
+                  {day}
+                </div>
+              ))}
+            </div>
+
+            {/* Calendar Grid */}
+            <div className="grid grid-cols-7 gap-1">
+              {calendarDays.map((day, index) => {
+                const isCurrentMonth = isSameMonth(day, currentMonth);
+                const isTodayDate = isToday(day);
+                const isSelected = selectedDate && isDaySame(day, selectedDate);
+                const hasEvent = hasEventOnDate(day);
+
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handleDateClick(day)}
+                    className={cn(
+                      "relative h-10 w-full flex items-center justify-center text-sm rounded-full transition-all",
+                      !isCurrentMonth && "text-muted-foreground/40",
+                      isCurrentMonth && "text-foreground hover:bg-muted/50",
+                      isTodayDate && !isSelected && "border-2 border-[hsl(var(--light-blue))] text-[hsl(var(--light-blue))] font-semibold",
+                      isSelected && "bg-primary text-primary-foreground font-semibold",
+                      hasEvent && !isSelected && !isTodayDate && "font-semibold text-[hsl(var(--teal))]"
+                    )}
+                  >
+                    {format(day, "dd")}
+                    {hasEvent && !isSelected && (
+                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-[hsl(var(--teal))]" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Events List Section */}
-          <div className="flex-1 flex flex-col min-h-[300px] md:min-h-[400px]">
-            {/* Header showing selected date or month */}
-            <div className="px-4 md:px-6 py-3 bg-muted/30 border-b border-border/50">
-              <h3 className="font-semibold text-sm text-foreground/80">
-                {selectedDate
-                  ? format(selectedDate, "EEEE, MMMM d, yyyy")
-                  : format(currentMonth, "MMMM yyyy")}
-              </h3>
-            </div>
+          <div className="flex-1 min-w-[280px]">
+            <h3 className="text-sm font-bold uppercase tracking-wide text-foreground/80 mb-4">
+              Upcoming Events
+            </h3>
 
-            <ScrollArea className="flex-1 px-4 md:px-6 py-4">
-              {selectedDate ? (
-                // Events for selected date
-                eventsForSelectedDate.length > 0 ? (
-                  <div className="space-y-3">
-                    {eventsForSelectedDate.map((event, index) => (
-                      <EventCard key={event.id} event={event} colorClass={colors[index % colors.length]} />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center py-12 text-center">
-                    <CalendarIcon className="h-12 w-12 text-muted-foreground/30 mb-3" />
-                    <p className="text-sm text-muted-foreground">No events scheduled</p>
-                    <p className="text-xs text-muted-foreground/70 mt-1">
-                      Select another date or browse the month
-                    </p>
-                  </div>
-                )
+            <ScrollArea className="h-[350px]">
+              {eventsToShow.length > 0 ? (
+                <div className="space-y-3 pr-4">
+                  {eventsToShow.map((event) => (
+                    <EventCard key={event.id} event={event} />
+                  ))}
+                </div>
               ) : (
-                // All events in month
-                eventsInMonth.length > 0 ? (
-                  <div className="space-y-3">
-                    {eventsInMonth.map((event, index) => (
-                      <EventCard key={event.id} event={event} colorClass={colors[index % colors.length]} showDate />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center py-12 text-center">
-                    <CalendarIcon className="h-12 w-12 text-muted-foreground/30 mb-3" />
-                    <p className="text-sm text-muted-foreground">No events this month</p>
-                  </div>
-                )
+                <div className="flex flex-col items-center justify-center py-12 text-center">
+                  <p className="text-sm text-muted-foreground">Sorry No Events</p>
+                </div>
               )}
             </ScrollArea>
           </div>
@@ -127,17 +157,12 @@ export function EventsCalendarDialog({ open, onOpenChange }: EventsCalendarDialo
 
 interface EventCardProps {
   event: Event;
-  colorClass: string;
-  showDate?: boolean;
 }
 
-function EventCard({ event, colorClass, showDate }: EventCardProps) {
+function EventCard({ event }: EventCardProps) {
   return (
-    <div className="flex gap-3 p-3 rounded-xl bg-background/50 hover:bg-background/80 transition-all duration-300 border border-transparent hover:border-[hsl(var(--turquoise))]/20 hover:shadow-md group">
-      <div className={cn(
-        "flex flex-col items-center justify-center bg-gradient-to-br text-white rounded-xl px-3 py-2 min-w-[56px] group-hover:scale-105 transition-transform shadow-lg",
-        colorClass
-      )}>
+    <div className="flex gap-3 p-3 rounded-xl bg-muted/30 hover:bg-muted/50 transition-all duration-300 border border-border/50 group">
+      <div className="flex flex-col items-center justify-center bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white rounded-xl px-3 py-2 min-w-[56px] shadow-sm">
         <span className="text-xs font-medium opacity-90">
           {format(new Date(event.date), "MMM")}
         </span>
