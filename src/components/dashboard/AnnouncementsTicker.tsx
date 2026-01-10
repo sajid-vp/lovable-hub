@@ -61,7 +61,7 @@ export function AnnouncementsTicker() {
 
   return (
     <div
-      className="relative rounded-xl overflow-hidden animate-fade-in bg-transparent border border-border"
+      className="relative rounded-xl overflow-hidden animate-fade-in bg-background/80 backdrop-blur-sm border border-border"
       style={{ animationDelay: "50ms" }}
     >
       <div className="relative flex flex-col gap-2 px-3 sm:px-4 py-3">
