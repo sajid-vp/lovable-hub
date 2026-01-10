@@ -49,9 +49,8 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
                 className="group relative flex items-center gap-3 rounded-full px-4 py-3 bg-card border border-border/50 hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))] shadow-sm hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20 transition-all duration-300 animate-scale-in"
                 style={{ animationDelay: `${index * 30}ms` }}
               >
-                {/* iOS-style icon container */}
-                <div className="w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-gradient-to-br from-[hsl(var(--light-blue))] to-[hsl(var(--teal))] shadow-md shadow-[hsl(var(--light-blue))]/30 group-hover:shadow-white/30 group-hover:from-white/30 group-hover:to-white/20">
-                  <item.icon className="h-5 w-5 text-white transition-all duration-300" strokeWidth={1.5} />
+                <div className="p-2 rounded-lg flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-[hsl(var(--light-blue))] group-hover:bg-white/20 group-hover:backdrop-blur-sm group-hover:border group-hover:border-white/20">
+                  <item.icon className="h-4 w-4 text-white transition-all duration-300 group-hover:text-white" strokeWidth={1.5} />
                 </div>
                 <span className="font-semibold text-sm transition-colors truncate relative z-10 group-hover:text-white flex-1">
                   {item.title}
