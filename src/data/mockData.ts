@@ -1,7 +1,8 @@
 import { 
   Mail, Calendar, FileText, Users, Settings, HelpCircle, 
   BarChart3, FolderOpen, MessageSquare, Award, Briefcase, Clock,
-  Database, GraduationCap, BookOpen, Library, Shield, PenTool, Key, ExternalLink as ExternalLinkIcon
+  Database, GraduationCap, BookOpen, Library, Shield, PenTool, Key, ExternalLink as ExternalLinkIcon,
+  Wrench, ClipboardCheck
 } from "lucide-react";
 
 export interface User {
@@ -197,6 +198,30 @@ export const mockApps: App[] = [
     icon: Users,
     href: "/directory",
     color: "bg-gradient-to-br from-primary to-[hsl(var(--light-blue))]",
+  },
+  {
+    id: "3",
+    title: "Leave Requests",
+    description: "Submit leave",
+    icon: Clock,
+    href: "/leave",
+    color: "bg-gradient-to-br from-[hsl(var(--turquoise))] to-[hsl(var(--teal))]",
+  },
+  {
+    id: "4",
+    title: "IT Requests",
+    description: "Get IT support",
+    icon: Wrench,
+    href: "/it-requests",
+    color: "bg-gradient-to-br from-primary to-[hsl(var(--turquoise))]",
+  },
+  {
+    id: "5",
+    title: "Approvals",
+    description: "Pending items",
+    icon: ClipboardCheck,
+    href: "/approvals",
+    color: "bg-gradient-to-br from-[hsl(var(--light-blue))] to-primary",
   },
 ];
 
