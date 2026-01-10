@@ -34,24 +34,21 @@ export function NewsFeed() {
 
   return (
     <section className="animate-fade-in" style={{ animationDelay: "150ms" }}>
-      {/* Section Header */}
-      <div className="flex items-center gap-2 mb-4">
-        <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
-          Latest News
-        </h2>
-        <div className="flex-1 h-[1.5px] bg-primary/25 rounded-full" />
-      </div>
+      {/* iOS-style Section Header */}
+      <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3 px-1">
+        Latest News
+      </h2>
 
-      {/* Category Filter Tabs */}
-      <div className="flex items-center gap-1.5 sm:gap-2 mb-4 flex-wrap">
+      {/* iOS-style Category Pills */}
+      <div className="flex items-center gap-2 mb-4 overflow-x-auto scrollbar-hide pb-1">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
-            className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap ${
               activeCategory === category
-                ? "bg-[hsl(var(--light-blue))] text-white shadow-md"
-                : "bg-card border border-border/50 text-muted-foreground hover:border-[hsl(var(--turquoise))]/50 hover:text-foreground"
+                ? "ios-pill-active"
+                : "ios-pill"
             }`}
           >
             {category}
@@ -59,52 +56,48 @@ export function NewsFeed() {
         ))}
       </div>
 
-      {/* Glass Container */}
-      <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
-
+      {/* iOS Widget Container */}
+      <div className="ios-widget p-4 relative">
         {/* Carousel */}
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-3 sm:gap-4">
+          <div className="flex gap-4">
             {(filteredNews.length > 0 ? filteredNews : mockNews).map((news) => (
               <div 
                 key={news.id} 
                 className="flex-[0_0_200px] sm:flex-[0_0_220px] min-w-0"
               >
                 {/* News Card */}
-                <div className="relative rounded-2xl bg-background/80 border border-border/50 shadow-md overflow-hidden group hover:shadow-lg hover:border-[hsl(var(--turquoise))]/40 transition-all duration-300 h-full flex flex-col">
+                <div className="relative rounded-2xl bg-card border border-border/30 shadow-sm overflow-hidden group hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 h-full flex flex-col">
                   {/* Image */}
-                  <div className="relative h-40 overflow-hidden">
+                  <div className="relative h-32 overflow-hidden">
                     <img
                       src={news.imageUrl}
                       alt={news.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
-                    {/* Decorative corner accent */}
-                    <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-[hsl(var(--turquoise))]/50 rounded-tr-lg" />
-                    <div className="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-[hsl(var(--turquoise))]/50 rounded-bl-lg" />
                   </div>
                   
                   {/* Content */}
-                  <div className="p-4 flex-1 flex flex-col">
-                    <p className="text-xs font-semibold text-[hsl(var(--teal))] mb-2 tracking-wide">
+                  <div className="p-3.5 flex-1 flex flex-col">
+                    <p className="text-xs font-medium text-primary mb-1.5">
                       {new Date(news.date).toLocaleDateString("en-US", { 
                         day: "numeric", 
-                        month: "long", 
+                        month: "short", 
                         year: "numeric" 
                       })}
                     </p>
-                    <h3 className="font-semibold text-sm line-clamp-2 mb-2 group-hover:text-[hsl(var(--teal))] transition-colors tracking-tight leading-snug">
+                    <h3 className="font-semibold text-sm line-clamp-2 mb-2 leading-snug">
                       {news.title}
                     </h3>
-                    <p className="text-xs text-muted-foreground line-clamp-3 mb-4 flex-1 leading-relaxed font-medium">
+                    <p className="text-xs text-muted-foreground line-clamp-2 mb-3 flex-1">
                       {news.excerpt}
                     </p>
                     <Link 
                       to={`/news/${news.id}`}
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 group/link"
+                      className="inline-flex items-center gap-1 text-sm font-medium text-primary"
                     >
                       Read more
-                      <ChevronRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                      <ChevronRight className="h-3.5 w-3.5" />
                     </Link>
                   </div>
                 </div>
@@ -113,29 +106,29 @@ export function NewsFeed() {
           </div>
         </div>
 
-        {/* Navigation Arrows */}
+        {/* iOS-style Navigation Arrows */}
         <button
           onClick={scrollPrev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-card/90 backdrop-blur-sm border border-border/50 shadow-lg hover:bg-card transition-colors"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 ios-nav-btn"
         >
           <ChevronLeft className="h-5 w-5 text-muted-foreground" />
         </button>
         
         <button
           onClick={scrollNext}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-[hsl(var(--turquoise))] shadow-lg hover:bg-[hsl(var(--teal))] transition-colors"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-primary shadow-lg hover:bg-primary/90 transition-all active:scale-95"
         >
           <ChevronRight className="h-5 w-5 text-white" />
         </button>
 
         {/* View All Link */}
-        <div className="flex justify-end mt-4">
+        <div className="flex justify-end mt-4 pt-3 border-t border-border/30">
           <Link 
             to="/news" 
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 group"
+            className="inline-flex items-center gap-1 text-sm font-medium text-primary"
           >
-            View all
-            <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            View all news
+            <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
       </div>
