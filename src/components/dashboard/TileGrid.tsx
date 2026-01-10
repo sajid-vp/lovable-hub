@@ -39,18 +39,18 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
               : { to: item.href };
 
             return (
-              <TileWrapper
-                key={item.id}
-                {...(tileProps as any)}
-                className="group relative flex items-center gap-3 rounded-full px-4 py-3 bg-card border border-border/50 hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))] shadow-sm hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20 transition-all duration-300 animate-scale-in overflow-hidden"
-                style={{ animationDelay: `${index * 30}ms` }}
-              >
-                {/* Badge counter */}
+              <div key={item.id} className="relative">
+                {/* Badge counter - positioned outside the tile */}
                 {badgeCounts[item.id] && (
-                  <span className="absolute -top-1 -right-1 h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white text-[10px] font-bold flex items-center justify-center shadow-md shadow-[hsl(var(--teal))]/30 z-10">
+                  <span className="absolute -top-1.5 -right-1.5 h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white text-[10px] font-bold flex items-center justify-center shadow-md shadow-[hsl(var(--teal))]/30 z-20">
                     {badgeCounts[item.id]}
                   </span>
                 )}
+                <TileWrapper
+                  {...(tileProps as any)}
+                  className="group relative flex items-center gap-3 rounded-full px-4 py-3 bg-card border border-border/50 hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))] shadow-sm hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20 transition-all duration-300 animate-scale-in"
+                  style={{ animationDelay: `${index * 30}ms` }}
+                >
 
                 <div className="p-2 rounded-lg flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-[hsl(var(--light-blue))] group-hover:bg-white/20 group-hover:backdrop-blur-sm group-hover:border group-hover:border-white/20">
                   <item.icon className="h-4 w-4 text-white transition-all duration-300 group-hover:text-white" strokeWidth={1.5} />
@@ -61,7 +61,8 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 3 }: TileGr
                 {isExternal && (
                   <ExternalLink className="h-3.5 w-3.5 flex-shrink-0 text-muted-foreground/50 group-hover:text-white/70 transition-colors ml-auto" />
                 )}
-              </TileWrapper>
+                </TileWrapper>
+              </div>
             );
           })}
         </div>
