@@ -27,13 +27,13 @@ const announcements = [
 const getTypeStyles = (type: string) => {
   switch (type) {
     case "Important":
-      return "border border-white/70 text-white bg-transparent";
+      return "border border-rose-500 text-rose-600 bg-transparent";
     case "Notice":
-      return "border border-white/60 text-white/95 bg-transparent";
+      return "border border-amber-500 text-amber-600 bg-transparent";
     case "Update":
-      return "border border-white/50 text-white/90 bg-transparent";
+      return "border border-sky-500 text-sky-600 bg-transparent";
     default:
-      return "border border-white/50 text-white/90 bg-transparent";
+      return "border border-foreground/50 text-foreground/80 bg-transparent";
   }
 };
 
@@ -61,7 +61,7 @@ export function AnnouncementsTicker() {
 
   return (
     <div
-      className="relative rounded-xl overflow-hidden animate-fade-in bg-black/30 backdrop-blur-sm border border-white/20"
+      className="relative rounded-xl overflow-hidden animate-fade-in bg-transparent border border-border"
       style={{ animationDelay: "50ms" }}
     >
       <div className="relative flex flex-col gap-2 px-3 sm:px-4 py-3">
@@ -70,7 +70,7 @@ export function AnnouncementsTicker() {
           <div className="flex">
             {announcements.map((announcement) => (
               <div key={announcement.id} className="flex-[0_0_100%] min-w-0">
-                <span className="text-xs sm:text-sm font-medium line-clamp-2 leading-relaxed text-white">
+                <span className="text-xs sm:text-sm font-medium line-clamp-2 leading-relaxed text-foreground">
                   {announcement.content}
                 </span>
               </div>
@@ -86,7 +86,7 @@ export function AnnouncementsTicker() {
           </span>
 
           {/* Date */}
-          <span className="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-white/80 shrink-0">
+          <span className="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-muted-foreground shrink-0">
             <Calendar className="h-2.5 w-2.5" />
             {announcements[selectedIndex]?.date}
           </span>
@@ -97,7 +97,7 @@ export function AnnouncementsTicker() {
           {/* Prev arrow */}
           <button
             onClick={scrollPrev}
-            className="p-1 rounded-full bg-white/15 hover:bg-white/25 transition-colors text-white/90 hover:text-white shrink-0"
+            className="p-1 rounded-full bg-muted hover:bg-muted/80 transition-colors text-foreground/70 hover:text-foreground shrink-0"
           >
             <ChevronLeft className="h-3.5 w-3.5" />
           </button>
@@ -110,8 +110,8 @@ export function AnnouncementsTicker() {
                 onClick={() => emblaApi?.scrollTo(index)}
                 className={`w-1.5 h-1.5 rounded-full transition-all ${
                   index === selectedIndex
-                    ? "bg-white"
-                    : "bg-white/40 hover:bg-white/60"
+                    ? "bg-foreground"
+                    : "bg-foreground/30 hover:bg-foreground/50"
                 }`}
               />
             ))}
@@ -120,18 +120,18 @@ export function AnnouncementsTicker() {
           {/* Next arrow */}
           <button
             onClick={scrollNext}
-            className="p-1 rounded-full bg-white/15 hover:bg-white/25 transition-colors text-white/90 hover:text-white shrink-0"
+            className="p-1 rounded-full bg-muted hover:bg-muted/80 transition-colors text-foreground/70 hover:text-foreground shrink-0"
           >
             <ChevronRight className="h-3.5 w-3.5" />
           </button>
 
           {/* Separator */}
-          <div className="w-px h-3 bg-white/30" />
+          <div className="w-px h-3 bg-border" />
 
           {/* View All link */}
           <Link
             to="/announcements"
-            className="text-[10px] sm:text-xs font-semibold text-white/90 hover:text-white transition-colors shrink-0"
+            className="text-[10px] sm:text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors shrink-0"
           >
             View all
           </Link>
