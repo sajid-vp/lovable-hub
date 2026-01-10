@@ -60,10 +60,7 @@ export function AnnouncementsTicker() {
   }, [emblaApi]);
 
   return (
-    <div className="relative rounded-xl overflow-hidden animate-fade-in" style={{ animationDelay: "50ms" }}>
-      {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--light-blue))] to-[hsl(var(--turquoise))]" />
-      
+    <div className="relative rounded-xl overflow-hidden animate-fade-in bg-background/10 backdrop-blur-md border border-white/15" style={{ animationDelay: "50ms" }}>
       <div className="relative flex flex-col gap-2 px-3 sm:px-4 py-3">
         {/* Carousel content */}
         <div className="overflow-hidden" ref={emblaRef}>
