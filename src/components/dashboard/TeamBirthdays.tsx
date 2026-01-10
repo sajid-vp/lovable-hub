@@ -25,51 +25,40 @@ export function TeamBirthdays() {
     return date.toDateString() === today.toDateString();
   };
 
-  const avatarColors = [
-    "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]",
-    "from-primary to-[hsl(var(--light-blue))]",
-    "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
-    "from-[hsl(var(--light-blue))] to-primary",
-  ];
-
   return (
     <section className="animate-fade-in" style={{ animationDelay: "300ms" }}>
-      {/* Section Header */}
-      <div className="flex items-center gap-2 mb-4">
-        <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
-          Team Birthdays
-        </h2>
-        <div className="flex-1 h-[1.5px] bg-primary/25 rounded-full" />
-      </div>
+      {/* iOS-style Section Header */}
+      <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3 px-1">
+        Team Birthdays
+      </h2>
 
-      {/* Glass Container */}
-      <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
-
-        <div className="space-y-3">
+      {/* iOS Widget Container */}
+      <div className="ios-widget p-4">
+        <div className="space-y-2">
           {mockBirthdays.slice(0, 4).map((person, index) => (
             <div 
               key={person.id} 
-              className={`flex items-center gap-3 p-2.5 rounded-xl transition-all duration-300 hover:bg-background/80 cursor-pointer group animate-slide-in ${
-                isToday(person.birthday) ? "bg-gradient-to-r from-[hsl(var(--teal))]/15 to-[hsl(var(--turquoise))]/10 border border-[hsl(var(--teal))]/30" : "bg-background/50 border border-transparent hover:border-[hsl(var(--turquoise))]/20"
+              className={`flex items-center gap-3 p-2.5 rounded-xl transition-all duration-200 cursor-pointer group active:scale-[0.98] animate-fade-in ${
+                isToday(person.birthday) 
+                  ? "bg-primary/10 border border-primary/20" 
+                  : "bg-muted/40 hover:bg-muted/70"
               }`}
-              style={{ animationDelay: `${index * 100}ms` }}
+              style={{ animationDelay: `${index * 50}ms` }}
             >
-              <Avatar className={`h-10 w-10 ring-2 ring-offset-2 ring-offset-card transition-transform group-hover:scale-110 ${
-                isToday(person.birthday) ? "ring-[hsl(var(--teal))]" : "ring-transparent group-hover:ring-[hsl(var(--turquoise))]/40"
-              }`}>
+              <Avatar className={`h-10 w-10 ${isToday(person.birthday) ? "ring-2 ring-primary ring-offset-2 ring-offset-card" : ""}`}>
                 <AvatarImage src={person.avatar} alt={person.name} />
-                <AvatarFallback className={`text-xs bg-gradient-to-br ${avatarColors[index % avatarColors.length]} text-white font-bold`}>
+                <AvatarFallback className="bg-primary/10 text-primary text-sm font-semibold">
                   {person.name.charAt(0)}
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold truncate group-hover:text-[hsl(var(--teal))] transition-colors">{person.name}</p>
+                <p className="text-sm font-semibold truncate">{person.name}</p>
                 <p className="text-xs text-muted-foreground">{person.department}</p>
               </div>
-              <span className={`text-xs whitespace-nowrap font-bold px-2 py-1 rounded-full ${
+              <span className={`text-xs whitespace-nowrap font-semibold px-2.5 py-1 rounded-full ${
                 isToday(person.birthday) 
-                  ? "bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white animate-pulse shadow-lg shadow-[hsl(var(--teal))]/30" 
-                  : "text-muted-foreground bg-muted/50"
+                  ? "bg-primary text-white" 
+                  : "bg-muted text-muted-foreground"
               }`}>
                 {formatDate(person.birthday)}
               </span>
@@ -77,16 +66,14 @@ export function TeamBirthdays() {
           ))}
         </div>
 
-        {/* View All Link */}
-        <div className="flex justify-end mt-4">
-          <Link 
-            to="/birthdays"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 group"
-          >
-            View all
-            <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
+        {/* View All */}
+        <Link 
+          to="/birthdays"
+          className="mt-4 w-full flex items-center justify-between px-4 py-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors group"
+        >
+          <span className="text-sm font-medium text-primary">View all birthdays</span>
+          <ChevronRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" />
+        </Link>
       </div>
     </section>
   );

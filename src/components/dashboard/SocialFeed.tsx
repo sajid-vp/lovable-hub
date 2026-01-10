@@ -42,45 +42,37 @@ export function SocialFeed() {
     return `${diffDays}d ago`;
   };
 
-  const getTotalReactions = (reactions: SocialPost["reactions"]) => {
-    return reactions.likes + reactions.hearts + reactions.celebrates;
-  };
-
   return (
     <section className="animate-fade-in" style={{ animationDelay: "200ms" }}>
-      {/* Section Header */}
-      <div className="flex items-center gap-2 mb-4">
-        <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
-          Social Feed
-        </h2>
-        <div className="flex-1 h-[1.5px] bg-gradient-to-r from-[hsl(var(--gold))]/40 via-[hsl(var(--coral))]/30 to-transparent rounded-full" />
-      </div>
+      {/* iOS-style Section Header */}
+      <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3 px-1">
+        Social Feed
+      </h2>
 
-      {/* Filter Tabs */}
-      <div className="flex items-center gap-1.5 sm:gap-2 mb-4 flex-wrap">
+      {/* iOS-style Filter Pills */}
+      <div className="flex items-center gap-2 mb-4 overflow-x-auto scrollbar-hide pb-1">
         {filters.map((filter) => (
           <button
             key={filter}
             onClick={() => setActiveFilter(filter)}
-            className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap ${
               activeFilter === filter
-                ? "bg-[hsl(var(--gold))] text-white shadow-md"
-                : "bg-card border border-border/50 text-muted-foreground hover:border-[hsl(var(--gold))]/50 hover:text-foreground"
+                ? "ios-pill-active"
+                : "ios-pill"
             }`}
           >
-            {filter === "Kudos" && <Award className="h-3 w-3" />}
-            {filter === "Photos" && <Image className="h-3 w-3" />}
+            {filter === "Kudos" && <Award className="h-3.5 w-3.5" />}
+            {filter === "Photos" && <Image className="h-3.5 w-3.5" />}
             {filter}
           </button>
         ))}
       </div>
 
-      {/* Glass Container */}
-      <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
-
+      {/* iOS Widget Container */}
+      <div className="ios-widget p-4 relative">
         {/* Carousel */}
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-3 sm:gap-4">
+          <div className="flex gap-4">
             {filteredPosts.map((post) => (
               <div 
                 key={post.id} 
@@ -89,15 +81,15 @@ export function SocialFeed() {
                 {/* Post Card */}
                 <div 
                   onClick={() => setSelectedPost(post)}
-                  className={`relative rounded-2xl bg-background/80 border shadow-md overflow-hidden group hover:shadow-lg transition-all duration-300 h-full flex flex-col cursor-pointer ${
+                  className={`relative rounded-2xl bg-card border shadow-sm overflow-hidden group hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 h-full flex flex-col cursor-pointer ${
                     post.type === "kudos" 
-                      ? "border-[hsl(var(--gold))]/40 hover:border-[hsl(var(--gold))]/60" 
-                      : "border-border/50 hover:border-[hsl(var(--turquoise))]/40"
+                      ? "border-warning/30" 
+                      : "border-border/30"
                   }`}
                 >
                   {/* Kudos Badge */}
                   {post.type === "kudos" && (
-                    <div className="absolute top-3 right-3 z-10 flex items-center gap-1 px-2 py-1 rounded-full bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--coral))] text-white text-xs font-semibold shadow-lg">
+                    <div className="absolute top-3 right-3 z-10 flex items-center gap-1 px-2.5 py-1 rounded-full bg-warning text-white text-xs font-semibold shadow-lg">
                       <Award className="h-3 w-3" />
                       Kudos
                     </div>
@@ -105,9 +97,9 @@ export function SocialFeed() {
 
                   {/* Author Header */}
                   <div className="p-4 pb-2 flex items-center gap-3">
-                    <Avatar className="h-10 w-10 border-2 border-[hsl(var(--turquoise))]/30">
+                    <Avatar className="h-10 w-10">
                       <AvatarImage src={post.author.avatar} alt={post.author.name} />
-                      <AvatarFallback className="bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white text-sm font-semibold">
+                      <AvatarFallback className="bg-primary/10 text-primary text-sm font-semibold">
                         {post.author.name.split(" ").map(n => n[0]).join("")}
                       </AvatarFallback>
                     </Avatar>
@@ -121,16 +113,16 @@ export function SocialFeed() {
 
                   {/* Kudos Recipient */}
                   {post.type === "kudos" && post.kudosRecipient && (
-                    <div className="mx-4 mb-2 p-2 rounded-lg bg-gradient-to-r from-[hsl(var(--gold))]/10 to-[hsl(var(--coral))]/10 border border-[hsl(var(--gold))]/20">
+                    <div className="mx-4 mb-2 p-2.5 rounded-xl bg-warning/10 border border-warning/20">
                       <div className="flex items-center gap-2">
-                        <Avatar className="h-8 w-8 border border-[hsl(var(--gold))]/30">
+                        <Avatar className="h-8 w-8">
                           <AvatarImage src={post.kudosRecipient.avatar} alt={post.kudosRecipient.name} />
-                          <AvatarFallback className="bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--coral))] text-white text-xs font-semibold">
+                          <AvatarFallback className="bg-warning text-white text-xs font-semibold">
                             {post.kudosRecipient.name.split(" ").map(n => n[0]).join("")}
                           </AvatarFallback>
                         </Avatar>
                         <div>
-                          <p className="text-xs font-semibold text-[hsl(var(--gold))]">Kudos to</p>
+                          <p className="text-xs font-semibold text-warning">Kudos to</p>
                           <p className="text-sm font-medium">{post.kudosRecipient.name}</p>
                         </div>
                       </div>
@@ -139,7 +131,7 @@ export function SocialFeed() {
 
                   {/* Content */}
                   <div className="px-4 pb-2 flex-1">
-                    <p className="text-sm text-foreground/90 line-clamp-3 leading-relaxed">
+                    <p className="text-sm text-foreground line-clamp-3 leading-relaxed">
                       {post.content}
                     </p>
                   </div>
@@ -147,11 +139,11 @@ export function SocialFeed() {
                   {/* Image (if present) */}
                   {post.imageUrl && (
                     <div className="px-4 pb-3">
-                      <div className="relative h-36 rounded-xl overflow-hidden">
+                      <div className="relative h-32 rounded-xl overflow-hidden">
                         <img
                           src={post.imageUrl}
                           alt="Post image"
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                       </div>
                     </div>
@@ -160,16 +152,16 @@ export function SocialFeed() {
                   {/* Reactions & Comments Bar */}
                   <div className="px-4 py-3 border-t border-border/30 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <button className="flex items-center gap-1 text-muted-foreground hover:text-[hsl(var(--teal))] transition-colors group/reaction">
-                        <ThumbsUp className="h-4 w-4 group-hover/reaction:scale-110 transition-transform" />
+                      <button className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+                        <ThumbsUp className="h-4 w-4" />
                         <span className="text-xs font-medium">{post.reactions.likes}</span>
                       </button>
-                      <button className="flex items-center gap-1 text-muted-foreground hover:text-[hsl(var(--coral))] transition-colors group/reaction">
-                        <Heart className="h-4 w-4 group-hover/reaction:scale-110 transition-transform" />
+                      <button className="flex items-center gap-1 text-muted-foreground hover:text-destructive transition-colors">
+                        <Heart className="h-4 w-4" />
                         <span className="text-xs font-medium">{post.reactions.hearts}</span>
                       </button>
-                      <button className="flex items-center gap-1 text-muted-foreground hover:text-[hsl(var(--gold))] transition-colors group/reaction">
-                        <PartyPopper className="h-4 w-4 group-hover/reaction:scale-110 transition-transform" />
+                      <button className="flex items-center gap-1 text-muted-foreground hover:text-warning transition-colors">
+                        <PartyPopper className="h-4 w-4" />
                         <span className="text-xs font-medium">{post.reactions.celebrates}</span>
                       </button>
                     </div>
@@ -184,29 +176,29 @@ export function SocialFeed() {
           </div>
         </div>
 
-        {/* Navigation Arrows */}
+        {/* iOS-style Navigation Arrows */}
         <button
           onClick={scrollPrev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-card/90 backdrop-blur-sm border border-border/50 shadow-lg hover:bg-card transition-colors"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 ios-nav-btn"
         >
           <ChevronLeft className="h-5 w-5 text-muted-foreground" />
         </button>
         
         <button
           onClick={scrollNext}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-[hsl(var(--gold))] shadow-lg hover:bg-[hsl(var(--coral))] transition-colors"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-primary shadow-lg hover:bg-primary/90 transition-all active:scale-95"
         >
           <ChevronRight className="h-5 w-5 text-white" />
         </button>
 
         {/* View All Link */}
-        <div className="flex justify-end mt-4">
+        <div className="flex justify-end mt-4 pt-3 border-t border-border/30">
           <Link 
             to="/social" 
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 group"
+            className="inline-flex items-center gap-1 text-sm font-medium text-primary"
           >
-            View all
-            <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            View all posts
+            <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

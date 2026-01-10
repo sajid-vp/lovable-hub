@@ -39,13 +39,13 @@ const announcements: Announcement[] = [
 const getTypeStyles = (type: string) => {
   switch (type) {
     case "Important":
-      return "border border-rose-500 text-rose-600 dark:text-rose-400 bg-transparent";
+      return "bg-destructive/10 text-destructive";
     case "Notice":
-      return "border border-amber-500 text-amber-600 dark:text-amber-400 bg-transparent";
+      return "bg-warning/10 text-[hsl(var(--warning))]";
     case "Update":
-      return "border border-sky-500 text-sky-600 dark:text-sky-400 bg-transparent";
+      return "bg-primary/10 text-primary";
     default:
-      return "border border-muted-foreground text-muted-foreground bg-transparent";
+      return "bg-muted text-muted-foreground";
   }
 };
 
@@ -53,42 +53,39 @@ export function BulletinBoard() {
   const [selectedAnnouncement, setSelectedAnnouncement] = useState<Announcement | null>(null);
 
   return (
-    <section className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
-      {/* Section Header */}
-      <div className="flex items-center gap-2 mb-3">
-        <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
+    <section className="animate-fade-in" style={{ animationDelay: '250ms' }}>
+      {/* iOS-style Section Header */}
+      <div className="flex items-center justify-between mb-3 px-1">
+        <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
           Bulletin Board
         </h2>
-        <div className="flex-1 h-[1.5px] bg-gradient-to-r from-primary/40 to-transparent rounded-full" />
         <Link 
           to="/announcements" 
-          className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1 transition-colors"
+          className="text-sm font-medium text-primary flex items-center gap-0.5"
         >
           View all
           <ChevronRight className="h-4 w-4" />
         </Link>
       </div>
 
-      {/* Glass Container */}
-      <div className="relative bg-card/60 backdrop-blur-md border border-border/50 shadow-lg rounded-2xl p-4 overflow-hidden">
-        {/* Decorative gradient accent */}
-        <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-[hsl(var(--blue))] via-[hsl(var(--turquoise))] to-[hsl(var(--light-blue))]" />
-        
+      {/* iOS Widget Container */}
+      <div className="ios-widget p-4">
         {/* Announcement Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {announcements.map((announcement) => (
+          {announcements.map((announcement, index) => (
             <button
               key={announcement.id}
               onClick={() => setSelectedAnnouncement(announcement)}
-              className="group relative bg-background/80 border border-border/50 rounded-xl p-4 text-left transition-all duration-300 hover:border-[hsl(var(--turquoise))]/40 hover:shadow-lg hover:shadow-[hsl(var(--turquoise))]/5 hover:-translate-y-0.5"
+              className="group relative bg-muted/40 hover:bg-muted/70 rounded-2xl p-4 text-left transition-all duration-200 active:scale-[0.98] animate-fade-in"
+              style={{ animationDelay: `${index * 50}ms` }}
             >
               {/* Type Badge */}
-              <span className={`inline-block px-2 py-0.5 text-xs font-medium rounded-full mb-2 ${getTypeStyles(announcement.type)}`}>
+              <span className={`inline-block px-2.5 py-1 text-[11px] font-semibold rounded-full mb-2.5 ${getTypeStyles(announcement.type)}`}>
                 {announcement.type}
               </span>
               
               {/* Content */}
-              <p className="text-sm text-foreground/90 line-clamp-3 leading-relaxed mb-3">
+              <p className="text-sm text-foreground line-clamp-3 leading-relaxed mb-3">
                 {announcement.content}
               </p>
               
@@ -98,9 +95,7 @@ export function BulletinBoard() {
               </span>
 
               {/* Hover indicator */}
-              <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <ChevronRight className="h-4 w-4 text-[hsl(var(--turquoise))]" />
-              </div>
+              <ChevronRight className="absolute bottom-4 right-4 h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
             </button>
           ))}
         </div>
@@ -108,11 +103,11 @@ export function BulletinBoard() {
 
       {/* Announcement Detail Dialog */}
       <Dialog open={!!selectedAnnouncement} onOpenChange={() => setSelectedAnnouncement(null)}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md rounded-3xl">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               {selectedAnnouncement && (
-                <span className={`inline-block px-2 py-0.5 text-xs font-medium rounded-full ${getTypeStyles(selectedAnnouncement.type)}`}>
+                <span className={`inline-block px-2.5 py-1 text-[11px] font-semibold rounded-full ${getTypeStyles(selectedAnnouncement.type)}`}>
                   {selectedAnnouncement.type}
                 </span>
               )}
