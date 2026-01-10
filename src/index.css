@@ -2,150 +2,150 @@
 @tailwind components;
 @tailwind utilities;
 
-/* iOS 17 Inspired Design System */
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
 
 @layer base {
   :root {
-    /* iOS-style light backgrounds */
-    --background: 0 0% 97%;
-    --foreground: 0 0% 10%;
+    --background: 0 0% 98%;
+    --foreground: 208 38% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 208 38% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 208 38% 25%;
 
-    /* Primary: iOS Blue */
-    --primary: 211 100% 50%;
+    /* Primary: Blue #4f82af */
+    --primary: 208 38% 50%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: iOS Teal */
-    --secondary: 175 77% 40%;
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary: Turquoise #74c6d0 */
+    --secondary: 186 48% 63%;
+    --secondary-foreground: 208 38% 20%;
 
-    /* Muted: iOS Light Gray */
-    --muted: 240 6% 93%;
-    --muted-foreground: 240 4% 46%;
+    /* Muted: Light Gray #f3f3f3 */
+    --muted: 0 0% 95%;
+    --muted-foreground: 208 20% 40%;
 
-    /* Accent: iOS Purple */
-    --accent: 280 67% 60%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: Lavender #bca9e4 */
+    --accent: 263 51% 78%;
+    --accent-foreground: 263 51% 25%;
 
-    /* Success: iOS Green */
-    --success: 142 72% 40%;
-    --success-foreground: 0 0% 100%;
+    /* Success: Green #7dc6bd */
+    --success: 170 39% 63%;
+    --success-foreground: 170 39% 20%;
 
-    /* Warning: iOS Orange */
-    --warning: 32 95% 55%;
-    --warning-foreground: 0 0% 100%;
+    /* Warning: Orange #fcb783 */
+    --warning: 28 95% 75%;
+    --warning-foreground: 28 60% 25%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 211 100% 50%;
+    --border: 208 20% 88%;
+    --input: 208 20% 88%;
+    --ring: 208 38% 50%;
 
-    /* iOS-style larger radius */
-    --radius: 1rem;
+    --radius: 0.75rem;
 
     /* Brand accent colors - SEA palette */
     --yellow: 49 94% 68%;
-    --light-blue: 209 100% 65%;
-    --turquoise: 175 77% 50%;
-    --green: 142 72% 50%;
-    --lavender: 280 67% 75%;
-    --orange: 32 95% 55%;
-    --cyan: 183 100% 75%;
+    --light-blue: 209 61% 66%;
+    --turquoise: 186 48% 55%;
+    --green: 170 39% 55%;
+    --lavender: 263 51% 70%;
+    --orange: 28 90% 62%;
+    --cyan: 183 66% 75%;
     --pink: 339 68% 80%;
-    --teal: 175 77% 40%;
-    --indigo: 235 70% 60%;
+    --teal: 175 50% 45%;
+    --indigo: 235 45% 55%;
     --coral: 16 85% 65%;
     --gold: 42 90% 55%;
 
-    /* Gradient tokens - iOS-style gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(211 100% 50%) 0%, hsl(175 77% 50%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(280 67% 60%) 0%, hsl(211 100% 50%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(211 100% 60% / 0.9) 0%, hsl(175 77% 55% / 0.85) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(32 95% 55%) 0%, hsl(16 85% 65%) 100%);
-    --gradient-warm: linear-gradient(135deg, hsl(32 95% 55%), hsl(42 90% 55%));
-    --gradient-cool: linear-gradient(135deg, hsl(235 70% 60%), hsl(280 67% 75%));
+    /* Gradient tokens - Brand gradients */
+    --gradient-primary: linear-gradient(40deg, hsl(212 52% 64%) 0%, hsl(178 51% 60%) 100%);
+    --gradient-secondary: linear-gradient(40deg, hsl(212 52% 64%) 0%, hsl(178 51% 60%) 100%);
+    --gradient-hero: linear-gradient(40deg, hsl(212 52% 64%) 0%, hsl(178 51% 60%) 100%);
+    --gradient-accent: linear-gradient(40deg, hsl(212 52% 64%) 0%, hsl(178 51% 60%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(28 90% 62%), hsl(42 90% 55%));
+    --gradient-cool: linear-gradient(135deg, hsl(235 45% 55%), hsl(263 51% 70%));
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 211 100% 50%;
+    --sidebar-foreground: 208 38% 25%;
+    --sidebar-primary: 208 38% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 175 77% 95%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 240 6% 90%;
-    --sidebar-ring: 211 100% 50%;
+    --sidebar-accent: 183 66% 94%;
+    --sidebar-accent-foreground: 208 38% 25%;
+    --sidebar-border: 208 20% 88%;
+    --sidebar-ring: 208 38% 50%;
   }
 
   .dark {
-    --background: 0 0% 8%;
+    --background: 208 30% 10%;
     --foreground: 0 0% 95%;
 
-    --card: 0 0% 12%;
+    --card: 208 30% 14%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 12%;
+    --popover: 208 30% 14%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 211 100% 60%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 209 61% 66%;
+    --primary-foreground: 208 38% 15%;
 
-    --secondary: 175 77% 50%;
+    --secondary: 186 48% 50%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 18%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 208 20% 20%;
+    --muted-foreground: 208 10% 65%;
 
-    --accent: 280 67% 65%;
+    --accent: 263 51% 70%;
     --accent-foreground: 0 0% 100%;
 
-    --success: 142 72% 50%;
+    --success: 170 39% 50%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 32 95% 60%;
-    --warning-foreground: 0 0% 100%;
+    --warning: 28 80% 60%;
+    --warning-foreground: 28 60% 15%;
 
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 211 100% 60%;
+    --border: 208 20% 22%;
+    --input: 208 20% 22%;
+    --ring: 209 61% 66%;
 
-    /* Dark mode brand colors */
+    /* Brand accent colors - dark mode */
     --yellow: 49 80% 55%;
-    --light-blue: 211 100% 60%;
-    --turquoise: 175 77% 45%;
-    --green: 142 72% 45%;
-    --lavender: 280 67% 65%;
-    --orange: 32 85% 55%;
-    --cyan: 183 80% 60%;
+    --light-blue: 209 61% 55%;
+    --turquoise: 186 48% 45%;
+    --green: 170 39% 45%;
+    --lavender: 263 51% 60%;
+    --orange: 28 80% 55%;
+    --cyan: 183 50% 55%;
     --pink: 339 55% 65%;
-    --teal: 175 77% 35%;
-    --indigo: 235 70% 55%;
+    --teal: 175 50% 40%;
+    --indigo: 235 45% 50%;
     --coral: 16 85% 55%;
     --gold: 42 90% 50%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(211 100% 55%) 0%, hsl(175 77% 45%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(280 67% 55%) 0%, hsl(211 100% 55%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(211 100% 55% / 0.9) 0%, hsl(175 77% 50% / 0.85) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(32 85% 55%) 0%, hsl(16 85% 55%) 100%);
-    --gradient-warm: linear-gradient(135deg, hsl(32 85% 55%), hsl(42 80% 50%));
-    --gradient-cool: linear-gradient(135deg, hsl(235 70% 55%), hsl(280 67% 60%));
+    --gradient-primary: linear-gradient(40deg, hsl(212 52% 54%) 0%, hsl(178 51% 50%) 100%);
+    --gradient-secondary: linear-gradient(40deg, hsl(212 52% 54%) 0%, hsl(178 51% 50%) 100%);
+    --gradient-hero: linear-gradient(40deg, hsl(212 52% 54%) 0%, hsl(178 51% 50%) 100%);
+    --gradient-accent: linear-gradient(40deg, hsl(212 52% 54%) 0%, hsl(178 51% 50%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(28 80% 55%), hsl(42 80% 50%));
+    --gradient-cool: linear-gradient(135deg, hsl(235 45% 50%), hsl(263 51% 60%));
 
-    --sidebar-background: 0 0% 10%;
+    --sidebar-background: 208 30% 12%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 211 100% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 18%;
+    --sidebar-primary: 209 61% 66%;
+    --sidebar-primary-foreground: 208 38% 15%;
+    --sidebar-accent: 208 20% 20%;
     --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 211 100% 60%;
+    --sidebar-border: 208 20% 22%;
+    --sidebar-ring: 209 61% 66%;
   }
 }
 
@@ -166,36 +166,38 @@
     letter-spacing: -0.011em;
   }
 
-  /* iOS-style typography */
+  /* Improved heading typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight font-semibold;
+    @apply tracking-tight;
     text-wrap: balance;
   }
 
   h1 {
-    @apply text-3xl sm:text-4xl md:text-5xl font-bold leading-tight;
-    letter-spacing: -0.025em;
-  }
-
-  h2 {
-    @apply text-2xl sm:text-3xl font-semibold leading-tight;
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1];
     letter-spacing: -0.02em;
   }
 
-  h3 {
-    @apply text-lg sm:text-xl font-semibold leading-snug;
+  h2 {
+    @apply text-2xl sm:text-3xl font-semibold leading-[1.15];
     letter-spacing: -0.015em;
   }
 
-  h4 {
-    @apply text-base font-semibold leading-snug;
+  h3 {
+    @apply text-lg sm:text-xl font-semibold leading-[1.2];
+    letter-spacing: -0.01em;
   }
 
+  h4 {
+    @apply text-base font-semibold leading-[1.25];
+  }
+
+  /* Body text improvements */
   p {
     @apply leading-relaxed;
     text-wrap: pretty;
   }
 
+  /* Small text clarity */
   .text-xs {
     letter-spacing: 0.01em;
   }
@@ -204,8 +206,9 @@
     letter-spacing: 0.005em;
   }
 
+  /* Improved muted text contrast */
   .text-muted-foreground {
-    @apply opacity-95;
+    @apply opacity-90;
   }
 }
 
@@ -233,74 +236,20 @@
     background-clip: text;
   }
 
-  /* iOS 17 Frosted Glass Widget */
-  .ios-widget {
-    @apply relative overflow-hidden;
-    background: hsl(var(--card) / 0.7);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border: 1px solid hsl(var(--border) / 0.5);
-    border-radius: 1.5rem;
-    box-shadow: 
-      0 1px 3px hsl(0 0% 0% / 0.04),
-      0 8px 24px hsl(0 0% 0% / 0.06);
-  }
-
-  .ios-widget-sm {
-    @apply relative overflow-hidden;
-    background: hsl(var(--card) / 0.6);
-    backdrop-filter: blur(32px) saturate(150%);
-    -webkit-backdrop-filter: blur(32px) saturate(150%);
-    border: 1px solid hsl(var(--border) / 0.4);
-    border-radius: 1.25rem;
-    box-shadow: 
-      0 1px 2px hsl(0 0% 0% / 0.03),
-      0 4px 16px hsl(0 0% 0% / 0.05);
-  }
-
-  /* iOS-style pill button */
-  .ios-pill {
-    @apply inline-flex items-center justify-center px-4 py-2 rounded-full font-medium text-sm transition-all duration-200;
-    background: hsl(var(--muted));
-  }
-
-  .ios-pill:hover {
-    background: hsl(var(--muted-foreground) / 0.15);
-  }
-
-  .ios-pill-active {
-    @apply text-white;
-    background: hsl(var(--primary));
-    box-shadow: 0 2px 8px hsl(var(--primary) / 0.3);
-  }
-
-  /* iOS-style navigation button */
-  .ios-nav-btn {
-    @apply p-2.5 rounded-full transition-all duration-200;
-    background: hsl(var(--muted) / 0.8);
-    backdrop-filter: blur(12px);
-  }
-
-  .ios-nav-btn:hover {
-    background: hsl(var(--muted));
-    transform: scale(1.05);
-  }
-
-  /* Glass effect for overlays */
+  /* Glassmorphism card */
   .glass-card {
-    background: hsl(var(--card) / 0.7);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border: 1px solid hsl(var(--border) / 0.4);
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
     box-shadow: 
-      0 1px 3px hsl(0 0% 0% / 0.04),
-      0 8px 24px hsl(0 0% 0% / 0.06);
+      0 4px 6px -1px hsl(var(--foreground) / 0.05),
+      0 2px 4px -2px hsl(var(--foreground) / 0.05);
   }
 
   .glass-card:hover {
     box-shadow: 
-      0 2px 4px hsl(0 0% 0% / 0.05),
-      0 12px 32px hsl(0 0% 0% / 0.08);
+      0 10px 15px -3px hsl(var(--foreground) / 0.08),
+      0 4px 6px -4px hsl(var(--foreground) / 0.05);
   }
 
   /* Hide scrollbar */

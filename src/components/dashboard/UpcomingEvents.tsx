@@ -6,60 +6,68 @@ import { EventsCalendarDialog } from "./EventsCalendarDialog";
 export function UpcomingEvents() {
   const [calendarOpen, setCalendarOpen] = useState(false);
 
+  const colors = [
+    "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]",
+    "from-primary to-[hsl(var(--light-blue))]",
+    "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
+  ];
+
   return (
     <>
       <section className="animate-fade-in" style={{ animationDelay: "200ms" }}>
-        {/* iOS-style Section Header */}
-        <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3 px-1">
-          Upcoming Events
-        </h2>
+        {/* Section Header */}
+        <div className="flex items-center gap-2 mb-4">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
+            Upcoming Events
+          </h2>
+          <div className="flex-1 h-[1.5px] bg-primary/25 rounded-full" />
+        </div>
 
-        {/* iOS Widget Container */}
-        <div className="ios-widget p-4">
-          <div className="space-y-2">
+        {/* Glass Container */}
+        <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
+
+          <div className="space-y-3">
             {mockEvents.map((event, index) => (
               <div
                 key={event.id}
-                className="flex gap-3 p-3 rounded-xl bg-muted/40 hover:bg-muted/70 transition-all duration-200 cursor-pointer group active:scale-[0.98] animate-fade-in"
-                style={{ animationDelay: `${index * 50}ms` }}
+                className="flex gap-3 p-3 rounded-xl bg-background/50 hover:bg-background/80 transition-all duration-300 hover:shadow-md hover:-translate-x-1 cursor-pointer group animate-slide-in border border-transparent hover:border-[hsl(var(--turquoise))]/20"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                {/* Date Badge */}
-                <div className="flex flex-col items-center justify-center bg-primary text-white rounded-xl px-3 py-2 min-w-[52px]">
-                  <span className="text-[10px] font-medium opacity-90 uppercase">
+                <div className={`flex flex-col items-center justify-center bg-gradient-to-br ${colors[index % colors.length]} text-white rounded-xl px-3 py-2 min-w-[56px] group-hover:scale-105 transition-transform shadow-lg`}>
+                  <span className="text-xs font-medium opacity-90">
                     {new Date(event.date).toLocaleDateString("en-US", { month: "short" })}
                   </span>
-                  <span className="text-lg font-bold leading-none">
+                  <span className="text-xl font-bold">
                     {new Date(event.date).getDate()}
                   </span>
                 </div>
-                
                 <div className="flex-1 min-w-0">
-                  <h4 className="font-semibold text-sm truncate">{event.title}</h4>
-                  <div className="flex flex-wrap items-center gap-2 mt-1 text-xs text-muted-foreground">
+                  <h4 className="font-semibold text-xs sm:text-sm truncate group-hover:text-[hsl(var(--teal))] transition-colors">{event.title}</h4>
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1.5 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
+                      <Clock className="h-3 w-3 text-[hsl(var(--teal))]" />
                       {event.time}
                     </span>
                     <span className="flex items-center gap-1 truncate">
-                      <MapPin className="h-3 w-3" />
-                      <span className="truncate max-w-[100px]">{event.location}</span>
+                      <MapPin className="h-3 w-3 text-[hsl(var(--turquoise))]" />
+                      <span className="truncate max-w-[100px] sm:max-w-none">{event.location}</span>
                     </span>
                   </div>
                 </div>
-                
-                <ChevronRight className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity self-center" />
               </div>
             ))}
           </div>
 
-          {/* View All */}
-          <button 
-            onClick={() => setCalendarOpen(true)}
-            className="mt-4 w-full flex items-center justify-between px-4 py-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors group"
-          >
-            <span className="text-sm font-medium text-primary">View calendar</span>
-            <ChevronRight className="h-4 w-4 text-primary transition-transform group-hover:translate-x-1" />
-          </button>
+          {/* View All Link */}
+          <div className="flex justify-end mt-4">
+            <button 
+              onClick={() => setCalendarOpen(true)}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 group"
+            >
+              View all
+              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </div>
         </div>
       </section>
 

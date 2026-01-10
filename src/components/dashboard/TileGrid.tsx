@@ -23,13 +23,17 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
 
   return (
     <section className="animate-fade-in">
-      {/* iOS-style Section Header */}
-      <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3 px-1">
-        {title}
-      </h2>
+      {/* Section Header */}
+      <div className="flex items-center gap-2 mb-4">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
+          {title}
+        </h2>
+        <div className="flex-1 h-[1.5px] bg-primary/25 rounded-full" />
+      </div>
 
-      {/* iOS Widget Container */}
-      <div className="ios-widget p-4">
+      {/* Glass Container */}
+      <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
+        
         <div className={`grid ${gridColsClass} gap-3`}>
           {items.map((item, index) => {
             const isExternal = isExternalLink(item);
@@ -42,18 +46,18 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
               <TileWrapper
                 key={item.id}
                 {...(tileProps as any)}
-                className="group relative flex items-center gap-3 rounded-2xl px-4 py-3.5 bg-muted/50 hover:bg-primary hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 animate-scale-in"
+                className="group relative flex items-center gap-3 rounded-full px-4 py-3 bg-card border border-border/50 hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))] shadow-sm hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20 transition-all duration-300 animate-scale-in"
                 style={{ animationDelay: `${index * 30}ms` }}
               >
-                <div className="p-2 rounded-xl flex-shrink-0 flex items-center justify-center transition-all duration-200 bg-primary/10 group-hover:bg-white/20">
-                  <item.icon className="h-4 w-4 text-primary transition-all duration-200 group-hover:text-white" strokeWidth={1.5} />
+                <div className="p-2 rounded-lg flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-[hsl(var(--light-blue))] group-hover:bg-white/20 group-hover:backdrop-blur-sm group-hover:border group-hover:border-white/20">
+                  <item.icon className="h-4 w-4 text-white transition-all duration-300 group-hover:text-white" strokeWidth={1.5} />
                 </div>
-                <span className="font-medium text-sm transition-colors truncate flex-1 group-hover:text-white">
+                <span className="font-semibold text-sm transition-colors truncate relative z-10 group-hover:text-white flex-1">
                   {item.title}
                 </span>
-                {/* Badge counter */}
+                {/* Badge counter - inside the tile on the right */}
                 {badgeCounts[item.id] && (
-                  <span className="h-5 min-w-5 px-1.5 rounded-full bg-destructive text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">
+                  <span className="h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white text-[10px] font-bold flex items-center justify-center shadow-sm flex-shrink-0">
                     {badgeCounts[item.id]}
                   </span>
                 )}

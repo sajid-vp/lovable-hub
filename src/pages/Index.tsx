@@ -32,16 +32,17 @@ export default function Index() {
 
   // Authenticated dashboard - no navbar, full-width layout
   return (
-    <div className="min-h-screen bg-background">
-      {/* iOS-style subtle background mesh */}
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-[hsl(var(--turquoise))]/5">
+      {/* Decorative background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-32 -right-32 w-80 h-80 bg-[hsl(var(--primary))]/8 rounded-full blur-[120px]" />
-        <div className="absolute top-1/3 -left-16 w-64 h-64 bg-[hsl(var(--secondary))]/6 rounded-full blur-[100px]" />
-        <div className="absolute bottom-24 right-1/3 w-48 h-48 bg-[hsl(var(--accent))]/5 rounded-full blur-[80px]" />
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-[hsl(var(--turquoise))]/8 to-[hsl(var(--teal))]/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 -left-20 w-72 h-72 bg-gradient-to-br from-[hsl(var(--lavender))]/8 to-[hsl(var(--indigo))]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-1/4 w-56 h-56 bg-gradient-to-br from-[hsl(var(--coral))]/6 to-[hsl(var(--orange))]/4 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 left-1/3 w-40 h-40 bg-gradient-to-br from-[hsl(var(--gold))]/5 to-transparent rounded-full blur-3xl" />
       </div>
       
-      <main className="container max-w-6xl py-5 sm:py-8 px-4 sm:px-6 relative z-10">
-        <div className="space-y-5 sm:space-y-6">
+      <main className="container max-w-6xl py-4 sm:py-6 px-3 sm:px-4 relative z-10">
+        <div className="space-y-4 sm:space-y-5">
           {/* Welcome Section */}
           <WelcomeBanner />
           
@@ -49,7 +50,9 @@ export default function Index() {
           <AnnouncementsTicker />
           
           {/* Leadership Message + Quick Links side by side */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 sm:gap-6">
+          <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
+            {/* Subtle connecting glow behind the entire row */}
+            <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-[hsl(var(--indigo))]/3 via-transparent to-[hsl(var(--turquoise))]/3 blur-xl" />
             
             <div className="lg:col-span-2">
               <LeadershipMessage />
@@ -63,18 +66,18 @@ export default function Index() {
           <Apps />
           
           {/* Content Grid 1: News + Events/Birthdays */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
             <div className="lg:col-span-2">
               <NewsFeed />
             </div>
-            <div className="space-y-5 sm:space-y-6">
+            <div className="space-y-4 sm:space-y-5">
               <UpcomingEvents />
               <TeamBirthdays />
             </div>
           </div>
           
           {/* Content Grid 2: Bulletin Board + Employee Spotlight */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
             <div className="lg:col-span-2">
               <BulletinBoard />
             </div>

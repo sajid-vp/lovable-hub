@@ -69,7 +69,7 @@ export function WelcomeBanner() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-3xl shadow-xl animate-fade-in">
+    <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl shadow-[hsl(var(--turquoise))]/20 animate-fade-in">
       {/* Background image with overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
@@ -78,40 +78,45 @@ export function WelcomeBanner() {
         }}
       />
       
-      {/* iOS-style gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-primary/75 to-secondary/80" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+      {/* Gradient overlay - matching announcements ticker */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--light-blue))]/90 to-[hsl(var(--turquoise))]/85" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--light-blue))]/50 via-transparent to-transparent" />
+      
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-32 sm:w-64 h-32 sm:h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
       
       {/* Main content area */}
-      <div className="relative z-10 h-48 sm:h-56 md:h-64 p-5 sm:p-6 md:p-8 flex justify-between">
+      <div className="relative z-10 h-44 sm:h-56 md:h-64 p-4 sm:p-6 md:p-8 flex justify-between">
         {/* Left: Text content */}
         <div className="text-white flex flex-col justify-center">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-2.5 bg-white/20 rounded-2xl backdrop-blur-xl">
-              <TimeIcon className="h-5 w-5 sm:h-6 sm:w-6" />
+          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <div className="p-2 sm:p-3 bg-white/20 rounded-lg sm:rounded-xl backdrop-blur-sm shadow-lg">
+              <TimeIcon className="h-4 w-4 sm:h-6 sm:w-6" />
             </div>
+            <div className="flex-1 h-[2px] bg-white/40 rounded-full max-w-[150px] sm:max-w-xs" />
           </div>
           
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-1 drop-shadow-sm">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-1 sm:mb-2 drop-shadow-md leading-tight">
             {getGreeting()}, {user?.name?.split(" ")[0]}!
           </h1>
-          <p className="text-sm sm:text-base opacity-90 font-medium mb-1">
+          <p className="text-sm sm:text-base opacity-95 font-semibold mb-1 sm:mb-2">
             {today}
           </p>
-          <p className="text-sm opacity-80 max-w-md hidden sm:block leading-relaxed">
-            Welcome back to Sharjah Education Academy
+          <p className="text-sm opacity-95 max-w-lg hidden sm:block font-medium leading-relaxed">
+            Welcome back to Sharjah Education Academy. Here's what's happening in your organization today.
           </p>
         </div>
 
         {/* Right: Controls */}
-        <div className="flex items-start gap-2 pt-1">
+        <div className="flex items-start gap-2 sm:gap-2.5 pt-1">
           {/* Search */}
           <div className="relative">
             <form onSubmit={handleSearch} className="flex items-center">
               <div
                 className={cn(
-                  "flex items-center overflow-hidden transition-all duration-300 bg-white/15 backdrop-blur-xl border border-white/20 rounded-full",
-                  searchOpen ? "w-40 sm:w-52 pl-4 pr-1" : "w-11"
+                  "flex items-center overflow-hidden transition-all duration-300 bg-white/20 backdrop-blur-sm border border-white/20 rounded-full",
+                  searchOpen ? "w-36 sm:w-52 pl-3 sm:pl-4 pr-1" : "w-10 sm:w-11"
                 )}
               >
                 {searchOpen && (
@@ -133,10 +138,10 @@ export function WelcomeBanner() {
                   type={searchOpen ? "submit" : "button"}
                   variant="ghost"
                   size="icon"
-                  className="h-11 w-11 rounded-full shrink-0 text-white hover:bg-white/20 hover:text-white"
+                  className="h-10 w-10 sm:h-11 sm:w-11 rounded-full shrink-0 text-white hover:bg-white/20 hover:text-white"
                   onClick={() => !searchOpen && setSearchOpen(true)}
                 >
-                  <Search className="h-5 w-5" />
+                  <Search className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
               </div>
             </form>
@@ -159,10 +164,10 @@ export function WelcomeBanner() {
           <Button
             variant="ghost"
             size="icon"
-            className="h-11 w-11 rounded-full bg-white/15 backdrop-blur-xl border border-white/20 text-white hover:bg-white/25 hover:text-white relative"
+            className="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-white hover:bg-white/30 hover:text-white relative"
           >
-            <Bell className="h-5 w-5" />
-            <span className="absolute top-2 right-2 h-2.5 w-2.5 rounded-full bg-destructive ring-2 ring-white/20" />
+            <Bell className="h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-destructive" />
           </Button>
 
           {/* User Menu */}
@@ -170,31 +175,31 @@ export function WelcomeBanner() {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="h-11 w-11 rounded-full p-0 bg-white/15 backdrop-blur-xl border border-white/20 hover:bg-white/25"
+                className="h-10 w-10 sm:h-11 sm:w-11 rounded-full p-0 bg-white/20 backdrop-blur-sm border border-white/20 hover:bg-white/30"
               >
-                <Avatar className="h-9 w-9">
+                <Avatar className="h-8 w-8 sm:h-9 sm:w-9">
                   <AvatarImage src={user?.avatar} alt={user?.name} />
-                  <AvatarFallback className="bg-white/30 text-white text-sm">
+                  <AvatarFallback className="bg-white/30 text-white text-xs sm:text-sm">
                     {user?.name?.charAt(0) || "U"}
                   </AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 rounded-2xl">
+            <DropdownMenuContent align="end" className="w-56 bg-popover">
               <DropdownMenuLabel>
                 <div className="flex flex-col">
-                  <span className="font-semibold">{user?.name}</span>
+                  <span className="font-medium">{user?.name}</span>
                   <span className="text-xs text-muted-foreground">{user?.email}</span>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild className="rounded-xl">
+              <DropdownMenuItem asChild>
                 <Link to="/profile" className="cursor-pointer">
                   <User className="mr-2 h-4 w-4" />
                   Profile
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild className="rounded-xl">
+              <DropdownMenuItem asChild>
                 <Link to="/settings" className="cursor-pointer">
                   <Settings className="mr-2 h-4 w-4" />
                   Settings
@@ -203,7 +208,7 @@ export function WelcomeBanner() {
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 onClick={handleLogout}
-                className="text-destructive cursor-pointer rounded-xl"
+                className="text-destructive cursor-pointer"
               >
                 <LogOut className="mr-2 h-4 w-4" />
                 Logout

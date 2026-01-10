@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 
 const announcements = [
@@ -27,13 +27,13 @@ const announcements = [
 const getTypeStyles = (type: string) => {
   switch (type) {
     case "Important":
-      return "bg-destructive/10 text-destructive";
+      return "border border-rose-500 text-rose-600 bg-transparent";
     case "Notice":
-      return "bg-warning/10 text-[hsl(var(--warning))]";
+      return "border border-amber-500 text-amber-600 bg-transparent";
     case "Update":
-      return "bg-primary/10 text-primary";
+      return "border border-sky-500 text-sky-600 bg-transparent";
     default:
-      return "bg-muted text-muted-foreground";
+      return "border border-foreground/50 text-foreground/80 bg-transparent";
   }
 };
 
@@ -60,73 +60,82 @@ export function AnnouncementsTicker() {
   }, [emblaApi]);
 
   return (
-    <div className="ios-widget-sm p-4 animate-fade-in" style={{ animationDelay: "50ms" }}>
-      {/* Carousel content */}
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
-          {announcements.map((announcement) => (
-            <div key={announcement.id} className="flex-[0_0_100%] min-w-0">
-              <p className="text-sm font-medium line-clamp-2 leading-relaxed text-foreground">
-                {announcement.content}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Navigation row */}
-      <div className="flex items-center gap-3 mt-3">
-        {/* Type pill */}
-        <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${getTypeStyles(announcements[selectedIndex]?.type)}`}>
-          {announcements[selectedIndex]?.type}
-        </span>
-
-        {/* Date */}
-        <span className="text-xs text-muted-foreground">
-          {announcements[selectedIndex]?.date}
-        </span>
-
-        {/* Spacer */}
-        <div className="flex-1" />
-
-        {/* Dots */}
-        <div className="flex gap-1.5">
-          {announcements.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => emblaApi?.scrollTo(index)}
-              className={`w-1.5 h-1.5 rounded-full transition-all ${
-                index === selectedIndex
-                  ? "bg-primary w-4"
-                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-              }`}
-            />
-          ))}
+    <div
+      className="relative rounded-xl overflow-hidden animate-fade-in bg-background/80 backdrop-blur-sm border border-border"
+      style={{ animationDelay: "50ms" }}
+    >
+      <div className="relative flex flex-col gap-2 px-3 sm:px-4 py-3">
+        {/* Carousel content */}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {announcements.map((announcement) => (
+              <div key={announcement.id} className="flex-[0_0_100%] min-w-0">
+                <span className="text-xs sm:text-sm font-medium line-clamp-2 leading-relaxed text-foreground">
+                  {announcement.content}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Nav buttons */}
-        <div className="flex gap-1">
+        {/* Navigation row: type chip, date on left, navigation + view all on right */}
+        <div className="flex items-center gap-2">
+          {/* Type chip */}
+          <span className={`text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 ${getTypeStyles(announcements[selectedIndex]?.type)}`}>
+            {announcements[selectedIndex]?.type}
+          </span>
+
+          {/* Date */}
+          <span className="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-muted-foreground shrink-0">
+            <Calendar className="h-2.5 w-2.5" />
+            {announcements[selectedIndex]?.date}
+          </span>
+
+          {/* Spacer */}
+          <div className="flex-1" />
+
+          {/* Prev arrow */}
           <button
             onClick={scrollPrev}
-            className="ios-nav-btn p-1.5"
+            className="p-1 rounded-full bg-muted hover:bg-muted/80 transition-colors text-foreground/70 hover:text-foreground shrink-0"
           >
-            <ChevronLeft className="h-3.5 w-3.5 text-muted-foreground" />
+            <ChevronLeft className="h-3.5 w-3.5" />
           </button>
+
+          {/* Dots */}
+          <div className="flex gap-1.5">
+            {announcements.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => emblaApi?.scrollTo(index)}
+                className={`w-1.5 h-1.5 rounded-full transition-all ${
+                  index === selectedIndex
+                    ? "bg-foreground"
+                    : "bg-foreground/30 hover:bg-foreground/50"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Next arrow */}
           <button
             onClick={scrollNext}
-            className="ios-nav-btn p-1.5"
+            className="p-1 rounded-full bg-muted hover:bg-muted/80 transition-colors text-foreground/70 hover:text-foreground shrink-0"
           >
-            <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
+            <ChevronRight className="h-3.5 w-3.5" />
           </button>
-        </div>
 
-        {/* View All link */}
-        <Link
-          to="/announcements"
-          className="text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
-        >
-          View all
-        </Link>
+          {/* Separator */}
+          <div className="w-px h-3 bg-border" />
+
+          {/* View All link */}
+          <Link
+            to="/announcements"
+            className="text-[10px] sm:text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors shrink-0"
+          >
+            View all
+          </Link>
+        </div>
       </div>
     </div>
   );
