@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import seaBuilding from "@/assets/sea-building.jpg";
-import seaLogo from "@/assets/logo.png";
+import seaLogoWhite from "@/assets/sea-logo-white.png";
 import { SearchDropdown } from "@/components/search/SearchDropdown";
 
 export function WelcomeBanner() {
@@ -93,7 +93,7 @@ export function WelcomeBanner() {
         <div className="flex items-start justify-between">
           {/* Logo in top-left */}
           <img 
-            src={seaLogo} 
+            src={seaLogoWhite} 
             alt="Sharjah Education Academy" 
             className="h-8 sm:h-10 md:h-12 w-auto drop-shadow-lg"
           />
