@@ -1,7 +1,3 @@
-import { useAuthContext } from "@/contexts/AuthContext";
-import { PublicHeader } from "@/components/landing/PublicHeader";
-import { PublicLanding } from "@/components/landing/PublicLanding";
-import { PublicFooter } from "@/components/landing/PublicFooter";
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
 import { AnnouncementsTicker } from "@/components/dashboard/AnnouncementsTicker";
 // import { BulletinBoard } from "@/components/dashboard/BulletinBoard"; // Hidden for now
@@ -15,22 +11,7 @@ import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
 import { EmployeeSpotlight } from "@/components/dashboard/EmployeeSpotlight";
 
 export default function Index() {
-  const { isAuthenticated } = useAuthContext();
-
-  // Public landing page for visitors
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen flex flex-col bg-background">
-        <PublicHeader />
-        <main className="flex-1">
-          <PublicLanding />
-        </main>
-        <PublicFooter />
-      </div>
-    );
-  }
-
-  // Authenticated dashboard - no navbar, full-width layout
+  // Dashboard - no navbar, full-width layout
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-[hsl(var(--turquoise))]/5">
       {/* Decorative background elements */}
