@@ -9,13 +9,13 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 98%;
-    --foreground: 208 38% 25%;
+    --foreground: 220 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 208 38% 25%;
+    --card-foreground: 220 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 208 38% 25%;
+    --popover-foreground: 220 15% 15%;
 
     /* Primary: Blue #4f82af */
     --primary: 208 38% 50%;
@@ -23,29 +23,29 @@ All colors MUST be HSL.
 
     /* Secondary: Turquoise #74c6d0 */
     --secondary: 186 48% 63%;
-    --secondary-foreground: 208 38% 20%;
+    --secondary-foreground: 220 15% 15%;
 
     /* Muted: Light Gray #f3f3f3 */
     --muted: 0 0% 95%;
-    --muted-foreground: 208 20% 40%;
+    --muted-foreground: 220 10% 40%;
 
     /* Accent: Lavender #bca9e4 */
     --accent: 263 51% 78%;
-    --accent-foreground: 263 51% 25%;
+    --accent-foreground: 220 15% 15%;
 
     /* Success: Green #7dc6bd */
     --success: 170 39% 63%;
-    --success-foreground: 170 39% 20%;
+    --success-foreground: 220 15% 15%;
 
     /* Warning: Orange #fcb783 */
     --warning: 28 95% 75%;
-    --warning-foreground: 28 60% 25%;
+    --warning-foreground: 220 15% 15%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 208 20% 88%;
-    --input: 208 20% 88%;
+    --border: 220 10% 88%;
+    --input: 220 10% 88%;
     --ring: 208 38% 50%;
 
     --radius: 0.75rem;
@@ -73,12 +73,12 @@ All colors MUST be HSL.
     --gradient-cool: linear-gradient(135deg, hsl(235 45% 55%), hsl(263 51% 70%));
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 208 38% 25%;
+    --sidebar-foreground: 220 15% 15%;
     --sidebar-primary: 208 38% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 183 66% 94%;
-    --sidebar-accent-foreground: 208 38% 25%;
-    --sidebar-border: 208 20% 88%;
+    --sidebar-accent-foreground: 220 15% 15%;
+    --sidebar-border: 220 10% 88%;
     --sidebar-ring: 208 38% 50%;
   }
 
