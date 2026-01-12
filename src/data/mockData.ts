@@ -358,6 +358,13 @@ export const mockEvents: Event[] = [
     time: "2:00 PM",
     location: "Room 301",
   },
+  {
+    id: "4",
+    title: "Leadership Workshop",
+    date: "2025-01-18",
+    time: "9:00 AM",
+    location: "Building A, Floor 2",
+  },
 ];
 
 // Mock team birthdays
