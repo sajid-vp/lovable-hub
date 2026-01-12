@@ -31,7 +31,7 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
         {/* Glass Container with 3 Cards Grid */}
         <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5 flex-1">
           {/* Decorative gradient */}
-          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--orange))] to-[hsl(var(--coral))]" />
+          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-[hsl(var(--blue))] via-[hsl(var(--turquoise))] to-[hsl(var(--light-blue))]" />
 
           {/* 3-Column Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 h-full">
@@ -40,26 +40,26 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
               return (
                 <div
                   key={spotlight.id}
-                  className="relative rounded-xl bg-background/80 border border-border/50 p-3 transition-all duration-300 hover:border-[hsl(var(--gold))]/40 hover:shadow-lg hover:shadow-[hsl(var(--gold))]/5 hover:-translate-y-0.5 group flex flex-col"
+                  className="relative rounded-xl bg-background/80 border border-border/50 p-3 transition-all duration-300 hover:border-[hsl(var(--turquoise))]/40 hover:shadow-lg hover:shadow-[hsl(var(--turquoise))]/5 hover:-translate-y-0.5 group flex flex-col"
                 >
                   {/* Employee Avatar & Info */}
                   <div className="flex items-center gap-3 mb-3">
                     <div className="relative">
-                      <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] opacity-40 blur-sm group-hover:opacity-60 transition-opacity" />
+                      <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] opacity-40 blur-sm group-hover:opacity-60 transition-opacity" />
                       <Avatar className="relative h-10 w-10 border-2 border-background">
                         <AvatarImage src={spotlight.employee.avatar} alt={spotlight.employee.name} />
-                        <AvatarFallback className="text-xs font-semibold bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] text-white">
+                        <AvatarFallback className="text-xs font-semibold bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white">
                           {spotlight.employee.name.split(' ').map(n => n[0]).join('')}
                         </AvatarFallback>
                       </Avatar>
                       {index === 0 && (
-                        <div className="absolute -bottom-0.5 -right-0.5 h-4 w-4 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] flex items-center justify-center shadow-md">
+                        <div className="absolute -bottom-0.5 -right-0.5 h-4 w-4 rounded-full bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] flex items-center justify-center shadow-md">
                           <Award className="h-2.5 w-2.5 text-white" />
                         </div>
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-sm text-foreground truncate group-hover:text-[hsl(var(--gold))] transition-colors">
+                      <h3 className="font-semibold text-sm text-foreground truncate group-hover:text-[hsl(var(--teal))] transition-colors">
                         {spotlight.employee.name}
                       </h3>
                       <p className="text-xs text-muted-foreground truncate">{spotlight.employee.role}</p>
