@@ -64,8 +64,8 @@ export function SocialFeed() {
             onClick={() => setActiveFilter(filter)}
             className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
               activeFilter === filter
-                ? "bg-[hsl(var(--gold))] text-white shadow-md"
-                : "bg-card border border-border/50 text-muted-foreground hover:border-[hsl(var(--gold))]/50 hover:text-foreground"
+                ? "bg-[hsl(var(--light-blue))] text-white shadow-md"
+                : "bg-card border border-border/50 text-muted-foreground hover:border-[hsl(var(--turquoise))]/50 hover:text-foreground"
             }`}
           >
             {filter === "Kudos" && <Award className="h-3 w-3" />}
@@ -194,7 +194,7 @@ export function SocialFeed() {
         
         <button
           onClick={scrollNext}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-[hsl(var(--gold))] shadow-lg hover:bg-[hsl(var(--coral))] transition-colors"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-[hsl(var(--turquoise))] shadow-lg hover:bg-[hsl(var(--teal))] transition-colors"
         >
           <ChevronRight className="h-5 w-5 text-white" />
         </button>
