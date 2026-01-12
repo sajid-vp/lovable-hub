@@ -12,7 +12,12 @@ export function useAuth() {
     const stored = localStorage.getItem("auth");
     if (stored) {
       try {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+        // Always use the latest mockUser data but preserve auth status
+        if (parsed.isAuthenticated) {
+          return { isAuthenticated: true, user: mockUser };
+        }
+        return { isAuthenticated: false, user: null };
       } catch {
         return { isAuthenticated: false, user: null };
       }
