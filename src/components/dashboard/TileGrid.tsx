@@ -46,11 +46,11 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
               <TileWrapper
                 key={item.id}
                 {...(tileProps as any)}
-                className="group relative flex items-center gap-3 rounded-full px-4 py-3 bg-card border border-border/50 hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))] shadow-sm hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20 transition-all duration-300 animate-scale-in"
+                className="group relative flex items-center gap-2.5 rounded-full px-3 py-2 bg-card border border-border/50 hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))] shadow-sm hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20 transition-all duration-300 animate-scale-in"
                 style={{ animationDelay: `${index * 30}ms` }}
               >
-                <div className="p-2 rounded-lg flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-[hsl(var(--light-blue))] group-hover:bg-white/20 group-hover:backdrop-blur-sm group-hover:border group-hover:border-white/20">
-                  <item.icon className="h-4 w-4 text-white transition-all duration-300 group-hover:text-white" strokeWidth={1.5} />
+                <div className="p-1.5 rounded-md flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-[hsl(var(--light-blue))] group-hover:bg-white/20 group-hover:backdrop-blur-sm group-hover:border group-hover:border-white/20">
+                  <item.icon className="h-3.5 w-3.5 text-white transition-all duration-300 group-hover:text-white" strokeWidth={1.5} />
                 </div>
                 <span className="font-semibold text-sm transition-colors truncate relative z-10 group-hover:text-white flex-1">
                   {item.title}
