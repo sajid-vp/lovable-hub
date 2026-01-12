@@ -19,65 +19,70 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
             Spotlight
           </h2>
           <div className="flex-1 h-[1.5px] bg-gradient-to-r from-[hsl(var(--gold))]/40 to-transparent rounded-full" />
+          <Link 
+            to="/directory" 
+            className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1 transition-colors"
+          >
+            View all
+            <ChevronRight className="h-4 w-4" />
+          </Link>
         </div>
 
-        {/* Compact Spotlight Card */}
-        <div className="relative overflow-hidden rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 p-4 group hover:bg-card/80 transition-all duration-300 flex-1">
+        {/* Glass Container with 3 Cards Grid */}
+        <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5 flex-1">
           {/* Decorative gradient */}
           <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--orange))] to-[hsl(var(--coral))]" />
-          
-          {/* Sparkle decoration */}
-          <div className="absolute top-3 right-3 text-[hsl(var(--gold))]/30">
-            <Sparkles className="h-5 w-5" />
-          </div>
 
-          <div className="flex flex-col h-full">
-            {/* Multiple Employees Row */}
-            <div className="flex gap-4 justify-center mb-4">
-              {spotlightEmployees.map((spotlight, index) => {
-                const dept = departments.find(d => d.name === spotlight.employee.department);
-                return (
-                  <div key={spotlight.id} className="flex flex-col items-center text-center">
-                    <div className="relative mb-2">
-                      <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] opacity-50 blur-sm" />
-                      <Avatar className="relative h-12 w-12 border-2 border-background">
+          {/* 3-Column Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 h-full">
+            {spotlightEmployees.map((spotlight, index) => {
+              const dept = departments.find(d => d.name === spotlight.employee.department);
+              return (
+                <div
+                  key={spotlight.id}
+                  className="relative rounded-xl bg-background/80 border border-border/50 p-3 transition-all duration-300 hover:border-[hsl(var(--gold))]/40 hover:shadow-lg hover:shadow-[hsl(var(--gold))]/5 hover:-translate-y-0.5 group flex flex-col"
+                >
+                  {/* Employee Avatar & Info */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="relative">
+                      <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] opacity-40 blur-sm group-hover:opacity-60 transition-opacity" />
+                      <Avatar className="relative h-10 w-10 border-2 border-background">
                         <AvatarImage src={spotlight.employee.avatar} alt={spotlight.employee.name} />
-                        <AvatarFallback className="text-sm font-semibold bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] text-white">
+                        <AvatarFallback className="text-xs font-semibold bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] text-white">
                           {spotlight.employee.name.split(' ').map(n => n[0]).join('')}
                         </AvatarFallback>
                       </Avatar>
                       {index === 0 && (
-                        <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] flex items-center justify-center shadow-lg">
+                        <div className="absolute -bottom-0.5 -right-0.5 h-4 w-4 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] flex items-center justify-center shadow-md">
                           <Award className="h-2.5 w-2.5 text-white" />
                         </div>
                       )}
                     </div>
-                    
-                    <h3 className="font-semibold text-xs text-foreground line-clamp-1">{spotlight.employee.name.split(' ')[0]}</h3>
-                    <p className="text-[10px] text-muted-foreground line-clamp-1">{spotlight.employee.role.split(' ').slice(0, 2).join(' ')}</p>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-sm text-foreground truncate group-hover:text-[hsl(var(--gold))] transition-colors">
+                        {spotlight.employee.name}
+                      </h3>
+                      <p className="text-xs text-muted-foreground truncate">{spotlight.employee.role}</p>
+                    </div>
                   </div>
-                );
-              })}
-            </div>
 
-            {/* Featured Achievement - First spotlight */}
-            <div className="flex-1">
-              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
-                Featured Achievement
-              </p>
-              <p className="text-xs text-foreground/90 leading-relaxed line-clamp-3">
-                {spotlightEmployees[0].achievement}
-              </p>
-            </div>
+                  {/* Department Badge */}
+                  {dept && (
+                    <Badge 
+                      variant="secondary" 
+                      className={`bg-gradient-to-r ${dept.color} text-white border-0 text-[10px] px-2 py-0.5 w-fit mb-2`}
+                    >
+                      {dept.name}
+                    </Badge>
+                  )}
 
-            {/* View Directory Link */}
-            <Link
-              to="/directory"
-              className="flex items-center justify-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors mt-3 pt-3 border-t border-border/50"
-            >
-              View directory
-              <ChevronRight className="h-3 w-3" />
-            </Link>
+                  {/* Achievement */}
+                  <p className="text-xs text-foreground/80 line-clamp-3 leading-relaxed flex-1">
+                    {spotlight.achievement}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
