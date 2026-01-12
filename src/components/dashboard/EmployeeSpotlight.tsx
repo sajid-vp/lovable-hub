@@ -19,13 +19,6 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
             Spotlight
           </h2>
           <div className="flex-1 h-[1.5px] bg-primary/25 rounded-full" />
-          <Link 
-            to="/directory" 
-            className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1 transition-colors"
-          >
-            View all
-            <ChevronRight className="h-4 w-4" />
-          </Link>
         </div>
 
         {/* Glass Container with 3 Cards Grid */}
