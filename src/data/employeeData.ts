@@ -306,14 +306,33 @@ export const employees: Employee[] = [
   },
 ];
 
-// Current spotlight employee
-export const currentSpotlight: SpotlightEmployee = {
-  id: "s1",
-  employee: employees.find(e => e.id === "e3")!,
-  achievement: "Led the successful WERA membership application and established 3 new international research partnerships this quarter.",
-  quote: "Education research is not just about gathering data—it's about transforming lives through evidence-based practices.",
-  spotlightDate: "2025-01-01",
-};
+// Current spotlight employees (multiple)
+export const spotlightEmployees: SpotlightEmployee[] = [
+  {
+    id: "s1",
+    employee: employees.find(e => e.id === "e3")!,
+    achievement: "Led the successful WERA membership application and established 3 new international research partnerships this quarter.",
+    quote: "Education research is not just about gathering data—it's about transforming lives through evidence-based practices.",
+    spotlightDate: "2025-01-01",
+  },
+  {
+    id: "s2",
+    employee: employees.find(e => e.id === "e1")!,
+    achievement: "Launched the new Early Childhood Excellence Framework adopted by 15 nurseries across Sharjah.",
+    quote: "Every child deserves a foundation built on curiosity, creativity, and compassion.",
+    spotlightDate: "2025-01-01",
+  },
+  {
+    id: "s3",
+    employee: employees.find(e => e.id === "e7")!,
+    achievement: "Orchestrated SEA's rebrand campaign reaching 2M+ audience and increased engagement by 180%.",
+    quote: "Great communication transforms complex ideas into shared understanding.",
+    spotlightDate: "2025-01-01",
+  },
+];
+
+// Legacy export for backward compatibility
+export const currentSpotlight: SpotlightEmployee = spotlightEmployees[0];
 
 // Helper functions
 export const getEmployeesByDepartment = (departmentName: string): Employee[] => {
