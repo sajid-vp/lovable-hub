@@ -2,15 +2,13 @@ import { Link } from "react-router-dom";
 import { Quote, Award, ChevronRight, Sparkles } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { currentSpotlight, departments } from "@/data/employeeData";
+import { spotlightEmployees, departments } from "@/data/employeeData";
 
 interface EmployeeSpotlightProps {
   variant?: "default" | "compact";
 }
 
 export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProps) {
-  const { employee, achievement, quote } = currentSpotlight;
-  const department = departments.find(d => d.name === employee.department);
 
   if (variant === "compact") {
     return (
@@ -34,45 +32,41 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
           </div>
 
           <div className="flex flex-col h-full">
-            {/* Employee Info - Centered */}
-            <div className="flex flex-col items-center text-center mb-4">
-              <div className="relative mb-3">
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] opacity-50 blur-sm" />
-                <Avatar className="relative h-14 w-14 border-2 border-background">
-                  <AvatarImage src={employee.avatar} alt={employee.name} />
-                  <AvatarFallback className="text-base font-semibold bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] text-white">
-                    {employee.name.split(' ').map(n => n[0]).join('')}
-                  </AvatarFallback>
-                </Avatar>
-                <div className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] flex items-center justify-center shadow-lg">
-                  <Award className="h-3 w-3 text-white" />
-                </div>
-              </div>
-              
-              <h3 className="font-semibold text-sm text-foreground">{employee.name}</h3>
-              <p className="text-xs text-muted-foreground">{employee.role}</p>
-              {department && (
-                <Link 
-                  to={`/departments/${department.slug}`}
-                  className="inline-block mt-1.5"
-                >
-                  <Badge 
-                    variant="secondary" 
-                    className={`bg-gradient-to-r ${department.color} text-white border-0 hover:opacity-80 transition-opacity text-xs px-2 py-0.5`}
-                  >
-                    {department.name}
-                  </Badge>
-                </Link>
-              )}
+            {/* Multiple Employees Row */}
+            <div className="flex gap-4 justify-center mb-4">
+              {spotlightEmployees.map((spotlight, index) => {
+                const dept = departments.find(d => d.name === spotlight.employee.department);
+                return (
+                  <div key={spotlight.id} className="flex flex-col items-center text-center">
+                    <div className="relative mb-2">
+                      <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] opacity-50 blur-sm" />
+                      <Avatar className="relative h-12 w-12 border-2 border-background">
+                        <AvatarImage src={spotlight.employee.avatar} alt={spotlight.employee.name} />
+                        <AvatarFallback className="text-sm font-semibold bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] text-white">
+                          {spotlight.employee.name.split(' ').map(n => n[0]).join('')}
+                        </AvatarFallback>
+                      </Avatar>
+                      {index === 0 && (
+                        <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] flex items-center justify-center shadow-lg">
+                          <Award className="h-2.5 w-2.5 text-white" />
+                        </div>
+                      )}
+                    </div>
+                    
+                    <h3 className="font-semibold text-xs text-foreground line-clamp-1">{spotlight.employee.name.split(' ')[0]}</h3>
+                    <p className="text-[10px] text-muted-foreground line-clamp-1">{spotlight.employee.role.split(' ').slice(0, 2).join(' ')}</p>
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Achievement - Compact */}
+            {/* Featured Achievement - First spotlight */}
             <div className="flex-1">
               <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
-                Achievement
+                Featured Achievement
               </p>
               <p className="text-xs text-foreground/90 leading-relaxed line-clamp-3">
-                {achievement}
+                {spotlightEmployees[0].achievement}
               </p>
             </div>
 
@@ -89,6 +83,10 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
       </section>
     );
   }
+
+  // Default full-width variant - show first spotlight
+  const { employee, achievement, quote } = spotlightEmployees[0];
+  const department = departments.find(d => d.name === employee.department);
 
   // Default full-width variant
   return (
