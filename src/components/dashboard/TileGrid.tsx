@@ -28,7 +28,7 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
         <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
           {title}
         </h2>
-        <div className="flex-1 h-[1.5px] bg-primary/25 rounded-full" />
+        <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full" />
       </div>
 
       {/* Glass Container */}
