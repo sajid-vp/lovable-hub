@@ -210,7 +210,8 @@ export function WelcomeBanner() {
         
         {/* Bottom: Text content */}
         <div className="text-white mt-auto">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-1 sm:mb-2 drop-shadow-md leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-1 sm:mb-2 drop-shadow-md leading-tight flex items-center gap-2 sm:gap-3">
+            <TimeIcon className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-300 drop-shadow-md" />
             {getGreeting()}, {user?.name?.split(" ")[0]}!
           </h1>
           <p className="text-sm sm:text-base opacity-95 font-semibold mb-1 sm:mb-2">
