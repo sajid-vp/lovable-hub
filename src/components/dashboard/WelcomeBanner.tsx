@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import seaBuilding from "@/assets/sea-building.jpg";
+import seaLogo from "@/assets/logo.png";
 import { SearchDropdown } from "@/components/search/SearchDropdown";
 
 export function WelcomeBanner() {
@@ -88,6 +89,12 @@ export function WelcomeBanner() {
       
       {/* Main content area */}
       <div className="relative z-10 h-44 sm:h-56 md:h-64 p-4 sm:p-6 md:p-8 flex justify-between">
+        {/* Logo in top-left */}
+        <img 
+          src={seaLogo} 
+          alt="Sharjah Education Academy" 
+          className="absolute top-4 left-4 sm:top-6 sm:left-6 h-8 sm:h-10 md:h-12 w-auto drop-shadow-lg"
+        />
         {/* Left: Text content */}
         <div className="text-white flex flex-col justify-center">
           <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
