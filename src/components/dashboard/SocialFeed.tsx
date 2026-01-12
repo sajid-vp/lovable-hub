@@ -53,7 +53,7 @@ export function SocialFeed() {
         <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
           Social Feed
         </h2>
-        <div className="flex-1 h-[1.5px] bg-gradient-to-r from-[hsl(var(--gold))]/40 via-[hsl(var(--coral))]/30 to-transparent rounded-full" />
+        <div className="flex-1 h-[1.5px] bg-primary/25 rounded-full" />
       </div>
 
       {/* Filter Tabs */}

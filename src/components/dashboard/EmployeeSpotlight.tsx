@@ -18,7 +18,7 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
           <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
             Spotlight
           </h2>
-          <div className="flex-1 h-[1.5px] bg-gradient-to-r from-[hsl(var(--gold))]/40 to-transparent rounded-full" />
+          <div className="flex-1 h-[1.5px] bg-primary/25 rounded-full" />
           <Link 
             to="/directory" 
             className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1 transition-colors"
