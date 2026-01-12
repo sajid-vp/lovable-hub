@@ -14,7 +14,7 @@ export function UpcomingEvents() {
 
   return (
     <>
-      <section className="animate-fade-in" style={{ animationDelay: "200ms" }}>
+      <section className="animate-fade-in h-full flex flex-col" style={{ animationDelay: "200ms" }}>
         {/* Section Header */}
         <div className="flex items-center gap-2 mb-4">
           <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
@@ -23,10 +23,10 @@ export function UpcomingEvents() {
           <div className="flex-1 h-[1.5px] bg-primary/25 rounded-full" />
         </div>
 
-        {/* Glass Container */}
-        <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
+        {/* Glass Container - flex-1 to match News Feed height */}
+        <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5 flex-1 flex flex-col">
 
-          <div className="space-y-3">
+          <div className="space-y-3 flex-1">
             {mockEvents.map((event, index) => (
               <div
                 key={event.id}

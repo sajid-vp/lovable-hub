@@ -4,7 +4,7 @@ import { PublicLanding } from "@/components/landing/PublicLanding";
 import { PublicFooter } from "@/components/landing/PublicFooter";
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
 import { AnnouncementsTicker } from "@/components/dashboard/AnnouncementsTicker";
-import { BulletinBoard } from "@/components/dashboard/BulletinBoard";
+// import { BulletinBoard } from "@/components/dashboard/BulletinBoard"; // Hidden for now
 import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
 import { LeadershipMessage } from "@/components/dashboard/LeadershipMessage";
@@ -65,29 +65,28 @@ export default function Index() {
           {/* Apps - Full Width */}
           <Apps />
           
-          {/* Content Grid 1: News + Events/Birthdays */}
+          {/* Content Grid 1: News + Events (same height) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 flex flex-col">
               <NewsFeed />
             </div>
-            <div className="space-y-4 sm:space-y-5">
+            <div className="flex flex-col">
               <UpcomingEvents />
-              <TeamBirthdays />
-            </div>
-          </div>
-          
-          {/* Content Grid 2: Bulletin Board + Employee Spotlight */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-            <div className="lg:col-span-2">
-              <BulletinBoard />
-            </div>
-            <div>
-              <EmployeeSpotlight variant="compact" />
             </div>
           </div>
           
           {/* Social Feed - Full Width */}
           <SocialFeed />
+          
+          {/* Content Grid 2: Employee Spotlight + Birthdays (50-50) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <div className="flex flex-col">
+              <EmployeeSpotlight variant="compact" />
+            </div>
+            <div className="flex flex-col">
+              <TeamBirthdays />
+            </div>
+          </div>
         </div>
       </main>
     </div>

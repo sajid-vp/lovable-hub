@@ -14,9 +14,9 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
 
   if (variant === "compact") {
     return (
-      <section className="space-y-3 h-full">
+      <section className="h-full flex flex-col">
         {/* Section Header */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 mb-4">
           <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
             Spotlight
           </h2>
@@ -24,7 +24,7 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
         </div>
 
         {/* Compact Spotlight Card */}
-        <div className="relative overflow-hidden rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 p-4 group hover:bg-card/80 transition-all duration-300 h-[calc(100%-2rem)]">
+        <div className="relative overflow-hidden rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 p-4 group hover:bg-card/80 transition-all duration-300 flex-1">
           {/* Decorative gradient */}
           <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--orange))] to-[hsl(var(--coral))]" />
           
