@@ -109,11 +109,11 @@ export interface Birthday {
 // Mock current user
 export const mockUser: User = {
   id: "1",
-  name: "Alex Johnson",
-  email: "alex.johnson@company.com",
-  role: "Product Manager",
-  department: "Product",
-  avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+  name: "Sajid",
+  email: "sajid@sea.ac.ae",
+  role: "Staff Member",
+  department: "Administration",
+  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
 };
 
 // Mock news items - SEA News
