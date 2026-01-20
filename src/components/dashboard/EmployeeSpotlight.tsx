@@ -21,8 +21,8 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
           <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full" />
         </div>
 
-        {/* Glass Container with 3 Cards Grid */}
-        <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5 flex-1">
+        {/* Card Container with 3 Cards Grid */}
+        <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow flex-1">
           {/* Decorative gradient */}
           <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-[hsl(var(--blue))] via-[hsl(var(--turquoise))] to-[hsl(var(--light-blue))]" />
 
@@ -33,7 +33,7 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
               return (
                 <div
                   key={spotlight.id}
-                  className="relative rounded-xl bg-background/80 border border-border/50 p-3 transition-all duration-300 hover:border-[hsl(var(--turquoise))]/40 hover:shadow-lg hover:shadow-[hsl(var(--turquoise))]/5 hover:-translate-y-0.5 group flex flex-col"
+                  className="relative rounded-xl bg-white border border-border p-3 transition-all duration-300 hover:border-[hsl(var(--turquoise))]/40 hover:shadow-lg hover:shadow-[hsl(var(--turquoise))]/5 hover:-translate-y-0.5 group flex flex-col"
                 >
                   {/* Employee Avatar & Info */}
                   <div className="flex items-center gap-3 mb-3">
@@ -107,7 +107,7 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
       </div>
 
       {/* Spotlight Card */}
-      <div className="relative overflow-hidden rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 p-6 group hover:bg-card/80 transition-all duration-300">
+      <div className="relative overflow-hidden rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] p-6 group hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-all duration-300">
         {/* Decorative gradient */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--orange))] to-[hsl(var(--coral))]" />
         
