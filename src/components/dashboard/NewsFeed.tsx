@@ -50,8 +50,8 @@ export function NewsFeed() {
             onClick={() => setActiveCategory(category)}
             className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
               activeCategory === category
-              ? "bg-[hsl(var(--light-blue))] text-white shadow-md"
-                : "bg-white border border-border text-muted-foreground hover:border-[hsl(var(--turquoise))]/50 hover:text-foreground"
+                ? "bg-[hsl(var(--light-blue))] text-white shadow-md"
+                : "bg-card border border-border/50 text-muted-foreground hover:border-[hsl(var(--turquoise))]/50 hover:text-foreground"
             }`}
           >
             {category}
@@ -59,8 +59,8 @@ export function NewsFeed() {
         ))}
       </div>
 
-      {/* Card Container */}
-      <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow">
+      {/* Glass Container */}
+      <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5">
 
         {/* Carousel */}
         <div className="overflow-hidden" ref={emblaRef}>
@@ -71,7 +71,7 @@ export function NewsFeed() {
                 className="flex-[0_0_200px] sm:flex-[0_0_220px] min-w-0"
               >
                 {/* News Card */}
-                <div className="relative rounded-2xl bg-white border border-border shadow-sm overflow-hidden group hover:shadow-lg hover:border-[hsl(var(--turquoise))]/40 transition-all duration-300 h-full flex flex-col">
+                <div className="relative rounded-2xl bg-background/80 border border-border/50 shadow-md overflow-hidden group hover:shadow-lg hover:border-[hsl(var(--turquoise))]/40 transition-all duration-300 h-full flex flex-col">
                   {/* Image */}
                   <div className="relative h-40 overflow-hidden">
                     <img
@@ -116,7 +116,7 @@ export function NewsFeed() {
         {/* Navigation Arrows */}
         <button
           onClick={scrollPrev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white border border-border shadow-md hover:bg-slate-50 transition-colors"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-card/90 backdrop-blur-sm border border-border/50 shadow-lg hover:bg-card transition-colors"
         >
           <ChevronLeft className="h-5 w-5 text-muted-foreground" />
         </button>
