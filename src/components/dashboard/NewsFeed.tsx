@@ -60,7 +60,7 @@ export function NewsFeed() {
       </div>
 
       {/* Glass Container */}
-      <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)]">
+      <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.12)]">
 
         {/* Carousel */}
         <div className="overflow-hidden" ref={emblaRef}>
@@ -71,7 +71,7 @@ export function NewsFeed() {
                 className="flex-[0_0_200px] sm:flex-[0_0_220px] min-w-0"
               >
                 {/* News Card */}
-                <div className="relative rounded-2xl bg-card border border-border shadow-md overflow-hidden group hover:shadow-lg hover:border-[hsl(var(--turquoise))]/40 transition-all duration-300 h-full flex flex-col">
+                <div className="relative rounded-2xl bg-muted border border-border shadow-md overflow-hidden group hover:bg-card hover:shadow-lg hover:border-[hsl(var(--turquoise))]/40 transition-all duration-300 h-full flex flex-col">
                   {/* Image */}
                   <div className="relative h-40 overflow-hidden">
                     <img
