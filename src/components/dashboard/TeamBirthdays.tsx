@@ -43,14 +43,14 @@ export function TeamBirthdays() {
       </div>
 
       {/* Glass Container */}
-      <div className="relative p-4 rounded-2xl bg-card/60 backdrop-blur-md border border-border/50 shadow-lg shadow-black/5 flex-1 flex flex-col">
+      <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] flex-1 flex flex-col">
 
         <div className="space-y-3 flex-1">
           {mockBirthdays.slice(0, 4).map((person, index) => (
             <div 
               key={person.id} 
-              className={`flex items-center gap-3 p-2.5 rounded-xl transition-all duration-300 hover:bg-background/80 cursor-pointer group animate-slide-in ${
-                isToday(person.birthday) ? "bg-gradient-to-r from-[hsl(var(--teal))]/15 to-[hsl(var(--turquoise))]/10 border border-[hsl(var(--teal))]/30" : "bg-background/50 border border-transparent hover:border-[hsl(var(--turquoise))]/20"
+              className={`flex items-center gap-3 p-2.5 rounded-xl transition-all duration-300 hover:bg-muted cursor-pointer group animate-slide-in ${
+                isToday(person.birthday) ? "bg-gradient-to-r from-[hsl(var(--teal))]/15 to-[hsl(var(--turquoise))]/10 border border-[hsl(var(--teal))]/30" : "bg-card border border-border/70 hover:border-[hsl(var(--turquoise))]/40"
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
