@@ -88,7 +88,7 @@ export function WelcomeBanner() {
       <div className="absolute bottom-0 left-0 w-32 sm:w-64 h-32 sm:h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
       
       {/* Main content area */}
-      <div className="relative z-10 h-32 sm:h-40 md:h-44 p-4 sm:p-5 md:p-6 flex flex-col">
+      <div className="relative z-10 h-44 sm:h-56 md:h-64 p-4 sm:p-6 md:p-8 flex flex-col">
         {/* Top row: Logo and Controls */}
         <div className="flex items-start justify-between">
           {/* Logo in top-left */}
@@ -210,12 +210,15 @@ export function WelcomeBanner() {
         
         {/* Bottom: Text content */}
         <div className="mt-auto">
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight mb-0.5 sm:mb-1 leading-tight flex items-center gap-2 text-white">
-            <TimeIcon className="h-5 w-5 sm:h-6 sm:w-6 text-[hsl(48,100%,85%)]" />
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-1 sm:mb-2 leading-tight flex items-center gap-2 sm:gap-3 text-white">
+            <TimeIcon className="h-6 w-6 sm:h-8 sm:w-8 text-[hsl(48,100%,85%)]" />
             {getGreeting()}, {user?.name?.split(" ")[0]}!
           </h1>
-          <p className="text-xs sm:text-sm font-bold text-white/95">
+          <p className="text-sm sm:text-base font-bold mb-1 sm:mb-2 text-white/95">
             {today}
+          </p>
+          <p className="text-sm max-w-lg hidden sm:block font-semibold leading-relaxed text-white/90">
+            Welcome back to Sharjah Education Academy. Here's what's happening in your organization today.
           </p>
         </div>
       </div>
