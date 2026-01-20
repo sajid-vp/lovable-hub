@@ -28,7 +28,7 @@ export function IconNavBar() {
               key={item.id}
               to={item.href}
               className="group flex flex-col items-center justify-center gap-2 
-                         p-4 rounded-xl bg-muted
+                         p-4 rounded-xl bg-card
                          border border-border shadow-sm
                          hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))]
                          hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20

@@ -32,7 +32,7 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
       </div>
 
       {/* Glass Container */}
-      <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] transition-shadow">
+      <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow">
         
         <div className={`grid ${gridColsClass} gap-3`}>
           {items.map((item, index) => {
@@ -46,7 +46,7 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
               <TileWrapper
                 key={item.id}
                 {...(tileProps as any)}
-                className="group relative flex items-center gap-2.5 rounded-xl sm:rounded-2xl px-3 py-2 bg-muted border border-border hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))] shadow-sm hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20 transition-all duration-300 animate-scale-in"
+                className="group relative flex items-center gap-2.5 rounded-xl sm:rounded-2xl px-3 py-2 bg-card border border-border/50 hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))] shadow-sm hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20 transition-all duration-300 animate-scale-in"
                 style={{ animationDelay: `${index * 30}ms` }}
               >
                 <div className="p-1.5 rounded-lg flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-[hsl(var(--light-blue))] group-hover:bg-white/20 group-hover:backdrop-blur-sm group-hover:border group-hover:border-white/20">

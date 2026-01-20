@@ -76,7 +76,7 @@ export function SocialFeed() {
       </div>
 
       {/* Glass Container */}
-      <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.12)]">
+      <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)]">
 
         {/* Carousel */}
         <div className="overflow-hidden" ref={emblaRef}>
@@ -89,7 +89,7 @@ export function SocialFeed() {
                 {/* Post Card */}
                 <div 
                   onClick={() => setSelectedPost(post)}
-                  className={`relative rounded-2xl bg-muted border shadow-md overflow-hidden group hover:bg-card hover:shadow-lg transition-all duration-300 h-full flex flex-col cursor-pointer ${
+                  className={`relative rounded-2xl bg-card border shadow-md overflow-hidden group hover:shadow-lg transition-all duration-300 h-full flex flex-col cursor-pointer ${
                     post.type === "kudos" 
                       ? "border-[hsl(var(--gold))]/40 hover:border-[hsl(var(--gold))]/60" 
                       : "border-border hover:border-[hsl(var(--turquoise))]/40"
