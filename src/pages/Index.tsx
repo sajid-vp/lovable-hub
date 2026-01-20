@@ -1,5 +1,6 @@
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
 import { AnnouncementsTicker } from "@/components/dashboard/AnnouncementsTicker";
+import { IconNavBar } from "@/components/dashboard/IconNavBar";
 // import { BulletinBoard } from "@/components/dashboard/BulletinBoard"; // Hidden for now
 import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
@@ -24,6 +25,9 @@ export default function Index() {
       
       <main className="container max-w-6xl py-4 sm:py-6 px-3 sm:px-4 relative z-10">
         <div className="space-y-4 sm:space-y-5">
+          {/* Icon Navigation Bar - Mobile App Style */}
+          <IconNavBar />
+          
           {/* Welcome Section */}
           <WelcomeBanner />
           
