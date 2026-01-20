@@ -70,7 +70,7 @@ export function WelcomeBanner() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl shadow-[hsl(var(--turquoise))]/20 animate-fade-in">
+    <div className="relative overflow-hidden animate-fade-in">
       {/* Background image with overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
@@ -79,9 +79,8 @@ export function WelcomeBanner() {
         }}
       />
       
-      {/* Gradient overlay - matching announcements ticker */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--light-blue))]/90 to-[hsl(var(--turquoise))]/85" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--light-blue))]/50 via-transparent to-transparent" />
+      {/* Gradient overlay - subtle since parent has gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
       
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />

@@ -19,29 +19,24 @@ const navItems: NavItem[] = [
 
 export function IconNavBar() {
   return (
-    <nav className="animate-fade-in mb-4">
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+    <nav className="animate-fade-in px-4 pt-4 pb-2">
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
             <Link
               key={item.id}
               to={item.href}
-              className="group flex flex-col items-center justify-center gap-2 
-                         p-4 rounded-xl bg-card
-                         border border-border shadow-sm
-                         hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))]
-                         hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20
+              className="group flex flex-col items-center justify-center gap-1.5 
+                         py-3 px-2 rounded-xl 
+                         bg-white/10 backdrop-blur-sm
+                         border border-white/20
+                         hover:bg-white/25 hover:border-white/40
                          hover:scale-[1.02] active:scale-[0.98]
                          transition-all duration-200 ease-out"
             >
-              <div className="p-2 rounded-lg bg-[hsl(var(--light-blue))]/10 
-                              group-hover:bg-white/20 transition-colors">
-                <Icon className="h-7 w-7 text-[hsl(var(--light-blue))] 
-                                 group-hover:text-white transition-colors" />
-              </div>
-              <span className="text-sm font-medium text-foreground/80 
-                               group-hover:text-white transition-colors">
+              <Icon className="h-6 w-6 text-white/90 group-hover:text-white transition-colors" />
+              <span className="text-xs font-medium text-white/80 group-hover:text-white transition-colors font-sans">
                 {item.title}
               </span>
             </Link>

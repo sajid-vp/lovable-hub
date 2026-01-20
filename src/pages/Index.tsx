@@ -25,11 +25,11 @@ export default function Index() {
       
       <main className="container max-w-6xl py-4 sm:py-6 px-3 sm:px-4 relative z-10">
         <div className="space-y-4 sm:space-y-5">
-          {/* Icon Navigation Bar - Mobile App Style */}
-          <IconNavBar />
-          
-          {/* Welcome Section */}
-          <WelcomeBanner />
+          {/* Unified Hero Section - Icon Nav + Welcome Banner */}
+          <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-[hsl(var(--deep-blue))] via-[hsl(var(--light-blue))] to-[hsl(var(--turquoise))] shadow-[0_8px_30px_-4px_rgba(0,0,0,0.2)]">
+            <IconNavBar />
+            <WelcomeBanner />
+          </div>
           
           {/* Announcements Ticker */}
           <AnnouncementsTicker />
