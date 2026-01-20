@@ -25,11 +25,11 @@ export default function Index() {
       
       <main className="container max-w-6xl py-4 sm:py-6 px-3 sm:px-4 relative z-10">
         <div className="space-y-4 sm:space-y-5">
-          {/* Icon Navigation Bar - Mobile App Style */}
-          <IconNavBar />
-          
           {/* Welcome Section */}
           <WelcomeBanner />
+          
+          {/* Icon Navigation Bar - Below Welcome Banner */}
+          <IconNavBar />
           
           {/* Announcements Ticker */}
           <AnnouncementsTicker />
