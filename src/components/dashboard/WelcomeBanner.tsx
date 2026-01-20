@@ -88,7 +88,7 @@ export function WelcomeBanner() {
       <div className="absolute bottom-0 left-0 w-32 sm:w-64 h-32 sm:h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
       
       {/* Main content area */}
-      <div className="relative z-10 h-44 sm:h-56 md:h-64 p-4 sm:p-6 md:p-8 flex flex-col">
+      <div className="relative z-10 h-44 sm:h-56 md:h-64 py-4 px-4 sm:py-6 sm:px-6 md:py-8 md:px-8 flex flex-col justify-between">
         {/* Top row: Logo and Controls */}
         <div className="flex items-start justify-between">
           {/* Logo in top-left */}
@@ -209,7 +209,7 @@ export function WelcomeBanner() {
         </div>
         
         {/* Bottom: Text content */}
-        <div className="mt-auto">
+        <div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-1 sm:mb-2 leading-tight flex items-center gap-2 sm:gap-3 text-white">
             <TimeIcon className="h-6 w-6 sm:h-8 sm:w-8 text-[hsl(48,100%,85%)]" />
             {getGreeting()}, {user?.name?.split(" ")[0]}!
