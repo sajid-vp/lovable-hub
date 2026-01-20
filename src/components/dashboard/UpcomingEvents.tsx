@@ -24,13 +24,13 @@ export function UpcomingEvents() {
         </div>
 
         {/* Glass Container - flex-1 to match News Feed height */}
-        <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] flex-1 flex flex-col">
+        <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.12)] flex-1 flex flex-col">
 
           <div className="space-y-3 flex-1">
             {mockEvents.map((event, index) => (
               <div
                 key={event.id}
-                className="flex gap-3 p-3 rounded-xl bg-card border border-border/70 hover:bg-muted hover:border-[hsl(var(--turquoise))]/40 transition-all duration-300 hover:shadow-md hover:-translate-x-1 cursor-pointer group animate-slide-in"
+                className="flex gap-3 p-3 rounded-xl bg-muted border border-border hover:bg-card hover:border-[hsl(var(--turquoise))]/40 transition-all duration-300 hover:shadow-md hover:-translate-x-1 cursor-pointer group animate-slide-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className={`flex flex-col items-center justify-center bg-gradient-to-br ${colors[index % colors.length]} text-white rounded-xl px-3 py-2 min-w-[56px] group-hover:scale-105 transition-transform shadow-lg`}>
