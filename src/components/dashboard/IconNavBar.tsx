@@ -14,7 +14,7 @@ const navItems: NavItem[] = [
   { id: "2", title: "Students", icon: GraduationCap, href: "/students", gradient: "from-primary to-[hsl(var(--light-blue))]" },
   { id: "3", title: "Academics", icon: Building2, href: "/academics", gradient: "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]" },
   { id: "4", title: "Nurseries", icon: FlaskConical, href: "/nurseries", gradient: "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]" },
-  { id: "5", title: "Research", icon: Settings2, href: "/research", gradient: "from-[hsl(var(--coral))] to-[hsl(var(--orange))]" },
+  { id: "5", title: "Research", icon: Settings2, href: "/research", gradient: "from-[hsl(var(--indigo))] to-primary" },
   { id: "6", title: "Help Desk", icon: HelpCircle, href: "/help", gradient: "from-[hsl(var(--pink))] to-[hsl(var(--lavender))]" },
 ];
 
