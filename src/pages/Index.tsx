@@ -8,6 +8,7 @@ import { NewsFeed } from "@/components/dashboard/NewsFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { RecentDocuments } from "@/components/dashboard/RecentDocuments";
 import { TeamsActivity } from "@/components/dashboard/TeamsActivity";
+import { UpcomingMeetings } from "@/components/dashboard/UpcomingMeetings";
 import { DirectoryWidget } from "@/components/dashboard/DirectoryWidget";
 
 export default function Index() {
@@ -47,13 +48,16 @@ export default function Index() {
           {/* Apps - Full Width */}
           <Apps />
           
-          {/* Microsoft Integration: Documents + Teams Activity */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+          {/* Microsoft Integration: Documents + Teams Activity + Meetings */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             <div className="flex flex-col">
               <RecentDocuments />
             </div>
             <div className="flex flex-col">
               <TeamsActivity />
+            </div>
+            <div className="flex flex-col">
+              <UpcomingMeetings />
             </div>
           </div>
           
