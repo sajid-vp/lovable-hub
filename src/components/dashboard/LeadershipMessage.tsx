@@ -33,9 +33,10 @@ export function LeadershipMessage() {
           
           <div className="mt-3">
             <h4 className="font-semibold text-sm mb-1.5 tracking-tight">Welcome to the New Academic Year</h4>
-            <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed font-medium">
+            <p className="text-sm text-muted-foreground line-clamp-5 leading-relaxed font-medium">
               As we embark on another exciting academic year, I am delighted to welcome our dedicated educators 
-              and partners to the Sharjah Education Academy community...
+              and partners to the Sharjah Education Academy community. Together, we continue our mission to shape 
+              the future of education in the UAE, fostering innovation and excellence in teaching practices...
             </p>
           </div>
           
