@@ -20,28 +20,28 @@ const navItems: NavItem[] = [
 export function IconNavBar() {
   return (
     <nav className="animate-fade-in mb-4">
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3">
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
             <Link
               key={item.id}
               to={item.href}
-              className="group flex flex-col items-center justify-center gap-2 
-                         p-4 rounded-xl bg-card
+              className="group flex flex-col items-center justify-center gap-1.5 sm:gap-2 
+                         p-3 sm:p-4 rounded-xl bg-card
                          border border-border shadow-sm
                          hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))]
                          hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20
-                         hover:scale-[1.02] active:scale-[0.98]
-                         transition-all duration-200 ease-out"
+                         active:scale-[0.96] active:bg-[hsl(var(--light-blue))]
+                         transition-all duration-150 ease-out tap-highlight app-touch"
             >
-              <div className="p-2 rounded-lg bg-[hsl(var(--light-blue))]/10 
-                              group-hover:bg-white/20 transition-colors">
-                <Icon className="h-7 w-7 text-[hsl(var(--light-blue))] 
-                                 group-hover:text-white transition-colors" />
+              <div className="p-1.5 sm:p-2 rounded-lg bg-[hsl(var(--light-blue))]/10 
+                              group-hover:bg-white/20 group-active:bg-white/20 transition-colors">
+                <Icon className="h-5 w-5 sm:h-7 sm:w-7 text-[hsl(var(--light-blue))] 
+                                 group-hover:text-white group-active:text-white transition-colors" />
               </div>
-              <span className="text-sm font-medium text-foreground/80 
-                               group-hover:text-white transition-colors">
+              <span className="text-xs sm:text-sm font-medium text-foreground/80 
+                               group-hover:text-white group-active:text-white transition-colors text-center leading-tight">
                 {item.title}
               </span>
             </Link>

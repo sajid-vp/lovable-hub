@@ -97,7 +97,7 @@ export function AnnouncementsTicker() {
           {/* Prev arrow */}
           <button
             onClick={scrollPrev}
-            className="p-1 rounded-full bg-muted hover:bg-muted/80 transition-colors text-foreground/70 hover:text-foreground shrink-0"
+            className="p-1.5 rounded-full bg-muted hover:bg-muted/80 active:scale-95 transition-all text-foreground/70 hover:text-foreground shrink-0 tap-highlight"
           >
             <ChevronLeft className="h-3.5 w-3.5" />
           </button>
@@ -108,9 +108,9 @@ export function AnnouncementsTicker() {
               <button
                 key={index}
                 onClick={() => emblaApi?.scrollTo(index)}
-                className={`w-1.5 h-1.5 rounded-full transition-all ${
+                className={`w-2 h-2 rounded-full transition-all tap-highlight ${
                   index === selectedIndex
-                    ? "bg-foreground"
+                    ? "bg-foreground scale-110"
                     : "bg-foreground/30 hover:bg-foreground/50"
                 }`}
               />
@@ -120,7 +120,7 @@ export function AnnouncementsTicker() {
           {/* Next arrow */}
           <button
             onClick={scrollNext}
-            className="p-1 rounded-full bg-muted hover:bg-muted/80 transition-colors text-foreground/70 hover:text-foreground shrink-0"
+            className="p-1.5 rounded-full bg-muted hover:bg-muted/80 active:scale-95 transition-all text-foreground/70 hover:text-foreground shrink-0 tap-highlight"
           >
             <ChevronRight className="h-3.5 w-3.5" />
           </button>
@@ -131,7 +131,7 @@ export function AnnouncementsTicker() {
           {/* View All link */}
           <Link
             to="/announcements"
-            className="text-[10px] sm:text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors shrink-0"
+            className="text-[10px] sm:text-xs font-semibold text-muted-foreground hover:text-foreground active:text-foreground transition-colors shrink-0 tap-highlight px-1 py-0.5"
           >
             View all
           </Link>

@@ -70,7 +70,7 @@ export function WelcomeBanner() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl shadow-[hsl(var(--turquoise))]/20 animate-fade-in">
+    <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-[hsl(var(--turquoise))]/20 animate-fade-in">
       {/* Background image with overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
@@ -87,26 +87,26 @@ export function WelcomeBanner() {
       <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
       <div className="absolute bottom-0 left-0 w-32 sm:w-64 h-32 sm:h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
       
-      {/* Main content area */}
-      <div className="relative z-10 h-44 sm:h-56 md:h-64 py-4 px-4 sm:py-6 sm:px-6 md:py-8 md:px-8 flex flex-col justify-between">
+      {/* Main content area - more compact on mobile */}
+      <div className="relative z-10 h-36 sm:h-56 md:h-64 py-3 px-3 sm:py-6 sm:px-6 md:py-8 md:px-8 flex flex-col justify-between">
         {/* Top row: Logo and Controls */}
         <div className="flex items-start justify-between">
           {/* Logo in top-left */}
           <img 
             src={seaLogoWhite} 
             alt="Sharjah Education Academy" 
-            className="h-8 sm:h-10 md:h-12 w-auto drop-shadow-lg"
+            className="h-6 sm:h-10 md:h-12 w-auto drop-shadow-lg"
           />
           
           {/* Controls in top-right */}
-          <div className="flex items-start gap-2 sm:gap-2.5">
+          <div className="flex items-start gap-1.5 sm:gap-2.5">
             {/* Search */}
             <div className="relative">
               <form onSubmit={handleSearch} className="flex items-center">
                 <div
                   className={cn(
                     "flex items-center overflow-hidden transition-all duration-300 bg-white/20 backdrop-blur-sm border border-white/20 rounded-full",
-                    searchOpen ? "w-36 sm:w-52 pl-3 sm:pl-4 pr-1" : "w-10 sm:w-11"
+                    searchOpen ? "w-32 sm:w-52 pl-2 sm:pl-4 pr-0.5" : "w-8 sm:w-11"
                   )}
                 >
                   {searchOpen && (
@@ -115,7 +115,7 @@ export function WelcomeBanner() {
                       placeholder="Search..."
                       value={searchQuery}
                       onChange={handleSearchChange}
-                      className="border-0 bg-transparent h-9 focus-visible:ring-0 focus-visible:ring-offset-0 px-0 text-white placeholder:text-white/60 text-sm"
+                      className="border-0 bg-transparent h-8 sm:h-9 focus-visible:ring-0 focus-visible:ring-offset-0 px-0 text-white placeholder:text-white/60 text-sm"
                       autoFocus
                       onBlur={() => {
                         setTimeout(() => {
@@ -128,7 +128,7 @@ export function WelcomeBanner() {
                     type={searchOpen ? "submit" : "button"}
                     variant="ghost"
                     size="icon"
-                    className="h-10 w-10 sm:h-11 sm:w-11 rounded-full shrink-0 text-white hover:bg-white/20 hover:text-white"
+                    className="h-8 w-8 sm:h-11 sm:w-11 rounded-full shrink-0 text-white hover:bg-white/20 hover:text-white tap-highlight"
                     onClick={() => !searchOpen && setSearchOpen(true)}
                   >
                     <Search className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -154,10 +154,10 @@ export function WelcomeBanner() {
             <Button
               variant="ghost"
               size="icon"
-              className="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-white hover:bg-white/30 hover:text-white relative"
+              className="h-8 w-8 sm:h-11 sm:w-11 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-white hover:bg-white/30 hover:text-white relative tap-highlight"
             >
               <Bell className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-destructive" />
+              <span className="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 h-2 w-2 rounded-full bg-destructive" />
             </Button>
 
             {/* User Menu */}
@@ -165,9 +165,9 @@ export function WelcomeBanner() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="h-10 w-10 sm:h-11 sm:w-11 rounded-full p-0 bg-white/20 backdrop-blur-sm border border-white/20 hover:bg-white/30"
+                  className="h-8 w-8 sm:h-11 sm:w-11 rounded-full p-0 bg-white/20 backdrop-blur-sm border border-white/20 hover:bg-white/30 tap-highlight"
                 >
-                  <Avatar className="h-8 w-8 sm:h-9 sm:w-9">
+                  <Avatar className="h-6 w-6 sm:h-9 sm:w-9">
                     <AvatarImage src={user?.avatar} alt={user?.name} />
                     <AvatarFallback className="bg-white/30 text-white text-xs sm:text-sm">
                       {user?.name?.charAt(0) || "U"}
@@ -208,16 +208,16 @@ export function WelcomeBanner() {
           </div>
         </div>
         
-        {/* Bottom: Text content */}
+        {/* Bottom: Text content - compact on mobile */}
         <div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-1 sm:mb-2 leading-tight flex items-center gap-2 sm:gap-3 text-white">
-            <TimeIcon className="h-6 w-6 sm:h-8 sm:w-8 text-[hsl(48,100%,85%)]" />
+          <h1 className="text-lg sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-0.5 sm:mb-2 leading-tight flex items-center gap-1.5 sm:gap-3 text-white">
+            <TimeIcon className="h-5 w-5 sm:h-8 sm:w-8 text-[hsl(48,100%,85%)]" />
             {getGreeting()}, {user?.name?.split(" ")[0]}!
           </h1>
-          <p className="text-sm sm:text-base font-bold mb-1 sm:mb-2 text-white/95">
+          <p className="text-xs sm:text-base font-bold text-white/95">
             {today}
           </p>
-          <p className="text-sm max-w-lg hidden sm:block font-semibold leading-relaxed text-white/90">
+          <p className="text-sm max-w-lg hidden sm:block font-semibold leading-relaxed text-white/90 mt-1">
             Welcome back to Sharjah Education Academy. Here's what's happening in your organization today.
           </p>
         </div>

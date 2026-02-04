@@ -46,23 +46,23 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
               <TileWrapper
                 key={item.id}
                 {...(tileProps as any)}
-                className="group relative flex items-center gap-2.5 rounded-xl sm:rounded-2xl px-3 py-2 bg-card border border-border/50 hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))] shadow-sm hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20 transition-all duration-300 animate-scale-in"
+                className="group relative flex items-center gap-2 sm:gap-2.5 rounded-xl sm:rounded-2xl px-2.5 sm:px-3 py-2 bg-card border border-border/50 hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))] active:bg-[hsl(var(--light-blue))] active:scale-[0.97] shadow-sm hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20 transition-all duration-150 animate-scale-in tap-highlight app-touch"
                 style={{ animationDelay: `${index * 30}ms` }}
               >
-                <div className="p-1.5 rounded-lg flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-[hsl(var(--light-blue))] group-hover:bg-white/20 group-hover:backdrop-blur-sm group-hover:border group-hover:border-white/20">
-                  <item.icon className="h-3.5 w-3.5 text-white transition-all duration-300 group-hover:text-white" strokeWidth={1.5} />
+                <div className="p-1 sm:p-1.5 rounded-lg flex-shrink-0 flex items-center justify-center transition-all duration-300 bg-[hsl(var(--light-blue))] group-hover:bg-white/20 group-active:bg-white/20 group-hover:backdrop-blur-sm group-hover:border group-hover:border-white/20">
+                  <item.icon className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-white transition-all duration-300 group-hover:text-white" strokeWidth={1.5} />
                 </div>
-                <span className="font-semibold text-sm transition-colors truncate relative z-10 group-hover:text-white flex-1">
+                <span className="font-semibold text-xs sm:text-sm transition-colors truncate relative z-10 group-hover:text-white group-active:text-white flex-1">
                   {item.title}
                 </span>
                 {/* Badge counter - inside the tile on the right */}
                 {badgeCounts[item.id] && (
-                  <span className="h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white text-[10px] font-bold flex items-center justify-center shadow-sm flex-shrink-0">
+                  <span className="h-4 sm:h-5 min-w-4 sm:min-w-5 px-1 sm:px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white text-[9px] sm:text-[10px] font-bold flex items-center justify-center shadow-sm flex-shrink-0">
                     {badgeCounts[item.id]}
                   </span>
                 )}
                 {isExternal && (
-                  <ExternalLink className="h-3.5 w-3.5 flex-shrink-0 text-muted-foreground/50 group-hover:text-white/70 transition-colors" />
+                  <ExternalLink className="h-3 w-3 sm:h-3.5 sm:w-3.5 flex-shrink-0 text-muted-foreground/50 group-hover:text-white/70 transition-colors" />
                 )}
               </TileWrapper>
             );
