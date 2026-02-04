@@ -1,20 +1,16 @@
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
 import { AnnouncementsTicker } from "@/components/dashboard/AnnouncementsTicker";
 import { IconNavBar } from "@/components/dashboard/IconNavBar";
-// import { BulletinBoard } from "@/components/dashboard/BulletinBoard"; // Hidden for now
 import { Apps } from "@/components/dashboard/Apps";
 import { QuickLinks } from "@/components/dashboard/QuickLinks";
 import { LeadershipMessage } from "@/components/dashboard/LeadershipMessage";
 import { NewsFeed } from "@/components/dashboard/NewsFeed";
-import { SocialFeed } from "@/components/dashboard/SocialFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
-import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
-import { EmployeeSpotlight } from "@/components/dashboard/EmployeeSpotlight";
 import { RecentDocuments } from "@/components/dashboard/RecentDocuments";
 import { TeamsActivity } from "@/components/dashboard/TeamsActivity";
+import { DirectoryWidget } from "@/components/dashboard/DirectoryWidget";
 
 export default function Index() {
-  // Dashboard - no navbar, full-width layout, mobile app optimized
   return (
     <div className="min-h-screen min-h-[100dvh] bg-gradient-to-br from-background via-background to-[hsl(var(--turquoise))]/5 no-overscroll">
       {/* Decorative background elements */}
@@ -38,7 +34,6 @@ export default function Index() {
           
           {/* Leadership Message + Quick Links side by side */}
           <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
-            {/* Subtle connecting glow behind the entire row */}
             <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-[hsl(var(--indigo))]/3 via-transparent to-[hsl(var(--turquoise))]/3 blur-xl" />
             
             <div className="lg:col-span-2">
@@ -62,7 +57,7 @@ export default function Index() {
             </div>
           </div>
           
-          {/* Content Grid 1: News + Events (same height) */}
+          {/* Content Grid: News + Events */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
             <div className="lg:col-span-2 flex flex-col">
               <NewsFeed />
@@ -72,18 +67,8 @@ export default function Index() {
             </div>
           </div>
           
-          {/* Social Feed - Full Width */}
-          <SocialFeed />
-          
-          {/* Content Grid 2: Employee Spotlight + Birthdays (50-50) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-            <div className="flex flex-col">
-              <EmployeeSpotlight variant="compact" />
-            </div>
-            <div className="flex flex-col">
-              <TeamBirthdays />
-            </div>
-          </div>
+          {/* Directory Widget - Full Width */}
+          <DirectoryWidget />
         </div>
       </main>
     </div>
