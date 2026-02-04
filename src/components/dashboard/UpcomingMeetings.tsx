@@ -26,20 +26,20 @@ export function UpcomingMeetings() {
         </div>
       </CardHeader>
       <CardContent className="flex-1 pt-0 overflow-y-auto">
-        <div className="space-y-1">
+        <div className="space-y-2">
           {mockTeamsMeetings.slice(0, 5).map((meeting) => {
             const date = new Date(meeting.startTime);
             return (
               <div
                 key={meeting.id}
-                className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors cursor-pointer"
+                className="group flex items-center gap-3 p-2.5 rounded-lg bg-muted/50 hover:bg-muted border border-transparent hover:border-border transition-all cursor-pointer"
                 onClick={() => window.open(meeting.joinUrl, "_blank")}
               >
-                <div className="flex-shrink-0 p-2.5 rounded-lg bg-[#0078D4]/10">
+                <div className="flex-shrink-0 p-2 rounded-lg bg-background border border-border group-hover:shadow-sm transition-shadow">
                   <Calendar className="h-5 w-5 text-[#0078D4]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-foreground truncate">
+                  <p className="text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
                     {meeting.title}
                   </p>
                   <div className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
