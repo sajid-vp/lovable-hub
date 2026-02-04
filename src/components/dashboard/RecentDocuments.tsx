@@ -4,18 +4,26 @@ import { Button } from "@/components/ui/button";
 import { mockSharePointDocuments, type SharePointDocument } from "@/data/mockData";
 import { formatDistanceToNow } from "date-fns";
 
+const gradientColors = [
+  "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]",
+  "from-primary to-[hsl(var(--light-blue))]",
+  "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
+  "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]",
+  "from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
+];
+
 const getDocumentIcon = (type: SharePointDocument["type"]) => {
   switch (type) {
     case "word":
-      return <FileText className="h-5 w-5 text-[#2B579A]" />;
+      return <FileText className="h-5 w-5 text-white" />;
     case "excel":
-      return <FileSpreadsheet className="h-5 w-5 text-[#217346]" />;
+      return <FileSpreadsheet className="h-5 w-5 text-white" />;
     case "pdf":
-      return <File className="h-5 w-5 text-[#F40F02]" />;
+      return <File className="h-5 w-5 text-white" />;
     case "powerpoint":
-      return <Presentation className="h-5 w-5 text-[#D24726]" />;
+      return <Presentation className="h-5 w-5 text-white" />;
     default:
-      return <FileText className="h-5 w-5 text-muted-foreground" />;
+      return <FileText className="h-5 w-5 text-white" />;
   }
 };
 
@@ -40,7 +48,7 @@ export function RecentDocuments() {
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-[#038387]">
+            <div className="p-1.5 rounded-lg bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]">
               <FileText className="h-4 w-4 text-white" />
             </div>
             <CardTitle className="text-base font-semibold">Recent Documents</CardTitle>
@@ -58,7 +66,7 @@ export function RecentDocuments() {
       </CardHeader>
       <CardContent className="pt-0">
         <div className="space-y-2">
-          {mockSharePointDocuments.slice(0, 5).map((doc) => (
+          {mockSharePointDocuments.slice(0, 5).map((doc, index) => (
             <a
               key={doc.id}
               href={doc.url}
@@ -66,7 +74,7 @@ export function RecentDocuments() {
               rel="noopener noreferrer"
               className="group flex items-center gap-3 p-2.5 rounded-lg bg-muted/50 hover:bg-muted border border-transparent hover:border-border transition-all"
             >
-              <div className="flex-shrink-0 p-2 rounded-lg bg-background border border-border group-hover:shadow-sm transition-shadow">
+              <div className={`flex-shrink-0 p-2 rounded-lg bg-gradient-to-br ${gradientColors[index % gradientColors.length]} shadow-md group-hover:scale-105 transition-transform`}>
                 {getDocumentIcon(doc.type)}
               </div>
               <div className="flex-1 min-w-0">
