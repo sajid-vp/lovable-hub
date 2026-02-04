@@ -15,6 +15,7 @@ import SocialFeedPage from "./pages/SocialFeed";
 import Directory from "./pages/Directory";
 import DepartmentPage from "./pages/DepartmentPage";
 import Install from "./pages/Install";
+import Employees from "./pages/Employees";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/directory" element={<Directory />} />
           <Route path="/departments/:slug" element={<DepartmentPage />} />
           <Route path="/install" element={<Install />} />
+          <Route path="/employees" element={<Employees />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
