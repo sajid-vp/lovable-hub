@@ -22,7 +22,7 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
     : "grid-cols-2 md:grid-cols-4";
 
   return (
-    <section className="animate-fade-in">
+    <section className="animate-fade-in h-full flex flex-col">
       {/* Section Header */}
       <div className="flex items-center gap-2 mb-4">
         <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
@@ -32,7 +32,7 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
       </div>
 
       {/* Glass Container */}
-      <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow">
+      <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow flex-1">
         
         <div className={`grid ${gridColsClass} gap-3`}>
           {items.map((item, index) => {

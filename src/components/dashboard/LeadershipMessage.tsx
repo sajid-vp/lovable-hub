@@ -7,7 +7,7 @@ export function LeadershipMessage() {
 
   return (
     <>
-      <section className="animate-fade-in">
+      <section className="animate-fade-in h-full flex flex-col">
         {/* Section Header */}
         <div className="flex items-center gap-2 mb-3">
           <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
@@ -17,7 +17,7 @@ export function LeadershipMessage() {
         </div>
 
         {/* Glass Container */}
-        <div className="relative p-3 sm:p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow">
+        <div className="relative p-3 sm:p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow flex-1 flex flex-col">
 
           <div className="flex items-center gap-3">
             <img
