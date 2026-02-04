@@ -9,7 +9,7 @@ const gradientColors = [
   "from-primary to-[hsl(var(--light-blue))]",
   "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
   "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]",
-  "from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
+  "from-[hsl(var(--cyan))] to-[hsl(var(--teal))]",
 ];
 
 const getDocumentIcon = (type: SharePointDocument["type"]) => {

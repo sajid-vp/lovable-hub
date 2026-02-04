@@ -17,10 +17,10 @@ const gradientColors = [
   "from-primary to-[hsl(var(--light-blue))]",
   "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
   "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]",
-  "from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
-  "from-[hsl(var(--pink))] to-[hsl(var(--lavender))]",
-  "from-[hsl(var(--gold))] to-[hsl(var(--orange))]",
   "from-[hsl(var(--cyan))] to-[hsl(var(--teal))]",
+  "from-[hsl(var(--light-blue))] to-[hsl(var(--indigo))]",
+  "from-[hsl(var(--green))] to-[hsl(var(--teal))]",
+  "from-[hsl(var(--lavender))] to-primary",
 ];
 
 function isExternalLink(item: TileItem): item is ExternalLinkType {
