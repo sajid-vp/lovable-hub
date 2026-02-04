@@ -5,6 +5,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { mockTeamsMessages } from "@/data/mockData";
 import { formatDistanceToNow } from "date-fns";
 
+const gradientColors = [
+  "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]",
+  "from-primary to-[hsl(var(--light-blue))]",
+  "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]",
+  "from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
+  "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
+  "from-[hsl(var(--pink))] to-[hsl(var(--lavender))]",
+];
+
 export function TeamsActivity() {
   const unreadCount = mockTeamsMessages.filter((m) => m.isUnread).length;
 
@@ -13,12 +22,12 @@ export function TeamsActivity() {
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-[#6264A7]">
+            <div className="p-1.5 rounded-lg bg-gradient-to-br from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]">
               <MessageSquare className="h-4 w-4 text-white" />
             </div>
             <CardTitle className="text-base font-semibold">Teams Activity</CardTitle>
             {unreadCount > 0 && (
-              <Badge className="bg-[#6264A7] hover:bg-[#6264A7]/90 text-white text-[10px] px-1.5 py-0 h-5">
+              <Badge className="bg-[hsl(var(--indigo))] hover:bg-[hsl(var(--indigo))]/90 text-white text-[10px] px-1.5 py-0 h-5">
                 {unreadCount} unread
               </Badge>
             )}
@@ -36,7 +45,7 @@ export function TeamsActivity() {
       </CardHeader>
       <CardContent className="flex-1 pt-0 overflow-y-auto">
         <div className="space-y-2">
-          {mockTeamsMessages.slice(0, 6).map((message) => (
+          {mockTeamsMessages.slice(0, 6).map((message, index) => (
             <a
               key={message.id}
               href="https://teams.microsoft.com"
@@ -44,19 +53,21 @@ export function TeamsActivity() {
               rel="noopener noreferrer"
               className="group flex items-start gap-2.5 p-2.5 rounded-lg bg-muted/50 hover:bg-muted border border-transparent hover:border-border transition-all"
             >
-              <Avatar className="h-9 w-9 flex-shrink-0">
-                <AvatarImage src={message.senderAvatar} alt={message.sender} />
-                <AvatarFallback className="text-xs bg-[#6264A7]/10 text-[#6264A7]">
-                  {message.sender.split(" ").map((n) => n[0]).join("")}
-                </AvatarFallback>
-              </Avatar>
+              <div className={`flex-shrink-0 p-1 rounded-lg bg-gradient-to-br ${gradientColors[index % gradientColors.length]} shadow-md group-hover:scale-105 transition-transform`}>
+                <Avatar className="h-7 w-7">
+                  <AvatarImage src={message.senderAvatar} alt={message.sender} />
+                  <AvatarFallback className="text-xs bg-white/20 text-white">
+                    {message.sender.split(" ").map((n) => n[0]).join("")}
+                  </AvatarFallback>
+                </Avatar>
+              </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-medium text-foreground truncate">
                     {message.sender}
                   </p>
                   {message.isUnread && (
-                    <span className="h-2 w-2 rounded-full bg-[#6264A7] flex-shrink-0" />
+                    <span className="h-2 w-2 rounded-full bg-[hsl(var(--indigo))] flex-shrink-0" />
                   )}
                 </div>
                 <p className="text-xs text-muted-foreground truncate">{message.content}</p>
