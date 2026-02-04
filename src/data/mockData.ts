@@ -228,6 +228,24 @@ export const mockApps: App[] = [
 // Mock External Links - External system shortcuts
 export const mockExternalLinks: ExternalLink[] = [
   {
+    id: "sharepoint",
+    title: "SharePoint",
+    description: "Documents & Files",
+    icon: FolderOpen,
+    href: "https://yourorg.sharepoint.com",
+    color: "bg-[#038387]",
+    external: true,
+  },
+  {
+    id: "teams",
+    title: "Microsoft Teams",
+    description: "Chat & Meetings",
+    icon: MessageSquare,
+    href: "https://teams.microsoft.com",
+    color: "bg-[#6264A7]",
+    external: true,
+  },
+  {
     id: "1",
     title: "ERP",
     description: "Enterprise system",
@@ -307,6 +325,146 @@ export const mockExternalLinks: ExternalLink[] = [
     href: "https://password.sea.ae",
     color: "bg-gradient-to-br from-[hsl(var(--light-blue))] to-[hsl(var(--turquoise))]",
     external: true,
+  },
+];
+
+// Mock SharePoint documents
+export interface SharePointDocument {
+  id: string;
+  name: string;
+  type: "word" | "excel" | "pdf" | "powerpoint" | "folder";
+  modifiedDate: string;
+  modifiedBy: string;
+  size: string;
+  url: string;
+}
+
+export const mockSharePointDocuments: SharePointDocument[] = [
+  {
+    id: "doc1",
+    name: "Q4 2024 Annual Report.docx",
+    type: "word",
+    modifiedDate: "2025-02-03",
+    modifiedBy: "Sarah Al Maktoum",
+    size: "2.4 MB",
+    url: "https://yourorg.sharepoint.com/documents/q4-report.docx",
+  },
+  {
+    id: "doc2",
+    name: "Budget Planning 2025.xlsx",
+    type: "excel",
+    modifiedDate: "2025-02-02",
+    modifiedBy: "Ahmed Hassan",
+    size: "1.8 MB",
+    url: "https://yourorg.sharepoint.com/documents/budget-2025.xlsx",
+  },
+  {
+    id: "doc3",
+    name: "Employee Handbook.pdf",
+    type: "pdf",
+    modifiedDate: "2025-01-28",
+    modifiedBy: "HR Department",
+    size: "5.2 MB",
+    url: "https://yourorg.sharepoint.com/documents/handbook.pdf",
+  },
+  {
+    id: "doc4",
+    name: "Strategic Plan Presentation.pptx",
+    type: "powerpoint",
+    modifiedDate: "2025-01-25",
+    modifiedBy: "Mohammed Rashid",
+    size: "8.1 MB",
+    url: "https://yourorg.sharepoint.com/documents/strategic-plan.pptx",
+  },
+  {
+    id: "doc5",
+    name: "Policy Updates 2025.pdf",
+    type: "pdf",
+    modifiedDate: "2025-01-20",
+    modifiedBy: "Fatima Al Qasimi",
+    size: "1.1 MB",
+    url: "https://yourorg.sharepoint.com/documents/policy-updates.pdf",
+  },
+];
+
+// Mock Teams activity
+export interface TeamsMessage {
+  id: string;
+  sender: string;
+  senderAvatar?: string;
+  content: string;
+  channel?: string;
+  timestamp: string;
+  isUnread: boolean;
+}
+
+export interface TeamsMeeting {
+  id: string;
+  title: string;
+  startTime: string;
+  endTime: string;
+  organizer: string;
+  isOnline: boolean;
+  joinUrl: string;
+}
+
+export const mockTeamsMessages: TeamsMessage[] = [
+  {
+    id: "msg1",
+    sender: "Sarah Al Maktoum",
+    senderAvatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    content: "Can you review the curriculum changes before our meeting?",
+    channel: "Early Childhood Team",
+    timestamp: "2025-02-04T09:30:00Z",
+    isUnread: true,
+  },
+  {
+    id: "msg2",
+    sender: "Ahmed Hassan",
+    senderAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    content: "The research data is ready for analysis.",
+    channel: "Research Team",
+    timestamp: "2025-02-04T08:45:00Z",
+    isUnread: true,
+  },
+  {
+    id: "msg3",
+    sender: "Mohammed Rashid",
+    senderAvatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+    content: "IT maintenance scheduled for this weekend.",
+    channel: "General",
+    timestamp: "2025-02-03T16:20:00Z",
+    isUnread: false,
+  },
+];
+
+export const mockTeamsMeetings: TeamsMeeting[] = [
+  {
+    id: "meet1",
+    title: "Daily Standup",
+    startTime: "2025-02-04T10:00:00Z",
+    endTime: "2025-02-04T10:30:00Z",
+    organizer: "Mohammed Rashid",
+    isOnline: true,
+    joinUrl: "https://teams.microsoft.com/l/meetup-join/...",
+  },
+  {
+    id: "meet2",
+    title: "Program Review Meeting",
+    startTime: "2025-02-04T14:00:00Z",
+    endTime: "2025-02-04T15:00:00Z",
+    organizer: "Sarah Al Maktoum",
+    isOnline: true,
+    joinUrl: "https://teams.microsoft.com/l/meetup-join/...",
+  },
+  {
+    id: "meet3",
+    title: "Leadership Workshop Planning",
+    startTime: "2025-02-05T09:00:00Z",
+    endTime: "2025-02-05T11:00:00Z",
+    organizer: "Fatima Al Qasimi",
+    isOnline: true,
+    joinUrl: "https://teams.microsoft.com/l/meetup-join/...",
   },
 ];
 
