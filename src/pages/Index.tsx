@@ -10,6 +10,8 @@ import { SocialFeed } from "@/components/dashboard/SocialFeed";
 import { UpcomingEvents } from "@/components/dashboard/UpcomingEvents";
 import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
 import { EmployeeSpotlight } from "@/components/dashboard/EmployeeSpotlight";
+import { RecentDocuments } from "@/components/dashboard/RecentDocuments";
+import { TeamsActivity } from "@/components/dashboard/TeamsActivity";
 
 export default function Index() {
   // Dashboard - no navbar, full-width layout
@@ -49,6 +51,16 @@ export default function Index() {
           
           {/* Apps - Full Width */}
           <Apps />
+          
+          {/* Microsoft Integration: Documents + Teams Activity */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <div className="flex flex-col">
+              <RecentDocuments />
+            </div>
+            <div className="flex flex-col">
+              <TeamsActivity />
+            </div>
+          </div>
           
           {/* Content Grid 1: News + Events (same height) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
