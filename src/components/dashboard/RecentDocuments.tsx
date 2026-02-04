@@ -36,7 +36,7 @@ const getDocumentTypeLabel = (type: SharePointDocument["type"]) => {
 
 export function RecentDocuments() {
   return (
-    <Card className="h-[420px] flex flex-col bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow">
+    <Card className="h-[350px] flex flex-col bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow overflow-hidden">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
