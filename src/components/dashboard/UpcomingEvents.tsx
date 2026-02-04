@@ -24,7 +24,7 @@ export function UpcomingEvents() {
         </div>
 
         {/* Glass Container - flex-1 to match News Feed height */}
-        <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] flex-1 flex flex-col">
+        <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] flex-1 flex flex-col">
 
           <div className="space-y-3 flex-1">
             {mockEvents.map((event, index) => (

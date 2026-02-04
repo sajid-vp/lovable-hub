@@ -17,7 +17,7 @@ export function LeadershipMessage() {
         </div>
 
         {/* Glass Container */}
-        <div className="relative p-3 sm:p-4 rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow flex-1 flex flex-col">
+        <div className="relative p-3 sm:p-4 rounded-2xl bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] flex-1 flex flex-col">
 
           <div className="flex items-center gap-3">
             <img
