@@ -21,7 +21,7 @@ export function TeamsActivity() {
   };
 
   return (
-    <Card className="h-full flex flex-col bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow">
+    <Card className="h-[420px] flex flex-col bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -46,7 +46,7 @@ export function TeamsActivity() {
           </a>
         </div>
       </CardHeader>
-      <CardContent className="flex-1 pt-0 space-y-4">
+      <CardContent className="flex-1 pt-0 space-y-4 overflow-y-auto">
         {/* Recent Messages */}
         <div>
           <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 flex items-center gap-1.5">
