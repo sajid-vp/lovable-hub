@@ -9,11 +9,11 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { id: "1", title: "Students", icon: Users, href: "/students" },
-  { id: "2", title: "Academics", icon: GraduationCap, href: "/academics" },
-  { id: "3", title: "Nurseries", icon: Building2, href: "/nurseries" },
-  { id: "4", title: "Research", icon: FlaskConical, href: "/research" },
-  { id: "5", title: "Operations", icon: Settings2, href: "/operations" },
+  { id: "1", title: "Employees", icon: Users, href: "/employees" },
+  { id: "2", title: "Students", icon: GraduationCap, href: "/students" },
+  { id: "3", title: "Academics", icon: Building2, href: "/academics" },
+  { id: "4", title: "Nurseries", icon: FlaskConical, href: "/nurseries" },
+  { id: "5", title: "Research", icon: Settings2, href: "/research" },
   { id: "6", title: "Help Desk", icon: HelpCircle, href: "/help" },
 ];
 
