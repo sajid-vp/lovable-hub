@@ -13,13 +13,11 @@ import { DirectoryWidget } from "@/components/dashboard/DirectoryWidget";
 
 export default function Index() {
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-gradient-to-br from-background via-background to-[hsl(var(--turquoise))]/5 no-overscroll">
-      {/* Decorative background elements */}
+    <div className="min-h-screen min-h-[100dvh] bg-background no-overscroll">
+      {/* Subtle decorative background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-[hsl(var(--turquoise))]/8 to-[hsl(var(--teal))]/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/3 -left-20 w-72 h-72 bg-gradient-to-br from-[hsl(var(--lavender))]/8 to-[hsl(var(--indigo))]/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-1/4 w-56 h-56 bg-gradient-to-br from-[hsl(var(--coral))]/6 to-[hsl(var(--orange))]/4 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 left-1/3 w-40 h-40 bg-gradient-to-br from-[hsl(var(--gold))]/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-gradient-to-br from-[hsl(var(--light-blue))]/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 -left-20 w-[400px] h-[400px] bg-gradient-to-tr from-[hsl(var(--turquoise))]/5 to-transparent rounded-full blur-3xl" />
       </div>
       
       <main className="container max-w-6xl pt-safe pb-safe py-3 sm:py-6 px-3 sm:px-4 relative z-10 scroll-touch">
