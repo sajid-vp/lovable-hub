@@ -1,24 +1,12 @@
-import { MessageSquare, Video, ExternalLink, Clock, Users } from "lucide-react";
+import { MessageSquare, ExternalLink } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { mockTeamsMessages, mockTeamsMeetings } from "@/data/mockData";
-import { format, formatDistanceToNow, isToday, isTomorrow } from "date-fns";
+import { mockTeamsMessages } from "@/data/mockData";
+import { formatDistanceToNow } from "date-fns";
 
 export function TeamsActivity() {
   const unreadCount = mockTeamsMessages.filter((m) => m.isUnread).length;
-
-  const formatMeetingTime = (startTime: string) => {
-    const date = new Date(startTime);
-    if (isToday(date)) {
-      return `Today at ${format(date, "h:mm a")}`;
-    }
-    if (isTomorrow(date)) {
-      return `Tomorrow at ${format(date, "h:mm a")}`;
-    }
-    return format(date, "MMM d, h:mm a");
-  };
 
   return (
     <Card className="h-[420px] flex flex-col bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow">
@@ -46,88 +34,38 @@ export function TeamsActivity() {
           </a>
         </div>
       </CardHeader>
-      <CardContent className="flex-1 pt-0 space-y-4 overflow-y-auto">
-        {/* Recent Messages */}
-        <div>
-          <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 flex items-center gap-1.5">
-            <MessageSquare className="h-3 w-3" />
-            Recent Messages
-          </h4>
-          <div className="space-y-2">
-            {mockTeamsMessages.slice(0, 3).map((message) => (
-              <a
-                key={message.id}
-                href="https://teams.microsoft.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-start gap-2.5 p-2 rounded-lg bg-muted/50 hover:bg-muted border border-transparent hover:border-border transition-all"
-              >
-                <Avatar className="h-8 w-8 flex-shrink-0">
-                  <AvatarImage src={message.senderAvatar} alt={message.sender} />
-                  <AvatarFallback className="text-xs bg-[#6264A7]/10 text-[#6264A7]">
-                    {message.sender.split(" ").map((n) => n[0]).join("")}
-                  </AvatarFallback>
-                </Avatar>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <p className="text-sm font-medium text-foreground truncate">
-                      {message.sender}
-                    </p>
-                    {message.isUnread && (
-                      <span className="h-2 w-2 rounded-full bg-[#6264A7] flex-shrink-0" />
-                    )}
-                  </div>
-                  <p className="text-xs text-muted-foreground truncate">{message.content}</p>
-                  <p className="text-[10px] text-muted-foreground/70 mt-0.5">
-                    {message.channel} • {formatDistanceToNow(new Date(message.timestamp), { addSuffix: true })}
-                  </p>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Upcoming Meetings */}
-        <div>
-          <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 flex items-center gap-1.5">
-            <Video className="h-3 w-3" />
-            Upcoming Meetings
-          </h4>
-          <div className="space-y-2">
-            {mockTeamsMeetings.slice(0, 3).map((meeting) => (
-              <div
-                key={meeting.id}
-                className="group flex items-center gap-3 p-2 rounded-lg bg-muted/50 hover:bg-muted border border-transparent hover:border-border transition-all"
-              >
-                <div className="flex-shrink-0 p-2 rounded-lg bg-[#6264A7]/10">
-                  <Video className="h-4 w-4 text-[#6264A7]" />
-                </div>
-                <div className="flex-1 min-w-0">
+      <CardContent className="flex-1 pt-0 overflow-y-auto">
+        <div className="space-y-2">
+          {mockTeamsMessages.slice(0, 6).map((message) => (
+            <a
+              key={message.id}
+              href="https://teams.microsoft.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-2.5 p-2.5 rounded-lg bg-muted/50 hover:bg-muted border border-transparent hover:border-border transition-all"
+            >
+              <Avatar className="h-9 w-9 flex-shrink-0">
+                <AvatarImage src={message.senderAvatar} alt={message.sender} />
+                <AvatarFallback className="text-xs bg-[#6264A7]/10 text-[#6264A7]">
+                  {message.sender.split(" ").map((n) => n[0]).join("")}
+                </AvatarFallback>
+              </Avatar>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
                   <p className="text-sm font-medium text-foreground truncate">
-                    {meeting.title}
+                    {message.sender}
                   </p>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      {formatMeetingTime(meeting.startTime)}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Users className="h-3 w-3" />
-                      {meeting.organizer}
-                    </span>
-                  </div>
+                  {message.isUnread && (
+                    <span className="h-2 w-2 rounded-full bg-[#6264A7] flex-shrink-0" />
+                  )}
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="h-7 text-xs opacity-0 group-hover:opacity-100 transition-opacity border-[#6264A7]/30 text-[#6264A7] hover:bg-[#6264A7]/10"
-                  onClick={() => window.open(meeting.joinUrl, "_blank")}
-                >
-                  Join
-                </Button>
+                <p className="text-xs text-muted-foreground truncate">{message.content}</p>
+                <p className="text-[10px] text-muted-foreground/70 mt-0.5">
+                  {message.channel} • {formatDistanceToNow(new Date(message.timestamp), { addSuffix: true })}
+                </p>
               </div>
-            ))}
-          </div>
+            </a>
+          ))}
         </div>
       </CardContent>
     </Card>
