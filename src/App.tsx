@@ -17,6 +17,7 @@ import DepartmentPage from "./pages/DepartmentPage";
 import Install from "./pages/Install";
 import Employees from "./pages/Employees";
 import Students from "./pages/Students";
+import ComingSoon from "./pages/ComingSoon";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,10 @@ const App = () => (
           <Route path="/install" element={<Install />} />
           <Route path="/employees" element={<Employees />} />
           <Route path="/students" element={<Students />} />
+          <Route path="/academics" element={<ComingSoon />} />
+          <Route path="/nurseries" element={<ComingSoon />} />
+          <Route path="/research" element={<ComingSoon />} />
+          <Route path="/help" element={<ComingSoon />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
