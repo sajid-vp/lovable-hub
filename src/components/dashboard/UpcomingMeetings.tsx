@@ -1,21 +1,9 @@
-import { Calendar, ExternalLink, Clock, Users } from "lucide-react";
+import { Calendar, ExternalLink, Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { mockTeamsMeetings } from "@/data/mockData";
-import { format, isToday, isTomorrow } from "date-fns";
+import { format } from "date-fns";
 
 export function UpcomingMeetings() {
-  const formatMeetingTime = (startTime: string) => {
-    const date = new Date(startTime);
-    if (isToday(date)) {
-      return `Today at ${format(date, "h:mm a")}`;
-    }
-    if (isTomorrow(date)) {
-      return `Tomorrow at ${format(date, "h:mm a")}`;
-    }
-    return format(date, "MMM d, h:mm a");
-  };
-
   return (
     <Card className="h-full flex flex-col bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]">
       <CardHeader className="pb-3">
@@ -38,40 +26,34 @@ export function UpcomingMeetings() {
         </div>
       </CardHeader>
       <CardContent className="flex-1 pt-0 overflow-y-auto">
-        <div className="space-y-2">
-          {mockTeamsMeetings.slice(0, 5).map((meeting) => (
-            <div
-              key={meeting.id}
-              className="group flex items-center gap-3 p-2.5 rounded-lg bg-muted/50 hover:bg-muted border border-transparent hover:border-border transition-all"
-            >
-              <div className="flex-shrink-0 p-2 rounded-lg bg-[#0078D4]/10">
-                <Calendar className="h-4 w-4 text-[#0078D4]" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-foreground truncate">
-                  {meeting.title}
-                </p>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1">
-                    <Clock className="h-3 w-3" />
-                    {formatMeetingTime(meeting.startTime)}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Users className="h-3 w-3" />
-                    {meeting.organizer}
-                  </span>
-                </div>
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                className="h-7 text-xs opacity-0 group-hover:opacity-100 transition-opacity border-[#0078D4]/30 text-[#0078D4] hover:bg-[#0078D4]/10"
+        <div className="space-y-1">
+          {mockTeamsMeetings.slice(0, 5).map((meeting) => {
+            const date = new Date(meeting.startTime);
+            return (
+              <div
+                key={meeting.id}
+                className="group flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors cursor-pointer"
                 onClick={() => window.open(meeting.joinUrl, "_blank")}
               >
-                View
-              </Button>
-            </div>
-          ))}
+                <div className="flex-shrink-0 p-2.5 rounded-lg bg-[#0078D4]/10">
+                  <Calendar className="h-5 w-5 text-[#0078D4]" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-foreground truncate">
+                    {meeting.title}
+                  </p>
+                  <div className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
+                    <Clock className="h-3 w-3" />
+                    <span>{format(date, "MMM d,")}</span>
+                    <span>{format(date, "h:mm a")}</span>
+                  </div>
+                </div>
+                <div className="text-right flex-shrink-0">
+                  <p className="text-xs text-muted-foreground">{meeting.organizer}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </CardContent>
     </Card>
