@@ -9,7 +9,7 @@ export function TeamsActivity() {
   const unreadCount = mockTeamsMessages.filter((m) => m.isUnread).length;
 
   return (
-    <Card className="h-[350px] flex flex-col bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow overflow-hidden">
+    <Card className="h-full flex flex-col bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-shadow">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
