@@ -56,7 +56,7 @@ export function RecentDocuments() {
           </a>
         </div>
       </CardHeader>
-      <CardContent className="flex-1 pt-0">
+      <CardContent className="flex-1 pt-0 overflow-y-auto">
         <div className="space-y-2">
           {mockSharePointDocuments.slice(0, 5).map((doc) => (
             <a
