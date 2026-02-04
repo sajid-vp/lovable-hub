@@ -27,13 +27,13 @@ const announcements = [
 const getTypeStyles = (type: string) => {
   switch (type) {
     case "Important":
-      return "bg-gradient-to-r from-[hsl(var(--coral))] to-[hsl(var(--orange))] text-white shadow-sm";
+      return "border border-rose-500 text-rose-600 bg-transparent";
     case "Notice":
-      return "bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--orange))] text-white shadow-sm";
+      return "border border-amber-500 text-amber-600 bg-transparent";
     case "Update":
-      return "bg-gradient-to-r from-primary to-[hsl(var(--light-blue))] text-white shadow-sm";
+      return "border border-sky-500 text-sky-600 bg-transparent";
     default:
-      return "bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white shadow-sm";
+      return "border border-foreground/50 text-foreground/80 bg-transparent";
   }
 };
 

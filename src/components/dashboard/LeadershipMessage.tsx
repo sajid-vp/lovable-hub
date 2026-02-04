@@ -20,13 +20,11 @@ export function LeadershipMessage() {
         <div className="relative p-3 sm:p-4 rounded-2xl bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] flex-1 flex flex-col">
 
           <div className="flex items-center gap-3">
-            <div className="p-0.5 rounded-xl bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] shadow-md">
-              <img
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
-                alt="Chancellor"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover"
-              />
-            </div>
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
+              alt="Chancellor"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover shadow-md border border-border/30"
+            />
             <div className="flex-1 min-w-0">
               <h3 className="font-semibold text-sm tracking-tight">Prof. Dr. Mohammed Al Qasimi</h3>
               <p className="text-xs text-muted-foreground truncate font-medium">Chancellor, Sharjah Education Academy</p>

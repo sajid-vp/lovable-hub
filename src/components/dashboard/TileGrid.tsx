@@ -12,17 +12,6 @@ interface TileGridProps {
   columns?: number;
 }
 
-const gradientColors = [
-  "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]",
-  "from-primary to-[hsl(var(--light-blue))]",
-  "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
-  "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]",
-  "from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
-  "from-[hsl(var(--pink))] to-[hsl(var(--lavender))]",
-  "from-[hsl(var(--gold))] to-[hsl(var(--orange))]",
-  "from-[hsl(var(--cyan))] to-[hsl(var(--teal))]",
-];
-
 function isExternalLink(item: TileItem): item is ExternalLinkType {
   return "external" in item && item.external === true;
 }
@@ -57,13 +46,13 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
               <TileWrapper
                 key={item.id}
                 {...(tileProps as any)}
-                className="group relative flex items-center gap-2 sm:gap-2.5 rounded-xl sm:rounded-2xl px-2.5 sm:px-3 py-2 bg-card border border-border/50 hover:bg-muted/50 hover:border-border active:scale-[0.97] shadow-sm transition-all duration-150 animate-scale-in tap-highlight app-touch"
+                className="group relative flex items-center gap-2 sm:gap-2.5 rounded-xl sm:rounded-2xl px-2.5 sm:px-3 py-2 bg-card border border-border/50 hover:bg-[hsl(var(--light-blue))]/10 hover:border-[hsl(var(--light-blue))]/30 active:scale-[0.97] shadow-sm transition-colors duration-150 animate-scale-in tap-highlight app-touch"
                 style={{ animationDelay: `${index * 30}ms` }}
               >
-                <div className={`p-1.5 sm:p-2 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br ${gradientColors[index % gradientColors.length]} shadow-md group-hover:scale-105 transition-transform`}>
-                  <item.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" strokeWidth={1.5} />
+                <div className="p-1 sm:p-1.5 rounded-lg flex-shrink-0 flex items-center justify-center bg-[hsl(var(--light-blue))]">
+                  <item.icon className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-white" strokeWidth={1.5} />
                 </div>
-                <span className="font-semibold text-xs sm:text-sm truncate relative z-10 flex-1 group-hover:text-primary transition-colors">
+                <span className="font-semibold text-xs sm:text-sm truncate relative z-10 flex-1 group-hover:text-[hsl(var(--light-blue))]">
                   {item.title}
                 </span>
                 {/* Badge counter - inside the tile on the right */}
@@ -73,7 +62,7 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
                   </span>
                 )}
                 {isExternal && (
-                  <ExternalLink className="h-3 w-3 sm:h-3.5 sm:w-3.5 flex-shrink-0 text-muted-foreground/50 group-hover:text-primary transition-colors" />
+                  <ExternalLink className="h-3 w-3 sm:h-3.5 sm:w-3.5 flex-shrink-0 text-muted-foreground/50 group-hover:text-[hsl(var(--light-blue))]" />
                 )}
               </TileWrapper>
             );
