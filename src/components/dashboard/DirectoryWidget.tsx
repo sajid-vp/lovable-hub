@@ -35,10 +35,7 @@ export function DirectoryWidget() {
   const displayedEmployees = filteredEmployees.slice(0, 4);
 
   return (
-    <Card className="h-full bg-card border border-border shadow-lg shadow-black/5 
-                     before:absolute before:inset-x-0 before:top-0 before:h-[1.5px] 
-                     before:bg-gradient-to-r before:from-transparent before:via-[hsl(var(--light-blue))]/30 before:to-transparent
-                     relative overflow-hidden">
+    <Card className="h-full bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] relative overflow-hidden">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

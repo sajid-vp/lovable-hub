@@ -29,9 +29,8 @@ export function IconNavBar() {
               to={item.href}
               className="group flex flex-col items-center justify-center gap-1.5 sm:gap-2 
                          p-3 sm:p-4 rounded-xl bg-card
-                         border border-border shadow-sm
+                         border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)]
                          hover:bg-[hsl(var(--light-blue))] hover:border-[hsl(var(--light-blue))]
-                         hover:shadow-lg hover:shadow-[hsl(var(--light-blue))]/20
                          active:scale-[0.96] active:bg-[hsl(var(--light-blue))]
                          transition-all duration-150 ease-out tap-highlight app-touch"
             >
