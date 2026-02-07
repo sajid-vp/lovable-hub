@@ -1,4 +1,4 @@
-import { ArrowLeft, Users, Search, Plus, Mail, Building2, Edit2, Clock, Receipt, FileText, Plane, CreditCard, Award, ChevronRight } from "lucide-react";
+import { ArrowLeft, Users, Search, Plus, Mail, Building2, ChevronRight, Clock, Receipt, FileText, Plane, CreditCard, Award, BadgeCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SocialFeed } from "@/components/dashboard/SocialFeed";
 import { EmployeeSpotlight } from "@/components/dashboard/EmployeeSpotlight";
@@ -8,12 +8,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuthContext } from "@/contexts/AuthContext";
 
 const services = [
-  { id: "leave", title: "Leave Request", icon: Plane, href: "/leave", gradient: "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]" },
-  { id: "claims", title: "Claims", icon: Receipt, href: "/claims", gradient: "from-primary to-[hsl(var(--light-blue))]" },
-  { id: "letter", title: "Request Letter", icon: FileText, href: "/letters", gradient: "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]" },
-  { id: "timesheet", title: "Timesheet", icon: Clock, href: "/timesheet", gradient: "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]" },
-  { id: "payslip", title: "Payslip", icon: CreditCard, href: "/payslip", gradient: "from-[hsl(var(--cyan))] to-[hsl(var(--teal))]" },
-  { id: "certificates", title: "Certificates", icon: Award, href: "/certificates", gradient: "from-[hsl(var(--light-blue))] to-[hsl(var(--indigo))]" },
+  { id: "leave", title: "Leave", description: "Request time off", icon: Plane, href: "/leave", gradient: "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]", badge: 2 },
+  { id: "claims", title: "Claims", description: "Submit expenses", icon: Receipt, href: "/claims", gradient: "from-primary to-[hsl(var(--light-blue))]" },
+  { id: "letter", title: "Letters", description: "Request documents", icon: FileText, href: "/letters", gradient: "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]" },
+  { id: "timesheet", title: "Timesheet", description: "Log hours", icon: Clock, href: "/timesheet", gradient: "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]" },
+  { id: "payslip", title: "Payslip", description: "View salary", icon: CreditCard, href: "/payslip", gradient: "from-[hsl(var(--cyan))] to-[hsl(var(--teal))]", badge: 1 },
+  { id: "certificates", title: "Certificates", description: "Training records", icon: Award, href: "/certificates", gradient: "from-[hsl(var(--light-blue))] to-[hsl(var(--indigo))]" },
 ];
 
 export default function Employees() {
@@ -30,7 +30,6 @@ export default function Employees() {
       <main className="container max-w-6xl pt-safe pb-safe py-3 sm:py-6 px-3 sm:px-4 relative z-10 scroll-touch">
         {/* Page Header */}
         <div className="mb-6 sm:mb-8">
-          {/* Back button and title row */}
           <div className="flex items-center gap-3 mb-4">
             <Link 
               to="/" 
@@ -54,132 +53,119 @@ export default function Employees() {
               </div>
             </div>
             
-            {/* Action buttons */}
             <div className="flex items-center gap-2">
               <Link to="/directory">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="hidden sm:flex items-center gap-2"
-                >
+                <Button variant="outline" size="sm" className="hidden sm:flex items-center gap-2">
                   <Search className="h-4 w-4" />
                   Directory
                 </Button>
               </Link>
-              <Button
-                size="sm"
-                className="bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] hover:opacity-90 text-white shadow-md"
-              >
+              <Button size="sm" className="bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] hover:opacity-90 text-white shadow-md">
                 <Plus className="h-4 w-4 sm:mr-1" />
                 <span className="hidden sm:inline">New Post</span>
               </Button>
             </div>
           </div>
-          
-          {/* Mobile description */}
-          <p className="text-sm text-muted-foreground sm:hidden px-1">
-            Connect with colleagues and celebrate achievements
-          </p>
         </div>
         
         <div className="space-y-6 sm:space-y-8">
-          {/* My Profile + Services Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
-            {/* Compact Profile Card - 2/5 width */}
-            <div className="lg:col-span-2">
-              <section className="animate-fade-in h-full flex flex-col">
-                <div className="flex items-center gap-2 mb-4">
-                  <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
-                    My Profile
-                  </h2>
-                  <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full" />
-                </div>
-
-                <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] flex-1">
-                  <div className="flex items-center gap-3">
-                    {/* Avatar */}
-                    <div className="relative">
-                      <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] opacity-40 blur-sm" />
-                      <Avatar className="relative h-12 w-12 border-2 border-background shadow-md">
-                        <AvatarImage src={user?.avatar} alt={user?.name} />
-                        <AvatarFallback className="text-sm font-semibold bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white">
-                          {user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full bg-[hsl(var(--green))] border-2 border-background" />
-                    </div>
-                    
-                    {/* Name & Role */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-sm text-foreground truncate">{user?.name || 'User'}</h3>
-                      <p className="text-xs text-muted-foreground truncate">{user?.role || 'Staff Member'}</p>
-                    </div>
-
-                    {/* Edit Button */}
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-primary">
-                      <Edit2 className="h-4 w-4" />
-                    </Button>
+          {/* Profile Card - Hero Style */}
+          <section className="animate-fade-in">
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] p-4 sm:p-6 shadow-lg">
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-xl" />
+              
+              <div className="relative flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                {/* Avatar */}
+                <div className="relative">
+                  <Avatar className="h-20 w-20 sm:h-24 sm:w-24 border-4 border-white/30 shadow-xl">
+                    <AvatarImage src={user?.avatar} alt={user?.name} />
+                    <AvatarFallback className="text-xl sm:text-2xl font-bold bg-white/20 text-white">
+                      {user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="absolute -bottom-1 -right-1 h-6 w-6 rounded-full bg-[hsl(var(--green))] border-3 border-white flex items-center justify-center shadow-md">
+                    <BadgeCheck className="h-4 w-4 text-white" />
                   </div>
-
-                  {/* Quick Info */}
-                  <div className="mt-3 pt-3 border-t border-border/50 grid grid-cols-2 gap-2">
-                    <div className="flex items-center gap-2 text-xs">
-                      <Mail className="h-3.5 w-3.5 text-[hsl(var(--teal))]" />
-                      <span className="truncate text-muted-foreground">{user?.email || 'email@sea.ac.ae'}</span>
+                </div>
+                
+                {/* Info */}
+                <div className="flex-1 text-center sm:text-left">
+                  <h2 className="text-xl sm:text-2xl font-bold text-white">{user?.name || 'User'}</h2>
+                  <p className="text-white/80 font-medium">{user?.role || 'Staff Member'}</p>
+                  
+                  <div className="flex flex-wrap justify-center sm:justify-start gap-3 mt-3">
+                    <div className="flex items-center gap-1.5 text-white/90 text-sm">
+                      <Mail className="h-4 w-4" />
+                      <span>{user?.email || 'email@sea.ac.ae'}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs">
-                      <Building2 className="h-3.5 w-3.5 text-primary" />
-                      <span className="truncate text-muted-foreground">{user?.department || 'Administration'}</span>
+                    <div className="flex items-center gap-1.5 text-white/90 text-sm">
+                      <Building2 className="h-4 w-4" />
+                      <span>{user?.department || 'Administration'}</span>
                     </div>
                   </div>
                 </div>
-              </section>
+
+                {/* View Profile Button */}
+                <Link to="/profile">
+                  <Button variant="secondary" size="sm" className="bg-white/20 hover:bg-white/30 text-white border-0 backdrop-blur-sm">
+                    View Profile
+                    <ChevronRight className="h-4 w-4 ml-1" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          {/* Services Section */}
+          <section className="animate-fade-in" style={{ animationDelay: "50ms" }}>
+            <div className="flex items-center gap-2 mb-4">
+              <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
+                Employee Services
+              </h2>
+              <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full" />
             </div>
 
-            {/* Services Section - 3/5 width */}
-            <div className="lg:col-span-3">
-              <section className="animate-fade-in h-full flex flex-col" style={{ animationDelay: "50ms" }}>
-                <div className="flex items-center gap-2 mb-4">
-                  <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
-                    Services
-                  </h2>
-                  <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full" />
-                </div>
-
-                <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] flex-1">
-                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3">
-                    {services.map((service, index) => (
-                      <Link
-                        key={service.id}
-                        to={service.href}
-                        className="group flex flex-col items-center gap-1.5 p-2.5 sm:p-3 rounded-xl bg-card border border-border/50 hover:bg-muted/50 hover:border-border active:scale-[0.97] transition-all duration-150 tap-highlight app-touch"
-                        style={{ animationDelay: `${index * 30}ms` }}
-                      >
-                        <div className={`p-2 rounded-lg bg-gradient-to-br ${service.gradient} shadow-md group-hover:scale-105 transition-transform`}>
-                          <service.icon className="h-4 w-4 text-white" />
-                        </div>
-                        <span className="text-[10px] sm:text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors leading-tight">
-                          {service.title}
-                        </span>
-                      </Link>
-                    ))}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {services.map((service, index) => (
+                <Link
+                  key={service.id}
+                  to={service.href}
+                  className="group relative flex flex-col items-center gap-2 p-4 rounded-2xl bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1)] hover:shadow-lg hover:border-[hsl(var(--turquoise))]/50 active:scale-[0.97] transition-all duration-200 tap-highlight app-touch"
+                  style={{ animationDelay: `${index * 30}ms` }}
+                >
+                  {/* Badge */}
+                  {service.badge && (
+                    <span className="absolute -top-1.5 -right-1.5 h-5 min-w-5 px-1.5 rounded-full bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white text-[10px] font-bold flex items-center justify-center shadow-md">
+                      {service.badge}
+                    </span>
+                  )}
+                  
+                  <div className={`p-3 rounded-xl bg-gradient-to-br ${service.gradient} shadow-md group-hover:scale-110 transition-transform`}>
+                    <service.icon className="h-5 w-5 text-white" />
                   </div>
-                </div>
-              </section>
+                  <div className="text-center">
+                    <p className="text-sm font-semibold text-foreground group-hover:text-[hsl(var(--teal))] transition-colors">
+                      {service.title}
+                    </p>
+                    <p className="text-[10px] text-muted-foreground leading-tight hidden sm:block">
+                      {service.description}
+                    </p>
+                  </div>
+                </Link>
+              ))}
             </div>
-          </div>
+          </section>
 
-          {/* Social Feed - Full Width */}
+          {/* Social Feed */}
           <SocialFeed />
           
-          {/* Two Column Layout: Spotlight + Birthdays */}
+          {/* Spotlight + Birthdays */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-            {/* Employee Spotlight - Takes 2/3 */}
             <div className="lg:col-span-2">
               <EmployeeSpotlight />
             </div>
-            
-            {/* Team Birthdays - Takes 1/3 */}
             <div className="lg:col-span-1">
               <TeamBirthdays />
             </div>
