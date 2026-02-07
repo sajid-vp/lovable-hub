@@ -9,9 +9,9 @@ const gradientColors = [
   "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]",
   "from-primary to-[hsl(var(--light-blue))]",
   "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]",
-  "from-[hsl(var(--coral))] to-[hsl(var(--orange))]",
   "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]",
-  "from-[hsl(var(--pink))] to-[hsl(var(--lavender))]",
+  "from-[hsl(var(--cyan))] to-[hsl(var(--teal))]",
+  "from-[hsl(var(--light-blue))] to-[hsl(var(--indigo))]",
 ];
 
 export function TeamsActivity() {
