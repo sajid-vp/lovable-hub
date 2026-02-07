@@ -1,6 +1,7 @@
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Settings } from "lucide-react";
 import { useState } from "react";
 import { LeadershipMessageDialog } from "./LeadershipMessageDialog";
+import { Button } from "@/components/ui/button";
 
 export function LeadershipMessage() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -14,6 +15,14 @@ export function LeadershipMessage() {
             Message from Leadership
           </h2>
           <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full" />
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-6 w-6 text-muted-foreground hover:text-primary hover:bg-primary/10"
+            title="Admin: Edit message"
+          >
+            <Settings className="h-3.5 w-3.5" />
+          </Button>
         </div>
 
         {/* Glass Container */}

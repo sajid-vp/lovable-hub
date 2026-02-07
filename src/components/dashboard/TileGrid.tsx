@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import type { App, ExternalLink as ExternalLinkType } from "@/data/mockData";
 
 type TileItem = App | ExternalLinkType;
@@ -10,6 +11,7 @@ interface TileGridProps {
   items: TileItem[];
   badgeCounts?: Record<string, number>;
   columns?: number;
+  showAdminGear?: boolean;
 }
 
 const gradientColors = [
@@ -27,7 +29,7 @@ function isExternalLink(item: TileItem): item is ExternalLinkType {
   return "external" in item && item.external === true;
 }
 
-export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGridProps) {
+export function TileGrid({ title, items, badgeCounts = {}, columns = 4, showAdminGear = false }: TileGridProps) {
   const gridColsClass = columns === 3 
     ? "grid-cols-2 md:grid-cols-3" 
     : "grid-cols-2 md:grid-cols-4";
@@ -40,6 +42,16 @@ export function TileGrid({ title, items, badgeCounts = {}, columns = 4 }: TileGr
           {title}
         </h2>
         <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full" />
+        {showAdminGear && (
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-6 w-6 text-muted-foreground hover:text-primary hover:bg-primary/10"
+            title="Admin: Edit links"
+          >
+            <Settings className="h-3.5 w-3.5" />
+          </Button>
+        )}
       </div>
 
       {/* Glass Container */}
