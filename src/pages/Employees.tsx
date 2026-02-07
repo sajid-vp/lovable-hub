@@ -1,4 +1,4 @@
-import { ArrowLeft, Users, Search, Plus, Mail, Phone, MapPin, Building2, Calendar, Edit2 } from "lucide-react";
+import { ArrowLeft, Users, Search, Plus, Mail, Building2, Edit2, Clock, Receipt, FileText, Plane, CreditCard, Award, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SocialFeed } from "@/components/dashboard/SocialFeed";
 import { EmployeeSpotlight } from "@/components/dashboard/EmployeeSpotlight";
@@ -6,6 +6,15 @@ import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuthContext } from "@/contexts/AuthContext";
+
+const services = [
+  { id: "leave", title: "Leave Request", icon: Plane, href: "/leave", gradient: "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]" },
+  { id: "claims", title: "Claims", icon: Receipt, href: "/claims", gradient: "from-primary to-[hsl(var(--light-blue))]" },
+  { id: "letter", title: "Request Letter", icon: FileText, href: "/letters", gradient: "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]" },
+  { id: "timesheet", title: "Timesheet", icon: Clock, href: "/timesheet", gradient: "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]" },
+  { id: "payslip", title: "Payslip", icon: CreditCard, href: "/payslip", gradient: "from-[hsl(var(--cyan))] to-[hsl(var(--teal))]" },
+  { id: "certificates", title: "Certificates", icon: Award, href: "/certificates", gradient: "from-[hsl(var(--light-blue))] to-[hsl(var(--indigo))]" },
+];
 
 export default function Employees() {
   const { user } = useAuthContext();
@@ -74,112 +83,91 @@ export default function Employees() {
         </div>
         
         <div className="space-y-6 sm:space-y-8">
-          {/* My Profile Section */}
-          <section className="animate-fade-in">
-            {/* Section Header */}
-            <div className="flex items-center gap-2 mb-4">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
-                My Profile
-              </h2>
-              <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full" />
+          {/* My Profile + Services Row */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
+            {/* Compact Profile Card - 2/5 width */}
+            <div className="lg:col-span-2">
+              <section className="animate-fade-in h-full flex flex-col">
+                <div className="flex items-center gap-2 mb-4">
+                  <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
+                    My Profile
+                  </h2>
+                  <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full" />
+                </div>
+
+                <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] flex-1">
+                  <div className="flex items-center gap-3">
+                    {/* Avatar */}
+                    <div className="relative">
+                      <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] opacity-40 blur-sm" />
+                      <Avatar className="relative h-12 w-12 border-2 border-background shadow-md">
+                        <AvatarImage src={user?.avatar} alt={user?.name} />
+                        <AvatarFallback className="text-sm font-semibold bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white">
+                          {user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full bg-[hsl(var(--green))] border-2 border-background" />
+                    </div>
+                    
+                    {/* Name & Role */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-sm text-foreground truncate">{user?.name || 'User'}</h3>
+                      <p className="text-xs text-muted-foreground truncate">{user?.role || 'Staff Member'}</p>
+                    </div>
+
+                    {/* Edit Button */}
+                    <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-primary">
+                      <Edit2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+
+                  {/* Quick Info */}
+                  <div className="mt-3 pt-3 border-t border-border/50 grid grid-cols-2 gap-2">
+                    <div className="flex items-center gap-2 text-xs">
+                      <Mail className="h-3.5 w-3.5 text-[hsl(var(--teal))]" />
+                      <span className="truncate text-muted-foreground">{user?.email || 'email@sea.ac.ae'}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs">
+                      <Building2 className="h-3.5 w-3.5 text-primary" />
+                      <span className="truncate text-muted-foreground">{user?.department || 'Administration'}</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
 
-            {/* Profile Card */}
-            <div className="relative p-4 sm:p-6 rounded-2xl bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] overflow-hidden">
-              {/* Decorative gradient top bar */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(var(--teal))] via-[hsl(var(--turquoise))] to-[hsl(var(--light-blue))]" />
-              
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                {/* Avatar Section */}
-                <div className="flex items-center sm:items-start gap-4">
-                  <div className="relative">
-                    <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] opacity-40 blur-sm" />
-                    <Avatar className="relative h-16 w-16 sm:h-20 sm:w-20 border-2 border-background shadow-lg">
-                      <AvatarImage src={user?.avatar} alt={user?.name} />
-                      <AvatarFallback className="text-lg sm:text-xl font-semibold bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white">
-                        {user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
-                      </AvatarFallback>
-                    </Avatar>
-                    {/* Status indicator */}
-                    <div className="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-[hsl(var(--green))] border-2 border-background shadow-sm" />
-                  </div>
-                  
-                  <div className="sm:hidden">
-                    <h3 className="font-semibold text-lg text-foreground">{user?.name || 'User'}</h3>
-                    <p className="text-sm text-muted-foreground">{user?.role || 'Staff Member'}</p>
-                  </div>
+            {/* Services Section - 3/5 width */}
+            <div className="lg:col-span-3">
+              <section className="animate-fade-in h-full flex flex-col" style={{ animationDelay: "50ms" }}>
+                <div className="flex items-center gap-2 mb-4">
+                  <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
+                    Services
+                  </h2>
+                  <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full" />
                 </div>
 
-                {/* Info Section */}
-                <div className="flex-1 space-y-4">
-                  {/* Name & Role - Desktop */}
-                  <div className="hidden sm:block">
-                    <h3 className="font-semibold text-xl text-foreground">{user?.name || 'User'}</h3>
-                    <p className="text-sm text-muted-foreground">{user?.role || 'Staff Member'}</p>
-                  </div>
-
-                  {/* Contact Details Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                    {/* Email */}
-                    <div className="flex items-center gap-2 p-2.5 rounded-xl bg-muted/50 border border-border/50">
-                      <div className="p-1.5 rounded-lg bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]">
-                        <Mail className="h-3.5 w-3.5 text-white" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Email</p>
-                        <p className="text-xs font-medium truncate">{user?.email || 'email@sea.ac.ae'}</p>
-                      </div>
-                    </div>
-
-                    {/* Department */}
-                    <div className="flex items-center gap-2 p-2.5 rounded-xl bg-muted/50 border border-border/50">
-                      <div className="p-1.5 rounded-lg bg-gradient-to-br from-primary to-[hsl(var(--light-blue))]">
-                        <Building2 className="h-3.5 w-3.5 text-white" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Department</p>
-                        <p className="text-xs font-medium truncate">{user?.department || 'Administration'}</p>
-                      </div>
-                    </div>
-
-                    {/* Phone */}
-                    <div className="flex items-center gap-2 p-2.5 rounded-xl bg-muted/50 border border-border/50">
-                      <div className="p-1.5 rounded-lg bg-gradient-to-br from-[hsl(var(--turquoise))] to-[hsl(var(--green))]">
-                        <Phone className="h-3.5 w-3.5 text-white" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Phone</p>
-                        <p className="text-xs font-medium">+971 6 XXX XXXX</p>
-                      </div>
-                    </div>
-
-                    {/* Location */}
-                    <div className="flex items-center gap-2 p-2.5 rounded-xl bg-muted/50 border border-border/50">
-                      <div className="p-1.5 rounded-lg bg-gradient-to-br from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]">
-                        <MapPin className="h-3.5 w-3.5 text-white" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Location</p>
-                        <p className="text-xs font-medium">SEA Main Campus</p>
-                      </div>
-                    </div>
+                <div className="relative p-4 rounded-2xl bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] flex-1">
+                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3">
+                    {services.map((service, index) => (
+                      <Link
+                        key={service.id}
+                        to={service.href}
+                        className="group flex flex-col items-center gap-1.5 p-2.5 sm:p-3 rounded-xl bg-card border border-border/50 hover:bg-muted/50 hover:border-border active:scale-[0.97] transition-all duration-150 tap-highlight app-touch"
+                        style={{ animationDelay: `${index * 30}ms` }}
+                      >
+                        <div className={`p-2 rounded-lg bg-gradient-to-br ${service.gradient} shadow-md group-hover:scale-105 transition-transform`}>
+                          <service.icon className="h-4 w-4 text-white" />
+                        </div>
+                        <span className="text-[10px] sm:text-xs font-medium text-center text-muted-foreground group-hover:text-foreground transition-colors leading-tight">
+                          {service.title}
+                        </span>
+                      </Link>
+                    ))}
                   </div>
                 </div>
-
-                {/* Edit Button */}
-                <div className="flex sm:flex-col items-center gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="gap-2"
-                  >
-                    <Edit2 className="h-4 w-4" />
-                    <span className="sm:hidden lg:inline">Edit Profile</span>
-                  </Button>
-                </div>
-              </div>
+              </section>
             </div>
-          </section>
+          </div>
 
           {/* Social Feed - Full Width */}
           <SocialFeed />
