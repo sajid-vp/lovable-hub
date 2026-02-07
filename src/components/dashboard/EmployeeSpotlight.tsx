@@ -91,11 +91,11 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
     <section className="space-y-3">
       {/* Section Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground/80">
+        <div className="flex items-center gap-2">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
             Employee Spotlight
           </h2>
-          <div className="h-px flex-1 min-w-[60px] bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--orange))] to-transparent" />
+          <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full min-w-[60px]" />
         </div>
         <Link
           to="/directory"
@@ -107,12 +107,12 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
       </div>
 
       {/* Spotlight Card */}
-      <div className="relative overflow-hidden rounded-2xl bg-card border border-border shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] p-6 group hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-all duration-300">
-        {/* Decorative gradient */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--orange))] to-[hsl(var(--coral))]" />
+      <div className="relative overflow-hidden rounded-2xl bg-card border border-border shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-4px_rgba(0,0,0,0.1)] p-6 group hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.12)] transition-all duration-300">
+        {/* Decorative gradient - cool tones */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(var(--teal))] via-[hsl(var(--turquoise))] to-[hsl(var(--light-blue))]" />
         
         {/* Sparkle decorations */}
-        <div className="absolute top-4 right-4 text-[hsl(var(--gold))]/40">
+        <div className="absolute top-4 right-4 text-[hsl(var(--turquoise))]/40">
           <Sparkles className="h-8 w-8" />
         </div>
 
@@ -120,14 +120,14 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
           {/* Employee Info */}
           <div className="flex items-start gap-4 lg:w-1/3">
             <div className="relative">
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] opacity-50 blur-sm" />
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] opacity-50 blur-sm" />
               <Avatar className="relative h-20 w-20 border-2 border-background">
                 <AvatarImage src={employee.avatar} alt={employee.name} />
-                <AvatarFallback className="text-xl font-semibold bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] text-white">
+                <AvatarFallback className="text-xl font-semibold bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] text-white">
                   {employee.name.split(' ').map(n => n[0]).join('')}
                 </AvatarFallback>
               </Avatar>
-              <div className="absolute -bottom-1 -right-1 h-7 w-7 rounded-full bg-gradient-to-br from-[hsl(var(--gold))] to-[hsl(var(--orange))] flex items-center justify-center shadow-lg">
+              <div className="absolute -bottom-1 -right-1 h-7 w-7 rounded-full bg-gradient-to-br from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] flex items-center justify-center shadow-lg">
                 <Award className="h-4 w-4 text-white" />
               </div>
             </div>
@@ -164,8 +164,8 @@ export function EmployeeSpotlight({ variant = "default" }: EmployeeSpotlightProp
             </div>
 
             {/* Quote */}
-            <div className="relative pl-4 border-l-2 border-[hsl(var(--gold))]/50">
-              <Quote className="absolute -left-3 -top-1 h-6 w-6 text-[hsl(var(--gold))]/30 rotate-180" />
+            <div className="relative pl-4 border-l-2 border-[hsl(var(--turquoise))]/50">
+              <Quote className="absolute -left-3 -top-1 h-6 w-6 text-[hsl(var(--turquoise))]/30 rotate-180" />
               <p className="text-sm italic text-muted-foreground">
                 "{quote}"
               </p>
