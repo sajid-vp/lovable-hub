@@ -1,10 +1,12 @@
 import { ChevronRight, Settings } from "lucide-react";
 import { useState } from "react";
 import { LeadershipMessageDialog } from "./LeadershipMessageDialog";
+import { AdminLeadershipDialog } from "./AdminLeadershipDialog";
 import { Button } from "@/components/ui/button";
 
 export function LeadershipMessage() {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [adminDialogOpen, setAdminDialogOpen] = useState(false);
 
   return (
     <>
@@ -20,6 +22,7 @@ export function LeadershipMessage() {
             size="icon"
             className="h-6 w-6 text-muted-foreground hover:text-primary hover:bg-primary/10"
             title="Admin: Edit message"
+            onClick={() => setAdminDialogOpen(true)}
           >
             <Settings className="h-3.5 w-3.5" />
           </Button>
@@ -65,6 +68,7 @@ export function LeadershipMessage() {
       </section>
       
       <LeadershipMessageDialog open={dialogOpen} onOpenChange={setDialogOpen} />
+      <AdminLeadershipDialog open={adminDialogOpen} onOpenChange={setAdminDialogOpen} />
     </>
   );
 }
