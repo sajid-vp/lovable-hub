@@ -88,7 +88,7 @@ export function DirectoryWidget() {
                   {employee.title}
                 </p>
               </div>
-              <span className="text-[10px] px-2 py-1 rounded-full bg-muted text-muted-foreground 
+              <span className="hidden sm:inline text-[10px] px-2 py-1 rounded-full bg-muted text-muted-foreground 
                                group-hover:bg-white/20 group-hover:text-white font-medium shrink-0">
                 {employee.department}
               </span>
