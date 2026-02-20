@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Sun, Moon, CloudSun, Search, Bell, LogOut, User, Settings } from "lucide-react";
 import { useAuthContext } from "@/contexts/AuthContext";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { LanguageToggle } from "@/components/LanguageToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -22,7 +20,6 @@ import { SearchDropdown } from "@/components/search/SearchDropdown";
 
 export function WelcomeBanner() {
   const { user, logout } = useAuthContext();
-  const { t, language } = useLanguage();
   const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -30,9 +27,9 @@ export function WelcomeBanner() {
 
   const getGreeting = () => {
     const hour = new Date().getHours();
-    if (hour < 12) return t("goodMorning");
-    if (hour < 17) return t("goodAfternoon");
-    return t("goodEvening");
+    if (hour < 12) return "Good morning";
+    if (hour < 17) return "Good afternoon";
+    return "Good evening";
   };
 
   const getIcon = () => {
@@ -44,7 +41,7 @@ export function WelcomeBanner() {
 
   const TimeIcon = getIcon();
 
-  const today = new Date().toLocaleDateString(language === "ar" ? "ar-AE" : "en-US", {
+  const today = new Date().toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
     day: "numeric",
@@ -115,7 +112,7 @@ export function WelcomeBanner() {
                   {searchOpen && (
                     <Input
                       type="search"
-                      placeholder={t("searchPlaceholder")}
+                      placeholder="Search..."
                       value={searchQuery}
                       onChange={handleSearchChange}
                       className="border-0 bg-transparent h-8 sm:h-9 focus-visible:ring-0 focus-visible:ring-offset-0 px-0 text-white placeholder:text-white/60 text-sm"
@@ -151,11 +148,6 @@ export function WelcomeBanner() {
                 variant="banner"
                 className="right-0 sm:left-0 sm:right-auto"
               />
-            </div>
-
-            {/* Language Toggle */}
-            <div className="h-8 w-8 sm:h-11 sm:w-11 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white">
-              <LanguageToggle />
             </div>
 
             {/* Notifications */}
@@ -226,9 +218,7 @@ export function WelcomeBanner() {
             {today}
           </p>
           <p className="text-sm max-w-lg hidden sm:block font-semibold leading-relaxed text-white/90 mt-1">
-            {language === "ar" 
-              ? "مرحباً بعودتك إلى أكاديمية الشارقة للتعليم. إليك ما يحدث في مؤسستك اليوم."
-              : "Welcome back to Sharjah Education Academy. Here's what's happening in your organization today."}
+            Welcome back to Sharjah Education Academy. Here's what's happening in your organization today.
           </p>
         </div>
       </div>

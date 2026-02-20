@@ -323,25 +323,4 @@ All colors MUST be HSL.
   .no-overscroll {
     overscroll-behavior-y: contain;
   }
-
-  /* RTL utilities */
-  .rtl-flip {
-    [dir="rtl"] & {
-      transform: scaleX(-1);
-    }
-  }
-}
-
-/* RTL support */
-[dir="rtl"] {
-  font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
-  
-  /* Fix spacing for RTL */
-  .space-x-1 > :not(:first-child),
-  .space-x-2 > :not(:first-child),
-  .space-x-3 > :not(:first-child),
-  .space-x-4 > :not(:first-child) {
-    margin-right: inherit;
-    margin-left: inherit;
-  }
 }
