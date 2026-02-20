@@ -1,24 +1,27 @@
 import { Link } from "react-router-dom";
 import { Users, GraduationCap, Building2, FlaskConical, Settings2, HelpCircle, LucideIcon } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { TranslationKey } from "@/i18n/translations";
 
 interface NavItem {
   id: string;
-  title: string;
+  titleKey: TranslationKey;
   icon: LucideIcon;
   href: string;
   gradient: string;
 }
 
 const navItems: NavItem[] = [
-  { id: "1", title: "Employees", icon: Users, href: "/employees", gradient: "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]" },
-  { id: "2", title: "Students", icon: GraduationCap, href: "/students", gradient: "from-primary to-[hsl(var(--light-blue))]" },
-  { id: "3", title: "Academics", icon: Building2, href: "/academics", gradient: "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]" },
-  { id: "4", title: "Nurseries", icon: FlaskConical, href: "/nurseries", gradient: "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]" },
-  { id: "5", title: "Research", icon: Settings2, href: "/research", gradient: "from-[hsl(var(--indigo))] to-primary" },
-  { id: "6", title: "Help Desk", icon: HelpCircle, href: "/help", gradient: "from-[hsl(var(--cyan))] to-[hsl(var(--light-blue))]" },
+  { id: "1", titleKey: "employees", icon: Users, href: "/employees", gradient: "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]" },
+  { id: "2", titleKey: "students", icon: GraduationCap, href: "/students", gradient: "from-primary to-[hsl(var(--light-blue))]" },
+  { id: "3", titleKey: "academics", icon: Building2, href: "/academics", gradient: "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]" },
+  { id: "4", titleKey: "nurseries", icon: FlaskConical, href: "/nurseries", gradient: "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]" },
+  { id: "5", titleKey: "research", icon: Settings2, href: "/research", gradient: "from-[hsl(var(--indigo))] to-primary" },
+  { id: "6", titleKey: "helpDesk", icon: HelpCircle, href: "/help", gradient: "from-[hsl(var(--cyan))] to-[hsl(var(--light-blue))]" },
 ];
 
 export function IconNavBar() {
+  const { t } = useLanguage();
   return (
     <nav className="animate-fade-in mb-4">
       <div className="grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3">
@@ -40,7 +43,7 @@ export function IconNavBar() {
               </div>
               <span className="text-xs sm:text-sm font-medium text-foreground/80 
                                group-hover:text-foreground transition-colors text-center leading-tight">
-                {item.title}
+                {t(item.titleKey)}
               </span>
             </Link>
           );
