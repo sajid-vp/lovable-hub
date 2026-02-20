@@ -6,18 +6,21 @@ import { TeamBirthdays } from "@/components/dashboard/TeamBirthdays";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuthContext } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { TranslationKey } from "@/i18n/translations";
 
-const services = [
-  { id: "leave", title: "Leave", description: "Request time off", icon: Plane, href: "/leave", gradient: "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]", badge: 2 },
-  { id: "claims", title: "Claims", description: "Submit expenses", icon: Receipt, href: "/claims", gradient: "from-primary to-[hsl(var(--light-blue))]" },
-  { id: "letter", title: "Letters", description: "Request documents", icon: FileText, href: "/letters", gradient: "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]" },
-  { id: "timesheet", title: "Timesheet", description: "Log hours", icon: Clock, href: "/timesheet", gradient: "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]" },
-  { id: "payslip", title: "Payslip", description: "View salary", icon: CreditCard, href: "/payslip", gradient: "from-[hsl(var(--cyan))] to-[hsl(var(--teal))]", badge: 1 },
-  { id: "certificates", title: "Certificates", description: "Training records", icon: Award, href: "/certificates", gradient: "from-[hsl(var(--light-blue))] to-[hsl(var(--indigo))]" },
+const services: { id: string; titleKey: TranslationKey; descKey: TranslationKey; icon: typeof Plane; href: string; gradient: string; badge?: number }[] = [
+  { id: "leave", titleKey: "leave", descKey: "requestTimeOff", icon: Plane, href: "/leave", gradient: "from-[hsl(var(--teal))] to-[hsl(var(--turquoise))]", badge: 2 },
+  { id: "claims", titleKey: "claims", descKey: "submitExpenses", icon: Receipt, href: "/claims", gradient: "from-primary to-[hsl(var(--light-blue))]" },
+  { id: "letter", titleKey: "letters", descKey: "requestDocuments", icon: FileText, href: "/letters", gradient: "from-[hsl(var(--turquoise))] to-[hsl(var(--green))]" },
+  { id: "timesheet", titleKey: "timesheet", descKey: "logHours", icon: Clock, href: "/timesheet", gradient: "from-[hsl(var(--indigo))] to-[hsl(var(--lavender))]" },
+  { id: "payslip", titleKey: "payslip", descKey: "viewSalary", icon: CreditCard, href: "/payslip", gradient: "from-[hsl(var(--cyan))] to-[hsl(var(--teal))]", badge: 1 },
+  { id: "certificates", titleKey: "certificates", descKey: "trainingRecords", icon: Award, href: "/certificates", gradient: "from-[hsl(var(--light-blue))] to-[hsl(var(--indigo))]" },
 ];
 
 export default function Employees() {
   const { user } = useAuthContext();
+  const { t } = useLanguage();
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-background no-overscroll">
@@ -45,9 +48,9 @@ export default function Employees() {
                   <Users className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl sm:text-2xl font-bold text-foreground">Employees</h1>
+                  <h1 className="text-xl sm:text-2xl font-bold text-foreground">{t("employees")}</h1>
                   <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">
-                    Connect with your colleagues, celebrate achievements, and stay updated
+                    {t("connectWithColleagues")}
                   </p>
                 </div>
               </div>
@@ -57,12 +60,12 @@ export default function Employees() {
               <Link to="/directory">
                 <Button variant="outline" size="sm" className="hidden sm:flex items-center gap-2">
                   <Search className="h-4 w-4" />
-                  Directory
+                  {t("directory")}
                 </Button>
               </Link>
               <Button size="sm" className="bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(var(--turquoise))] hover:opacity-90 text-white shadow-md">
                 <Plus className="h-4 w-4 sm:mr-1" />
-                <span className="hidden sm:inline">New Post</span>
+                <span className="hidden sm:inline">{t("newPost")}</span>
               </Button>
             </div>
           </div>
@@ -110,8 +113,8 @@ export default function Employees() {
                 {/* View Profile Button */}
                 <Link to="/profile">
                   <Button variant="secondary" size="sm" className="bg-white/20 hover:bg-white/30 text-white border-0 backdrop-blur-sm">
-                    View Profile
-                    <ChevronRight className="h-4 w-4 ml-1" />
+                    {t("viewProfile")}
+                    <ChevronRight className="h-4 w-4 ms-1 rtl-flip" />
                   </Button>
                 </Link>
               </div>
@@ -122,7 +125,7 @@ export default function Employees() {
           <section className="animate-fade-in" style={{ animationDelay: "50ms" }}>
             <div className="flex items-center gap-2 mb-4">
               <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/80">
-                Employee Services
+                {t("employeeServices")}
               </h2>
               <div className="flex-1 h-[1.5px] bg-[hsl(var(--light-blue))]/50 rounded-full" />
             </div>
@@ -147,10 +150,10 @@ export default function Employees() {
                   </div>
                   <div className="text-center">
                     <p className="text-sm font-semibold text-foreground group-hover:text-[hsl(var(--teal))] transition-colors">
-                      {service.title}
+                      {t(service.titleKey)}
                     </p>
                     <p className="text-[10px] text-muted-foreground leading-tight hidden sm:block">
-                      {service.description}
+                      {t(service.descKey)}
                     </p>
                   </div>
                 </Link>
